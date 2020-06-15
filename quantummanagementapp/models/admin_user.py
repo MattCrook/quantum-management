@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import F
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+
 
 
 class AdminUser(models.Model):
@@ -19,3 +21,12 @@ class AdminUser(models.Model):
 
     def get_absolute_url(self):
         return reverse("admin_user_details", kwargs={"pk": self.pk})
+
+@receiver(post_save, sender=User)
+def create_admin_user(sender, instance, created, **kwargs):
+    if created:
+        AdminUser.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_admin_user(sender, instance, **kwargs):
+    instance.adminUser.save()

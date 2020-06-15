@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import routers
 from django.conf.urls import url, include
 from django.urls import path
+from quantummanagementapp.models import *
 
 
 
@@ -15,5 +16,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('', include('quantummanagementapp.urls')),
+    path('', include('quantummanagementapp.urls')),
 ]

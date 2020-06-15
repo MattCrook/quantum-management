@@ -7,7 +7,7 @@
 # from django.urls import path
 # from quantummanagementapp.models import *
 
-from quantummanagementapp.views import *
+from quantummanagementapp.views.admin_users.auth.actions import *
 from django.urls import include, path
 
 app_name = "quantummanagementapp"

@@ -6,7 +6,7 @@ from quantummanagementapp.models import Attraction
 
 class AttractionWaitTimes(models.Model):
 
-    attraction = models.ManyToManyField(Attraction, on_delete=models.CASCADE)
+    attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
     current_wait_time = models.DurationField()
     timestamp = models.DateTimeField(default=timezone.now)
 

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class AdminUser(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name="adminUser", on_delete=models.CASCADE)
     picture = models.ImageField(blank=True, null=True)
     role = models.CharField(max_length=50)
 

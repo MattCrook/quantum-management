@@ -12,7 +12,6 @@ router = routers.DefaultRouter(trailing_slash=False)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),

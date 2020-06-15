@@ -1,13 +1,13 @@
 from django.db import models
-from quantummanagementapp.models import AttractionType
+# from quantummanagementapp.models import AttractionType
 
 
 class Attraction(models.Model):
 
     name = models.CharField(max_length=100)
-    type = models.ForeignKey(AttractionType, null=True, blank=True, on_delete=models.CASCADE)
-    capacity = models.CharField()
-    current_operating_capacity = models.CharField()
+    type = models.ForeignKey("AttractionType", null=True, blank=True, on_delete=models.CASCADE)
+    capacity = models.CharField(max_length=20, null=True, blank=True)
+    current_operating_capacity = models.CharField(max_length=20, null=True, blank=True)
 
     class Meta:
         verbose_name = ("attraction")

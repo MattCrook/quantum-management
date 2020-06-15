@@ -4,7 +4,7 @@ from django.db import models
 class AttractionType(models.Model):
 
     name = models.CharField(max_length=50)
-    manufacturer = models.CharField()
+    manufacturer = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         verbose_name = ("attractiontype")

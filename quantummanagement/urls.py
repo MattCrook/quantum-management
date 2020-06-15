@@ -16,5 +16,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('quantumapi.urls')),
+    # path('', include('quantummanagementapp.urls')),
 ]

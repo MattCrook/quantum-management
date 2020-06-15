@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class EmployeeAttraction(models.Model):
 
@@ -11,3 +13,6 @@ class EmployeeAttraction(models.Model):
 
     # def __str__(self):
     #     return f'{self.employee.first_name} {self.employee.last_name} - {self.attraction.name}'
+
+    def get_absolute_url(self):
+        return reverse("employee_attraction_details", kwargs={"pk": self.pk})

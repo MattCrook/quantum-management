@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from quantummanagementapp.models import Park, Attraction
 
 class ParkAttractions(models.Model):
@@ -9,3 +11,6 @@ class ParkAttractions(models.Model):
     class Meta:
         verbose_name = ("parkAttraction")
         verbose_name_plural = ("parkAttractions")
+
+    def get_absolute_url(self):
+        return reverse("park_attraction_details", kwargs={"pk": self.pk})

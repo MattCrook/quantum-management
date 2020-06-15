@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class AdminUser(models.Model):
 
-    user = models.OneToOneField(User, related_name="adminUser", on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name="user", on_delete=models.CASCADE)
     picture = models.ImageField(blank=True, null=True)
     role = models.CharField(max_length=50)
 
@@ -16,3 +16,6 @@ class AdminUser(models.Model):
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} - {self.role}'
+
+    def get_absolute_url(self):
+        return reverse("admin_user_details", kwargs={"pk": self.pk})

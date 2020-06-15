@@ -6,6 +6,7 @@ from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE
 
 
+
 class Employee(SafeDeleteModel):
 
     first_name = models.CharField(max_length=50)
@@ -26,3 +27,6 @@ class Employee(SafeDeleteModel):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_absolute_url(self):
+        return reverse("employee_details", kwargs={"pk": self.pk})

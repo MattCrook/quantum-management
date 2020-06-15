@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 # from quantummanagementapp.models import AttractionType
 
 
@@ -15,3 +17,6 @@ class Attraction(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    def get_absolute_url(self):
+        return reverse("attraction_details", kwargs={"pk": self.pk})

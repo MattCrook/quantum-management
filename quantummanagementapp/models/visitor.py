@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.db.models import F
+from django.urls import reverse
+
 
 
 class Visitor(models.Model):
@@ -15,3 +17,6 @@ class Visitor(models.Model):
 
     def __str__(self):
         return f'{self.check_in} - {self.ticket_price}'
+
+    def get_absolute_url(self):
+        return reverse("visitor_details", kwargs={"pk": self.pk})

@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.db.models import F
 from quantummanagementapp.models import Attraction
+from django.urls import reverse
+
 
 class AttractionVisitors(models.Model):
 
@@ -13,3 +15,6 @@ class AttractionVisitors(models.Model):
 
     def __str__(self):
         return f'{self.attraction} - {self.visit_timestamp}'
+
+    def get_absolute_url(self):
+        return reverse("attraction_visitors_details", kwargs={"pk": self.pk})

@@ -2,11 +2,12 @@ from django.db import models
 from django.utils import timezone
 from django.db.models import F
 from quantummanagementapp.models import Attraction
+from django.urls import reverse
 
 
 class AttractionWaitTimes(models.Model):
 
-    attraction = models.ManyToManyField(Attraction, on_delete=models.CASCADE)
+    attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
     current_wait_time = models.DurationField()
     timestamp = models.DateTimeField(default=timezone.now)
 
@@ -17,3 +18,6 @@ class AttractionWaitTimes(models.Model):
 
     def __str__(self):
         return f'{self.attraction.name} {self.current_wait_time}'
+
+    def get_absolute_url(self):
+        return reverse("attraction_wait_times_details", kwargs={"pk": self.pk})

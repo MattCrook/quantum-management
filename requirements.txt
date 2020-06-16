@@ -16,7 +16,7 @@ django-safedelete==0.5.5
 djangorestframework==3.11.0
 djangorestframework-queryfields==1.0.0
 djangorestframework-simplejwt==4.4.0
-drf-jwt==1.13.4
+drf-jwt==1.15.1
 ecdsa==0.15
 idna==2.8
 importlib-metadata==1.6.1

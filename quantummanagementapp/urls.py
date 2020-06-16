@@ -7,16 +7,19 @@
 # from django.urls import path
 # from quantummanagementapp.models import *
 
-from quantummanagementapp.views.admin_users.auth.actions import *
-from django.urls import include, path
+from quantummanagementapp.views.admin_users.auth.actions import login_user, logout_user, admin_user
+from .views.home.landing_page import landing_page
+from django.urls import path
+from django.conf.urls import include
+from quantummanagementapp import views
+from .views import *
 
 app_name = "quantummanagementapp"
 
-
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', include('libraryapp.urls')),
-    # path('home/', home, name='home'),
+    path('', landing_page, name='landing_page'),
+    path('admin/', admin_user, name='admin'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
-    path('login/', login_user, name='login'),
 ]

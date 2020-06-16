@@ -32,7 +32,8 @@ def list(request):
 
     elif request.method == 'POST':
         form_data = request.POST
-        user_id = request.user.id
+        print("FORMDATA", form_data)
+        # user_id = request.user.id
         new_user = User.objects.create(
             first_name=form_data['first_name'],
             last_name=form_data['last_name'],
@@ -42,7 +43,7 @@ def list(request):
         new_admin_user = AdminUser.objects.create(
             pictue=form_data['picture'],
             role=form_data['role'],
-            user_id=user_id,
+            # user_id=user_id,
             user=new_user
         )
         new_admin_user.save()

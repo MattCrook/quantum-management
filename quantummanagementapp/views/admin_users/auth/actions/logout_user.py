@@ -4,4 +4,4 @@ from django.contrib.auth import logout
 
 def logout_user(request):
     logout(request)
-    return redirect(reverse('quantummanagementapp:home'))
+    return redirect(reverse('quantummanagementapp:landing_page'))

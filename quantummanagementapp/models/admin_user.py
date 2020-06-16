@@ -24,11 +24,11 @@ class AdminUser(models.Model):
     def get_absolute_url(self):
         return reverse("admin_user_details", kwargs={"pk": self.pk})
 
-@receiver(post_save, sender=User)
-def create_admin_user(sender, instance, created, **kwargs):
-    if created:
-        AdminUser.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_admin_user(sender, instance, created, **kwargs):
+#     if created:
+#         AdminUser.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def save_admin_user(sender, instance, **kwargs):
-    instance.adminUser.save()
+# @receiver(post_save, sender=User)
+# def save_admin_user(sender, instance, **kwargs):
+#     instance.adminUser.save()

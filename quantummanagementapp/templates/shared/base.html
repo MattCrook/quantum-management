@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #16a085;">
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #16a085;">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,39 +24,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:home' %}"> Home</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:employee_list' %}"> Manage Employees</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}"> Manage Employees</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:departments' %}">Manage Park</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:park_list' %}">Manage Park</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:computers' %}">Analytics</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:computers' %}">Analytics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:trainingprograms' %}">Profile</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:trainingprograms' %}">Profile</a>
                 </li>
-                
                 
             </ul>
+                {% endcomment %}
             <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:logout' %}"> Logout</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}"> Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:login' %}">Login</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'hrapp:admin' %}">Django Admin</a>
+                    <a class="nav-link" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
                 </li>
             </ul>
-        </div>
-    </nav>
+        {% comment %} </div>
+    </nav> {% endcomment %}
 
     <main class="main-content">
         {% block content %}

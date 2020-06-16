@@ -2,6 +2,8 @@ from django.contrib import admin
 from quantummanagementapp.models import AdminUser, Attraction, AttractionType, AttractionWaitTimes, AttractionVisitors, Employee, EmployeeAttraction, Visitor, VisitorCheckOut, Park, ParkAttractions
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
 
 # Register your models here.
 

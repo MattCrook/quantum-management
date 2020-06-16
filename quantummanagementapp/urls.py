@@ -17,9 +17,15 @@ from .views import *
 app_name = "quantummanagementapp"
 
 urlpatterns = [
-    path('', landing_page, name='landing_page'),
+    # path('', landing_page, name='landing_page'),
+    # path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/login/', login_user, name='login'),
+    # path('logout/', logout_user, name='logout'),
+
     path('admin/', admin_user, name='admin'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login/', login_user, name='login'),
-    path('logout/', logout_user, name='logout'),
+    path('', views.index),
+    path('dashboard', views.dashboard),
+    path('logout', views.logout),
+    path('', include('django.contrib.auth.urls')),
+    path('', include('social_django.urls')),
 ]

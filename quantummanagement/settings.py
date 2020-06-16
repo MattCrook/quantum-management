@@ -25,11 +25,24 @@ SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
-# Application definition
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
+SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
 
+
+
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +53,7 @@ INSTALLED_APPS = [
     'quantummanagementapp',
     'safedelete',
     'corsheaders',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +125,14 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 
+
+AUTHENTICATION_BACKENDS = {
+    'quantummanagementapp.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -130,4 +152,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/home'
+# before auth0
+# LOGIN_REDIRECT_URL = '/home'
+
+
+#auth0 redirect login global variables
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/dashboard'

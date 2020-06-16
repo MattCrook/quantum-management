@@ -8,8 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/modal.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" type="text/css" media="screen" />
+
+    {% comment %} <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
 
 
@@ -48,30 +55,30 @@
         
             <ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
-                {% comment %} <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}"> Logout</a>
-                </li>  {% endcomment %}
+                </li>  
 
-                <div class="logged-in-box auth0-box logged-in">
+                {% comment %} <div class="logged-in-box auth0-box logged-in">
                     <h1 id="logo"><img src="//cdn.auth0.com/samples/auth0_logo_final_blue_RGB.png" /></h1>
                     <img class="avatar" src="{{ auth0User.extra_data.picture }}"/>
                     <h2>Welcome {{ user.username }}</h2>
                     <pre>{{ userdata }}</pre>
                     <a class="btn btn-primary btn-lg btn-logout btn-block" href="/logout">Logout</a>
-                </div>
+                </div> {% endcomment %}
 
                 {% else %}
-             {% comment %} 
+            
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'quantummanagementapp:login' %}">Login</a>
-                </li>  {% endcomment %}
+                </li>  
 
-                <div class="login-box auth0-box before">
+                {% comment %} <div class="login-box auth0-box before">
                     <img src="https://i.cloudup.com/StzWWrY34s.png" />
                     <h3>Auth0 Example</h3>
                     <p>Zero friction identity infrastructure, built for developers</p>
                     <a class="btn btn-primary btn-lg btn-login btn-block" href="/login/auth0">Log In</a>
-                </div>
+                </div> {% endcomment %}
 
                 {% endif %}
 

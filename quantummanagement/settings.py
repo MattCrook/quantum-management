@@ -17,18 +17,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
-SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
-
-
-
-SOCIAL_AUTH_AUTH0_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,9 +32,20 @@ INSTALLED_APPS = [
     'social_django',
 ]
 
+# MIDDLEWARE = [
+#     'corsheaders.middleware.CorsMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+# Auth0 middleware
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -143,6 +142,19 @@ STATIC_URL = '/static/'
 # before auth0
 # LOGIN_REDIRECT_URL = '/home'
 
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
+SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+AUDIENCE = None
+AUTHENTICATION_BACKENDS = {
+    'quantummanagementapp.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend'
+}
 
 #auth0 redirect login global variables
 LOGIN_URL = '/login/auth0'

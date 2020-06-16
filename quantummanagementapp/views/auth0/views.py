@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
 
 
-
 @login_required
 def dashboard(request):
     user = request.user

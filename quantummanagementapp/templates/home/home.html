@@ -1,9 +1,17 @@
 {% extends 'shared/base.html' %}
 {% block title %} Home {% endblock %}
 {% block content %}
-<div class="row">
+<div class="welcome_banner">
     <div class="col-sm-12 mb-3">
         <h4 class="text-center"> Welcome {{ user.username }} </h4>
     </div>
+  <div class="home_page_container">
+      <img class="home_image" src="https://images.idgesg.net/images/article/2018/10/analytics_binary_code_network_digital-transformation-100777428-large.jpg">
+      <div class="logo_banner">
+        <h1 class="add-shadow">Quantum Management</h1>
+      <div class="logo_container">
+        <p class="add-shadow">A Quantum LLC systems management application</p>
+        </div>
 </div>
+    </div>
 {% endblock %}

@@ -9,11 +9,11 @@ app_name = "quantummanagementapp"
 
 urlpatterns = [
     path('', landing_page, name='landing_page'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login/', login_user, name='login'),
-    path('logout/', logout_user, name='logout'),
+    path('', include('django.contrib.auth.urls')),
+    path('login/home/', home, name='home'),
+    path('login/', login_user, name='login'),
+    path('logout', logout_user, name='logout'),
     path('admin/', admin_user, name='admin'),
-    path('accounts/login/home/', home, name='home'),
 
     # path('', index, name='index'),
     # path('dashboard/', dashboard),

@@ -8,13 +8,7 @@ from django.http import HttpResponseServerError
 from quantummanagementapp.models import AdminUser
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-# from rest_framework.parsers import JSONParser
-# from rest_framework import status
-# from rest_framework.decorators import api_view
-# from django.contrib.auth import login, authenticate
-# from rest_framework.viewsets import ViewSet
-# from rest_framework.response import Response
-# from rest_framework import serializers
+
 
 
 @login_required

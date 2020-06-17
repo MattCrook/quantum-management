@@ -7,7 +7,7 @@
     margin: 0 auto;
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     background: #f4f7f8;
     transform: translate(-50%, -50%);
@@ -26,7 +26,6 @@
 }
 
 .login-card form input{
-    /* height: 30px; */
     background-color: #e8eeef;
     text-align: center;
     font-size: 15px;
@@ -44,7 +43,7 @@
     margin: 5px;
 }
 
-.login-card button{
+.login_btn {
     position: relative;
 	display: block;
 	padding: 10px;
@@ -68,7 +67,19 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   
 /* Add some padding inside the card container */
 .login-container {
-    padding: 2px 16px;
+    padding-left: 16px;
+    padding-right: 16px;
     min-height: 80vh;
     position: relative;
+}
+
+.register_btn {
+    font-size: smaller;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    color: rgb(8, 8, 185);
+    border: none;
+    background: #f4f7f8;
+
+    
 }

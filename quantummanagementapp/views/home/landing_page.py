@@ -6,3 +6,11 @@ def landing_page(request):
         context = {}
 
         return render(request, template, context)
+
+
+def home(request):
+    if request.method == 'GET':
+        template = 'home/home.html'
+        context = {}
+
+        return render(request, template, context)

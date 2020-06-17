@@ -26,10 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quantummanagementapp',
-    'safedelete',
     'corsheaders',
     'social_django',
+    'safedelete',
+    'quantummanagementapp',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +132,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # before auth0
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = 'home/'
+LOGIN_URL = 'login/'
+LOGOUT_URL = 'logout/'
+LOGOUT_REDIRECT_URL = ''
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
 # SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'

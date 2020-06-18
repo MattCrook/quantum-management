@@ -4,6 +4,7 @@ from quantummanagementapp.views.home import landing_page, home
 from django.urls import path
 from django.conf.urls import include, url
 from quantummanagementapp import views
+from .views import *
 
 app_name = "quantummanagementapp"
 
@@ -14,6 +15,7 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout', logout_user, name='logout'),
     path('admin/', admin_user, name='admin'),
+    path('employees/', employee_list, name='employee_list')
 
     # path('', index, name='index'),
     # path('dashboard/', dashboard),

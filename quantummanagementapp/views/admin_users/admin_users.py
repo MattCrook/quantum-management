@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 
 @login_required
-def list(request):
+def admin_user_list(request):
     if request.method == 'GET':
         try:
             admin_users = AdminUser.objects.all()

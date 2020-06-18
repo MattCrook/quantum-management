@@ -1,0 +1,9 @@
+
+.employee_link:link {
+  text-decoration: none;
+  color: black;
+}
+.employee_link:visited {
+  text-decoration: none;
+  color: black;
+}

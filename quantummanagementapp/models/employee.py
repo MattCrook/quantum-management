@@ -12,11 +12,11 @@ class Employee(SafeDeleteModel):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
-    start_date = models.DateTimeField()
+    start_date = models.DateTimeField(null=True, blank=True)
     compensation = models.DecimalField(blank=True, null=True, max_digits=7, decimal_places=2)
     is_salary = models.BooleanField(null=True, blank=True)
     is_hourly = models.BooleanField(null=True, blank=True)
-    admin_user_id = models.ForeignKey(AdminUser, on_delete=models.CASCADE)
+    admin_user = models.ForeignKey(AdminUser, on_delete=models.CASCADE)
 
     _safedelete_policy = SOFT_DELETE
 

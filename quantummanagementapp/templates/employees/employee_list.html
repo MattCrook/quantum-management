@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<h1>Manage Employees</h1>
+
+{% comment %} Only authenticated users can view this part of the template {% endcomment %}
+{% if request.user.is_authenticated %}
+{% comment %} <button class="add_tp_btn"><a href="{% url 'quantummangementapp:employee_form' %}">Add Employee</a></button> {% endcomment %}
+<button class="add_tp_btn"><a href="{}">Add Employee</a></button>
+
+
+    {% comment %} {% if 'trainingprograms' in request.path %} {% endcomment %}
+        <h2>List of Employees</h2>
+        <ol class="employees_list_container">
+            {% for employee in employees %}
+            <li class="employee">
+            <a class="employee_link" href="{}">{{ employee.first_name }} {{ employee.last_name}}</a>
+
+            {% comment %} <a class="employee_link" href="{% url 'quantummangementapp:employee' employee.id %}">{{ employee.first_name }} {{ employee.last_name}}</a> {% endcomment %}
+            </li>
+            {% endfor %}
+        </ol>
+        <button>
+            <a href="{}">Edit Employee</a>
+        </button>
+        {% endif %}
+{% endblock content %}

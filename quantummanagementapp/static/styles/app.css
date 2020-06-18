@@ -154,11 +154,11 @@
     margin-left: 5px;
   } */
   
-  a:link {
+  .nav-link:link {
     text-decoration: none;
     color: white
   }
-  a:visited {
+  .nav-link:visited {
     text-decoration: none;
     color: white
   }

@@ -1,0 +1,35 @@
+img {
+    border: 3px solid #282c34;
+  }
+  .container-fluid {
+    /* height: 100vh; */
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-fluid > div {
+    width: 85%;
+    min-width: 300px;
+    max-width: 500px;
+  }
+  .card {
+    width: 100%;
+  }
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background: #f4f7f8;
+  }
+  .btn a, .btn a:hover {
+    color: white;
+    text-decoration: none ;
+  }
+
+.row {
+  padding-left: 25%;
+  padding-right: 25%;
+  /* min-height: 80vh; */
+}

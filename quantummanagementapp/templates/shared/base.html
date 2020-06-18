@@ -104,6 +104,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
                 </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <img class="nav_profile_picture" src="{{admin_user.picture}}">
+                </li>
+            {% endif %}
             </ul>
             {% comment %}
         </div>

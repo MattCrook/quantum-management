@@ -6,6 +6,7 @@ from django.conf.urls import include, url
 from quantummanagementapp import views
 from .views import *
 
+
 app_name = "quantummanagementapp"
 
 urlpatterns = [

@@ -15,11 +15,14 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout', logout_user, name='logout'),
     path('admin/', admin_user, name='admin'),
-    path('employees/', employee_list, name='employee_list')
+    path('employees/', employee_list, name='employee_list'),
+    path('employee/form', employee_form, name='employee_form'),
+    path('employee/<int:employee_id>/form', employee_edit_form, name='employee_form'),
 
-    # path('', index, name='index'),
-    # path('dashboard/', dashboard),
-    # path('logout/', logout),
-    # path('', include('social_django.urls')),
-    # path('social-auth/', include('social_django.urls', namespace="social")),
 ]
+
+# path('', index, name='index'),
+# path('dashboard/', dashboard),
+# path('logout/', logout),
+# path('', include('social_django.urls')),
+# path('social-auth/', include('social_django.urls', namespace="social")),

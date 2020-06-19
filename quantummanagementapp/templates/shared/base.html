@@ -87,9 +87,10 @@
                 </div> {% endcomment %}
 
                 {% else %}
+                <div class="nav-item" id="logo_nav_landing_page">Quantum</div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'quantummanagementapp:login' %}">Login</a>
+                    <a class="nav-link" id="login_link" href="{% url 'quantummanagementapp:login' %}">Login</a>
                 </li>  
 
                 {% comment %} <div class="login-box auth0-box before">
@@ -102,7 +103,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
+                    <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
                 </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">

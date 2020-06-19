@@ -1,22 +1,13 @@
-import json
 from django.shortcuts import render, redirect, reverse
-from django.http.response import JsonResponse
-from rest_framework.authtoken.models import Token
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
-from django.http import HttpResponseServerError
 from quantummanagementapp.models import AdminUser, Employee
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from .helpers import add_employee
 
 
 @login_required
 def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
-        print("EMPLOYEES", employees)
-
-        role_groups = {}
         roles = list()
 
         for employee in employees:
@@ -25,39 +16,6 @@ def employee_list(request):
                 roles.append(role)
             else:
                 pass
-        print("roles", roles)
-
-
-
-
-
-
-        # for employee in employees:
-        #     if employee.id not in role_groups:
-        #         role_groups[employee.id] = role
-        #         role_groups[employee.id].role.append(employee)
-        #     else:
-        #         role_groups[employee.id].role.append(employee)
-        # print("ROLEGOUPS", role_groups)
-
-
-
-
-        # Iterate the list of tuples
-        # for (library, book) in libraries:
-
-    # If the dictionary does have a key of the current
-    # library's `id` value, add the key and set the value
-    # to the current library
-    # if library.id not in library_groups:
-    #     library_groups[library.id] = library
-    #     library_groups[library.id].books.append(book)
-
-    # If the key does exist, just append the current
-    # book to the list of books for the current library
-    # else:
-    #     library_groups[library.id].books.append(book)
-
 
         template = 'employees/employee_list.html'
         context = {
@@ -65,3 +23,24 @@ def employee_list(request):
             'roles': roles
         }
         return render(request, template, context)
+    elif request.method == 'POST':
+        form_data = request.POST
+        print('FORMDATA', form_data)
+
+        # Getting the ID of the admin user, not the auth user thru the auth user
+        user_id = request.user.admin_user.id
+        print('ADMINUSERID', user_id)
+
+        # creating empty class object w/ ORM, assinging it the fields coming back from the form data. Same as doing in inline in parens.
+        new_employee = Employee.objects.create()
+        new_employee.first_name = form_data["first_name"]
+        new_employee.last_name= form_data["last_name"]
+        new_employee.role = form_data["max_height"]
+        new_employee.compensation = form_data["compensation"]
+        new_employee.start_date = form_data["date"]
+        new_employee.is_salary = form_data["is_salary"]
+        new_employee.is_hourly = form_data["is_hourly"]
+        new_employee.admin_user_id = user_id
+
+        new_employee.save()
+        return redirect(reverse('quantummangementapp:employee_list'))

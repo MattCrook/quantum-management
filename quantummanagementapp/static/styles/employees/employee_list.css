@@ -49,7 +49,6 @@
   }
 }
 
-
 .add_employee:hover {
   animation: fade 1s both;
 }
@@ -131,6 +130,25 @@
   }
 }
 
- .employee_item {
+.edit_btn:link {
+  text-decoration: none;
+  color: black;
+}
+.edit_btn:visited {
+  text-decoration: none;
+  color: black;
+}
 
- }
+.edit_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}

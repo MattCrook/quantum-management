@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from quantummanagementapp.models import AdminUser, Employee
 from django.contrib.auth.decorators import login_required
-from .helpers import add_employee
 
 
 @login_required
@@ -9,7 +8,6 @@ def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
         roles = list()
-
         for employee in employees:
             role = employee.role
             if role not in roles:
@@ -23,12 +21,13 @@ def employee_list(request):
             'roles': roles
         }
         return render(request, template, context)
+
     elif request.method == 'POST':
         form_data = request.POST
         print('FORMDATA', form_data)
 
         # Getting the ID of the admin user, not the auth user thru the auth user
-        user_id = request.user.admin_user.id
+        user_id = request.user.adminuser.id
         print('ADMINUSERID', user_id)
 
         # creating empty class object w/ ORM, assinging it the fields coming back from the form data. Same as doing in inline in parens.

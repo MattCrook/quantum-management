@@ -8,9 +8,9 @@
 }
 
 .manage_employees_title {
- margin-left: 20px;
- font-size: large;
- font-variant: small-caps;
+  margin-left: 20px;
+  font-size: large;
+  font-variant: small-caps;
 }
 
 .add_employee_button {
@@ -29,7 +29,6 @@
   text-decoration: none;
   color: black;
 }
-
 
 .add_tp_btn {
   background-color: white;
@@ -63,7 +62,6 @@
   }
 }
 
-
 .role_title {
   display: flex;
   justify-content: center;
@@ -82,7 +80,6 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-
 }
 
 .role_container {
@@ -96,13 +93,11 @@
   display: flex;
   justify-content: center;
   border-bottom: solid 2px rgb(184, 183, 183);
-
 }
 .role_item {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 
 .edit_employee_btn {
   border: none;
@@ -114,7 +109,6 @@
   font-weight: 50;
   /* font-variant: small-caps; */
 }
-
 
 .edit_employee_btn:hover {
   animation: fade 1s both;
@@ -151,4 +145,276 @@
     background: #3e4247;
     color: white;
   }
+}
+
+.new_form {
+  max-width: 700px;
+  padding: 10px 20px;
+  background: rgb(216, 216, 216);
+  /* background: #212121; */
+
+  margin: 0 auto;
+  border-radius: 8px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.new_form fieldset {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+.new_form legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+.new_form label {
+  display: block;
+  margin-bottom: 8px;
+}
+.new_form input[type="text"],
+.new_form input[type="date"],
+.new_form input[type="datetime"],
+.new_form input[type="email"],
+.new_form input[type="number"],
+.new_form input[type="search"],
+.new_form input[type="time"],
+.new_form input[type="url"],
+.new_form textarea,
+.new_form select {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  margin: 0;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: white;
+  color: black;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 20px;
+}
+.new_form input[type="text"]:focus,
+.new_form input[type="date"]:focus,
+.new_form input[type="datetime"]:focus,
+.new_form input[type="email"]:focus,
+.new_form input[type="number"]:focus,
+.new_form input[type="search"]:focus,
+.new_form input[type="time"]:focus,
+/* .new_form input[type="checkbox"]:focus, */
+.new_form input[type="url"]:focus,
+.new_form textarea:focus,
+.new_form select:focus {
+  background: #ffffff;
+}
+.new_form select {
+  -webkit-appearance: menulist-button;
+  height: 35px;
+}
+.new_form .number {
+  background: #1abc9c;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 15px 15px 15px 0px;
+}
+
+.new_form input[type="submit"],
+.new_form input[type="button"] {
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: black;
+  margin: 0 auto;
+  background: white;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid rgb(73, 70, 70);
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+/* .new_form input[type="submit"]:hover,
+.new_form input[type="button"]:hover {
+  background: #109177;
+} */
+
+/* .create_employee_btn:link {
+  text-decoration: none;
+  color: black;
+}
+.create_employee_btn:visited {
+  text-decoration: none;
+  color: black;
+} */
+
+#create_employee_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.form_admin_note {
+  padding-top: 10px;
+}
+
+.p1 {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-bottom: 3px;
+  font-size: 13px;
+  color: rgb(53, 53, 148);
+}
+
+.p2 {
+  padding-left: 15px;
+  font-size: 13px;
+  color: rgb(53, 53, 148);
+}
+
+#form_container {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#pay_rate_label {
+  margin-bottom: 0em;
+}
+
+/***** CHECKBOXES *****/
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+}
+
+/* Before checkbox checked */
+input[type="checkbox"] + label {
+  position: relative;
+  display: flex;
+  /* margin: .6em 0; */
+  align-items: center;
+  color: #000000;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.23, 1);
+}
+
+/* After checkox checked */
+input[type="checkbox"] + label > ins {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 2em;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.23, 1);
+}
+
+input[type="checkbox"] + label > ins > i {
+  position: absolute;
+  bottom: 0;
+  font-style: normal;
+  color: #0620b3;
+}
+
+input[type="checkbox"] + label > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.1em;
+  width: 1em;
+  height: 1em;
+  background: transparent;
+  border: 2px solid #8a8989;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.23, 1);
+}
+
+/* checkbox box hover */
+input[type="checkbox"] + label:hover,
+input[type="checkbox"]:focus + label {
+  color: #fff;
+}
+input[type="checkbox"] + label:hover > span,
+input[type="checkbox"]:focus + label > span {
+  background: rgba(1, 45, 48, 0.116);
+}
+input[type="checkbox"]:checked + label > ins {
+  height: 100%;
+}
+
+input[type="checkbox"]:checked + label > span {
+  border: 0.5em solid #3b3b3b;
+  animation: shrink-bounce 200ms cubic-bezier(0.4, 0, 0.23, 1);
+}
+input[type="checkbox"]:checked + label > span:before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 0.2em;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transform: rotate(45deg);
+  transform-origin: 0% 100%;
+  animation: checkbox-check 125ms 250ms cubic-bezier(0.4, 0, 0.23, 1) forwards;
+}
+
+@keyframes shrink-bounce {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes checkbox-check {
+  0% {
+    width: 0;
+    height: 0;
+    border-color: #3902b8;
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  33% {
+    width: 2px;
+    height: 0;
+    transform: translate3d(0, 0, 0) rotate(45deg);
+  }
+  100% {
+    width: 6px;
+    height: 9px;
+    border-color: #fcfcfc;
+    transform: translate3d(0, -0.4em, 0) rotate(45deg);
+  }
+}
+
+.hourly_label {
+  margin-bottom: 10px;
+}
+
+.salary_hourly_container {
+  margin-left: 20px;
+  margin-bottom: 20px;
 }

@@ -17,8 +17,9 @@ urlpatterns = [
     path('logout', logout_user, name='logout'),
     path('admin/', admin_user, name='admin'),
     path('employees/', employee_list, name='employee_list'),
-    path('employee/form', employee_form, name='employee_form'),
-    path('employee/<int:employee_id>/form', employee_edit_form, name='employee_form'),
+    path('employees/form/', employee_form, name='employee_form'),
+    path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
+    # path('employees/<int:employee_id>/details', employee_details, name='employee_details'),
 
 ]
 

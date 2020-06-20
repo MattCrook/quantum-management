@@ -1,12 +1,14 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
 <div class="manage_employees_container">
     <div class="manage_employees_title">Manage Employees</div>
     <div class="add_employee_button">
-        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_employee" href="{% url:employee_form %}">Add Employee</a></button>
+        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_form' %}">Add Employee</a></button>
     </div>
 </div>
+{% endif %}
 
 {% comment %} Only authenticated users can view this part of the template {% endcomment %}
 {% if request.user.is_authenticated %}
@@ -25,7 +27,8 @@
                 <div class="employees_list_container">
                     {% if employee.role == role %}
                         <li class="employee_item">
-                            <a class="employee_item_link href="{}">{{ employee.first_name }} {{ employee.last_name }}</a><button class="edit_employee_btn"><i class="fas fa-user-edit"></i><a class="edit_btn" href="{}">Edit</a></button>
+                            <a class="employee_item_link" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a>
+                            <button class="edit_employee_btn"><i class="fas fa-user-edit"></i><a class="edit_btn" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">Edit</a></button>
                         </li>
                     {% endif %}
                 </div>
@@ -50,4 +53,4 @@
             <a href="{}">Edit Employee</a>
         </button> {% endcomment %}
         {% endif %}
-{% endblock content %}
+{% endblock %}

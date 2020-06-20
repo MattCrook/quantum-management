@@ -4,6 +4,8 @@ from django.db.models import F
 from quantummanagementapp.models import AdminUser
 from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE
+from djmoney.models.fields import MoneyField
+
 
 
 
@@ -12,11 +14,12 @@ class Employee(SafeDeleteModel):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
-    start_date = models.DateTimeField(null=True, blank=True)
-    compensation = models.DecimalField(blank=True, null=True, max_digits=7, decimal_places=2)
-    is_salary = models.BooleanField(null=True, blank=True)
-    is_hourly = models.BooleanField(null=True, blank=True)
-    admin_user = models.ForeignKey(AdminUser, on_delete=models.CASCADE)
+    start_date = models.DateField(null=True, blank=True)
+    # compensation = models.DecimalField(blank=True, null=True, max_digits=7, decimal_places=2)
+    compensation =  MoneyField(decimal_places=2, default=0, default_currency='USD', max_digits=11)
+    pay_rate = models.CharField(null=True, blank=True, max_length=20)
+    park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.DO_NOTHING)
+    admin_user = models.ForeignKey(AdminUser, on_delete=models.DO_NOTHING)
 
     _safedelete_policy = SOFT_DELETE
 

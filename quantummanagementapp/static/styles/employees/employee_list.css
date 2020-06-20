@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   margin-top: 5px;
 }
 
@@ -147,15 +147,24 @@
   }
 }
 
+/******************** Employee Add / Edit Form ******************/
+
+#form_header {
+  margin-bottom: 5px;
+  font-variant: small-caps;
+  font-size: large;
+  margin-right: 15px;
+}
+
 .new_form {
-  max-width: 700px;
-  padding: 10px 20px;
+  max-width: 720px;
+  padding: 5px 20px;
   background: rgb(216, 216, 216);
   /* background: #212121; */
 
   margin: 0 auto;
   border-radius: 8px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
 }
 .new_form fieldset {
   border: none;
@@ -166,10 +175,12 @@
   font-size: 1.4em;
   margin-bottom: 10px;
 }
-.new_form label {
-  display: block;
-  margin-bottom: 8px;
+
+label.new_form {
+  margin: 0;
+  padding-left: 0;
 }
+
 .new_form input[type="text"],
 .new_form input[type="date"],
 .new_form input[type="datetime"],
@@ -205,7 +216,6 @@
 .new_form input[type="number"]:focus,
 .new_form input[type="search"]:focus,
 .new_form input[type="time"]:focus,
-/* .new_form input[type="checkbox"]:focus, */
 .new_form input[type="url"]:focus,
 .new_form textarea:focus,
 .new_form select:focus {
@@ -214,19 +224,6 @@
 .new_form select {
   -webkit-appearance: menulist-button;
   height: 35px;
-}
-.new_form .number {
-  background: #1abc9c;
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  font-size: 0.8em;
-  margin-right: 4px;
-  line-height: 30px;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  border-radius: 15px 15px 15px 0px;
 }
 
 .new_form input[type="submit"],
@@ -246,19 +243,6 @@
   margin-bottom: 10px;
   margin-top: 10px;
 }
-/* .new_form input[type="submit"]:hover,
-.new_form input[type="button"]:hover {
-  background: #109177;
-} */
-
-/* .create_employee_btn:link {
-  text-decoration: none;
-  color: black;
-}
-.create_employee_btn:visited {
-  text-decoration: none;
-  color: black;
-} */
 
 #create_employee_btn:hover {
   animation: fade 1s both;
@@ -300,121 +284,148 @@
   margin-bottom: 0em;
 }
 
-/***** CHECKBOXES *****/
-input[type="checkbox"] {
-  height: 0;
-  width: 0;
-}
-
-/* Before checkbox checked */
-input[type="checkbox"] + label {
+/************************* Radio Buttons*******************/
+input[type="radio"] + label {
   position: relative;
   display: flex;
-  /* margin: .6em 0; */
+  margin: 0.9em 0;
   align-items: center;
   color: #000000;
   transition: color 250ms cubic-bezier(0.4, 0, 0.23, 1);
 }
 
-/* After checkox checked */
-input[type="checkbox"] + label > ins {
-  position: absolute;
+.radio_btn_container {
   display: block;
-  bottom: 0;
-  left: 2em;
-  height: 0;
-  width: 100%;
-  overflow: hidden;
-  text-decoration: none;
-  transition: height 300ms cubic-bezier(0.4, 0, 0.23, 1);
+  position: relative;
+  height: auto;
 }
 
-input[type="checkbox"] + label > ins > i {
+.radio_btn_container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.pay_rate_item {
+  color: #aaaaaa;
+  display: block;
+  position: relative;
+  float: left;
+  height: 100px;
+}
+
+ul li input[type="radio"] {
   position: absolute;
-  bottom: 0;
-  font-style: normal;
-  color: #0620b3;
+  visibility: hidden;
 }
 
-input[type="checkbox"] + label > span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 1.1em;
-  width: 1em;
-  height: 1em;
-  background: transparent;
-  border: 2px solid #8a8989;
-  border-radius: 2px;
+ul li label {
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 1em;
+  padding: 25px 25px 25px 70px;
+  margin: 10px auto;
+  height: 20px;
+  z-index: 9;
   cursor: pointer;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.23, 1);
+  -webkit-transition: all 0.25s linear;
 }
 
-/* checkbox box hover */
-input[type="checkbox"] + label:hover,
-input[type="checkbox"]:focus + label {
-  color: #fff;
-}
-input[type="checkbox"] + label:hover > span,
-input[type="checkbox"]:focus + label > span {
-  background: rgba(1, 45, 48, 0.116);
-}
-input[type="checkbox"]:checked + label > ins {
-  height: 100%;
+ul li:hover label {
+  color: #ffffff;
 }
 
-input[type="checkbox"]:checked + label > span {
-  border: 0.5em solid #3b3b3b;
-  animation: shrink-bounce 200ms cubic-bezier(0.4, 0, 0.23, 1);
+ul li .check {
+  display: block;
+  position: absolute;
+  border: 5px solid #aaaaaa;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  top: 30px;
+  left: 20px;
+  z-index: 5;
+  transition: border 0.25s linear;
+  -webkit-transition: border 0.25s linear;
 }
-input[type="checkbox"]:checked + label > span:before {
+
+ul li:hover .check {
+  border: 5px solid #ffffff;
+}
+
+ul li .check::before {
+  display: block;
+  position: absolute;
+  content: "";
+  border-radius: 100%;
+  height: 11px;
+  width: 11px;
+  margin: auto;
+  transition: background 0.2s linear;
+  -webkit-transition: background 0.2s linear;
+}
+
+input[type="radio"]:checked ~ .check {
+  border: 5px solid #050505;
+}
+
+input[type="radio"]:checked ~ .check::before {
+  background: #0a0a0a;
+}
+
+input[type="radio"]:checked ~ label {
+  color: #404047;
+}
+
+.signature {
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.signature p {
+  text-align: center;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 0.85em;
+  color: #aaaaaa;
+}
+
+.signature .much-heart {
+  display: inline-block;
+  position: relative;
+  margin: 0 4px;
+  height: 10px;
+  width: 10px;
+  background: #ac1d3f;
+  border-radius: 4px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.signature .much-heart::before,
+.signature .much-heart::after {
+  display: block;
   content: "";
   position: absolute;
-  top: 0.6em;
-  left: 0.2em;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-  transform: rotate(45deg);
-  transform-origin: 0% 100%;
-  animation: checkbox-check 125ms 250ms cubic-bezier(0.4, 0, 0.23, 1) forwards;
+  margin: auto;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background: #ac1d3f;
+  top: -4px;
 }
 
-@keyframes shrink-bounce {
-  0% {
-    transform: scale(1);
-  }
-  33% {
-    transform: scale(0.85);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes checkbox-check {
-  0% {
-    width: 0;
-    height: 0;
-    border-color: #3902b8;
-    transform: translate3d(0, 0, 0) rotate(45deg);
-  }
-  33% {
-    width: 2px;
-    height: 0;
-    transform: translate3d(0, 0, 0) rotate(45deg);
-  }
-  100% {
-    width: 6px;
-    height: 9px;
-    border-color: #fcfcfc;
-    transform: translate3d(0, -0.4em, 0) rotate(45deg);
-  }
+.signature .much-heart::after {
+  bottom: 0;
+  top: auto;
+  left: -4px;
 }
 
-.hourly_label {
-  margin-bottom: 10px;
-}
-
-.salary_hourly_container {
-  margin-left: 20px;
-  margin-bottom: 20px;
+.signature a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-weight: bold;
 }

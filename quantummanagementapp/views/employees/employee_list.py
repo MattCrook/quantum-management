@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from quantummanagementapp.models import AdminUser, Employee
+from quantummanagementapp.models import AdminUser, Employee, EmployeeAttraction
 from django.contrib.auth.decorators import login_required
 
 
@@ -24,22 +24,24 @@ def employee_list(request):
 
     elif request.method == 'POST':
         form_data = request.POST
-        print('FORMDATA', form_data)
 
         # Getting the ID of the admin user, not the auth user thru the auth user
-        user_id = request.user.adminuser.id
-        print('ADMINUSERID', user_id)
+        adminuser_id = request.user.user.id
 
         # creating empty class object w/ ORM, assinging it the fields coming back from the form data. Same as doing in inline in parens.
-        new_employee = Employee.objects.create()
+        new_employee = Employee()
         new_employee.first_name = form_data["first_name"]
         new_employee.last_name= form_data["last_name"]
-        new_employee.role = form_data["max_height"]
+        new_employee.role = form_data["role"]
         new_employee.compensation = form_data["compensation"]
-        new_employee.start_date = form_data["date"]
-        new_employee.is_salary = form_data["is_salary"]
-        new_employee.is_hourly = form_data["is_hourly"]
-        new_employee.admin_user_id = user_id
+        new_employee.start_date = form_data["start_date"]
+        new_employee.pay_rate = form_data["pay_rate"]
+        # new_employee.park_id = form_data["park_id"]
+        new_employee.admin_user_id = adminuser_id
+
+        # employee_attraction = EmployeeAttraction()
+        # employee_attraction.attraction_id = form_data["attraction_id"]
+        # employee_attraction.employee_id = new_employee.id
 
         new_employee.save()
-        return redirect(reverse('quantummangementapp:employee_list'))
+        return redirect(reverse('quantummanagementapp:employee_list'))

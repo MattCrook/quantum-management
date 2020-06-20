@@ -6,83 +6,130 @@
 
     <div class="manage_employees_container">
         <div class="manage_employees_title">Manage Employees</div>
+    {% if employee.id is not None %}
+    <div id="form_header" >Edit Employee</div>
+    {% else %}
+    <div id="form_header" >Add New Employee</div>
+    {% endif %}
         <div class="add_employee_button">
             <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
         </div>
     </div>
 
-    {% if employee.id is not None %}
-    <h2 class="text-center">Edit Employee</h2>
-    {% else %}
-    <h2 class="text-center">Add New Employee</h2>
-    {% endif %}
 
     {% if employee.id is not None %}
-    <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_edit_form' employee.id %}" method="post">
+    <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_edit_form' employee.id %}"
+        method="post">
         {% csrf_token %}
-    {% else %}
-        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_list' %}" method="post">
+        {% else %}
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_list' %}"
+            method="post">
             {% csrf_token %}
-    {% endif %}
-            <fieldset class="new_form">
-                <label class="new_form" for="first_name">First Name: </label>
-                <input class="new_form" id="first_name" type="text" name="first_name" value="{{ employee.first_name }}">
-            </fieldset>
+            {% endif %}
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="first_name">First Name: </label>
+                    <input class="new_form" id="first_name" type="text" name="first_name" value="{{ employee.first_name }}">
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
-                <label class="new_form" for="last_name">Last Name: </label>
-                <input class="new_form" id="last_name" type="text" name="last_name" value="{{ employee.last_name }}">
-            </fieldset>
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="last_name">Last Name: </label>
+                    <input class="new_form" id="last_name" type="text" name="last_name" value="{{ employee.last_name }}">
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
-                <label class="new_form" for="role">Role/ Department: </label>
-                <input class="new_form" id="role" type="text" name="role" value="{{ employee.role }}">
-            </fieldset>
 
-            <fieldset class="new_form">
-                <label class="new_form" for="compensation">Compensation: </label>
-                <input class="new_form" id="compensation" type="number" name="compensation" value="{{ employee.compensation }}">
-            </fieldset>
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="role">Role/ Department: </label>
+                    <input class="new_form" id="role" type="text" name="role" value="{{ employee.role }}">
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="compensation">Compensation: </label>
+                    <input class="new_form" id="compensation" type="number" name="compensation"
+                        value="{{ employee.compensation }}">
+                </fieldset>
+            </div>
+
+            {% comment %} <fieldset class="new_form">
                 <label id="pay_rate_label" class="new_form">Pay Rate: </label>
-            <div class="salary_hourly_container">
-                    <input  class="new_form" id='is_salary' type='radio' name="pay_rate" value="salary"/>
-                    <label >
+                <div class="salary_hourly_container">
+                    <input class="new_form" id='is_salary' type='radio' name="pay_rate" value="salary" />
+                    <label>
                         <span></span>
                         Salary
                         <ins><i>Salary</i></ins>
                     </label>
-                    <input class="new_form" id='is_hourly' type='radio' name="pay_rate" value="hourly"/>
-                    <label class='hourly_label' >
+                    <input class="new_form" id='is_hourly' type='radio' name="pay_rate" value="hourly" />
+                    <label class='hourly_label'>
                         <span></span>
                         Hourly
                         <ins><i>Hourly</i></ins>
                     </label>
+                </div>
+            </fieldset> {% endcomment %}
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <div class="radio_btn_container">
+                        <label id="pay_rate_label" class="new_form">Pay Rate: </label>
+                        <ul>
+                            <li class="pay_rate_item">
+                                <input type="radio" id="is_salary" name="pay_rate" value="salary" />
+                                <label for="is_salary">Salary</label>
+
+                                <div class="check"></div>
+                            </li>
+                            <li class="pay_rate_item">
+                                <input type="radio" id="is_hourly" name="pay_rate" value="hourly" />
+                                <label for="is_hourly">Hourly</label>
+
+                                <div class="check">
+                                    <div class="inside"></div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-            </fieldset>
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
-                <label class="new_form" for="start_date">Start Date: </label>
-                <input class="new_form" id="start_date" type="date" name="start_date" value="{{ employee.start_date }}">
-            </fieldset>
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="start_date">Start Date: </label>
+                    <input class="new_form" id="start_date" type="date" name="start_date"value="{{ employee.start_date }}">
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
-                <label class="new_form" for="parks">Park of Employment: </label>
-                <select class="new_form" id="parks" sname="parks">
-                {% for park in parks %}
-                <option value="{{ park.id }}">{{ park.name }}</option>
-                {% endfor %}
-                </select>
-            </fieldset>
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="parks">Park of Employment: </label>
+                    <select class="new_form" id="parks" sname="parks">
+                        {% for park in parks %}
+                        <option value="{{ park.id }}">{{ park.name }}</option>
+                        {% endfor %}
+                    </select>
+                </fieldset>
+            </div>
 
-            <fieldset class="new_form">
-                <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}} - {{user.email}}</section>
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
+                        -
+                        {{user.email}}</section>
                     <div class="p1"> Not you? Log out and sign into another account to add this employee</div>
-                    <div class="p2">*Note - Only admin user responsible for adding an employee may make any future edits to that resource.</div>
-                {% comment %} <input class="new_form" id="start_date" type="date" name="start_date"
-                    value="{{ employee.admin_user_id }}"> {% endcomment %}
-            </fieldset>
+                    <div class="p2">*Note - Only admin user responsible for adding an employee may make any future edits
+                        to
+                        that resource.</div>
+                    {% comment %} <input class="new_form" id="start_date" type="date" name="start_date"
+                        value="{{ employee.admin_user_id }}"> {% endcomment %}
+                </fieldset>
+            </div>
 
 
 
@@ -118,5 +165,9 @@
             {% endif %}
 
         </form>
+
+        <div class="signature">
+            <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a></p>
+        </div>
 </body>
 {% endblock %}

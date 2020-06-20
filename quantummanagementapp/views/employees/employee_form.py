@@ -58,7 +58,6 @@ def employee_edit_form(request, employee_id):
             # employee.park_id = form_data["park_id"]
             employee.admin_user_id = admin_user_id
 
-            # employee.update()
             employee.save()
             return redirect(reverse('quantummanagementapp:employee_list'))
 

@@ -6,6 +6,7 @@ from django.conf.urls import include, url
 from quantummanagementapp import views
 from .views import *
 
+
 app_name = "quantummanagementapp"
 
 urlpatterns = [
@@ -15,11 +16,15 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout', logout_user, name='logout'),
     path('admin/', admin_user, name='admin'),
-    path('employees/', employee_list, name='employee_list')
+    path('employees/', employee_list, name='employee_list'),
+    path('employees/form/', employee_form, name='employee_form'),
+    path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
+    # path('employees/<int:employee_id>/details', employee_details, name='employee_details'),
 
-    # path('', index, name='index'),
-    # path('dashboard/', dashboard),
-    # path('logout/', logout),
-    # path('', include('social_django.urls')),
-    # path('social-auth/', include('social_django.urls', namespace="social")),
 ]
+
+# path('', index, name='index'),
+# path('dashboard/', dashboard),
+# path('logout/', logout),
+# path('', include('social_django.urls')),
+# path('social-auth/', include('social_django.urls', namespace="social")),

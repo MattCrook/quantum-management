@@ -1,28 +1,56 @@
 {% extends 'shared/base.html' %}
 
 {% block content %}
-
-<h1>Manage Employees</h1>
+{% if request.user.is_authenticated %}
+<div class="manage_employees_container">
+    <div class="manage_employees_title">Manage Employees</div>
+    <div class="add_employee_button">
+        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_form' %}">Add Employee</a></button>
+    </div>
+</div>
+{% endif %}
 
 {% comment %} Only authenticated users can view this part of the template {% endcomment %}
 {% if request.user.is_authenticated %}
 {% comment %} <button class="add_tp_btn"><a href="{% url 'quantummangementapp:employee_form' %}">Add Employee</a></button> {% endcomment %}
-<button class="add_tp_btn"><a href="{}">Add Employee</a></button>
-
 
     {% comment %} {% if 'trainingprograms' in request.path %} {% endcomment %}
-        <h2>List of Employees</h2>
+    <h4 class="role_title">Departments</h4>
+        <div class="roles_card">
+            {% for role in roles %}
+            <div class="role_container">
+                <div class="roles_title_container">
+                     <h5 class="role_item">{{role}}</h5>
+                </div>
+                {% for employee in employees %}
+                <ul>
+                <div class="employees_list_container">
+                    {% if employee.role == role %}
+                        <li class="employee_item">
+                            <a class="employee_item_link" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a>
+                            <button class="edit_employee_btn"><i class="fas fa-user-edit"></i><a class="edit_btn" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">Edit</a></button>
+                        </li>
+                    {% endif %}
+                </div>
+                </ul>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+
+        {% comment %} <h4>List of Employees</h4>
         <ol class="employees_list_container">
             {% for employee in employees %}
             <li class="employee">
-            <a class="employee_link" href="{}">{{ employee.first_name }} {{ employee.last_name}}</a>
+            <a class="employee_link" href="{}">{{ employee.first_name }} {{ employee.last_name}}</a><button><a href="{}">Edit Employee</a></button> {% endcomment %}
 
             {% comment %} <a class="employee_link" href="{% url 'quantummangementapp:employee' employee.id %}">{{ employee.first_name }} {{ employee.last_name}}</a> {% endcomment %}
-            </li>
+            {% comment %} </li>
             {% endfor %}
-        </ol>
-        <button>
+        </ol> {% endcomment %}
+        {% comment %} <button>
             <a href="{}">Edit Employee</a>
-        </button>
+        </button> {% endcomment %}
         {% endif %}
-{% endblock content %}
+{% endblock %}

@@ -1,3 +1,72 @@
+.manage_employees_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.manage_employees_title {
+  margin-left: 20px;
+  font-size: large;
+  font-variant: small-caps;
+}
+
+.add_employee_button {
+  align-items: center;
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: 50;
+  border-radius: 3px;
+}
+
+.add_employee:link {
+  text-decoration: none;
+  color: black;
+}
+.add_employee:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.add_tp_btn {
+  background-color: white;
+}
+
+.add_tp_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.add_employee:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.role_title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
 .employee_link:link {
   text-decoration: none;
@@ -6,4 +75,357 @@
 .employee_link:visited {
   text-decoration: none;
   color: black;
+}
+.roles_card {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.role_container {
+  flex-direction: column;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  width: 20%;
+  border-radius: 5px;
+}
+
+.roles_title_container {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 2px rgb(184, 183, 183);
+}
+.role_item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.edit_employee_btn {
+  border: none;
+  margin-left: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 50;
+  /* font-variant: small-caps; */
+}
+
+.edit_employee_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.edit_btn:link {
+  text-decoration: none;
+  color: black;
+}
+.edit_btn:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.edit_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+/******************** Employee Add / Edit Form ******************/
+
+#form_header {
+  margin-bottom: 5px;
+  font-variant: small-caps;
+  font-size: large;
+  margin-right: 15px;
+}
+
+.new_form {
+  max-width: 720px;
+  padding: 5px 20px;
+  background: rgb(216, 216, 216);
+  /* background: #212121; */
+
+  margin: 0 auto;
+  border-radius: 8px;
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+}
+.new_form fieldset {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+.new_form legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label.new_form {
+  margin: 0;
+  padding-left: 0;
+}
+
+.new_form input[type="text"],
+.new_form input[type="date"],
+.new_form input[type="datetime"],
+.new_form input[type="email"],
+.new_form input[type="number"],
+.new_form input[type="search"],
+.new_form input[type="time"],
+.new_form input[type="url"],
+.new_form textarea,
+.new_form select {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  margin: 0;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: white;
+  color: black;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 20px;
+}
+.new_form input[type="text"]:focus,
+.new_form input[type="date"]:focus,
+.new_form input[type="datetime"]:focus,
+.new_form input[type="email"]:focus,
+.new_form input[type="number"]:focus,
+.new_form input[type="search"]:focus,
+.new_form input[type="time"]:focus,
+.new_form input[type="url"]:focus,
+.new_form textarea:focus,
+.new_form select:focus {
+  background: #ffffff;
+}
+.new_form select {
+  -webkit-appearance: menulist-button;
+  height: 35px;
+}
+
+.new_form input[type="submit"],
+.new_form input[type="button"] {
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: black;
+  margin: 0 auto;
+  background: white;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid rgb(73, 70, 70);
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#create_employee_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.form_admin_note {
+  padding-top: 10px;
+}
+
+.p1 {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-bottom: 3px;
+  font-size: 13px;
+  color: rgb(53, 53, 148);
+}
+
+.p2 {
+  padding-left: 15px;
+  font-size: 13px;
+  color: rgb(53, 53, 148);
+}
+
+#form_container {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#pay_rate_label {
+  margin-bottom: 0em;
+}
+
+/************************* Radio Buttons*******************/
+input[type="radio"] + label {
+  position: relative;
+  display: flex;
+  margin: 0.9em 0;
+  align-items: center;
+  color: #000000;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.23, 1);
+}
+
+.radio_btn_container {
+  display: block;
+  position: relative;
+  height: auto;
+}
+
+.radio_btn_container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.pay_rate_item {
+  color: #aaaaaa;
+  display: block;
+  position: relative;
+  float: left;
+  height: 100px;
+}
+
+ul li input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+ul li label {
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 1em;
+  padding: 25px 25px 25px 70px;
+  margin: 10px auto;
+  height: 20px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+}
+
+ul li:hover label {
+  color: #ffffff;
+}
+
+ul li .check {
+  display: block;
+  position: absolute;
+  border: 5px solid #aaaaaa;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  top: 30px;
+  left: 20px;
+  z-index: 5;
+  transition: border 0.25s linear;
+  -webkit-transition: border 0.25s linear;
+}
+
+ul li:hover .check {
+  border: 5px solid #ffffff;
+}
+
+ul li .check::before {
+  display: block;
+  position: absolute;
+  content: "";
+  border-radius: 100%;
+  height: 11px;
+  width: 11px;
+  margin: auto;
+  transition: background 0.2s linear;
+  -webkit-transition: background 0.2s linear;
+}
+
+input[type="radio"]:checked ~ .check {
+  border: 5px solid #050505;
+}
+
+input[type="radio"]:checked ~ .check::before {
+  background: #0a0a0a;
+}
+
+input[type="radio"]:checked ~ label {
+  color: #404047;
+}
+
+.signature {
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.signature p {
+  text-align: center;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 0.85em;
+  color: #aaaaaa;
+}
+
+.signature .much-heart {
+  display: inline-block;
+  position: relative;
+  margin: 0 4px;
+  height: 10px;
+  width: 10px;
+  background: #ac1d3f;
+  border-radius: 4px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.signature .much-heart::before,
+.signature .much-heart::after {
+  display: block;
+  content: "";
+  position: absolute;
+  margin: auto;
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background: #ac1d3f;
+  top: -4px;
+}
+
+.signature .much-heart::after {
+  bottom: 0;
+  top: auto;
+  left: -4px;
+}
+
+.signature a {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-weight: bold;
 }

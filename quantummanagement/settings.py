@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'social_django',
     'safedelete',
     'quantummanagementapp',
+    'djmoney',
 ]
 
 MIDDLEWARE = [

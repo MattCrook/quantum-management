@@ -110,7 +110,7 @@
                     <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
                         -
                         {{user.email}}</section>
-                    <div class="p1"> Not you? Log out and sign into another account to add this employee</div>
+                    {% comment %} <div class="p1"> Not you? Only the admin listed here can edit this resource.</div> {% endcomment %}
                     <div class="p2">*Note - Only admin user responsible for adding an employee may make any future edits
                         to
                         that resource.</div>

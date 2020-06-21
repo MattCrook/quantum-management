@@ -1,0 +1,181 @@
+.manage_parks_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.manage_parks_title {
+  margin-left: 20px;
+  font-size: large;
+  font-variant: small-caps;
+}
+
+.add_park_button {
+  align-items: center;
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: 50;
+  border-radius: 3px;
+}
+
+.add_park:link {
+  text-decoration: none;
+  color: black;
+}
+.add_park:visited {
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.add_park:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.select_park_header {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.park_list_outer_container {
+    margin-left: 12px
+}
+.park_list_inner_container {
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  box-shadow: 5px 6px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(224, 222, 222);
+  margin-bottom: 18px;
+  width: 21%;
+  border-radius: 5px 5px 5px 0px;
+}
+
+.park_list_item {
+    margin-left: 5%;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#state {
+    margin-top: 5px;
+}
+.park_list_details_container {
+    border-top: 1px solid rgb(177, 177, 177);
+    padding-bottom: 8px;
+}
+
+
+/*********** Park Name Button *************/ 
+/*****************************************/
+#park_name:link {
+    text-decoration: none;
+    color: black;
+  }
+  #park_name:visited {
+    text-decoration: none;
+    color: black;
+  }
+@keyframes fade {
+    0% {
+      background: white;
+    }
+    100% {
+      background: #3e4247;
+      color: white;
+    }
+  }
+  
+  #park_name:hover {
+    animation: fade 1s both;
+  }
+  
+  @keyframes fade {
+    0% {
+      background: white;
+    }
+    100% {
+      background: #41454b7a;
+      color: white;
+    }
+  }
+
+.park_list_name {
+  padding: 5px 20px;
+  margin: 10px 10px;
+  /* color: #fff; */
+  color: black;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  /* text-align: center; */
+  font-size: 12px;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.park_list_name {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.park_list_name::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.park_list_name:hover::before {
+  width: 100%;
+}
+
+.park_list_name::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.park_list_name:hover::after {
+  width: 100%;
+}
+.park_list_name:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}

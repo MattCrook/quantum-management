@@ -10,11 +10,7 @@
 </div>
 {% endif %}
 
-{% comment %} Only authenticated users can view this part of the template {% endcomment %}
 {% if request.user.is_authenticated %}
-{% comment %} <button class="add_tp_btn"><a href="{% url 'quantummangementapp:employee_form' %}">Add Employee</a></button> {% endcomment %}
-
-    {% comment %} {% if 'trainingprograms' in request.path %} {% endcomment %}
     <h4 class="role_title">Departments</h4>
         <div class="roles_card">
             {% for role in roles %}
@@ -37,20 +33,5 @@
             </div>
             {% endfor %}
         </div>
-
-
-        {% comment %} <h4>List of Employees</h4>
-        <ol class="employees_list_container">
-            {% for employee in employees %}
-            <li class="employee">
-            <a class="employee_link" href="{}">{{ employee.first_name }} {{ employee.last_name}}</a><button><a href="{}">Edit Employee</a></button> {% endcomment %}
-
-            {% comment %} <a class="employee_link" href="{% url 'quantummangementapp:employee' employee.id %}">{{ employee.first_name }} {{ employee.last_name}}</a> {% endcomment %}
-            {% comment %} </li>
-            {% endfor %}
-        </ol> {% endcomment %}
-        {% comment %} <button>
-            <a href="{}">Edit Employee</a>
-        </button> {% endcomment %}
         {% endif %}
 {% endblock %}

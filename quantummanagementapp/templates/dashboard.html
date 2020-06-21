@@ -1,10 +1,10 @@
 <!-- auth0login/dashboard.html -->
-{% extends 'shared/base.html' %}
+{% comment %} {% extends 'shared/base.html' %}
 
-{% block content %}
+{% block content %} {% endcomment %}
 {% comment %} Display the user information {% endcomment %}
 {% comment %} Link for user to logout {% endcomment %}
-<div class="logged-in-box auth0-box logged-in">
+{% comment %} <div class="logged-in-box auth0-box logged-in">
 
     <h1 id="logo"><img src="//cdn.auth0.com/samples/auth0_logo_final_blue_RGB.png" /></h1>
     <img class="avatar" src="{{ auth0User.extra_data.picture }}"/>
@@ -13,4 +13,4 @@
     <a class="btn btn-primary btn-lg btn-logout btn-block" href="/logout">Logout</a>
 
 </div>
-{% endblock content %}
+{% endblock content %} {% endcomment %}

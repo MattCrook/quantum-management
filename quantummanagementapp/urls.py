@@ -20,6 +20,8 @@ urlpatterns = [
     path('employees/form/', employee_form, name='employee_form'),
     path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
     path('employees/<int:employee_id>/details', get_employee_details, name='employee_details'),
+    path('parks', park_list, name='parks'),
+    path('parks/<int:park_id>/details', park_details, name='park')
 
 ]
 

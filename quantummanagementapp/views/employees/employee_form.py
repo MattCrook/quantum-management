@@ -27,7 +27,14 @@ def employee_edit_form(request, employee_id):
         employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
+        employees = Employee.objects.all()
         # start_date_employee = datetime.datetime.strptime(employee.start_date, '%Y-%m-%d').date()
+
+        all_roles = []
+
+        for employee in employees:
+            if employee.role not in all_roles:
+                all_roles.append(employee.role)
 
         template = "employees/employee_form.html"
         context = {
@@ -35,7 +42,7 @@ def employee_edit_form(request, employee_id):
             'employee_attractions': employee_attractions,
             'attractions': attractions,
             'parks': parks,
-            # 'start_date_employee': start_date_employee
+            'all_roles': all_roles
         }
         return render(request, template, context)
 

@@ -44,7 +44,13 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="role">Role/ Department: </label>
-                    <input class="new_form" id="role" type="text" name="role" value="{{ employee.role }}">
+                    <select class="new_form" id="role" type="text" name="role">
+                        {% for role in all_roles %}
+                            <option value="{{ employee.role }}">{{ role }}</option>
+                        {% endfor %}
+                    </select>
+                    {% comment %} <button class="new_position_button">Create new Position</button> {% endcomment %}
+                    <a href="#" class="btn6">Create new Position</a>
                 </fieldset>
             </div>
 
@@ -56,24 +62,6 @@
                         value="{{ employee.compensation }}">
                 </fieldset>
             </div>
-
-            {% comment %} <fieldset class="new_form">
-                <label id="pay_rate_label" class="new_form">Pay Rate: </label>
-                <div class="salary_hourly_container">
-                    <input class="new_form" id='is_salary' type='radio' name="pay_rate" value="salary" />
-                    <label>
-                        <span></span>
-                        Salary
-                        <ins><i>Salary</i></ins>
-                    </label>
-                    <input class="new_form" id='is_hourly' type='radio' name="pay_rate" value="hourly" />
-                    <label class='hourly_label'>
-                        <span></span>
-                        Hourly
-                        <ins><i>Hourly</i></ins>
-                    </label>
-                </div>
-            </fieldset> {% endcomment %}
 
             <div class="fieldset_container">
                 <fieldset class="new_form">

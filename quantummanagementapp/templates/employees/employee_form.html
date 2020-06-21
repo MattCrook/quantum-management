@@ -6,37 +6,41 @@
 
     <div class="manage_employees_container">
         <div class="manage_employees_title">Manage Employees</div>
-    {% if employee.id is not None %}
-    <div id="form_header" >Edit Employee</div>
-    {% else %}
-    <div id="form_header" >Add New Employee</div>
-    {% endif %}
+        {% if employee.id is not None %}
+        <div id="form_header">Edit Employee</div>
+        {% else %}
+        <div id="form_header">Add New Employee</div>
+        {% endif %}
         <div class="add_employee_button">
-            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
+                    href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
         </div>
     </div>
 
 
     {% if employee.id is not None %}
     <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_edit_form' employee.id %}"
-        method="post">
+        method="POST">
         {% csrf_token %}
         {% else %}
         <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:employee_list' %}"
-            method="post">
+            method="POST">
             {% csrf_token %}
             {% endif %}
+
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="first_name">First Name: </label>
-                    <input class="new_form" id="first_name" type="text" name="first_name" value="{{ employee.first_name }}">
+                    <input class="new_form" id="first_name" type="text" name="first_name"
+                        value="{{ employee.first_name }}" />
                 </fieldset>
             </div>
 
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="last_name">Last Name: </label>
-                    <input class="new_form" id="last_name" type="text" name="last_name" value="{{ employee.last_name }}">
+                    <input class="new_form" id="last_name" type="text" name="last_name"
+                        value="{{ employee.last_name }}" />
                 </fieldset>
             </div>
 
@@ -46,7 +50,7 @@
                     <label class="new_form" for="role">Role/ Department: </label>
                     <select class="new_form" id="role" type="text" name="role">
                         {% for role in all_roles %}
-                            <option value="{{ employee.role }}">{{ role }}</option>
+                        <option value="{{ employee.role }}">{{ role }}</option>
                         {% endfor %}
                     </select>
                     {% comment %} <button class="new_position_button">Create new Position</button> {% endcomment %}
@@ -59,7 +63,7 @@
                 <fieldset class="new_form">
                     <label class="new_form" for="compensation">Compensation: </label>
                     <input class="new_form" id="compensation" type="number" name="compensation"
-                        value="{{ employee.compensation }}">
+                        value="{{ employee.compensation }}" />
                 </fieldset>
             </div>
 
@@ -90,14 +94,15 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="start_date">Start Date: </label>
-                    <input class="new_form" id="start_date" type="date" name="start_date"value="{{ employee.start_date }}">
+                    <input class="new_form" id="start_date" type="date" name="start_date"
+                        value="{{ employee.start_date }}">
                 </fieldset>
             </div>
 
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="parks">Park of Employment: </label>
-                    <select class="new_form" id="parks" sname="parks">
+                    <select class="new_form" id="parks" name="parks">
                         {% for park in parks %}
                         <option value="{{ park.id }}">{{ park.name }}</option>
                         {% endfor %}
@@ -110,12 +115,9 @@
                     <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
                         -
                         {{user.email}}</section>
-                    {% comment %} <div class="p1"> Not you? Only the admin listed here can edit this resource.</div> {% endcomment %}
                     <div class="p2">*Note - Only admin user responsible for adding an employee may make any future edits
                         to
                         that resource.</div>
-                    {% comment %} <input class="new_form" id="start_date" type="date" name="start_date"
-                        value="{{ employee.admin_user_id }}"> {% endcomment %}
                 </fieldset>
             </div>
 
@@ -153,9 +155,11 @@
             {% endif %}
 
         </form>
+    </form>
 
-        <div class="signature">
-            <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a></p>
-        </div>
+    <div class="signature">
+        <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
+        </p>
+    </div>
 </body>
 {% endblock %}

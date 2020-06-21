@@ -24,6 +24,7 @@ def employee_form(request):
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
+        print("employeeid", employee.id)
         employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
@@ -32,9 +33,9 @@ def employee_edit_form(request, employee_id):
 
         all_roles = []
 
-        for employee in employees:
-            if employee.role not in all_roles:
-                all_roles.append(employee.role)
+        for e in employees:
+            if e.role not in all_roles:
+                all_roles.append(e.role)
 
         template = "employees/employee_form.html"
         context = {
@@ -44,6 +45,8 @@ def employee_edit_form(request, employee_id):
             'parks': parks,
             'all_roles': all_roles
         }
+        print("employeeid", employee.id)
+
         return render(request, template, context)
 
     elif request.method == 'POST':

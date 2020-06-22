@@ -1,5 +1,3 @@
-from quantummanagementapp.views.admin_users.auth.actions import login_user, logout_user, admin_user
-# from quantummanagementapp.views.auth0 import dashboard, index, logout
 from quantummanagementapp.views.home import landing_page, home
 from django.urls import path
 from django.conf.urls import include, url
@@ -15,6 +13,7 @@ urlpatterns = [
     path('login/home/', home, name='home'),
     path('login/', login_user, name='login'),
     path('logout', logout_user, name='logout'),
+    path('register', register_user, name='register'),
     path('admin/', admin_user, name='admin'),
     path('employees/', employee_list, name='employee_list'),
     path('employees/form/', employee_form, name='employee_form'),

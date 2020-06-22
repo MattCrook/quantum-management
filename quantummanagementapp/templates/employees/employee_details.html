@@ -32,26 +32,22 @@
         </li>
         <li id="btn4" class="nav-item">
             <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
-        </li> 
+        </li>
         <li id="btn4" class="nav-item">
             <a class="nav-link" href="{}">Manage Park</a>
-        </li>                 
-            {% comment %} <li class="nav-item">
-            <a class="nav-link" href="{}">Analytics</a>
-        </li> {% endcomment %}
+        </li>
             <li id="btn4" class="nav-item">
             <a class="nav-link" href="{}">Admin Profile</a>
-        </li>  
+        </li>
         <li id="btn4" class="nav-item">
             <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
-        </li> 
+        </li>
         {% else %}
         <div class="nav-item" id="logo_nav_landing_page">Quantum</div>
         <li id="btn4" class="nav-item">
             <a class="nav-link" id="login_link" href="{% url 'quantummanagementapp:login' %}">Login</a>
-        </li>  
+        </li>
         {% endif %}
-
 
         <li id="btn4" class="nav-item">
             <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
@@ -81,7 +77,7 @@
 
             {% for employee_attraction in employee_attractions %}
                 {% if employee.id == employee_attraction.employee_id %}
-                    <li class="employee_details_attractions_list">-  {{employee_attraction.attraction.name}}</li>
+                    <li class="employee_details_attractions_list">- {{employee_attraction.attraction.name}}</li>
                 {% endif %}
             {% endfor %}
 
@@ -93,7 +89,6 @@
             {% else %}
             <div class="detail_item">Salary: ${{ employee.compensation }}</div>
             {% endif %}
-
 
             {% if employee.park_id is not null %}
             <div class="detail_item">Park Employee Employed At: {{ employee.park.name }}</div>
@@ -116,7 +111,7 @@
                 <button class="employee_detail_edit_btn">Edit</button>
             </form>
     </div>
-
+    <script src="../../static/scripts/buttonHandlers.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

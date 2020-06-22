@@ -72,7 +72,7 @@
 }
 
 .register_btn {
-  font-size: smaller;
+  font-size: 12px;
   padding-bottom: 15px;
   padding-top: 10px;
   color: rgb(8, 8, 185);
@@ -80,6 +80,10 @@
   background: #f4f7f8;
 }
 
+.errorlist.nonfield {
+    font-size: 12px;
+    color: rgba(124, 39, 39, 0.795);
+}
 
 /*************** Register Styles ***************/
 /**********************************************/
@@ -114,7 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* font-family: Georgia, "Times New Roman", Times, serif; */
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .register_card form input {
@@ -123,7 +127,7 @@
   /* font-size: 15px; */
   margin-top: 10px;
   outline: 0;
-  padding: 5px;
+  padding: 4px;
 }
 
 .register_card p {
@@ -133,7 +137,7 @@
   margin: 5px;
 }
 
-.register_btn {
+.register_submit_btn {
   position: relative;
   display: block;
   padding: 10px;
@@ -143,14 +147,26 @@
   font-size: 18px;
   text-align: center;
   font-style: normal;
-  width: 25%;
+  width: 35%;
   border: 1px solid rgba(0, 0, 0, 0.753);
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 /* On mouse-over, add a deeper shadow */
 .register_card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.helptext {
+  font-size: 11px;
+}
+.register_card > form > ul {
+    padding-left: 0px;
+}
+
+.register_card > form > ul > li {
+    font-size: 10px;
+    text-align: left;
 }

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'safedelete',
     'quantummanagementapp',
     'djmoney',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

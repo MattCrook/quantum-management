@@ -1,10 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'shared/base.html' %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
+{% block title %}Register{% endblock %}
+<div class="register_container">
+  <div class="register_card">
+    <h2>Register</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="register_btn" type="submit">Register</button>
+    </form>
+  </div>
+</div>
 {% endblock %}

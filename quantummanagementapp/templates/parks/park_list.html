@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div class="manage_parks_container">
+    <div class="manage_parks_title">Manage Parks</div>
+    <div class="select_park_header">Select a Park To View Details</div>
+    <div class="add_park_button">
+        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_park" href="{}">Add Park</a></button>
+    </div>
+</div>
+{% endif %}
+{% if request.user.is_authenticated %}
+<div class="park_list_outer_container">
+    {% for park in parks %}
+    <div class="park_list_inner_container">
+         <div><a href="{% url 'quantummanagementapp:park' park.id %}" id="park_name" class="park_list_name">{{ park.name }}</a></div>
+         <div class="park_list_details_container">
+         <div id="state" class="park_list_item">State: {{ park.state }}</div>
+         <div class="park_list_item">Max Capacity: {{ park.max_capacity }}</div>
+         <div class="park_list_item">Number of Attractions: {{ park.number_of_attractions }}</div>
+         </div>
+    </div>
+     {% endfor %}
+</div>
+{% endif %}
+
+{% endblock content %}

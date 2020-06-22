@@ -1,0 +1,222 @@
+#btn4 {
+  padding: 5px 10px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  display:inline-block;
+
+}
+#btn4::before {
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #6098FF;
+  display: block;
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+}
+
+#btn4:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1)
+}
+
+
+
+.body {
+  background-size: cover;
+  background-color: rgb(17, 19, 24);
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* opacity: 0.7; */
+}
+
+.manage_employees_container_detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px 0 rgb(0, 0, 0);
+  margin-bottom: 30px;
+  margin-top: 5px;
+  background-color: white;
+  z-index: 1;
+}
+
+.detail_body_container {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.employee_detail_card_container {
+  width: 40%;
+  padding: 5px 20px;
+  background-color: rgb(59, 59, 61);
+  box-shadow: 5px 5px 5px 0 rgb(0, 0, 0);
+  border-radius: 8px;
+  color: rgb(255, 255, 255);
+}
+
+#employee_actions_details {
+  display: flex;
+  justify-content: center;
+}
+
+.employee_detail_delete_btn {
+  position: relative;
+  display: block;
+  /* padding: 19px 39px 18px 39px; */
+  color: black;
+  background: white;
+  text-align: center;
+  font-style: normal;
+  width: 200px;
+  border: 1px solid rgb(73, 70, 70);
+  border-radius: 5px 5px 5px 5px;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.employee_detail_edit_btn {
+  position: relative;
+  display: block;
+  /* padding: 19px 39px 18px 39px; */
+  color: black;
+  background: white;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid rgb(73, 70, 70);
+  border-radius: 5px 5px 5px 5px;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 40px;
+}
+
+.employee_detail_edit_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.employee_detail_delete_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3e4247;
+    color: white;
+  }
+}
+
+.detail_item {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.detail_item_name {
+  margin-top: 5px;
+  margin-bottom: 14px;
+  font-size: 30px;
+  border-bottom: 1px solid rgb(165, 162, 162);
+}
+
+.detail_item_start_date {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+/* .employee_details_attractions_list {
+} */
+
+.employee_details_attractions_list {
+  padding: 5px 5px;
+  /* margin:10px 20px; */
+  margin-left: 20px;
+  color: #fff;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  /* text-align: center; */
+  font-size: 12px;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.employee_details_attractions_list {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.50, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.employee_details_attractions_list::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.employee_details_attractions_list:hover::before {
+  width: 100%;
+}
+
+.employee_details_attractions_list::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.employee_details_attractions_list:hover::after {
+  width: 100%;
+}
+.employee_details_attractions_list:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+  color: #6098ff;
+}

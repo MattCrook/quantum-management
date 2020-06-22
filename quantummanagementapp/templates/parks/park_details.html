@@ -1,0 +1,90 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                    <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                    <i class="zmdi zmdi-link"></i> Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                    <i class="zmdi zmdi-widgets"></i> Employees
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                    <i class="zmdi zmdi-calendar"></i> Attractions
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                    <i class="zmdi zmdi-info-outline"></i> Analytics
+                </a>
+            </li>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                    <i class="zmdi zmdi-comment-more"></i> Contact
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="manage_parks_container">
+        <div class="manage_parks_title">{{park.name}}</div>
+        <div class="select_park_header">Park Details Dashboard</div>
+        <div class="add_park_button">
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_park"
+                    href="{% url 'quantummanagementapp:parks' %}">Back</a></button>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+    <div class="park_main_container">
+        <div class="park_attractions_container">
+
+            <div class="attractions_in_park_title">Attractions in Park</div>
+            {% for park_attraction in park_attractions %}
+            <div><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
+            <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+
+            {% for attraction_type in attraction_types %}
+            {% if attraction_type.id == park_attraction.attraction.type_id %}
+            <div>Type: {{attraction_type.name}}</div>
+            {% endif %}
+            {% endfor %}
+
+            <div class="employee_attractions_work_on_container">
+                {% for employee_attraction in employee_attractions %}
+                {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
+                <li class="park_detail_list_item_btn"><a class="employee_name_link"
+                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee.id %}">{{employee_attraction.employee.first_name}}
+                        {{employee_attraction.employee.last_name}}</a></li>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endif %}
+
+{% endblock content %}

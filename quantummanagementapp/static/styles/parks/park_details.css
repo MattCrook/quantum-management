@@ -1,0 +1,242 @@
+.attractions_in_park_title{
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+/******** Logo Sidebar **********/
+.sidebar_logo {
+  color: #fff;
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-decoration: none;
+  font-variant: small-caps;
+  position: relative;
+  text-decoration: none;
+}
+
+.sidebar_logo {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.sidebar_logo::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.sidebar_logo:hover::before {
+  width: 100%;
+}
+
+.sidebar_logo::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.sidebar_logo:hover::after {
+  width: 100%;
+}
+.sidebar_logo:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar header {
+  background-color: rgb(17, 19, 24);
+  /* font-size: 20px; */
+  /* line-height: 52px; */
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#viewport {
+  padding-left: 230px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/******************* Sidebar Styles *****************/
+
+#sidebar {
+  z-index: 1000;
+  position: absolute;
+  top: 72px;
+  left: 230px;
+  width: 230px;
+  height: 100%;
+  margin-left: -230px;
+  overflow-y: auto;
+  /* background: #37474f; */
+  background: rgb(17, 19, 24);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* #sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+} */
+
+.sidebar_list_item_container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#sidebar .nav {
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar .nav a {
+  background: none;
+  border-bottom: 1px solid #4073e071;
+  /* border-bottom: 1px solid #455a64; */
+  color: #cfd8dc;
+  font-size: 13px;
+  padding-top: 16px;
+  padding-bottom: 20px;
+  padding-right: 71%;
+  padding-left: 16px;
+}
+
+#sidebar .nav a:hover {
+  background: none;
+  color: #eceff1;
+}
+
+#sidebar .nav a i {
+  margin-right: 16px;
+}
+
+/********* Employee Name List Button Link *************/
+.employee_name_link {
+  background: none;
+  color: #000000;
+  text-decoration: none;
+}
+
+.employee_name_link:hover {
+  text-decoration: none;
+  color: rgb(155, 153, 153);
+}
+
+.employee_name_link {
+  padding: 5px 10px;
+  color: rgb(3, 3, 3);
+  /* text-align: center; */
+  position: relative;
+  text-decoration: none;
+  /* display: inline-block; */
+  width: 200px;
+}
+.employee_name_link::before {
+  content: "";
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #6098ff;
+  display: block;
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+.employee_name_link:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+/********* Attraction Name List Button Link *************/
+.attraction_link_btn {
+  background: none;
+  color: #000000;
+  text-decoration: none;
+}
+
+.attraction_link_btn:hover {
+  text-decoration: none;
+  color: rgb(155, 153, 153);
+}
+
+.attraction_link_btn {
+  /* padding: 5px 10px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 1px;
+  color: rgb(3, 3, 3);
+  /* text-align: center; */
+  position: relative;
+  text-decoration: none;
+  /* display: inline-block; */
+  width: 200px;
+}
+.attraction_link_btn::before {
+  content: "";
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #6098ff;
+  display: block;
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+.attraction_link_btn:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}

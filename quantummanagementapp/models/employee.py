@@ -15,7 +15,7 @@ class Employee(SafeDeleteModel):
     last_name = models.CharField(max_length=50)
     role = models.CharField(max_length=50)
     start_date = models.DateField(null=True, blank=True)
-    compensation =  models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=6)
+    compensation =  models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
     pay_rate = models.CharField(null=True, blank=True, max_length=20)
     park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.DO_NOTHING)
     admin_user = models.ForeignKey(AdminUser, on_delete=models.DO_NOTHING)

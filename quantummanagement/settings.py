@@ -25,13 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'corsheaders',
     'social_django',
-    'safedelete',
     'quantummanagementapp',
-    'djmoney',
-    'rest_framework',
-]
+    'safedelete',]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

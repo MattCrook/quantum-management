@@ -3,9 +3,6 @@ from django.shortcuts import render, redirect, reverse
 import datetime
 from django.contrib.auth.decorators import login_required
 from django import forms
-from django.http import HttpResponseServerError
-from rest_framework import status
-
 
 @login_required
 def employee_form(request):
@@ -13,29 +10,22 @@ def employee_form(request):
         employees = Employee.objects.all()
         parks = Park.objects.all()
         attractions = Attraction.objects.all()
+        # add employee_attraction join to have option of creating a new row to add employee to attraction when adding
 
-        roles = []
-        for e in employees:
-            roles.append(e.role)
-        # convert to set to get rid of duplicates
-        all_roles = set(roles)
         template = "employees/employee_form.html"
         context = {
             'employees': employees,
             'attractions': attractions,
-            'parks': parks,
-            'all_roles': all_roles
+            'parks': parks
         }
         return render(request, template, context)
-
 
 @login_required
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
         print("employeeid", employee.id)
-        employee_attractions = EmployeeAttraction.objects.filter(
-            employee_id=employee_id)
+        employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()
@@ -55,43 +45,33 @@ def employee_edit_form(request, employee_id):
             'parks': parks,
             'all_roles': all_roles
         }
+        print("employeeid", employee.id)
+
         return render(request, template, context)
 
     elif request.method == 'POST':
         form_data = request.POST
         if (
             "actual_method" in form_data
-            and form_data["actual_method"] == "PUT"
+             and form_data["actual_method"] == "PUT"
         ):
             employee = Employee.objects.get(pk=employee_id)
-            park_id = employee.park_id
-            park = Park.objects.get(pk=park_id)
-            employee_attraction = EmployeeAttraction.objects.get(employee_id=employee_id)
             admin_user_id = request.user.user.id
+            employee_attraction = EmployeeAttraction.objects.filter(employee_id=employee_id)
 
             employee.first_name = form_data["first_name"]
-            employee.last_name = form_data["last_name"]
+            employee.last_name= form_data["last_name"]
             employee.role = form_data["role"]
-            employee.start_date = form_data["start_date"]
-            employee.admin_user_id = admin_user_id
             employee.compensation = form_data["compensation"]
+            employee.start_date = form_data["start_date"]
             employee.pay_rate = form_data["pay_rate"]
-
-            employee.park_id = form_data["parks"]
-            employee_attraction.attraction_id = form_data["employee_attraction"]
+            # employee.park_id = form_data["park_id"]
+            employee.admin_user_id = admin_user_id
 
             employee.save()
-            employee_attraction.save()
             return redirect(reverse('quantummanagementapp:employee_list'))
 
         if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
-            try:
-                employee = Employee.objects.get(pk=employee_id)
-                employee.delete()
-                return redirect(reverse('quantummanagementapp:employee_list'))
-            except Employee.DoesNotExist as ex:
-                return HttpResponseServerError({'Error: not found': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-            except Exception as ex:
-                return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+            employee_to_be_deleted = Employee.objects.get(pk=employee_id)
+            employee_to_be_deleted.delete()
             return redirect(reverse('quantummanagementapp:employee_list'))

@@ -7,10 +7,11 @@
     <div class="manage_parks_title">Manage Parks</div>
     <div class="select_park_header">Select a Park To View Details</div>
     <div class="add_park_button">
-        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_park" href="{}">Add Park</a></button>
+        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_park" href="{% url 'quantummanagementapp:park_form' %}">Add Park</a></button>
     </div>
 </div>
 {% endif %}
+
 {% if request.user.is_authenticated %}
 <div class="park_list_outer_container">
     {% for park in parks %}

@@ -73,7 +73,7 @@
                 {% for employee_attraction in employee_attractions %}
                 {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
                 <li class="park_detail_list_item_btn"><a class="employee_name_link"
-                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}}
+                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee.id %}">{{employee_attraction.employee.first_name}}
                         {{employee_attraction.employee.last_name}}</a></li>
                 {% endif %}
                 {% endfor %}

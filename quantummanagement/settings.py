@@ -17,6 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,11 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'corsheaders',
     'social_django',
+    'safedelete',
     'quantummanagementapp',
-    'safedelete',]
+    'djmoney',
+]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -106,8 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
     'http://localhost:8000',
 )
 
@@ -144,12 +144,6 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-
-
 
 # SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
 # SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'

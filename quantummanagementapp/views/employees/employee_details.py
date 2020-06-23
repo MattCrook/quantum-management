@@ -2,12 +2,10 @@ import datetime
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from quantummanagementapp.models import Employee, EmployeeAttraction, Attraction, Park
-from django.http import HttpResponseServerError, HttpResponse
-from rest_framework import status
+from quantummanagementapp.models import Employee, EmployeeAttraction, Attraction
 
 
-@login_required
+
 def get_employee_details(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
@@ -24,41 +22,38 @@ def get_employee_details(request, employee_id):
         }
         return render(request, template, context)
 
-    elif request.method == 'POST':
-        form_data = request.POST
-        if (
-            "actual_method" in form_data
-            and form_data["actual_method"] == "PUT"
-        ):
-            employee = Employee.objects.get(pk=employee_id)
-            park_id = employee.park_id
-            park = Park.objects.get(pk=park_id)
-            employee_attraction = EmployeeAttraction.objects.get(employee_id=employee_id)
-            admin_user_id = request.user.user.id
+    # elif request.method == 'POST':
+    #     form_data = request.POST
+    #     if (
+    #         "actual_method" in form_data
+    #          and form_data["actual_method"] == "PUT"
+    #     ):
+    #         employee = Employee.objects.get(pk=employee_id)
+    #         user_id = request.user.adminuser.id
+    #         employee_attraction = EmployeeAttraction.objects.filter(employee_id=employee_id)
 
-            employee.first_name = form_data["first_name"]
-            employee.last_name = form_data["last_name"]
-            employee.role = form_data["role"]
-            employee.start_date = form_data["start_date"]
-            employee.admin_user_id = admin_user_id
-            employee.compensation = form_data["compensation"]
-            employee.pay_rate = form_data["pay_rate"]
+    #         employee.first_name = form_data["first_name"]
+    #         employee.last_name= form_data["last_name"]
+    #         employee.role = form_data["max_height"]
+    #         employee.compensation = form_data["compensation"]
+    #         employee.start_date = form_data["date"]
+    #         employee.is_salary = form_data["is_salary"]
+    #         employee.is_hourly = form_data["is_hourly"]
+    #         employee.park_id = form_data["park_id"]
+    #         employee.admin_user_id = user_id
 
-            employee.park_id = form_data["parks"]
-            employee_attraction.attraction_id = form_data["employee_attraction"]
+    #         employee.update()
+    #         employee.save()
+    #         return redirect(reverse('quantummanagementapp:employee_list'))
 
-            employee.save()
-            employee_attraction.save()
-            return redirect(reverse('quantummanagementapp:employee_list'))
+    #     if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
+    #         employee_to_be_deleted = Employee.objects.get(pk=employee_id)
+    #         employee_to_be_deleted.delete()
+    #         return redirect(reverse('quantummanagementapp:employee_list'))
 
-        if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
-            try:
-                employee = Employee.objects.get(pk=employee_id)
-                employee.delete()
-                return redirect(reverse('quantummanagementapp:employee_list'))
-            except Employee.DoesNotExist as ex:
-                return HttpResponseServerError({'Error: not found': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-            except Exception as ex:
-                return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            return redirect(reverse('quantummanagementapp:employee_list'))
+
+
+
+
+    

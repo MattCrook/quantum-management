@@ -44,16 +44,14 @@
                 </fieldset>
             </div>
 
-
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="role">Role/ Department: </label>
                     <select class="new_form" id="role" type="text" name="role">
                         {% for role in all_roles %}
-                        <option value="{{ employee.role }}">{{ role }}</option>
+                        <option value="{{ role }}">{{ role }}</option>
                         {% endfor %}
                     </select>
-                    {% comment %} <button class="new_position_button">Create new Position</button> {% endcomment %}
                     <a href="#" class="btn6">Create new Position</a>
                 </fieldset>
             </div>
@@ -112,6 +110,17 @@
 
             <div class="fieldset_container">
                 <fieldset class="new_form">
+                    <label class="new_form" for="employee_attraction">Position Assignment: </label>
+                    <select class="new_form" id="employee_attraction" name="employee_attraction">
+                    {% for attraction in attractions %}
+                        <option value="{{ attraction.id }}">{{attraction.name}}</option>
+                    {% endfor %}
+                    </select>
+                </fieldset>
+            </div>
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
                     <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
                         -
                         {{user.email}}</section>
@@ -120,32 +129,6 @@
                         that resource.</div>
                 </fieldset>
             </div>
-
-
-
-
-            {% comment %} {% if employee.id is not None %}
-            <fieldset class="new_form">
-                <label class="new_form" for="attendee" class="attendee_list">Current Attendees</label>
-                <ol class="new_form">
-                    {% for attendee in training_program_employees %}
-                    {% if attendee.training_program_id == training_program.id %}
-                    <li class="new_form"> {{ attendee.employee.first_name }} {{ attendee.employee.last_name }}</li>
-                    {% endif %}
-                    {% endfor %}
-                </ol>
-            </fieldset>
-
-            <fieldset class="new_form">
-                <label for="employee_id" class="new_form">Add New Employee To Program: </label>
-                <select id="select_employee" type="text" name="employee_id" class="new_form">
-                    {% for employee in employees %}
-                    <option class="new_form" value="{{ employee.id }}">
-                        {{ employee.first_name }} {{ employee.last_name}}</option>
-                    {% endfor %}
-                </select>
-            </fieldset>
-            {% endif %} {% endcomment %}
 
             {% if employee.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">

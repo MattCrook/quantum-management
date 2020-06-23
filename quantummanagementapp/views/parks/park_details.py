@@ -51,4 +51,4 @@ def park_details(request, park_id):
             except Exception as ex:
                 return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            return redirect(reverse('quantummanagementapp:employee_list'))
+            return redirect(reverse('quantummanagementapp:parks'))

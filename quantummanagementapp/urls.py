@@ -23,7 +23,9 @@ urlpatterns = [
     path('employees/<int:employee_id>/details', get_employee_details, name='employee_details'),
 
     path('parks', park_list, name='parks'),
-    path('parks/<int:park_id>/details', park_details, name='park')
+    path('parks/<int:park_id>/details', park_details, name='park'),
+    path('parks/form', park_form, name='park_form'),
+    path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
 ]
 
 # path('', index, name='index'),

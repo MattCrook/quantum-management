@@ -12,8 +12,7 @@ def get_employee_details(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
         attractions = Attraction.objects.all()
-        employee_attractions = EmployeeAttraction.objects.filter(
-            employee_id=employee_id)
+        employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         current_date = datetime.date.today()
 
         template = 'employees/employee_details.html'

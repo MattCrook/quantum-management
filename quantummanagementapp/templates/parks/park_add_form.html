@@ -130,10 +130,10 @@
             <input type="hidden" name="actual_method" value="PUT">
             <input class="new_form" type="submit" value="Update" />
             {% else %}
-            <div class="bar-anchor">
+            {% comment %} <div class="bar-anchor"> {% endcomment %}
                 <input class="new_form" id="create_park_btn" type="submit" value="Create" />
-                  <div class="transition-bar"></div>
-            </div>
+                  {% comment %} <div class="transition-bar"></div> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
             {% endif %}
         </form>
     </form>
@@ -145,6 +145,8 @@
         </p>
     </div>
 
+
+    <script src="../../static/scripts/buttonHandlers.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -165,8 +167,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-
     </div>
+
 </body>
 
 </html>

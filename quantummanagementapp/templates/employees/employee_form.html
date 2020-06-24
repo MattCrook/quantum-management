@@ -31,7 +31,7 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="first_name">First Name: </label>
-                    <input class="new_form" id="first_name" type="text" name="first_name"
+                    <input required class="new_form" id="first_name" type="text" name="first_name"
                         value="{{ employee.first_name }}" />
                 </fieldset>
             </div>
@@ -39,7 +39,7 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="last_name">Last Name: </label>
-                    <input class="new_form" id="last_name" type="text" name="last_name"
+                    <input required class="new_form" id="last_name" type="text" name="last_name"
                         value="{{ employee.last_name }}" />
                 </fieldset>
             </div>
@@ -60,7 +60,7 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="compensation">Compensation: </label>
-                    <input class="new_form" id="compensation" type="number" name="compensation"
+                    <input required class="new_form" id="compensation" type="number" name="compensation"
                         value="{{ employee.compensation }}" />
                 </fieldset>
             </div>
@@ -71,13 +71,13 @@
                         <label id="pay_rate_label" class="new_form">Pay Rate: </label>
                         <ul>
                             <li class="pay_rate_item">
-                                <input type="radio" id="is_salary" name="pay_rate" value="salary" />
+                                <input required type="radio" id="is_salary" name="pay_rate" value="salary" />
                                 <label for="is_salary">Salary</label>
 
                                 <div class="check"></div>
                             </li>
                             <li class="pay_rate_item">
-                                <input type="radio" id="is_hourly" name="pay_rate" value="hourly" />
+                                <input required type="radio" id="is_hourly" name="pay_rate" value="hourly" />
                                 <label for="is_hourly">Hourly</label>
 
                                 <div class="check">
@@ -92,7 +92,7 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="start_date">Start Date: </label>
-                    <input class="new_form" id="start_date" type="date" name="start_date"
+                    <input required class="new_form" id="start_date" type="date" name="start_date"
                         value="{{ employee.start_date }}">
                 </fieldset>
             </div>
@@ -102,7 +102,7 @@
                     <label class="new_form" for="parks">Park of Employment: </label>
                     <select class="new_form" id="parks" name="parks">
                         {% for park in parks %}
-                        <option value="{{ park.id }}">{{ park.name }}</option>
+                        <option required value="{{ park.id }}">{{ park.name }}</option>
                         {% endfor %}
                     </select>
                 </fieldset>
@@ -113,7 +113,7 @@
                     <label class="new_form" for="employee_attraction">Position Assignment: </label>
                     <select class="new_form" id="employee_attraction" name="employee_attraction">
                     {% for attraction in attractions %}
-                        <option value="{{ attraction.id }}">{{attraction.name}}</option>
+                        <option required value="{{ attraction.id }}">{{attraction.name}}</option>
                     {% endfor %}
                     </select>
                 </fieldset>
@@ -132,7 +132,7 @@
 
             {% if employee.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input class="new_form" type="submit" value="Update" />
+            <input class="new_form" id="update_employee_btn" type="submit" value="Update" />
             {% else %}
             <input class="new_form" id="create_employee_btn" type="submit" value="Create" />
             {% endif %}
@@ -144,5 +144,11 @@
         <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
         </p>
     </div>
+
 </body>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/guards.js' %}"></script>
 {% endblock %}

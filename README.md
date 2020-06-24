@@ -6,3 +6,9 @@ Quantum Management is a theme park management and business analysis management a
 
 ## Entity Relationship Diagram (ERD)
 ![QuantumManagementERD](QuantumManagementERD.png)
+
+
+## Wireframe 
+* Basic stucture/ layout of the application's pages and dataflow.
+
+![QuantumManagementWireframe](quantummanagementapp/images/QuantumManagementWireframe.png)

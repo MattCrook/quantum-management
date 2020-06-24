@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'styles/modal.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/login.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/home.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/employees/employee_list.css' %}" type="text/css" media="screen" />
@@ -31,7 +30,7 @@
             <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
         </li>
         <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{}">Manage Park</a>
+            <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
         </li>
             <li id="btn4" class="nav-item">
             <a class="nav-link" href="{}">Admin Profile</a>

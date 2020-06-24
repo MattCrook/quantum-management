@@ -17,6 +17,8 @@ urlpatterns = [
     path('register/', register_user, name='register'),
     path('admin/', admin_user, name='admin'),
 
+    path('account/<int:user_id>/', get_admin_user_profile, name='account'),
+
     path('employees/', employee_list, name='employee_list'),
     path('employees/form/', employee_form, name='employee_form'),
     path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
@@ -28,8 +30,6 @@ urlpatterns = [
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
 ]
 
-# path('', index, name='index'),
-# path('dashboard/', dashboard),
-# path('logout/', logout),
+
 # path('', include('social_django.urls')),
 # path('social-auth/', include('social_django.urls', namespace="social")),

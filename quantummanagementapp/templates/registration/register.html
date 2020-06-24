@@ -1,10 +1,12 @@
 {% extends 'shared/base.html' %}
 
+
+{% block title %}Create an Account{% endblock %}
 {% block content %}
 <div class="register_container">
   <div class="register_card">
     <h2>Register</h2>
-    <form method="post">
+    <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}
       <button class="register_submit_btn" type="submit">Register</button>

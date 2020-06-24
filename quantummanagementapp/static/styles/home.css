@@ -16,7 +16,7 @@
   position: absolute;
   z-index: 1;
   left: 700px;
-  top: 55em;
+  top: 90%;
 }
 .logo_container {
   display: flex;

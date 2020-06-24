@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/employees/employee_list.css' %}" type="text/css" media="screen" />
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'styles/employees/employee_detail.css' %}" type="text/css" media="screen" />
+    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/parks/park_list.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/parks/park_details.css' %}" type="text/css" media="screen" />
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'styles/parks/park_form.css' %}" type="text/css" media="screen" />
+    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'styles/admin_user/account.css' %}" type="text/css" media="screen" />
+
+</head>
+
+<body>
+    <ul class="navbar-nav-account mr-auto">
+        {% if user.is_authenticated %}
+        <div class="container_1">
+            <div class="nav-item" id="logo_nav_account">Quantum</div>
+            <li id="nav_btn" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
+            </li>
+        </div>
+        {% comment %} <li id="btn4" class="nav-item">
+            <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
+        </li>
+        <li id="btn4" class="nav-item">
+            <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
+        </li>
+
+        <li id="btn4" class="nav-item">
+            <a class="nav-link" href="{% url 'quantummanagementapp:account' user.id %}">Account</a>
+        </li> {% endcomment %}
+        <div class="container_2">
+            <div class="logout_btn_account">
+                <li id="nav_btn" class="nav-item">
+                    <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
+                </li>
+            </div>
+
+
+            <div class="nav-item">
+                <img class="nav_profile_picture" src="{{user.admin_user.picture}}">
+            </div>
+            <div class="django_admin_btn_account">
+                <li id="nav_btn" class="nav-item">
+                    <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
+                </li>
+            </div>
+        </div>
+
+        {% endif %}
+    </ul>
+
+{% if request.user.is_authenticated %}
+<div class="manage_account_container">
+    <div class="manage_account_title">Account</div>
+    {% comment %} <div class="add_account_button"> {% endcomment %}
+        <button class="add_account_button" ><a class="add_account" href="{}">Edit Account Information</a></button>
+    {% comment %} </div> {% endcomment %}
+</div>
+{% endif %}
+
+
+
+    <div class="banner_picture_on_profile">
+        <img id="account_banner_image" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn"/>
+    </div>
+
+    <div class="profile_picture">{{admin_user_profile.picture}}</div>
+
+
+
+
+    <div id="first_name_profile" class="user_profile_info">{{user_account.first_name}}</div>
+    <div id="last_name_profile" class="user_profile_info">{{user_account.last_name}}</div>
+    <div id="username_profile" class="user_profile_info">{{user_account.username}}</div>
+    <div id="email_profile" class="user_profile_info">{{user_account.email}}</div>
+    <div id="date_joined_profile" class="user_profile_info">{{user_account.date_joined}}</div>
+    <div id="last_login_profile" class="user_profile_info">{{user_account.last_login}}</div>
+    <br>
+
+
+    <div id="role_profile" class="user_profile_info">Title: {{admin_user_profile.role}}</div>
+    <br>
+
+    <div class="employees_user_responsible_container">
+        <div class="employee_user_resp_title">List of employees {{user.first_name}} is admin for:</div>
+        {% for employee in employees %}
+        <li class="list_employee_item">{{employee.first_name}} {{employee.last_name}}</li>
+        {% endfor %}
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

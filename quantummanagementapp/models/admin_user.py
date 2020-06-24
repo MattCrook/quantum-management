@@ -31,4 +31,4 @@ class AdminUser(models.Model):
 
 # @receiver(post_save, sender=User)
 # def save_admin_user(sender, instance, **kwargs):
-#     instance.adminUser.save()
+#     instance.user.save()

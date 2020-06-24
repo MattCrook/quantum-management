@@ -1,18 +1,18 @@
 import json
 from django.shortcuts import render, redirect, reverse
-from django.http.response import JsonResponse
-from rest_framework.authtoken.models import Token
-from django.views.decorators.csrf import csrf_exempt
+# from django.http.response import JsonResponse
+# from rest_framework.authtoken.models import Token
+# from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseServerError
-from quantummanagementapp.models import AdminUser
+from quantummanagementapp.models import AdminUser, Employee
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from rest_framework import status
 
 
 
-@login_required
-def admin_user_list(request):
+def admin_user_register(request):
     if request.method == 'GET':
         try:
             admin_users = AdminUser.objects.all()
@@ -25,49 +25,39 @@ def admin_user_list(request):
             return HttpResponseServerError(ex)
 
     elif request.method == 'POST':
-        form_data = request.POST
-        print("FORMDATA", form_data)
-        # user_id = request.user.id
-        new_user = User.objects.create(
-            first_name=form_data['first_name'],
-            last_name=form_data['last_name'],
-            username=form_data['username'],
-            email=form_data['email'],
-        )
-        new_admin_user = AdminUser.objects.create(
-            pictue=form_data['picture'],
-            role=form_data['role'],
-            # user_id=user_id,
-            user=new_user
-        )
-        new_admin_user.save()
+        try:
+            form_data = request.POST
+            print("FORMDATA", form_data)
+            new_user = User.objects.create_user(
+                first_name=form_data['first_name'],
+                last_name=form_data['last_name'],
+                username=form_data['username'],
+                email=form_data['email'],
+            )
+            new_admin_user = AdminUser()
+            new_admin_user.pictue = form_data['picture'],
+            new_admin_user.role = form_data['role'],
+            new_admin_user = new_user
 
-        return redirect(reverse('quantummangementapp:home'))
+            new_admin_user.save()
+            return redirect(reverse('quantummanagementapp:home'))
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
-
-
-# class AdminUserSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = AdminUser
-        # url = serializers.HyperlinkedIdentityField(
-        #     view_name='adminUser',
-        #     lookup_field='id'
-        # )
-        # fields = ('id', 'picture', 'role', 'user_id', 'user',)
-        # depth = 1
-        # extra_kwargs = {'password': {'write_only': True}}
-
-    # class AdminUsers(ViewSet):
-
-    #     def list(self, request):
-    #         try:
-    #             admin_users = AdminUser.objects.all()
-        # serializer = AdminUserSerializer(admin_users, many=True, context={'request': request})
-        # template = 'home.html'
-        # context = {
-        #     'admin_users': admin_users
-        # }
-        # return render(request, template, context)
-        # return Response(serializer.data)
-        # except Exception as ex:
-        #     return HttpResponseServerError(ex)
+@login_required
+def get_admin_user_profile(request, user_id):
+    if request.method == 'GET':
+        try:
+            user_account = User.objects.get(pk=user_id)
+            admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
+            employees = Employee.objects.filter(admin_user_id=user_id)
+            template = 'admin_user/account.html'
+            context = {
+                'user_account': user_account,
+                'admin_user_profile': admin_user_profile,
+                'employees': employees
+            }
+            return render(request, template, context)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+            # return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

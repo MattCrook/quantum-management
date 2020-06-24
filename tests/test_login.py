@@ -1,13 +1,11 @@
 from django.test import TestCase
-# from django.urls import reverse
-from django.shortcuts import render, reverse, redirect
-from quantummanagementapp.models import AdminUser
-from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
-from unittest import skip
-import json
 import unittest
 from django.contrib.auth import authenticate, get_user_model
+from django.urls import reverse
+from django.shortcuts import render, redirect
+from quantummanagementapp.models import AdminUser
+from django.contrib.auth.models import User
+
 
 
 class TestLogin(TestCase):

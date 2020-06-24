@@ -27,7 +27,7 @@ class TestEmployee(TestCase):
             admin_user_id=1,
             park_id=1,
             pay_rate="salary",
-            compensation="20"
+            compensation="40000"
             )
 
 
@@ -46,6 +46,6 @@ class TestEmployee(TestCase):
         response = self.client.get(reverse('quantummanagementapp:employee_list'))
         print("Response", response.content)
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(len(response.data), 1)
         self.assertIn(new_employee.name.encode(), response.content)

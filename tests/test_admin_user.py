@@ -25,7 +25,7 @@ class TestUser(TestCase):
         # Get request for user created in setup
         response = self.client.get(reverse('quantummanagementapp:home'))
 
-        # Checks to make sure get request went through
+        # Checks to make sure get request went through, and was redirected
         self.assertEqual(response.status_code, 302)
 
 

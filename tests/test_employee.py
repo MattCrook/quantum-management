@@ -3,11 +3,12 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from quantummanagementapp.models import AdminUser, Park, Employee
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
-from unittest import skip
-import json
+# from rest_framework.authtoken.models import Token
+# from unittest import skip
+# import json
 import unittest
 from django.contrib.auth import authenticate, get_user_model
+from django import urls
 
 
 class TestEmployee(TestCase):
@@ -44,8 +45,6 @@ class TestEmployee(TestCase):
         new_employee = self.createEmployee()
 
         response = self.client.get(reverse('quantummanagementapp:employee_list'))
-        print("Response", response.content)
+        print("Response", response)
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(len(response.data), 1)
-        self.assertIn(new_employee.name.encode(), response.content)

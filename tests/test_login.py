@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from quantummanagementapp.models import AdminUser
 from django.contrib.auth.models import User
-
+from django import urls
 
 
 class TestLogin(TestCase):
@@ -28,6 +28,15 @@ class TestLogin(TestCase):
     def test_wrong_password(self):
         user = authenticate(username='test', password='wrong')
         self.assertFalse(user is not None and user.is_authenticated)
+
+def test_redirect_to_home_when_logged_in(self, authenticated_user, client):
+    url = urls.reverse('home')
+    resp = client.get(url)
+    assert resp.status_code == 302
+    assert resp.url == urls.reverse('quantummanagementapp:home')
+
+
+
 
 
 if __name__ == '__main__':

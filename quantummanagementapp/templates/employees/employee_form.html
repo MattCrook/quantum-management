@@ -1,4 +1,6 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+
 
 {% block content %}
 
@@ -71,13 +73,13 @@
                         <label id="pay_rate_label" class="new_form">Pay Rate: </label>
                         <ul>
                             <li class="pay_rate_item">
-                                <input required type="radio" id="is_salary" name="pay_rate" value="salary" />
+                                <input type="radio" id="is_salary" name="pay_rate" value="salary" required/>
                                 <label for="is_salary">Salary</label>
 
                                 <div class="check"></div>
                             </li>
                             <li class="pay_rate_item">
-                                <input required type="radio" id="is_hourly" name="pay_rate" value="hourly" />
+                                <input type="radio" id="is_hourly" name="pay_rate" value="hourly" />
                                 <label for="is_hourly">Hourly</label>
 
                                 <div class="check">

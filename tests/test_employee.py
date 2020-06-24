@@ -23,9 +23,6 @@ class TestEmployee(TestCase):
         Park.objects.create(name="TestPark", state="Tennessee",
                             max_capacity="10000", number_of_attractions=20)
 
-    # def createAdminUser(self):
-    #     AdminUser.objects.create(
-    #         picture="profile picture", role="Enthusiast", user_id=1)
 
     def createEmployee(self):
         Employee.objects.create(
@@ -42,7 +39,6 @@ class TestEmployee(TestCase):
     def test_list_employees(self):
         new_employee = self.createEmployee()
         new_park = self.createPark()
-        # new_admin = self.createAdminUser()
 
         response = self.client.get(reverse('quantummanagementapp:employee_list'))
         self.assertEqual(response.status_code, 302)

@@ -11,3 +11,4 @@ from .visitor_check_out import VisitorCheckOut
 from .visitor import Visitor
 from .modelFactory import model_factory
 from .forms import SignUpForm
+from .roles import Roles

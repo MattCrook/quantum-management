@@ -24,7 +24,9 @@
                     {% if employee.role == role %}
                         <li class="employee_item">
                             <a class="employee_item_link" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a>
+                            {% if request.user.id == employee.admin_user_id %}
                             <button class="edit_employee_btn"><i class="fas fa-user-edit"></i><a class="edit_btn" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">Edit</a></button>
+                            {% endif %}
                         </li>
                     {% endif %}
                 </div>

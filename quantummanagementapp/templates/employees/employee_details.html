@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'styles/login.css' %}" type="text/css" media="screen" />
-    <link rel="stylesheet" href="{% static 'styles/home.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/employees/employee_list.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/employees/employee_detail.css' %}" type="text/css" media="screen" />
 
@@ -96,6 +95,7 @@
            </div>
         </div>
 
+        {% if request.user.id == employee.admin_user_id %}
         <div id="employee_actions_details">
             <form action="{% url 'quantummanagementapp:employee_details' employee.id %}" method="POST">
                 {% csrf_token %}
@@ -107,6 +107,7 @@
                 <button class="employee_detail_edit_btn">Edit</button>
             </form>
     </div>
+    {% endif %}
 
     <script src="../../static/scripts/buttonHandlers.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

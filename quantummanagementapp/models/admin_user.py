@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.files.storage import FileSystemStorage
 from django.db import models
-from quantummanagementapp.models import Image
 
 
 # fs = FileSystemStorage(location='../media/photos')
@@ -15,7 +14,7 @@ from quantummanagementapp.models import Image
 class AdminUser(models.Model):
 
     user = models.OneToOneField(User, related_name="user", on_delete=models.CASCADE)
-    picture = models.ForeignKey(Image, blank=True, null=True, on_delete=models.CASCADE)
+    image = models.ForeignKey("Image", blank=True, null=True, on_delete=models.CASCADE)
     role = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:

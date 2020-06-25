@@ -22,4 +22,4 @@ class SignUpForm(UserCreationForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('image', 'admin_user')
+        fields = ('image', )

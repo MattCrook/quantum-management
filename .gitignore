@@ -48,18 +48,18 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-# htmlcov/
-# .tox/
-# .nox/
-# .coverage
-# .coverage.*
-# .cache
-# nosetests.xml
-# coverage.xml
-# *.cover
-# *.py,cover
-# .hypothesis/
-# .pytest_cache/
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -144,14 +144,16 @@ local_settings.py
 # virtualenv
 QuantumManagementEnv/
 .vscode
+QuantumManagementEnv
 
-#other 
+#other
 .DS_Store
 *.sqlite3
 media/*
 *.pyc
 *.db
 *.pid
+.sqlite3
 
 # django migrations
 # migrations

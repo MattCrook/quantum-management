@@ -3,6 +3,9 @@ from django.urls import path
 from django.conf.urls import include, url
 from quantummanagementapp import views
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 app_name = "quantummanagementapp"
@@ -29,7 +32,7 @@ urlpatterns = [
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # path('', include('social_django.urls')),

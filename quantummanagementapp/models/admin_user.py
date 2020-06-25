@@ -12,7 +12,7 @@ class AdminUser(models.Model):
 
     user = models.OneToOneField(User, related_name="user", on_delete=models.CASCADE)
     picture = models.ImageField(blank=True, null=True)
-    role = models.CharField(max_length=50)
+    role = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         verbose_name = ("adminUser")

@@ -82,7 +82,7 @@
                 <div class="fieldset_container" id="edit_account_picture_fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_picture_label" for="picture">Picture: </label>
-                        <input class="new_form_picture_label" id="picture" type="file" name="picture"
+                        <input required class="new_form_picture_label" id="picture" type="file" name="picture"
                             value="{{ user_account.user.picture }}" />
                     </fieldset>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_edit_account" for="first_name">First Name: </label>
-                        <input class="new_form_edit_account_input" id="first_name" type="text" name="first_name"
+                        <input required class="new_form_edit_account_input" id="first_name" type="text" name="first_name"
                             value="{{ user_account.first_name }}" />
                     </fieldset>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_edit_account" for="last_name">Last Name: </label>
-                        <input class="new_form_edit_account_input" id="last_name" type="text" name="last_name"
+                        <input required class="new_form_edit_account_input" id="last_name" type="text" name="last_name"
                             value="{{ user_account.last_name }}" />
                     </fieldset>
                 </div>
@@ -106,7 +106,7 @@
                 <div class="fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_edit_account" for="username">Username: </label>
-                        <input class="new_form_edit_account_input" id="username" type="text" name="username"
+                        <input required class="new_form_edit_account_input" id="username" type="text" name="username"
                             value="{{ user_account.username }}" />
                     </fieldset>
                 </div>
@@ -114,7 +114,7 @@
                 <div class="fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_edit_account" for="email">Email: </label>
-                        <input class="new_form_edit_account_input" id="email" type="email" name="email"
+                        <input required class="new_form_edit_account_input" id="email" type="email" name="email"
                             value="{{ user_account.email }}" />
                     </fieldset>
                 </div>
@@ -122,7 +122,7 @@
                 <div class="fieldset_container">
                     <fieldset class="new_form">
                         <label class="new_form_edit_account" for="role">Role: </label>
-                        <input class="new_form_edit_account_input" id="role" type="text" name="role"
+                        <input required class="new_form_edit_account_input" id="role" type="text" name="role"
                             value="{{ user_account.user.role }}" />
                     </fieldset>
                 </div>

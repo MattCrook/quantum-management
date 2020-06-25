@@ -55,18 +55,12 @@
 {% if request.user.is_authenticated %}
 <div class="manage_account_container">
     <div class="manage_account_title">Account</div>
-    {% comment %} <div class="add_account_button"> {% endcomment %}
         <button class="add_account_button" ><a class="add_account" href="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}">Edit Account Information</a></button>
-    {% comment %} </div> {% endcomment %}
 </div>
 {% endif %}
-
-
-
     <div class="banner_picture_on_profile">
         <img id="account_banner_image" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn"/>
     </div>
-
     <div class="profile_picture">{{admin_user_profile.picture}}</div>
 
 

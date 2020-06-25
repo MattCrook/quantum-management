@@ -72,15 +72,19 @@ def admin_user_edit_form(request, user_id):
         form_data = request.POST
         if ('actual_method' in form_data and form_data['actual_method'] == 'PUT'):
             user = User.objects.get(pk=user_id)
-            admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
+            admin_user_profile = AdminUser.objects.get(user_id=user.id)
             employees = Employee.objects.filter(admin_user_id=user_id)
 
             user.first_name = form_data["first_name"]
             user.last_name = form_data["last_name"]
             user.username = form_data["username"]
-            user.save()
+        # "When Django handles a file upload, the file data ends up placed in request.FILES"
+        # https://docs.djangoproject.com/en/3.0/topics/http/file-uploads/
+            if request.FILES:
+                newproduct.image_path = request.FILES["image_path"]
 
             admin_user_profile.picture = form_data["picture"]
             admin_user_profile.role = form_data["role"]
+            user.save()
             admin_user_profile.save()
-            return redirect(reverse('quantummanagementapp:account'))
+            return redirect(reverse('quantummanagementapp:account', kwargs={'user_id': user.id}))

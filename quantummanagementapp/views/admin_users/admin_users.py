@@ -6,6 +6,8 @@ from quantummanagementapp.models import AdminUser, Employee
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from rest_framework import status
+from django.core.files.base import ContentFile
+
 
 
 def admin_user_register(request):
@@ -78,10 +80,10 @@ def admin_user_edit_form(request, user_id):
             user.first_name = form_data["first_name"]
             user.last_name = form_data["last_name"]
             user.username = form_data["username"]
+            print("FILES", form_data["picture"])
         # "When Django handles a file upload, the file data ends up placed in request.FILES"
         # https://docs.djangoproject.com/en/3.0/topics/http/file-uploads/
-            if request.FILES:
-                newproduct.image_path = request.FILES["image_path"]
+            user.picture = form_data["picture"]
 
             admin_user_profile.picture = form_data["picture"]
             admin_user_profile.role = form_data["role"]

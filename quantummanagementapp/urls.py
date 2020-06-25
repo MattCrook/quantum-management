@@ -32,8 +32,10 @@ urlpatterns = [
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 
+
++ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # path('', include('social_django.urls')),
 # path('social-auth/', include('social_django.urls', namespace="social")),

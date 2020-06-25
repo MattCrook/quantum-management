@@ -33,13 +33,10 @@ def employee_form(request):
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
-        print("employeeid", employee.id)
-        employee_attractions = EmployeeAttraction.objects.filter(
-            employee_id=employee_id)
+        employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()
-        # start_date_employee = datetime.datetime.strptime(employee.start_date, '%Y-%m-%d').date()
 
         all_roles = []
 

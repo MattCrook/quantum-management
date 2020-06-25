@@ -326,7 +326,8 @@ input[type="radio"] + label {
 
 ul li input[type="radio"] {
   position: absolute;
-  visibility: hidden;
+  /* visibility: hidden; */
+  opacity: 0;
 }
 
 ul li label {

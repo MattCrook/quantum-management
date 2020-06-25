@@ -14,6 +14,24 @@ def park_details(request, park_id):
         employees = Employee.objects.filter(park_id=park_id)
         employee_attractions = EmployeeAttraction.objects.all()
 
+        attractions_types_in_park = []
+
+        # loop to check: extract the attracion types in the specific park, then the attraction under that type
+        for park_attr in park_attractions:
+            for attr_type in attraction_types:
+                type = park_attr.attraction.type.id
+                if type == attr_type.id:
+                    attractions_types_in_park.append(type)
+
+        types_in_park_list = []
+
+        for attraction_in_park in attractions_types_in_park:
+            for type in attraction_types:
+                if attraction_in_park == type.id:
+                    types_in_park_list.append(type)
+
+        types_in_park = set(types_in_park_list)
+
         template = 'parks/park_details.html'
         context = {
             'park': park,
@@ -21,6 +39,8 @@ def park_details(request, park_id):
             'attraction_types': attraction_types,
             'employees': employees,
             'employee_attractions': employee_attractions,
+            'attractions_types_in_park': attractions_types_in_park,
+            'types_in_park': types_in_park
         }
         return render(request, template, context)
 

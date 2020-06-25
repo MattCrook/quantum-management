@@ -1,13 +1,10 @@
 from django.test import TestCase
-# from django.urls import reverse
-from django.shortcuts import render, reverse, redirect
-from quantummanagementapp.models import AdminUser
-from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
-from unittest import skip
-import json
 import unittest
 from django.contrib.auth import authenticate, get_user_model
+from django.shortcuts import render, redirect, reverse
+from quantummanagementapp.models import AdminUser
+from django.contrib.auth.models import User
+from django import urls
 
 
 class TestLogin(TestCase):
@@ -30,6 +27,14 @@ class TestLogin(TestCase):
     def test_wrong_password(self):
         user = authenticate(username='test', password='wrong')
         self.assertFalse(user is not None and user.is_authenticated)
+
+    def test_redirect_to_home_when_logged_in(self):
+        user = authenticate(username='test', password='12test12')
+        self.assertTrue((user is not None) and user.is_authenticated)
+        url = urls.reverse('quantummanagementapp:home')
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 302)
+        assert resp.url, reverse('quantummanagementapp:home')
 
 
 if __name__ == '__main__':

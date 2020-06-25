@@ -61,17 +61,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Translations
-*.mo
-
-# Django stuff:
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
 
 # Sphinx documentation
 docs/_build/
@@ -134,6 +123,7 @@ pip-delete-this-directory.txt
 # Django stuff:
 *.log
 local_settings.py
+db.sqlite3
 
 # pyenv
 .python-version
@@ -146,6 +136,15 @@ QuantumManagementEnv/
 .vscode
 QuantumManagementEnv
 
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
 #other
 .DS_Store
 *.sqlite3
@@ -154,9 +153,10 @@ media/*
 *.db
 *.pid
 .sqlite3
+images/
 
 # django migrations
-# migrations
+migrations/
 
 #db connection
 connection.py

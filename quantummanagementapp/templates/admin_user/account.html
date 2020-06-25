@@ -30,16 +30,7 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
             </li>
         </div>
-        {% comment %} <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
-        </li>
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
-        </li>
 
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:account' user.id %}">Account</a>
-        </li> {% endcomment %}
         <div class="container_2">
             <div class="logout_btn_account">
                 <li id="nav_btn" class="nav-item">
@@ -49,7 +40,7 @@
 
 
             <div class="nav-item">
-                <img class="nav_profile_picture" src="{{user.admin_user.picture}}">
+                <img class="nav_profile_picture" src="{{user_account.user.picture}}">
             </div>
             <div class="django_admin_btn_account">
                 <li id="nav_btn" class="nav-item">
@@ -65,7 +56,7 @@
 <div class="manage_account_container">
     <div class="manage_account_title">Account</div>
     {% comment %} <div class="add_account_button"> {% endcomment %}
-        <button class="add_account_button" ><a class="add_account" href="{}">Edit Account Information</a></button>
+        <button class="add_account_button" ><a class="add_account" href="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}">Edit Account Information</a></button>
     {% comment %} </div> {% endcomment %}
 </div>
 {% endif %}

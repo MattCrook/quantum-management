@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin/', admin_user, name='admin'),
 
     path('account/<int:user_id>/', get_admin_user_profile, name='account'),
+    path('account/<int:user_id>/form', admin_user_edit_form, name="admin_user_edit_form"),
 
     path('employees/', employee_list, name='employee_list'),
     path('employees/form/', employee_form, name='employee_form'),

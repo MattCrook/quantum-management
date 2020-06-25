@@ -1,15 +1,11 @@
 import json
 from django.shortcuts import render, redirect, reverse
-# from django.http.response import JsonResponse
-# from rest_framework.authtoken.models import Token
-# from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseServerError
 from quantummanagementapp.models import AdminUser, Employee
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from rest_framework import status
-
 
 
 def admin_user_register(request):
@@ -27,7 +23,6 @@ def admin_user_register(request):
     elif request.method == 'POST':
         try:
             form_data = request.POST
-            print("FORMDATA", form_data)
             new_user = User.objects.create_user(
                 first_name=form_data['first_name'],
                 last_name=form_data['last_name'],
@@ -44,20 +39,48 @@ def admin_user_register(request):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+
 @login_required
 def get_admin_user_profile(request, user_id):
     if request.method == 'GET':
-        try:
-            user_account = User.objects.get(pk=user_id)
+        user_account = User.objects.get(pk=user_id)
+        admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
+        employees = Employee.objects.filter(admin_user_id=user_id)
+        template = 'admin_user/account.html'
+        context = {
+            'user_account': user_account,
+            'admin_user_profile': admin_user_profile,
+            'employees': employees
+        }
+        return render(request, template, context)
+
+
+@login_required
+def admin_user_edit_form(request, user_id):
+    if request.method == 'GET':
+        user_account = User.objects.get(pk=user_id)
+        admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
+        employees = Employee.objects.filter(admin_user_id=user_id)
+        template = 'admin_user/admin_user_edit_form.html'
+        context = {
+            'user_account': user_account,
+            'admin_user_profile': admin_user_profile,
+            'employees': employees
+        }
+        return render(request, template, context)
+    elif request.method == 'POST':
+        form_data = request.POST
+        if ('actual_method' in form_data and form_data['actual_method'] == 'PUT'):
+            user = User.objects.get(pk=user_id)
             admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
             employees = Employee.objects.filter(admin_user_id=user_id)
-            template = 'admin_user/account.html'
-            context = {
-                'user_account': user_account,
-                'admin_user_profile': admin_user_profile,
-                'employees': employees
-            }
-            return render(request, template, context)
-        except Exception as ex:
-            return HttpResponseServerError(ex)
-            # return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            user.first_name = form_data["first_name"]
+            user.last_name = form_data["last_name"]
+            user.username = form_data["username"]
+            user.save()
+
+            admin_user_profile.picture = form_data["picture"]
+            admin_user_profile.role = form_data["role"]
+            admin_user_profile.save()
+            return redirect(reverse('quantummanagementapp:account'))

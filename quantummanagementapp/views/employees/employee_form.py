@@ -56,10 +56,7 @@ def employee_edit_form(request, employee_id):
 
     elif request.method == 'POST':
         form_data = request.POST
-        if (
-            "actual_method" in form_data
-            and form_data["actual_method"] == "PUT"
-        ):
+        if ("actual_method" in form_data and form_data["actual_method"] == "PUT"):
             employee = Employee.objects.get(pk=employee_id)
             park_id = employee.park_id
             park = Park.objects.get(pk=park_id)

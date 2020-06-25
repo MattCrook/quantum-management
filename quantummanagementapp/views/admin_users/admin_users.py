@@ -2,11 +2,12 @@ import json
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.http import HttpResponseServerError
-from quantummanagementapp.models import AdminUser, Employee
+from quantummanagementapp.models import AdminUser, Employee, Image, ImageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from rest_framework import status
 from django.core.files.base import ContentFile
+
 
 
 
@@ -63,11 +64,15 @@ def admin_user_edit_form(request, user_id):
         user_account = User.objects.get(pk=user_id)
         admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
         employees = Employee.objects.filter(admin_user_id=user_id)
+        form = ImageForm()
+
+
         template = 'admin_user/admin_user_edit_form.html'
         context = {
             'user_account': user_account,
             'admin_user_profile': admin_user_profile,
-            'employees': employees
+            'employees': employees,
+            'form': form
         }
         return render(request, template, context)
     elif request.method == 'POST':
@@ -76,17 +81,21 @@ def admin_user_edit_form(request, user_id):
             user = User.objects.get(pk=user_id)
             admin_user_profile = AdminUser.objects.get(user_id=user.id)
             employees = Employee.objects.filter(admin_user_id=user_id)
+            image_id = admin_user_profile.image_id
 
+            image = ImageForm(request.POST, request.FILES)
             user.first_name = form_data["first_name"]
             user.last_name = form_data["last_name"]
             user.username = form_data["username"]
-            print("FILES", form_data["picture"])
-        # "When Django handles a file upload, the file data ends up placed in request.FILES"
-        # https://docs.djangoproject.com/en/3.0/topics/http/file-uploads/
-            user.picture = form_data["picture"]
-
-            admin_user_profile.picture = form_data["picture"]
             admin_user_profile.role = form_data["role"]
+            image.save()
+
+            img_obj = image.instance
+            img_obj.image = request.FILES["image"]
+            image.save()
+
+            admin_user_profile.image_id = img_obj.id
             user.save()
             admin_user_profile.save()
-            return redirect(reverse('quantummanagementapp:account', kwargs={'user_id': user.id}))
+
+        return redirect(reverse('quantummanagementapp:account', kwargs={'user_id': user.id}))

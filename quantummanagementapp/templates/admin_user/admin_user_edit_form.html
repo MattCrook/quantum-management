@@ -49,7 +49,7 @@
 
 
             <div class="nav-item">
-                <img class="nav_profile_picture" src="{{user_account.user.picture}}">
+                <img class="nav_profile_picture" src="{{user_account.user.image.image}}">
             </div>
             <div class="django_admin_btn_account">
                 <li id="nav_btn" class="nav-item">
@@ -71,21 +71,29 @@
         <div class="account_edit_form_flex_container">
 
             <form class="new_form" id="form_container_account_edit"
-                action="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}" method="POST">
+                action="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="manage_edit_account_container">
                     <div class="edit_account_title">Edit Account</div>
                 </div>
                 <div class="profile_picture_edit_account"><img id="profile_pic_edit_account"
-                        src="{{user_account.user.picture}}" /></div>
+                        src="{{user_account.user.image.image}}" /></div>
 
                 <div class="fieldset_container" id="edit_account_picture_fieldset_container">
                     <fieldset class="new_form">
-                        <label class="new_form_picture_label" for="picture">Picture: </label>
-                        <input required class="new_form_picture_label" id="picture" type="file" name="picture"
-                            value="{{ user_account.user.picture }}" />
+
+                        <label class="new_form_picture_label" for="image">Picture: </label>
+                        <input required class="new_form_picture_label" id="image" type="file" name="image"
+                            value="{{ user_account.user.image.image }}" />
                     </fieldset>
                 </div>
+
+
+                    {% if img_obj %}
+                    <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+                    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+                    {% endif %}
+
 
                 <div class="fieldset_container">
                     <fieldset class="new_form">
@@ -157,6 +165,24 @@
             {% endfor %}
         </div>
     </div>
+
+
+
+{% comment %} 
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+   {{ form.as_p }}
+  <button type="submit">Upload</button>
+</form>
+
+{% if img_obj %}
+  <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+  <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+{% endif %} {% endcomment %}
+
+
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

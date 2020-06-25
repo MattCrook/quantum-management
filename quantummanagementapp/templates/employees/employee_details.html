@@ -20,38 +20,43 @@
 
 <body class="body">
 
-    <ul class="navbar-nav mr-auto">
+     <ul class="navbar-nav mr-auto">
         {% if user.is_authenticated %}
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
-        </li>
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
-        </li>
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
-        </li>
+        <div class="home_nav_container_1">
             <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{}">Admin Profile</a>
-        </li>
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
-        </li>
+                <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
+            </li>
+            <li id="btn4" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
+            </li>
+            <li id="btn4" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
+            </li>
+        </div>
+
+        <div class="home_nav_container_2">
+            <li id="btn4" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:account' user.id %}">Account</a>
+            </li>
+
+            <li class="nav-item">
+                <img class="nav_profile_picture" src="{{user.admin_user.picture}}">
+            </li>
+
+            <li id="btn4" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
+            </li>
+        </div>
+
         {% else %}
         <div class="nav-item" id="logo_nav_landing_page">Quantum</div>
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" id="login_link" href="{% url 'quantummanagementapp:login' %}">Login</a>
+
+        <li id="login_link" class="nav-item">
+            <div id="btn4">
+                <a class="nav-link" href="{% url 'quantummanagementapp:login' %}">Login</a>
+            </div>
         </li>
         {% endif %}
-
-        <li id="btn4" class="nav-item">
-            <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
-        </li>
-    {% if user.is_authenticated %}
-        <li class="nav-item">
-            <img class="nav_profile_picture" src="{{admin_user.picture}}">
-        </li>
-    {% endif %}
     </ul>
 
     <div class="manage_employees_container_detail">

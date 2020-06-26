@@ -1,0 +1,69 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<body>
+
+    <div class="manage_employees_container">
+        <div class="manage_employees_title">Add New Attraction</div>
+
+        <div class="add_employee_button">
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
+                    href="{}">Back</a></button>
+        </div>
+    </div>
+
+
+
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park' park.id %}" method="POST">
+            {% csrf_token %}
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="name">Attraction Name: </label>
+                    <input class="new_form" id="name" type="text" name="name" value="{{ attraction.name }}" />
+                </fieldset>
+            </div>
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="tyoe">Attraction Type: </label>
+                    <select class="new_form" id="tyoe" type="text" name="type">
+                        {% for type in attraction_types %}
+                        <option value="{{ type.id }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                    <a href="{}" class="btn6">Create new type</a>
+                </fieldset>
+            </div>
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <label class="new_form" for="capacity">Capacity: </label>
+                    <input class="new_form" id="capacity" type="text" name="capacity" value="{{ attraction.capacity }}" />
+                </fieldset>
+            </div>
+
+            <div class="fieldset_container">
+                <fieldset class="new_form">
+                    <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
+                        -
+                        {{user.email}}</section>
+                    <div class="p2">*Currently adding this attraction to <strong>{{park.name}}</strong>
+                </fieldset>
+            </div>
+
+
+            <input class="new_form" id="create_park_btn" type="submit" value="Create" />
+        </form>
+    </form>
+
+
+
+    <div class="signature">
+        <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
+        </p>
+    </div>
+
+{% endblock %}

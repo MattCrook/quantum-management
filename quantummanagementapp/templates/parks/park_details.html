@@ -14,33 +14,33 @@
         <ul class="nav">
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
-                    <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+                    Dashboard
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-link"></i> Overview
+                     Overview
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-widgets"></i> Employees
+                    Employees
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-calendar"></i> Attractions
-                </a>
-            </li>
-            <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-info-outline"></i> Analytics
+                   Analytics
                 </a>
             </li>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-comment-more"></i> Contact
+                  Contact
                 </a>
             </li>
         </ul>

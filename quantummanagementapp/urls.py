@@ -34,6 +34,7 @@ urlpatterns = [
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form'),
 
     path('employees/create/role/', role_list, name="add_new_role"),
+    path('parks/<int:park_id>/details/attractions/create/', create_attraction, name='create_attraction'),
 ]
 
 

@@ -21,8 +21,8 @@
 
 </head>
 
-<body>
-    <ul class="navbar-nav-account mr-auto">
+<body class="account_view_body">
+    <ul class="navbar-nav-account mr-auto" style="margin-bottom: 0px;">
         {% if user.is_authenticated %}
         <div class="container_1">
             <div class="nav-item" id="logo_nav_account">Quantum</div>
@@ -61,29 +61,37 @@
     <div class="banner_picture_on_profile">
         <img id="account_banner_image" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn"/>
     </div>
-    <div class="profile_picture">{{admin_user_profile.picture}}</div>
 
 
+    <div class="account_view_outer_container">
 
-
-    <div id="first_name_profile" class="user_profile_info">{{user_account.first_name}}</div>
-    <div id="last_name_profile" class="user_profile_info">{{user_account.last_name}}</div>
-    <div id="username_profile" class="user_profile_info">{{user_account.username}}</div>
-    <div id="email_profile" class="user_profile_info">{{user_account.email}}</div>
-    <div id="date_joined_profile" class="user_profile_info">{{user_account.date_joined}}</div>
-    <div id="last_login_profile" class="user_profile_info">{{user_account.last_login}}</div>
-    <br>
-
-
-    <div id="role_profile" class="user_profile_info">Title: {{admin_user_profile.role}}</div>
-    <br>
-
-    <div class="employees_user_responsible_container">
-        <div class="employee_user_resp_title">List of employees {{user.first_name}} is admin for:</div>
-        {% for employee in employees %}
-        <li class="list_employee_item">{{employee.first_name}} {{employee.last_name}}</li>
-        {% endfor %}
+    <div class="profile_picture_account_view">
+        <img class="image_on_account_view" src="{{admin_user_profile.image.image.url}}"/>
     </div>
+
+
+
+    <div class="account_view_inner_info">
+        <div class="account_info_title">Account Information</div>
+        <div id="first_name_profile" class="user_profile_info">Name: {{user_account.first_name}} {{user_account.last_name}}</div>
+        <div id="role_profile" class="user_profile_info">Title: {{admin_user_profile.role}}</div>
+        <div id="username_profile" class="user_profile_info">Username: {{user_account.username}}</div>
+        <div id="email_profile" class="user_profile_info">Email: {{user_account.email}}</div>
+        <div id="date_joined_profile" class="user_profile_info">Date Joined: {{user_account.date_joined}}</div>
+        <div id="last_login_profile" class="user_profile_info">Last Login: {{user_account.last_login}}</div>
+
+
+    </div>
+
+
+    <div class="employees_user_responsible_container_account_view">
+        <div class="employee_user_responsible_title_account_view">List of employees {{user.first_name}} is admin for:</div>
+        {% for employee in employees %}
+            <li class="list_employee_item_account_view"><a class="link_to_employee_details_account_view" href="{% url 'quantummanagementapp:employee_details' employee.id %}"> {{employee.first_name}} {{employee.last_name}}</a></li>
+        {% endfor %}
+        </div>
+    </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

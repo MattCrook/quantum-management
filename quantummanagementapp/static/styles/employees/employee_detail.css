@@ -70,10 +70,12 @@
 .employee_detail_card_container {
   width: 40%;
   padding: 5px 20px;
-  background-color: rgb(59, 59, 61);
+  /* background-color: rgb(59, 59, 61); */
   box-shadow: 5px 5px 5px 0 rgb(0, 0, 0);
   border-radius: 8px;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  background-color: rgb(216, 216, 216);
+
 }
 
 #employee_actions_details {
@@ -159,17 +161,14 @@
   margin-bottom: 10px;
 }
 
-/* .employee_details_attractions_list {
-} */
+
 
 .employee_details_attractions_list {
   padding: 5px 5px;
-  /* margin:10px 20px; */
   margin-left: 20px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-family: sans-serif;
   text-transform: uppercase;
-  /* text-align: center; */
   font-size: 12px;
   position: relative;
   text-decoration: none;

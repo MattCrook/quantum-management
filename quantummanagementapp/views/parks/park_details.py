@@ -16,7 +16,7 @@ def park_details(request, park_id):
 
         attractions_types_in_park = []
 
-        # loop to check: extract the attracion types in the specific park, then the attraction under that type
+        # loop to check: extract the attraction types in the specific park, put into list
         for park_attr in park_attractions:
             for attr_type in attraction_types:
                 type = park_attr.attraction.type.id
@@ -25,6 +25,7 @@ def park_details(request, park_id):
 
         types_in_park_list = []
 
+       # loops thru list we just created to extract the attraction and its details off of the attraction type, then turn to set to get rid of duplicates.
         for attraction_in_park in attractions_types_in_park:
             for type in attraction_types:
                 if attraction_in_park == type.id:

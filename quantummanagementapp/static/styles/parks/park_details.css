@@ -3,7 +3,9 @@ font-size: 14px;
 margin-bottom: 20px;
 padding-left: 10px;
 border-bottom: #7c7a7a;
-background-color: #000000;
+/* background-color: #000000; */
+background-color: rgb(17, 19, 24);
+
 color: white;
 padding-bottom: 5px;
 padding-top: 5px;

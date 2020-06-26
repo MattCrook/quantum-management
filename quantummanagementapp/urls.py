@@ -31,7 +31,9 @@ urlpatterns = [
     path('parks', park_list, name='parks'),
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
-    path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
+    path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form'),
+
+    path('employees/create/role/', role_list, name="add_new_role"),
 ]
 
 

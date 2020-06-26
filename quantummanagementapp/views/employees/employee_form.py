@@ -1,4 +1,4 @@
-from quantummanagementapp.models import Employee, EmployeeAttraction, Park, Attraction
+from quantummanagementapp.models import Employee, EmployeeAttraction, Park, Attraction, Roles
 from django.shortcuts import render, redirect, reverse
 import datetime
 from django.contrib.auth.decorators import login_required
@@ -13,12 +13,13 @@ def employee_form(request):
         employees = Employee.objects.all()
         parks = Park.objects.all()
         attractions = Attraction.objects.all()
+        all_roles = Roles.objects.all()
 
-        roles = []
-        for e in employees:
-            roles.append(e.role)
+        # roles = []
+        # for e in employees:
+        #     roles.append(e.role)
         # convert to set to get rid of duplicates
-        all_roles = set(roles)
+        # all_roles = set(roles)
         template = "employees/employee_form.html"
         context = {
             'employees': employees,
@@ -37,6 +38,7 @@ def employee_edit_form(request, employee_id):
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()
+        roles = Roles.objects.all()
 
         all_roles = []
 

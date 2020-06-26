@@ -93,9 +93,9 @@
 
 .role_container {
   flex-direction: column;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.2);
   width: 20%;
-  border-radius: 5px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .roles_title_container {
@@ -107,7 +107,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+/*
 .edit_employee_btn {
   border: none;
   margin-left: 10px;
@@ -116,7 +116,7 @@
   border-radius: 5px;
   font-size: 12px;
   font-weight: 50;
-  /* font-variant: small-caps; */
+  /* font-variant: small-caps; 
 }
 
 .edit_employee_btn:hover {
@@ -154,6 +154,76 @@
     background: #3e4247;
     color: white;
   }
+}
+
+*/
+
+.edit_btn:link {
+  text-decoration: none;
+  color: black;
+}
+.edit_btn:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.edit_employee_btn {
+  background-color: white;
+  padding: 5px 30px;
+  margin: 5px 10px;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+  display:inline-block;
+}
+
+.edit_employee_btn {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.edit_employee_btn::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.edit_employee_btn:hover::before {
+  width: 100%;
+}
+
+.edit_employee_btn::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.edit_employee_btn:hover::after {
+  width: 100%;
+
+}
+.edit_employee_btn:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
 }
 
 /******************** Employee Add / Edit Form ******************/
@@ -232,7 +302,7 @@ label.new_form {
 }
 .new_form select {
   -webkit-appearance: menulist-button;
-  height: 35px;
+  height: 40px;
 }
 
 .new_form input[type="submit"],
@@ -440,62 +510,64 @@ input[type="radio"]:checked ~ label {
   font-weight: bold;
 }
 
-
-
 /********** Btn 6 ************/
 .btn6 {
-padding: 11px 42px;
-margin:10px 450px;
-color: #fff;
-font-family: sans-serif;
-text-transform: uppercase;
-text-align: center;
-font-size: 12px;
-position: relative;
-text-decoration: none;
-/* display:inline-block; */
-
+  padding: 11px 42px;
+  margin: 10px 450px;
+  color: #fff;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  text-decoration: none;
+  /* display:inline-block; */
 }
 
-.btn6{
-  border:1px solid transparent; 
-   -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-  transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+.btn6 {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
 
 .btn6::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0px;
-  bottom:0px;
+  bottom: 0px;
   width: 0%;
-  height:1px;
-  background: #6098FF;
-  box-shadow: inset 0px 0px 0px #6098FF;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
   display: block;
-  -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-  transition: all 0.4s cubic-bezier(.5, .24, 0, 1)
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
 
 .btn6:hover::before {
-  width:100%;
+  width: 100%;
 }
 
 .btn6::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0px;
-  top:0px;
+  top: 0px;
   width: 0%;
-  height:1px;
-  background: #6098FF;
-  -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-  transition: all 0.4s cubic-bezier(.5, .24, 0, 1)
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
 .btn6:hover::after {
-  width:100%;
+  width: 100%;
 }
-.btn6:hover{
-  border-left:1px solid #6098FF;
-  border-right:1px solid #6098FF;
+.btn6:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+
+/************** Add New Role Form **************/
+.add_new_role_header {
+  padding-right: 20px;
 }

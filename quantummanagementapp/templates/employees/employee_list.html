@@ -5,7 +5,7 @@
 <div class="manage_employees_container">
     <div class="manage_employees_title">Manage Employees</div>
     <div class="add_employee_button">
-        <button class="add_tp_btn"><i class="fas fa-user-plus"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_form' %}">Add Employee</a></button>
+        <button class="add_tp_btn"><a class="add_employee" href="{% url 'quantummanagementapp:employee_form' %}">Add Employee</a></button>
     </div>
 </div>
 {% endif %}
@@ -18,6 +18,7 @@
                 <div class="roles_title_container">
                      <h5 class="role_item">{{role}}</h5>
                 </div>
+                <div class="employee_list_ul">
                 {% for employee in employees %}
                 <ul>
                 <div class="employees_list_container">
@@ -25,13 +26,14 @@
                         <li class="employee_item">
                             <a class="employee_item_link" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a>
                             {% if request.user.id == employee.admin_user_id %}
-                            <button class="edit_employee_btn"><i class="fas fa-user-edit"></i><a class="edit_btn" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">Edit</a></button>
+                            <button class="edit_employee_btn"><a class="edit_btn" href="{% url 'quantummanagementapp:employee_edit_form' employee.id %}">Edit</a></button>
                             {% endif %}
                         </li>
                     {% endif %}
                 </div>
                 </ul>
                 {% endfor %}
+                </div>
             </div>
             {% endfor %}
         </div>

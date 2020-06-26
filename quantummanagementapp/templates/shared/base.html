@@ -45,7 +45,7 @@
             </li>
 
             <li class="nav-item">
-                <img class="nav_profile_picture" src="{{user.admin_user.picture}}">
+                <img class="nav_profile_picture" src="{{user.user.image.image.url}}">
             </li>
 
             <li id="btn4" class="nav-item">
@@ -62,12 +62,6 @@
             </div>
         </li>
         {% endif %}
-
-        {% comment %} {% if user.is_authenticated %}
-        <li class="nav-item">
-            <img class="nav_profile_picture" src="{{user.admin_user.picture}}">
-        </li>
-        {% endif %} {% endcomment %}
     </ul>
 
     <main class="main-content">

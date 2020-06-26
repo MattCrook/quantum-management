@@ -1,0 +1,220 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/employees/employee_list.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/parks/park_list.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/parks/park_details.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/admin_user/account.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/admin_user/edit_account.css' %}" type="text/css" media="screen" />
+
+
+</head>
+
+<body class="edit_account_body">
+
+    <ul class="navbar-nav-account-edit mr-auto" style="margin-bottom: 0px;">
+        {% if user.is_authenticated %}
+        <div class="container_1">
+            <div class="nav-item" id="logo_nav_account">Quantum</div>
+            <li id="nav_btn" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
+            </li>
+            <li id="nav_btn" class="nav-item">
+                <a class="nav-link" href="{% url 'quantummanagementapp:account' user_account.id %}">Account</a>
+            </li>
+        </div>
+
+        <div class="container_2">
+            <div class="logout_btn_account">
+                <li id="nav_btn" class="nav-item">
+                    <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
+                </li>
+            </div>
+
+
+            <div class="nav-item">
+                <img class="nav_profile_picture" src="{{user_account.user.image.image.url}}">
+            </div>
+            <div class="django_admin_btn_account">
+                <li id="nav_btn" class="nav-item">
+                    <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
+                </li>
+            </div>
+        </div>
+
+        {% endif %}
+    </ul>
+
+
+    <div class="banner_picture_on_profile_edit_form">
+        <img id="account_banner_image_edit_form"
+            src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn" />
+    </div>
+
+    <div class="account_edit_body_flex_container">
+        <div class="account_edit_form_flex_container">
+
+            <form class="new_form" id="form_container_account_edit"
+                action="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="manage_edit_account_container">
+                    <div class="edit_account_title">Edit Account</div>
+                </div>
+                <div class="profile_picture_edit_account"><img id="profile_pic_edit_account"
+                        src="{{user_account.user.image.image.url}}" /></div>
+
+               <div class="fieldset_container" id="edit_account_picture_fieldset_container">
+                    <fieldset class="new_form">
+
+                        <label class="new_form_picture_label" for="image">Picture: </label>
+                        <input required class="new_form_picture_label" id="image" type="file" name="image"
+                            value="{{ user_account.user.image.url }}" />
+                    </fieldset>
+                </div>
+
+                    {% comment %} {% if user_account.user.image_id == user_account.user.image.id %}
+                    <h5>Succesfully uploaded : {{user_account.user.image.image.url}}</h5>
+                    <img src="{{ user_account.user.image.image}}" alt="connect" style="max-height:300px">
+                    {% endif %}  {% endcomment %}
+
+                     {% comment %} 
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Upload</button>
+                    </form>
+                    {% if img_obj %}
+                    <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+                    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+                    {% endif %}  {% endcomment %}
+
+
+                <div class="fieldset_container">
+                    <fieldset class="new_form">
+                        <label class="new_form_edit_account" for="first_name">First Name: </label>
+                        <input required class="new_form_edit_account_input" id="first_name" type="text" name="first_name"
+                            value="{{ user_account.first_name }}" />
+                    </fieldset>
+                </div>
+
+                <div class="fieldset_container">
+                    <fieldset class="new_form">
+                        <label class="new_form_edit_account" for="last_name">Last Name: </label>
+                        <input required class="new_form_edit_account_input" id="last_name" type="text" name="last_name"
+                            value="{{ user_account.last_name }}" />
+                    </fieldset>
+                </div>
+
+                <div class="fieldset_container">
+                    <fieldset class="new_form">
+                        <label class="new_form_edit_account" for="username">Username: </label>
+                        <input required class="new_form_edit_account_input" id="username" type="text" name="username"
+                            value="{{ user_account.username }}" />
+                    </fieldset>
+                </div>
+
+                <div class="fieldset_container">
+                    <fieldset class="new_form">
+                        <label class="new_form_edit_account" for="email">Email: </label>
+                        <input required class="new_form_edit_account_input" id="email" type="email" name="email"
+                            value="{{ user_account.email }}" />
+                    </fieldset>
+                </div>
+
+                <div class="fieldset_container">
+                    <fieldset class="new_form">
+                        <label class="new_form_edit_account" for="role">Role: </label>
+                        <input required class="new_form_edit_account_input" id="role" type="text" name="role"
+                            value="{{ user_account.user.role }}" />
+                    </fieldset>
+                </div>
+
+                <div id="date_joined_profile" class="user_profile_info">
+                    <div class="date_joined">Date Joined: </div>{{user_account.date_joined}}
+                </div>
+                <div id="last_login_profile" class="user_profile_info">
+                    <div class="last_login">Last Login: </div>{{user_account.last_login}}
+                </div>
+
+                <div class="update_button_account_edit">
+                    <input type="hidden" name="actual_method" value="PUT">
+                    <input id="account_edit_form_update_btn" type="submit" value="Update" />
+                </div>
+
+            </form>
+            </form>
+
+            <div class="signature">
+                <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum
+                        Management</a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="employees_user_responsible_container">
+            <div class="employee_user_resp_title">List of employees {{user.first_name}} is admin for:</div>
+            {% for employee in employees %}
+            <li class="list_employee_item"><a class="admin_account_link_to_employee_details" href="{% url 'quantummanagementapp:employee_details' employee.id %}"> {{employee.first_name}} {{employee.last_name}}</a></li>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% comment %} 
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+   {{ form.as_p }}
+  <button type="submit">Upload</button>
+</form>
+
+{% if img_obj %}
+  <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+  <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
+{% endif %} {% endcomment %}
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

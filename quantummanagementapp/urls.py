@@ -3,6 +3,9 @@ from django.urls import path
 from django.conf.urls import include, url
 from quantummanagementapp import views
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 app_name = "quantummanagementapp"
@@ -18,6 +21,7 @@ urlpatterns = [
     path('admin/', admin_user, name='admin'),
 
     path('account/<int:user_id>/', get_admin_user_profile, name='account'),
+    path('account/<int:user_id>/form', admin_user_edit_form, name="admin_user_edit_form"),
 
     path('employees/', employee_list, name='employee_list'),
     path('employees/form/', employee_form, name='employee_form'),
@@ -27,9 +31,13 @@ urlpatterns = [
     path('parks', park_list, name='parks'),
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
-    path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form')
+    path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form'),
+
+    path('employees/create/role/', role_list, name="add_new_role"),
 ]
 
 
+
+# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # path('', include('social_django.urls')),
 # path('social-auth/', include('social_django.urls', namespace="social")),

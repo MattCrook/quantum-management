@@ -4,15 +4,18 @@ from django.db.models import F
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.core.files.storage import FileSystemStorage
+from django.db import models
 
 
-
+# fs = FileSystemStorage(location='../media/photos')
+# picture = models.ImageField(storage=fs, blank=True, null=True)
 
 class AdminUser(models.Model):
 
     user = models.OneToOneField(User, related_name="user", on_delete=models.CASCADE)
-    picture = models.ImageField(blank=True, null=True)
-    role = models.CharField(max_length=50)
+    image = models.ForeignKey("Image", blank=True, null=True, on_delete=models.CASCADE)
+    role = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         verbose_name = ("adminUser")

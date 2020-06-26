@@ -64,75 +64,20 @@
     </ul>
 
     <div class="manage_parks_container">
-        <div class="manage_parks_title">Manage Parks</div>
-        <div class="manage_parks_title">Add New Park</div>
-
-
-        <div class="add_employee_button">
-            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
-                    href="{% url 'quantummanagementapp:parks' %}">Back</a></button>
-        </div>
+        <div class="manage_parks_title">Manage Employee</div>
+        <div class="add_new_role_header">Add New Department/ Role</div>
     </div>
 
-    {% if park.id is not None %}
-    <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park_form' park.id %}"
-        method="POST">
-        {% csrf_token %}
-        {% else %}
-        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:parks' %}" method="POST">
+
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:add_new_role' %}" method="POST">
             {% csrf_token %}
-            {% endif %}
-
-
             <div class="fieldset_container">
                 <fieldset class="new_form">
-                    <label class="new_form" for="name">Park Name: </label>
-                    <input class="new_form" id="name" type="text" name="name" value="{{ park.name }}" />
+                    <label class="new_form" for="name">Job Title: </label>
+                    <input class="new_form" id="name" type="text" name="name" value="{{ role.name }}" />
                 </fieldset>
             </div>
-
-            <div class="fieldset_container">
-                <fieldset class="new_form">
-                    <label class="new_form" for="state">Park State: </label>
-                    <input class="new_form" id="state" type="text" name="state" value="{{ park.state }}" />
-                </fieldset>
-            </div>
-
-            <div class="fieldset_container">
-                <fieldset class="new_form">
-                    <label class="new_form" for="max_capacity">Max Capacity: </label>
-                    <input class="new_form" id="max_capacity" type="number" name="max_capacity"
-                        value="{{ park.max_capacity }}" />
-                </fieldset>
-            </div>
-
-            <div class="fieldset_container">
-                <fieldset class="new_form">
-                    <label class="new_form" for="number_of_attractions">Number of Attractions: </label>
-                    <input class="new_form" id="number_of_attractions" type="number" name="number_of_attractions"
-                        value="{{ park.number_of_attractions }}" />
-                </fieldset>
-            </div>
-
-            <div class="fieldset_container">
-                <fieldset class="new_form">
-                    <section class="form_admin_note"><strong>Admin User:</strong> {{user.first_name}} {{user.last_name}}
-                        -
-                        {{user.email}}</section>
-                    <div class="p2">*Note - Only admin user responsible for adding a park may make any future edits.
-                    </div>
-                </fieldset>
-            </div>
-
-            {% if park.id is not None %}
-            <input type="hidden" name="actual_method" value="PUT">
-            <input class="new_form" type="submit" value="Update" />
-            {% else %}
-            {% comment %} <div class="bar-anchor"> {% endcomment %}
-                <input class="new_form" id="create_park_btn" type="submit" value="Create" />
-                  {% comment %} <div class="transition-bar"></div> {% endcomment %}
-            {% comment %} </div> {% endcomment %}
-            {% endif %}
+            <input class="new_form" id="create_park_btn" type="submit" value="Create" />
         </form>
     </form>
 

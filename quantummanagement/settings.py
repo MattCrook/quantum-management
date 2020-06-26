@@ -59,7 +59,7 @@ ROOT_URLCONF = 'quantummanagement.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -145,48 +145,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+SAFE_DELETE_INTERPRET_UNDELETED_OBJECTS_AS_CREATED = True
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-
-
-
-# SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
-# SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
-# SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
-# SOCIAL_AUTH_AUTH0_SCOPE = [
-#     'openid',
-#     'profile',
-#     'email'
-# ]
-# AUDIENCE = None
-# # first one
-# AUTHENTICATION_BACKENDS = {
-#     'quantummanagementapp.auth0backend.Auth0',
-#     'django.contrib.auth.backends.ModelBackend'
-# }
-
-
-# # AUTHENTICATION_BACKENDS = {
-# #     'social_core.backends.auth0.Auth0OAuth2',
-# #     'django.contrib.auth.backends.ModelBackend'
-# # }
-
-# #auth0 redirect login global variables
-# LOGIN_URL = '/login/auth0'
-# LOGIN_REDIRECT_URL = '/dashboard'
-# # LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
-
-# SOCIAL_AUTH_PIPELINE = (
-#     'social_core.pipeline.social_auth.social_details',
-#     'social_core.pipeline.social_auth.social_uid',
-#     'social_core.pipeline.social_auth.auth_allowed',
-#     'social_core.pipeline.social_auth.social_user',
-#     'social_core.pipeline.user.get_username',
-#     'social_core.pipeline.user.create_user',
-#     'quantummanagementapp.authorization.process_roles',
-#     'social_core.pipeline.social_auth.associate_user',
-#     'social_core.pipeline.social_auth.load_extra_data',
-#     'social_core.pipeline.user.user_details',
-# )
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")

@@ -132,8 +132,11 @@ padding-top: 5px;
 } */
 
 .sidebar_list_item_container {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #4073e071;
+  padding-bottom: 12px;
+
 }
 
 #sidebar .nav {
@@ -143,23 +146,20 @@ padding-top: 5px;
 
 #sidebar .nav a {
   background: none;
-  border-bottom: 1px solid #4073e071;
+  /* border-bottom: 1px solid #4073e071; */
   /* border-bottom: 1px solid #455a64; */
   color: #cfd8dc;
   font-size: 13px;
   padding-top: 16px;
   padding-bottom: 20px;
-  padding-right: 71%;
-  padding-left: 16px;
+  /* padding-right: 71%; */
+  padding-left: 30px;
+  margin-bottom: 10px;
 }
 
 #sidebar .nav a:hover {
   background: none;
   color: #eceff1;
-}
-
-#sidebar .nav a i {
-  margin-right: 16px;
 }
 
 /********* Employee Name List Button Link *************/

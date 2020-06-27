@@ -35,6 +35,12 @@
                         {% endfor %}
                     </select>
                     <a href="{}" class="btn6">Create new type</a>
+                        <dialog class="infoDialog">
+                            <div class="infoDialog__message">Clicked the button</div>
+                            <button class="closeDialog">Close</button>
+                            <button id="detail--{{ attraction.id }}">Details</button>
+
+                        </dialog>
                 </fieldset>
             </div>
 

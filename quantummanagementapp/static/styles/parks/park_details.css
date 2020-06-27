@@ -177,10 +177,8 @@ padding-top: 5px;
 .employee_name_link {
   padding: 5px 10px;
   color: rgb(3, 3, 3);
-  /* text-align: center; */
   position: relative;
   text-decoration: none;
-  /* display: inline-block; */
   width: 200px;
 }
 .employee_name_link::before {

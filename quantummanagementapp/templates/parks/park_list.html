@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -16,7 +17,22 @@
 <div class="park_list_outer_container">
     {% for park in parks %}
     <div class="park_list_inner_container">
-         <div><a href="{% url 'quantummanagementapp:park' park.id %}" id="park_name" class="park_list_name">{{ park.name }}</a></div>
+         <div class="park_name_and_icons_container">
+             <a href="{% url 'quantummanagementapp:park' park.id %}" id="park_name" class="park_list_name">{{ park.name }}</a>
+                 <div class="edit_delete_park_icons">
+
+                   <form action="{}" method="GET">
+                        {% csrf_token %}
+                         <button class="park_edit_btn"><i class="far fa-edit"></i></button>
+                    </form>
+
+                    <form action="{% url 'quantummanagementapp:park' park.id %}" method="POST">
+                         {% csrf_token %}
+                         <input type="hidden" name="actual_method" value="DELETE"/>
+                             <button class="delete_park_btn"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                </div>
+        </div>
          <div class="park_list_details_container">
          <div id="state" class="park_list_item">State: {{ park.state }}</div>
          <div class="park_list_item">Max Capacity: {{ park.max_capacity }}</div>
@@ -27,4 +43,8 @@
 </div>
 {% endif %}
 
-{% endblock content %}
+{% endblock  %}
+
+{% block scripts %}
+<script src="{% static 'scripts/buttonHandlers.js'%}"></script>
+{% endblock %}

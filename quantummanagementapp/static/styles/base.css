@@ -157,3 +157,82 @@ img {
   width: 15%;
   font-size: 15px;
 }
+
+#welcome_user {
+font-variant: normal;
+font-size: 20px;
+padding-top: 3px;
+padding-bottom: 3px;
+}
+
+#complete_account_banner {
+  font-size: 17px;
+  font-variant: normal;
+  padding-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.complete_account_btn_container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3px;
+}
+
+/************** Complete Profile/ Account Button ************/
+.btn11 {
+  padding: 5px 30px;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 1px;
+  position: relative;
+  color: #070707;
+  box-shadow: 2px 2px 1px 1px rgb(197, 197, 197);
+}
+
+.btn11 {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.btn11::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  /* z-index: -1; */
+  width: 0%;
+  height: 1px;
+  background: #0038d1;
+  /* box-shadow: inset 2px 2px 2px 2px #bebbb8; */
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.btn11:hover::before {
+  width: 100%;
+}
+
+.btn11::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  /* z-index: -1; */
+  width: 0%;
+  height: 1px;
+  background: #034bd1;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.btn11:hover::after {
+  width: 100%;
+}
+.btn11:hover {
+  border-left: 1px solid #0553e2;
+  border-right: 1px solid #064ed3;
+}

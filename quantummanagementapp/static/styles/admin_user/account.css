@@ -292,3 +292,10 @@
   border-left: 1px solid #6098ff;
   border-right: 1px solid #6098ff;
 }
+
+.no_employees_assigned {
+  color: rgb(139, 139, 139);
+  font-size: 15px;
+  margin-left: 5px;
+
+}

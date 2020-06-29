@@ -32,8 +32,11 @@ urlpatterns = [
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form'),
+    path('park/<int:park_id>/details/employees', park_list_employees, name='park_list_employees'),
 
     path('employees/create/role/', role_list, name="add_new_role"),
+    path('parks/<int:park_id>/details/attractions/create/', create_attraction, name='create_attraction'),
+    path('parks/<int:park_id>/details/attractions/create/type/', attraction_type_list, name='attraction_type_list')
 ]
 
 

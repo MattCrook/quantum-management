@@ -1,4 +1,6 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+
 
 {% block content %}
 
@@ -12,33 +14,33 @@
         <ul class="nav">
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
-                    <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+                    Dashboard
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-link"></i> Overview
+                     Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                    Employees
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-widgets"></i> Employees
-                </a>
-            </li>
-            <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-calendar"></i> Attractions
-                </a>
-            </li>
-            <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-info-outline"></i> Analytics
+                   Analytics
                 </a>
             </li>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#">
-                    <i class="zmdi zmdi-comment-more"></i> Contact
+                  Contact
                 </a>
             </li>
         </ul>
@@ -58,146 +60,46 @@
     {% if request.user.is_authenticated %}
     <div class="attractions_in_park_title">Attractions By Category in Park</div>
     <div class="park_main_container">
-
     {% for attraction_in_park in types_in_park %}
         <div class="attractions_column_list_container">
         <h6 class="attraction_title">{{attraction_in_park.name}}</h6>
 
         <div class="attractions_column_list">
             {% for park_attraction in park_attractions %}
-            {% if park_attraction.attraction.type.id == attraction_in_park.id %}
-                <div class="park_attractions_container">
-                <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-                <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-                <div>Type: {{attraction_in_park.name}}</div>
-                <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
-                    {% for employee_attraction in employee_attractions %}
-                        {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
-                        {% if employee_attraction.employee.id %}
+                {% if park_attraction.attraction.type.id == attraction_in_park.id %}
+                    <div class="park_attractions_container">
+                    <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
+                    <div class="item_park_details">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+                    <div class="item_park_details">Type: {{attraction_in_park.name}}</div>
 
-                        <div class="employee_on_ride_list_title">
-                        <li class="park_detail_list_item_btn"><a class="employee_name_link"
-                                href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}} {{employee_attraction.employee.last_name}}</a></li>
+                    <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
+                        <div class="render_if_none_container">
+                        {% for employee_attraction in employee_attractions %}
+                            {% if park_attraction.attraction_id == employee_attraction.attraction_id %}
+                                {% if employee_attraction.employee_id and employee_attraction.employee.deleted is Null %}
+                                    <div class="employee_on_ride_list_title">
+                                        <li class="park_detail_list_item_btn"><a class="employee_name_link"
+                                            href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}} {{employee_attraction.employee.last_name}}</a></li>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                         </div>
-                        {% else %}
-                        <div class="employee_on_ride_list_title">
-                        <li class="park_detail_list_item_btn">None currently assigned</li>
-                        </div>
+                    </div>
 
-                        {% endif %}
-                        {% endif %}
-                    {% endfor %}
                 </div>
-                </div>
-            {% endif %}
+                {% endif %}
             {% endfor %}
-            </div>
-            </div>
+        </div>
+
+    </div>
     {% endfor %}
     </div>
-    </div>
-    {% endif %}
+</div>
+{% endif %}
 
+{% endblock  %}
 
-
-{% endblock content %}
-
-
-
-
-
-
-
-
-{% comment %} 
-        <h6 class="roller_coaster_title">Roller Coasters</h6>
-        {% for park_attraction in park_attractions %}
-           {% for attraction_type in attraction_types %}
-        {% if park_attraction.attraction.type.id == attraction_type.id%}
-        <div class="park_attractions_container">
-            <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-            <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-
-            {% for attraction_type in attraction_types %}
-            {% if attraction_type.id == park_attraction.attraction.type_id %}
-            <div>Type: {{attraction_type.name}}</div>
-            {% endif %}
-            {% endfor %}
-
-            <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
-                {% for employee_attraction in employee_attractions %}
-                {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
-                <div class="employee_on_ride_list_title">
-                <li class="park_detail_list_item_btn"><a class="employee_name_link"
-                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}}
-                        {{employee_attraction.employee.last_name}}</a></li>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
-        </div> {% endcomment %}
-
-    {% comment %} <div class="park_main_container_roll_coasters">
-        <h6 class="roller_coaster_title">Thrill Rides</h6>
-        {% for park_attraction in park_attractions %}
-        {% if park_attraction.attraction.type.name == 'Thrill Ride'%}
-        <div class="park_attractions_container">
-            <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-            <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-
-            {% for attraction_type in attraction_types %}
-            {% if attraction_type.id == park_attraction.attraction.type_id %}
-            <div>Type: {{attraction_type.name}}</div>
-            {% endif %}
-            {% endfor %}
-
-            <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
-                {% for employee_attraction in employee_attractions %}
-                {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
-                <div class="employee_on_ride_list_title">
-                <li class="park_detail_list_item_btn"><a class="employee_name_link"
-                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}}
-                        {{employee_attraction.employee.last_name}}</a></li>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-        </div>
-
-
-    <div class="park_main_container_roll_coasters">
-        <h6 class="roller_coaster_title">Zones</h6>
-        {% for park_attraction in park_attractions %}
-        {% if park_attraction.attraction.type.name == 'Area/ Zone'%}
-        <div class="park_attractions_container">
-            <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-            <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-
-            {% for attraction_type in attraction_types %}
-            {% if attraction_type.id == park_attraction.attraction.type_id %}
-            <div>Type: {{attraction_type.name}}</div>
-            {% endif %}
-            {% endfor %}
-
-            <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
-                {% for employee_attraction in employee_attractions %}
-                {% if park_attraction.attraction.id == employee_attraction.attraction_id %}
-                <div class="employee_on_ride_list_title">
-                <li class="park_detail_list_item_btn"><a class="employee_name_link"
-                        href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">{{employee_attraction.employee.first_name}}
-                        {{employee_attraction.employee.last_name}}</a></li>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-        </div> {% endcomment %}
+{% block scripts %}
+    <script src="{% static 'scripts/parkDetailsCheck.js' %}"></script>
+{% endblock  %}

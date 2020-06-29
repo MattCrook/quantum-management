@@ -1,0 +1,83 @@
+.employee_name_park_list_btn {
+  margin-left: 10px;
+  color: rgb(155, 151, 151);
+}
+
+.employee_name_park_list_btn {
+  text-decoration: none;
+  padding: 6px 22px;
+  margin: 8px 8px;
+  color: rgb(173, 173, 173);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.employee_name_park_list_btn {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.employee_name_park_list_btn::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.employee_name_park_list_btn:hover::before {
+  width: 100%;
+}
+
+.employee_name_park_list_btn::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.employee_name_park_list_btn:hover::after {
+  width: 100%;
+  text-decoration: none;
+
+}
+.employee_name_park_list_btn:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+
+.employees_in_park_list_inner_container {
+  display: flex;
+  margin-left: 15px;
+}
+
+.a_link_employee_detail {
+    text-decoration: none;
+}
+.a_link_employee_detail:link {
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+
+  }
+  .a_link_employee_detail:visited {
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+
+  }
+  

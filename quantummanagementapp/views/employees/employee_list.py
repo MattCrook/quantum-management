@@ -8,6 +8,8 @@ def employee_list(request):
     if request.method == 'GET':
         employees = Employee.objects.all()
         all_roles = []
+
+        # loop thru all employees coming back and filter out the roles, delete duplicates
         for employee in employees:
             role = employee.role
             all_roles.append(role)

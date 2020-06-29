@@ -46,15 +46,19 @@ Quantum Management is a management and data analytics application that allows a 
       * Attractions in park, categorized by *attraction type*
       * Which employees work on that attraction
       * Details and specs for that specific attraction
+    * Employees
+      * Admin user can easily read list of employees that work at the current park.
+    * Add Attraction
+      * Admin user can add a new attraction (and *attraction type*) to the current park.
     * Park analytics
       * Data analysis information for creating data visualizations for business operations and intelligence
 
 
 ## Entity Relationship Diagram (ERD)
-![QuantumManagementERD](quantummanagementapp/images/QuantumManagementERD.png)
+![QuantumManagementERD](quantummanagementapp/static/images/QuantumManagementERD.png)
 
 
 ## Wireframe 
 * Basic stucture/ layout of the application's pages and dataflow.
 
-![QuantumManagementWireframe](quantummanagementapp/images/QuantumManagementWireframe.png)
+![QuantumManagementWireframe](quantummanagementapp/static/images/QuantumManagementWireframe.png)

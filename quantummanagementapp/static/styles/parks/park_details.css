@@ -3,7 +3,9 @@ font-size: 14px;
 margin-bottom: 20px;
 padding-left: 10px;
 border-bottom: #7c7a7a;
-background-color: #000000;
+/* background-color: #000000; */
+background-color: rgb(17, 19, 24);
+
 color: white;
 padding-bottom: 5px;
 padding-top: 5px;
@@ -130,8 +132,11 @@ padding-top: 5px;
 } */
 
 .sidebar_list_item_container {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #4073e071;
+  padding-bottom: 12px;
+
 }
 
 #sidebar .nav {
@@ -141,23 +146,20 @@ padding-top: 5px;
 
 #sidebar .nav a {
   background: none;
-  border-bottom: 1px solid #4073e071;
+  /* border-bottom: 1px solid #4073e071; */
   /* border-bottom: 1px solid #455a64; */
   color: #cfd8dc;
   font-size: 13px;
   padding-top: 16px;
   padding-bottom: 20px;
-  padding-right: 71%;
-  padding-left: 16px;
+  /* padding-right: 71%; */
+  padding-left: 30px;
+  margin-bottom: 10px;
 }
 
 #sidebar .nav a:hover {
   background: none;
   color: #eceff1;
-}
-
-#sidebar .nav a i {
-  margin-right: 16px;
 }
 
 /********* Employee Name List Button Link *************/
@@ -175,10 +177,8 @@ padding-top: 5px;
 .employee_name_link {
   padding: 5px 10px;
   color: rgb(3, 3, 3);
-  /* text-align: center; */
   position: relative;
   text-decoration: none;
-  /* display: inline-block; */
   width: 200px;
 }
 .employee_name_link::before {
@@ -271,10 +271,11 @@ padding-top: 5px;
   flex-direction: column;
   box-shadow: 2px 2px 2px 2px rgb(190, 186, 186);
   border-radius: 4px;
-  width: 350px;
+  width: 330px;
   padding-bottom: 15px;
   font-size: 14px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
+  background-color: rgb(224, 222, 222);
 }
 
 .attraction_link_btn_container {
@@ -282,6 +283,10 @@ padding-top: 5px;
   justify-content: center;
   font-size: 16px;
   font-weight: 900;
+}
+
+.item_park_details {
+  margin-left: 5px;
 }
 
 .employees_assigned_to_this_ride {

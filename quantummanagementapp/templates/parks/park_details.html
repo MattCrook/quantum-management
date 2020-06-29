@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
                     Employees
                 </a>
             </li>
@@ -69,8 +69,8 @@
                 {% if park_attraction.attraction.type.id == attraction_in_park.id %}
                     <div class="park_attractions_container">
                     <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-                    <div>Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-                    <div>Type: {{attraction_in_park.name}}</div>
+                    <div class="item_park_details">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+                    <div class="item_park_details">Type: {{attraction_in_park.name}}</div>
 
                     <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
                         <div class="render_if_none_container">

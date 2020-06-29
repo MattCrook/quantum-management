@@ -1,0 +1,30 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/parks/park_list_employees.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="manage_employees_container">
+    <div class="manage_employees_title">Employees in {{park.name}}</div>
+
+    <div class="add_employee_button">
+        <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
+                href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
+    </div>
+</div>
+
+
+<div class="employees_in_park_list_outer_container">
+    {% for employee in employees %}
+        <div class="employees_in_park_list_inner_container">
+            <div class="employee_name_park_list_btn">
+                <a class="a_link_employee_detail" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{employee.first_name}} {{employee.last_name}}</a>
+            </div>
+        </div>
+{% endfor %}
+</div>
+
+{% endblock %}

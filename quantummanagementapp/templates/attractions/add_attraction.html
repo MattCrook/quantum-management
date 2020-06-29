@@ -3,6 +3,8 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/parks/add_attraction.css' %}" />
+
 {% endblock %}
 
 
@@ -15,18 +17,21 @@
 
         <div class="add_employee_button">
             <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
-                    href="{}">Back</a></button>
+                    href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
         </div>
     </div>
 
+  {% if attraction.id is not None %}
+      <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:attraction_edit_form' attraction.id %}" method="POST">
+    {% csrf_token %}
+    {% else %}
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:create_attraction' park.id %}" method="POST">
+        {% csrf_token %}
 
-
-        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park' park.id %}" method="POST">
-            {% csrf_token %}
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="name">Attraction Name: </label>
-                    <input class="new_form" id="name" type="text" name="name" value="{{ attraction.name }}" />
+                    <input required class="new_form" id="name" type="text" name="name" value="{{ attraction.name }}" />
                 </fieldset>
             </div>
 
@@ -40,21 +45,13 @@
                     </select>
                     <a href="#modal-1" data-micromodal-trigger="modal-1" class="btn6">Create new type</a>
  
-                    {% comment %} <button data-custom-close="modal-1">close</button> {% endcomment %}
-
-                        {% comment %} <dialog class="infoDialog">
-                            <div class="infoDialog__message">Clicked the button</div>
-                            <button class="closeDialog">Close</button>
-                            <button id="detail--{{ attraction.id }}">Details</button>
-                        </dialog> {% endcomment %}
                 </fieldset>
             </div>
 
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="capacity">Capacity: </label>
-                    <input class="new_form" id="capacity" type="text" name="capacity" value="{{ attraction.capacity }}" />
-                </fieldset>
+                    <input required class="new_form" id="capacity" type="text" name="capacity" value="{{ attraction.capacity }}"/>
             </div>
 
             <div class="fieldset_container">
@@ -67,9 +64,10 @@
             </div>
 
 
-            <input class="new_form" id="create_park_btn" type="submit" value="Create" />
+            <input class="new_form" id="create_attraction_btn" type="submit" value="Create" />
         </form>
     </form>
+    {% endif %}
 
 
 
@@ -87,21 +85,23 @@
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
+
         <main class="modal__content" id="modal-1-content">
+            <form class="new_form" id="modal" action="{% url 'quantummanagementapp:attraction_type_list' park.id %}" method="POST">
+             {% csrf_token %}
                 <div class="fieldset_container">
-                <fieldset class="new_form">
-                    <label class="new_form" for="type">Type: </label>
-                    <input class="new_form" id="type" type="text" name="type" value="{{ type.name }}" />
+                <fieldset class="new_form" id="modal">
+                    <label class="new_form_modal" for="type"><div class="type_modal_label">Type: </div></label>
+                    <input required class="new_form" id="type" type="text" name="type" value="{{ type.name }}" />
                 </fieldset>
                 </div>
-          {% comment %} <p>
-            Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
-          </p> {% endcomment %}
-        </main>
         <footer class="modal__footer">
-          <button class="modal__btn modal__btn-primary">Submit</button>
+                <input id="modal__btn-primary" type="submit" value="Create" style="margin-right: 8px;"/>
           <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
         </footer>
+            </form>
+        </main>
+
       </div>
     </div>
   </div>

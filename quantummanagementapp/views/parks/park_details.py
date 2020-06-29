@@ -60,7 +60,8 @@ def park_details(request, park_id):
             park.number_of_attractions = form_data["number_of_attractions"]
 
             park.save()
-            return redirect(reverse('quantummanagementapp:parks'))
+            # return redirect(reverse('quantummanagementapp:parks'))
+            return redirect(reverse('quantummanagementapp:park', kwargs={'park_id': park_id}))
 
         if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
             try:

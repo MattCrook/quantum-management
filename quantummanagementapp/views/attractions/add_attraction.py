@@ -35,23 +35,17 @@ def create_attraction(request, park_id):
 
     elif request.method == 'POST':
         form_data = request.POST
-
-        new_attraction_type = AttractionType()
-        new_attraction_type.name = form_data["name"]
-        new_attraction_type.save()
+        park = Park.objects.get(pk=park_id)
 
         new_attraction = Attraction()
         new_attraction.name = form_data["name"]
         new_attraction.capacity = form_data["capacity"]
-        new_attraction.current_operating_capacity = form_data["current_operating_capacity"]
-        new_attraction.type = new_attraction_type.id
+        # new_attraction.current_operating_capacity = form_data["current_operating_capacity"]
+        new_attraction.type_id = form_data["type"]
         new_attraction.save()
 
-
         new_park_attraction = ParkAttractions()
-        new_park_attraction.park = park_id
-        new_park_attraction.attraction = new_attraction.id
+        new_park_attraction.park_id = park.id
+        new_park_attraction.attraction_id = new_attraction.id
         new_park_attraction.save()
-
-
         return redirect(reverse('quantummanagementapp:park', kwargs={'park_id': park_id}))

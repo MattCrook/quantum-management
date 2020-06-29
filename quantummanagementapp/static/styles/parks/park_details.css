@@ -271,10 +271,11 @@ padding-top: 5px;
   flex-direction: column;
   box-shadow: 2px 2px 2px 2px rgb(190, 186, 186);
   border-radius: 4px;
-  width: 350px;
+  width: 330px;
   padding-bottom: 15px;
   font-size: 14px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
+  background-color: rgb(224, 222, 222);
 }
 
 .attraction_link_btn_container {
@@ -282,6 +283,10 @@ padding-top: 5px;
   justify-content: center;
   font-size: 16px;
   font-weight: 900;
+}
+
+.item_park_details {
+  margin-left: 5px;
 }
 
 .employees_assigned_to_this_ride {

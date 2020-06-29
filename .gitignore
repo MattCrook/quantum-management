@@ -157,3 +157,6 @@ migrations/
 
 #db connection
 connection.py
+
+#node modules
+/node_modules

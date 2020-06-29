@@ -159,4 +159,4 @@ migrations/
 connection.py
 
 #node modules
-/node_modules
+node_modules/

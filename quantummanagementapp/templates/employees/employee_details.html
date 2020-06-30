@@ -9,7 +9,7 @@
     <title>Quantum Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
@@ -20,7 +20,7 @@
 
 <body class="body">
 
-     <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
         {% if user.is_authenticated %}
         <div class="home_nav_container_1">
             <li id="btn4" class="nav-item">
@@ -62,13 +62,17 @@
     <div class="manage_employees_container_detail">
         <div class="manage_employees_title">Employee Detail</div>
         <div class="add_employee_button">
-            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee" href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
+                    href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
         </div>
     </div>
 
     <div class="detail_body_container">
-  {% comment %} <img class="body_image" src="https://alphavima.com/wp-content/uploads/2020/02/asbfotf0519data5.jpg" alt="analytics"/> {% endcomment %}
-  {% comment %} <img class="body_image" src="https://ww2.frost.com/wp-content/uploads/2019/12/bigdatabg.jpg" alt="analytics"/> {% endcomment %}
+        {% comment %} <img class="body_image"
+            src="https://alphavima.com/wp-content/uploads/2020/02/asbfotf0519data5.jpg" alt="analytics" />
+        {% endcomment %}
+        {% comment %} <img class="body_image" src="https://ww2.frost.com/wp-content/uploads/2019/12/bigdatabg.jpg"
+            alt="analytics" /> {% endcomment %}
 
         <div id="employee_details" class="employee_detail_card_container">
             <div class="detail_item_name">{{ employee.first_name }} {{ employee.last_name }}</div>
@@ -76,9 +80,9 @@
             <div class="detail_item">Attraction(s) Assigned To: </div>
 
             {% for employee_attraction in employee_attractions %}
-                {% if employee.id == employee_attraction.employee_id %}
-                    <li class="employee_details_attractions_list">- {{employee_attraction.attraction.name}}</li>
-                {% endif %}
+            {% if employee.id == employee_attraction.employee_id %}
+            <li class="employee_details_attractions_list">- {{employee_attraction.attraction.name}}</li>
+            {% endif %}
             {% endfor %}
 
 
@@ -91,40 +95,39 @@
             {% endif %}
 
             {% if employee.park_id is not null %}
-            <div class="detail_item">Park Employee Employed At: {{ employee.park.name }}</div>
+            <div class="detail_item">Park Employed At: {{ employee.park.name }}</div>
             {% else %}
             <div class="detail_item">Currently not employed or assigned hours. </div>
             {% endif %}
-            <div class="detail_item">Administrator: {{ employee.admin_user.user.first_name}} {{ employee.admin_user.user.last_name }}</div>
-            </div>
-           </div>
+            <div class="detail_item_admin_name">Administrator: {{ employee.admin_user.user.first_name}}
+                {{ employee.admin_user.user.last_name }}</div>
         </div>
+    </div>
 
-        {% if request.user.id == employee.admin_user_id %}
-        <div id="employee_actions_details">
-            <form action="{% url 'quantummanagementapp:employee_details' employee.id %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="actual_method" value="DELETE">
-                <button class="employee_detail_delete_btn">Delete</button>
-            </form>
-            <form action="{% url 'quantummanagementapp:employee_edit_form' employee.id %}" method="GET">
-                {% csrf_token %}
-                <button class="employee_detail_edit_btn">Edit</button>
-            </form>
+    {% if request.user.id == employee.admin_user_id %}
+    <div id="employee_actions_details">
+        <form action="{% url 'quantummanagementapp:employee_details' employee.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button class="employee_detail_delete_btn">Delete</button>
+        </form>
+        <form action="{% url 'quantummanagementapp:employee_edit_form' employee.id %}" method="GET">
+            {% csrf_token %}
+            <button class="employee_detail_edit_btn">Edit</button>
+        </form>
     </div>
     {% endif %}
 
-    <script src="../../static/scripts/buttonHandlers.js"></script>
+    <script src="{% static 'scripts/buttonHandlers.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% comment %} <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" rossorigin="anonymous"></script> {% endcomment %}
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
-</div>
+    </div>
 </body>
 
 </html>

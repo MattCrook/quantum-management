@@ -126,7 +126,7 @@
 
             {% if park.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
-            <input class="new_form" type="submit" value="Update" />
+            <input id="update_park" class="new_form" type="submit" value="Update" />
             {% else %}
                 <input class="new_form" id="create_park_btn" type="submit" value="Create" />
 
@@ -137,7 +137,9 @@
 
 
     <div class="signature">
-        <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
+        {% comment %} <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
+        </p> {% endcomment %}
+        <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i>
         </p>
     </div>
 

@@ -69,7 +69,10 @@
 
 .employee_detail_card_container {
   width: 40%;
-  padding: 5px 20px;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-left: 20px;
   /* background-color: rgb(59, 59, 61); */
   box-shadow: 5px 5px 5px 0 rgb(0, 0, 0);
   border-radius: 8px;
@@ -149,10 +152,17 @@
   margin-bottom: 10px;
 }
 
+.detail_item_admin_name {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight: 550;
+  font-size: 14px;
+}
+
 .detail_item_name {
   margin-top: 5px;
   margin-bottom: 14px;
-  font-size: 30px;
+  font-size: 26px;
   border-bottom: 1px solid rgb(165, 162, 162);
 }
 

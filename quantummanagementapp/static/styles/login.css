@@ -6,7 +6,7 @@
   margin: 0 auto;
   text-align: center;
   position: absolute;
-  top: 45%;
+  top: 38%;
   left: 50%;
   background: #f4f7f8;
   transform: translate(-50%, -50%);
@@ -78,8 +78,8 @@
 }
 
 .errorlist.nonfield {
-    font-size: 12px;
-    color: rgba(124, 39, 39, 0.795);
+  font-size: 12px;
+  color: rgba(124, 39, 39, 0.795);
 }
 
 /*************** Register Styles ***************/
@@ -100,10 +100,12 @@
   margin: 0 auto;
   text-align: center;
   position: absolute;
-  top: 70%;
+  top: 66%;
   left: 50%;
   background: #f4f7f8;
   transform: translate(-50%, -50%);
+  margin-bottom: 100px;
+  padding-bottom: 12px;
 }
 
 .register_card h2 {
@@ -135,20 +137,32 @@
 }
 
 .register_submit_btn {
-  position: relative;
-  display: block;
-  padding: 10px;
   color: #fff;
-  /* margin: 0 auto; */
+  padding: 10px;
   background: black;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  width: 35%;
-  border: 1px solid rgba(0, 0, 0, 0.753);
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.753);
+  line-height: 1;
+  padding: 1em 2em;
+  width: 65%;
+  border-radius: 3px 3px 3px 3px;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+.register_submit_btn:hover,
+.register_submit_btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
+}
+
+.register_submit_btn {
+  --color: #08068a83;
+  --hover: #02103b;
 }
 
 .register_card:hover {
@@ -159,10 +173,30 @@
   font-size: 11px;
 }
 .register_card > form > ul {
-    padding-left: 0px;
+  padding-left: 0px;
 }
 
 .register_card > form > ul > li {
-    font-size: 10px;
-    text-align: left;
+  font-size: 10px;
+  text-align: left;
+}
+
+#login_with_google {
+  background-color: rgb(14, 14, 14);
+  color: #eeeff0;
+  border-color: #070707;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.row {
+  width: 100%;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

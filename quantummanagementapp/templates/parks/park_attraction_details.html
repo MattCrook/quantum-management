@@ -1,0 +1,95 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/parks/park_attraction_details.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                     Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                   Analytics
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                    Employees
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="manage_parks_container_details_page">
+        <div class="manage_parks_title">{{park.name}}</div>
+        <div class="select_park_header">Details For All {{type.name}}s</div>
+        <div class="add_park_button">
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_park"
+                    href="{% url 'quantummanagementapp:parks' %}">Back</a></button>
+        </div>
+    </div>
+
+    <div class="park_main_container">
+        <div class="attractions_column_list_container">
+
+        <h6 class="attraction_title">{{type.name}}</h6>
+        <div class="attractions_column_list">
+
+            {% for park_attraction in park_attractions %}
+                {% if park_attraction.attraction.type_id == type.id %}
+                    <div class="park_attractions_container">
+                        <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
+                        <div class="item_park_details">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+                        <div class="item_park_details">Type: {{attraction_in_park.name}}</div>
+                        <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
+                            <div class="render_if_none_container">
+                                {% for employee_attraction in employee_attractions %}
+                                    {% if park_attraction.attraction_id == employee_attraction.attraction_id %}
+                                        {% if employee_attraction.employee_id and employee_attraction.employee.deleted is Null %}
+                                            <div class="employee_on_ride_list_title">
+                                                <li class="park_detail_list_item_btn"><a class="employee_name_link" href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">
+                                                    {{employee_attraction.employee.first_name}} {{employee_attraction.employee.last_name}}</a>
+                                                </li>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endblock  %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/parkDetailsCheck.js' %}"></script>
+{% endblock  %}

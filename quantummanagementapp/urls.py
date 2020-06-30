@@ -32,7 +32,8 @@ urlpatterns = [
     path('parks/<int:park_id>/details', park_details, name='park'),
     path('parks/form', park_form, name='park_form'),
     path('parks/form/<int:park_id>/', park_edit_form, name='park_edit_form'),
-    path('park/<int:park_id>/details/employees', park_list_employees, name='park_list_employees'),
+    path('park/<int:park_id>/details/employees/', park_list_employees, name='park_list_employees'),
+    path('park/<int:park_id>/details/<int:type_id>/attractions/', park_category_details_list, name='park_category_details_list'),
 
     path('employees/create/role/', role_list, name="add_new_role"),
     path('parks/<int:park_id>/details/attractions/create/', create_attraction, name='create_attraction'),

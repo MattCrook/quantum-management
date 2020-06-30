@@ -6,6 +6,47 @@
 {% endblock %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+
+<div id="viewport">
+    <div id="sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                     Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                    Employees
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                   Analytics
+                </a>
+            </li>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                  Contact
+                </a>
+            </li>
+        </ul>
+    </div>
 
 <div class="manage_employees_container">
     <div class="manage_employees_title">Employees in {{park.name}}</div>
@@ -26,5 +67,6 @@
         </div>
 {% endfor %}
 </div>
-
+</div>
+{% endif %}
 {% endblock %}

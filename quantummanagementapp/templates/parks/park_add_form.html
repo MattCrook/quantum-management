@@ -75,11 +75,11 @@
     </div>
 
     {% if park.id is not None %}
-    <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park_form' park.id %}"
+    <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park_edit_form' park.id %}"
         method="POST">
         {% csrf_token %}
         {% else %}
-        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:parks' %}" method="POST">
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park_form' %}" method="POST">
             {% csrf_token %}
             {% endif %}
 
@@ -128,10 +128,8 @@
             <input type="hidden" name="actual_method" value="PUT">
             <input class="new_form" type="submit" value="Update" />
             {% else %}
-            {% comment %} <div class="bar-anchor"> {% endcomment %}
                 <input class="new_form" id="create_park_btn" type="submit" value="Create" />
-                  {% comment %} <div class="transition-bar"></div> {% endcomment %}
-            {% comment %} </div> {% endcomment %}
+
             {% endif %}
         </form>
     </form>
@@ -144,7 +142,7 @@
     </div>
 
 
-    <script src="../../static/scripts/buttonHandlers.js"></script>
+    <script src="{% static 'scripts/buttonHandlers.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

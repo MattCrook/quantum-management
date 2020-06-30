@@ -38,10 +38,17 @@
                 </li>
             </div>
 
-
+           {% if user_account.user.image.image.url %}
             <div class="nav-item">
                 <img class="nav_profile_picture" src="{{user_account.user.image.image.url}}">
             </div>
+            {% else %}
+            <div class="nav-item">
+                <img class="nav_profile_picture" src="{% static 'images/Qwaves.png'%}">
+            </div>
+            {% endif %}
+
+
             <div class="django_admin_btn_account">
                 <li id="nav_btn" class="nav-item">
                     <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
@@ -57,7 +64,6 @@
     <div class="manage_account_title">Account</div>
         <button class="add_account_button" ><a class="add_account" href="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}">Edit Account Information</a></button>
 </div>
-{% endif %}
     <div class="banner_picture_on_profile">
         <img id="account_banner_image" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn"/>
     </div>
@@ -65,11 +71,17 @@
 
     <div class="account_view_outer_container">
 
+    {% if admin_user_profile.image.image.url %}
     <div class="profile_picture_account_view">
-        <img class="image_on_account_view" src="{{admin_user_profile.image.image.url}}"/>
+        <img class="image_on_account_view" src="{{admin_user_profile.image.image.url}}" style="width:400px;height:410px"/>
     </div>
+    {% else %}
+    <div class="profile_picture_account_view">
+        {% comment %} <img class="nav_profile_picture" src="https://www.logomyway.com/logos_new/24846/QUANTUM_1_942251457950.jpg" style="width:400px;height:410px" /> {% endcomment %}
+       <img class="nav_profile_picture" src="{% static 'images/coloredQ.png'%}" style="width:400px;height:410px" />
 
-
+    </div>
+    {% endif %}
 
     <div class="account_view_inner_info">
         <div class="account_info_title">Account Information</div>
@@ -80,17 +92,20 @@
         <div id="date_joined_profile" class="user_profile_info">Date Joined: {{user_account.date_joined}}</div>
         <div id="last_login_profile" class="user_profile_info">Last Login: {{user_account.last_login}}</div>
 
-
     </div>
-
 
     <div class="employees_user_responsible_container_account_view">
         <div class="employee_user_responsible_title_account_view">List of employees {{user.first_name}} is admin for:</div>
+        {% if employees %}
         {% for employee in employees %}
             <li class="list_employee_item_account_view"><a class="link_to_employee_details_account_view" href="{% url 'quantummanagementapp:employee_details' employee.id %}"> {{employee.first_name}} {{employee.last_name}}</a></li>
         {% endfor %}
+            {% else %}
+            <h5 class="no_employees_assigned">Awaiting Assignment</h5>
+            {% endif %}
         </div>
     </div>
+{% endif %}
 
 
 

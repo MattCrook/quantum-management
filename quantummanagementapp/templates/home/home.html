@@ -1,10 +1,24 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+
 {% block title %} Home {% endblock %}
 {% block content %}
+{% if user.first_name %}
 <div class="welcome_banner">
     <div class="col-sm-12 mb-3">
-        <h4 class="text-center"> Welcome {{ user.first_name }} </h4>
+        <h4 id="welcome_user" class="text-center"> Welcome {{ user.first_name }} </h4>
     </div>
+    {% else %}
+    <div class="welcome_banner">
+    <div class="col-sm-12 mb-3">
+        <h4 id="complete_account_banner" class="text-center"> Please complete your account before proceeding. </h4>
+        <div class="complete_account_btn_container">
+        <a class="btn11" href="{% url 'quantummanagementapp:account' user.id %}">Complete Account</a>
+        </div>
+    </div>
+    {% endif %}
+
+
   <div class="home_page_container">
       <img class="home_image" src="https://www.akamai.com/us/en/multimedia/images/intro/2018/big-data-connector-intro.jpg?imwidth=1366">
       <div class="logo_banner">
@@ -15,3 +29,7 @@
 </div>
     </div>
 {% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/loginPictureCheck.js'%}"></script>
+{% endblock  %}

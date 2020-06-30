@@ -2,14 +2,14 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import F
 from quantummanagementapp.models import AdminUser
-from safedelete.models import SafeDeleteModel
-from safedelete.models import SOFT_DELETE
+# from safedelete.models import SafeDeleteModel
+# from safedelete.models import SOFT_DELETE
 # from djmoney.models.fields import MoneyField
 
 
 
 
-class Employee(SafeDeleteModel):
+class Employee(models.Model):
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -17,10 +17,10 @@ class Employee(SafeDeleteModel):
     start_date = models.DateField(null=True, blank=True)
     compensation =  models.DecimalField(null=True, blank=True, decimal_places=2, max_digits=8)
     pay_rate = models.CharField(null=True, blank=True, max_length=20)
-    park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.DO_NOTHING)
-    admin_user = models.ForeignKey(AdminUser, on_delete=models.DO_NOTHING)
+    park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.CASCADE)
+    admin_user = models.ForeignKey(AdminUser, on_delete=models.CASCADE)
 
-    _safedelete_policy = SOFT_DELETE
+    # _safedelete_policy = SOFT_DELETE
 
     class Meta:
         ordering = (F('start_date').desc(nulls_last=True),)

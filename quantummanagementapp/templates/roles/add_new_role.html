@@ -68,28 +68,28 @@
         <div class="add_new_role_header">Add New Department/ Role</div>
     </div>
 
-
+    {% if user.is_authenticated %}
         <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:add_new_role' %}" method="POST">
             {% csrf_token %}
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="name">Job Title: </label>
-                    <input class="new_form" id="name" type="text" name="name" value="{{ role.name }}" />
+                    <input required class="new_form" id="name" type="text" name="name" value="{{ role.name }}" />
                 </fieldset>
             </div>
             <input class="new_form" id="create_park_btn" type="submit" value="Create" />
         </form>
     </form>
 
-
-
     <div class="signature">
         <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
         </p>
     </div>
 
+   {% endif %}
 
-    <script src="../../static/scripts/buttonHandlers.js"></script>
+
+    {% comment %} <script src="{% static 'scripts/buttonHandlers.js' %}"></script> {% endcomment %}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

@@ -47,10 +47,15 @@
                 </li>
             </div>
 
-
+            {% if user_account.user.image.image.url%}
             <div class="nav-item">
                 <img class="nav_profile_picture" src="{{user_account.user.image.image.url}}">
             </div>
+            {% else %}
+            <div class="nav-item">
+                <img class="nav_profile_picture" src="{% static 'images/Qwaves.png' %}">
+            </div>
+            {% endif %}
             <div class="django_admin_btn_account">
                 <li id="nav_btn" class="nav-item">
                     <a class="nav-link" id="django_admin" href="{% url 'quantummanagementapp:admin' %}">Django Admin</a>
@@ -58,7 +63,6 @@
             </div>
         </div>
 
-        {% endif %}
     </ul>
 
 
@@ -73,11 +77,23 @@
             <form class="new_form" id="form_container_account_edit"
                 action="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+
                 <div class="manage_edit_account_container">
                     <div class="edit_account_title">Edit Account</div>
                 </div>
-                <div class="profile_picture_edit_account"><img id="profile_pic_edit_account"
-                        src="{{user_account.user.image.image.url}}" /></div>
+
+                {% if user_account.user.image.image.url %}
+                <div class="profile_picture_edit_account">
+                    <img id="profile_pic_edit_account"
+                        src="{{user_account.user.image.image.url}}" />
+                </div>
+                {% else %}
+                <div class="profile_picture_edit_account">
+                    <img id="profile_pic_edit_account"
+                        src="{% static 'images/coloredQ.png'%}" />
+                </div>
+                {% endif %}
+
 
                <div class="fieldset_container" id="edit_account_picture_fieldset_container">
                     <fieldset class="new_form">
@@ -87,23 +103,6 @@
                             value="{{ user_account.user.image.url }}" />
                     </fieldset>
                 </div>
-
-                    {% comment %} {% if user_account.user.image_id == user_account.user.image.id %}
-                    <h5>Succesfully uploaded : {{user_account.user.image.image.url}}</h5>
-                    <img src="{{ user_account.user.image.image}}" alt="connect" style="max-height:300px">
-                    {% endif %}  {% endcomment %}
-
-                     {% comment %} 
-                    <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Upload</button>
-                    </form>
-                    {% if img_obj %}
-                    <h3>Succesfully uploaded : {{img_obj.title}}</h3>
-                    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
-                    {% endif %}  {% endcomment %}
-
 
                 <div class="fieldset_container">
                     <fieldset class="new_form">
@@ -170,28 +169,16 @@
 
         <div class="employees_user_responsible_container">
             <div class="employee_user_resp_title">List of employees {{user.first_name}} is admin for:</div>
+            {% if employees %}
             {% for employee in employees %}
             <li class="list_employee_item"><a class="admin_account_link_to_employee_details" href="{% url 'quantummanagementapp:employee_details' employee.id %}"> {{employee.first_name}} {{employee.last_name}}</a></li>
             {% endfor %}
+            {% else %}
+            <h5 class="no_employees_assigned">Awaiting Assignment</h5>
+            {% endif %}
         </div>
     </div>
-
-
-
-{% comment %} 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-   {{ form.as_p }}
-  <button type="submit">Upload</button>
-</form>
-
-{% if img_obj %}
-  <h3>Succesfully uploaded : {{img_obj.title}}</h3>
-  <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
-{% endif %} {% endcomment %}
-
-
-
+{% endif %}
 
 
 

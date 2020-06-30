@@ -104,7 +104,7 @@
                     <label class="new_form" for="parks">Park of Employment: </label>
                     <select class="new_form" id="parks" name="parks">
                         {% for park in parks %}
-                        <option required value="{{ park.id }}">{{ park.name }}</option>
+                        <option  required class="park_options_dropdown" value="{{ park.id }}">{{ park.name }}</option>
                         {% endfor %}
                     </select>
                 </fieldset>
@@ -114,8 +114,8 @@
                 <fieldset class="new_form">
                     <label class="new_form" for="employee_attraction">Position Assignment: </label>
                     <select class="new_form" id="employee_attraction" name="employee_attraction">
-                    {% for attraction in attractions %}
-                        <option required value="{{ attraction.id }}">{{attraction.name}}</option>
+                    {% for attraction in park_attractions %}
+                        <option  required class="attraction_option_dropdown" value="{{ attraction.attraction.id }}">{{attraction.attraction.name}}</option>
                     {% endfor %}
                     </select>
                 </fieldset>
@@ -149,4 +149,8 @@
 
 </body>
 
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/attractionDropdown.js' %}"></script>
 {% endblock %}

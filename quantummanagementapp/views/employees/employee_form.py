@@ -1,10 +1,13 @@
-from quantummanagementapp.models import Employee, EmployeeAttraction, Park, Attraction, Roles
+from quantummanagementapp.models import Employee, EmployeeAttraction, Park, Attraction, Roles, ParkAttractions
 from django.shortcuts import render, redirect, reverse
 import datetime
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.http import HttpResponseServerError
 from rest_framework import status
+
+
+
 
 
 @login_required
@@ -14,18 +17,15 @@ def employee_form(request):
         parks = Park.objects.all()
         attractions = Attraction.objects.all()
         all_roles = Roles.objects.all()
+        park_attractions = ParkAttractions.objects.all()
 
-        # roles = []
-        # for e in employees:
-        #     roles.append(e.role)
-        # convert to set to get rid of duplicates
-        # all_roles = set(roles)
         template = "employees/employee_form.html"
         context = {
             'employees': employees,
             'attractions': attractions,
             'parks': parks,
-            'all_roles': all_roles
+            'all_roles': all_roles,
+            'park_attractions': park_attractions,
         }
         return render(request, template, context)
 
@@ -41,7 +41,9 @@ def employee_edit_form(request, employee_id):
         roles = Roles.objects.all()
 
         all_roles = []
-
+        # filter out duplicates
+        # could also convert to set to get rid of duplicates
+        # all_roles = set(roles)
         for e in employees:
             if e.role not in all_roles:
                 all_roles.append(e.role)

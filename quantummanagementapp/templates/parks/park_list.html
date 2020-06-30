@@ -21,12 +21,11 @@
              <a href="{% url 'quantummanagementapp:park' park.id %}" id="park_name" class="park_list_name">{{ park.name }}</a>
                  <div class="edit_delete_park_icons">
 
-                   <form action="{}" method="GET">
-                        {% csrf_token %}
+                   <a href="{% url 'quantummanagementapp:park_edit_form' park.id %}">
                          <button class="park_edit_btn"><i class="far fa-edit"></i></button>
-                    </form>
+                    </a>
 
-                    <form action="{% url 'quantummanagementapp:park' park.id %}" method="POST">
+                    <form action="{% url 'quantummanagementapp:park' park.id %}">
                          {% csrf_token %}
                          <input type="hidden" name="actual_method" value="DELETE"/>
                              <button class="delete_park_btn"><i class="far fa-trash-alt"></i></button>

@@ -21,11 +21,11 @@ if (deleteParkButton) {
   });
 }
 
-const editParkButton = document.querySelectorAll(".park_edit_btn");
-if (editParkButton) {
-  editParkButton.forEach((editButton) => {
-    editButton.addEventListener("click", () => {
-      window.alert("clicked");
-    });
-  });
-}
+// const editParkButton = document.querySelectorAll(".park_edit_btn");
+// if (editParkButton) {
+//   editParkButton.forEach((editButton) => {
+//     editButton.addEventListener("click", () => {
+//       window.alert("clicked");
+//     });
+//   });
+// }

@@ -43,33 +43,70 @@
         </ul>
     </div>
 
-    <div class="manage_parks_container_details_page">
+    <div class="manage_parks_container_details_page_2">
         <div class="manage_parks_title">{{park.name}}</div>
         <div class="select_park_header">Details For All {{type.name}}s</div>
         <div class="add_park_button">
             <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_park"
-                    href="{% url 'quantummanagementapp:parks' %}">Back</a></button>
+                    href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
         </div>
     </div>
 
-    <div class="park_main_container">
-        <div class="attractions_column_list_container">
+    <div class="park_main_container_details_page">
+        <div class="attractions_column_list_container_details">
+        {% if type.name == 'Family Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-users"></i></div>
 
-        <h6 class="attraction_title">{{type.name}}</h6>
-        <div class="attractions_column_list">
+        {% elif type.name == 'Roller Coaster' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-child"></i></div>
+
+        {% elif type.name == 'Thrill Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-skull-crossbones"></i></div>
+
+        {% elif type.name == 'Flat Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="far fa-grin-beam"></i></div>
+
+        {% elif type.name == 'Area/ Zone' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-people-arrows"></i></div>
+
+        {% elif type.name == 'Restaurant' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-utensils"></i></div>
+
+        {% elif type.name == 'Car Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-car"></i></div>
+
+        {% elif type.name == 'Swings' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-smile"></i></div>
+
+        {% elif type.name == 'Walk Through' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-walking"></i></div>
+
+        {% elif type.name == 'Concession' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-hamburger"></i></div>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% comment %} <h6 class="attraction_title_details_page">{{type.name}}s</h6> {% endcomment %}
+        <div class="attractions_column_list_details_page">
 
             {% for park_attraction in park_attractions %}
                 {% if park_attraction.attraction.type_id == type.id %}
-                    <div class="park_attractions_container">
-                        <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
-                        <div class="item_park_details">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
-                        <div class="item_park_details">Type: {{attraction_in_park.name}}</div>
-                        <div class="employee_attractions_work_on_container"><h6 class="employees_assigned_to_this_ride">Employees Assigned to this Ride:</h6>
+                    <div class="park_attractions_container_details_page">
+                        <div class="attraction_link_btn_container_details_page"><a class="attraction_link_btn_details_page" href="{}">{{park_attraction.attraction.name}}</a></div>
+                        <div class="item_park_details_page">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+                        {% comment %} <div class="item_park_details">Type: {{attraction_in_park.name}}</div> {% endcomment %}
+                        <div class="employee_attractions_work_on_container_details_page"><h6 class="employees_assigned_to_this_ride_details_page">Employees Assigned to this Ride:</h6>
                             <div class="render_if_none_container">
                                 {% for employee_attraction in employee_attractions %}
                                     {% if park_attraction.attraction_id == employee_attraction.attraction_id %}
                                         {% if employee_attraction.employee_id and employee_attraction.employee.deleted is Null %}
-                                            <div class="employee_on_ride_list_title">
+                                            <div class="employee_on_ride_list_title_details_page">
                                                 <li class="park_detail_list_item_btn"><a class="employee_name_link" href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">
                                                     {{employee_attraction.employee.first_name}} {{employee_attraction.employee.last_name}}</a>
                                                 </li>

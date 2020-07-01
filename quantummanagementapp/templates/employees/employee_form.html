@@ -49,9 +49,13 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="role">Role/ Department: </label>
-                    <select class="new_form" id="role" type="text" name="role">
+                    <select class="new_form" id="role" name="role">
                         {% for role in all_roles %}
+                        {% if employee.id is not None %}
+                        <option {% if employee.role == role %} selected {% endif %} value="{{ role }}">{{ role }}</option>
+                        {% else %}
                         <option value="{{ role }}">{{ role }}</option>
+                        {% endif %}
                         {% endfor %}
                     </select>
                     <a href="{% url 'quantummanagementapp:add_new_role' %}" class="btn6">Create new Position</a>
@@ -73,13 +77,13 @@
                         <label id="pay_rate_label" class="new_form">Pay Rate: </label>
                         <ul>
                             <li class="pay_rate_item">
-                                <input type="radio" id="is_salary" name="pay_rate" value="salary" required/>
+                                <input {% if employee.pay_rate == 'salary' %} selected {% endif %} type="radio" id="is_salary" name="pay_rate" value="salary" required/>
                                 <label for="is_salary">Salary</label>
 
                                 <div class="check"></div>
                             </li>
                             <li class="pay_rate_item">
-                                <input type="radio" id="is_hourly" name="pay_rate" value="hourly" />
+                                <input {% if employee.pay_rate == 'hourly' %} selected {% endif %} type="radio" id="is_hourly" name="pay_rate" value="hourly" />
                                 <label for="is_hourly">Hourly</label>
 
                                 <div class="check">
@@ -94,8 +98,13 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="start_date">Start Date: </label>
-                    <input required class="new_form" id="start_date" type="date" name="start_date"
+                    {% if employee.id is not None %}
+                    <input selected class="new_form" id="start_date" type="date" name="start_date" required
                         value="{{ employee.start_date }}">
+                    {% else %}
+                    <input class="new_form" id="start_date" type="date" name="start_date" required
+                        value="{{ employee.start_date }}">
+                    {% endif %}
                 </fieldset>
             </div>
 

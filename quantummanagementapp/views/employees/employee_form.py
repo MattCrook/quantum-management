@@ -34,7 +34,7 @@ def employee_form(request):
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
-        # employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
+        employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()
@@ -51,7 +51,7 @@ def employee_edit_form(request, employee_id):
         template = "employees/employee_form.html"
         context = {
             'employee': employee,
-            # 'employee_attractions': employee_attractions,
+            'employee_attractions': employee_attractions,
             'attractions': attractions,
             'parks': parks,
             'all_roles': all_roles

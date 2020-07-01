@@ -31,4 +31,3 @@ def park_list(request):
         new_park.number_of_attractions = form_data['number_of_attractions']
 
         new_park.save()
-        return redirect(reverse('quantummanagementapp:parks'))

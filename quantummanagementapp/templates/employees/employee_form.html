@@ -114,8 +114,8 @@
                 <fieldset class="new_form">
                     <label class="new_form" for="employee_attraction">Position Assignment: </label>
                     <select class="new_form" id="employee_attraction" name="employee_attraction">
-                    {% for attraction in park_attractions %}
-                        <option  required class="attraction_option_dropdown" value="{{ attraction.attraction.id }}">{{attraction.attraction.name}}</option>
+                    {% for attraction in attractions %}
+                        <option  required class="attraction_option_dropdown" value="{{ attraction.id }}">{{attraction.name}}</option>
                     {% endfor %}
                     </select>
                 </fieldset>

@@ -34,7 +34,7 @@ def employee_form(request):
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
-        employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
+        # employee_attractions = EmployeeAttraction.objects.filter(employee_id=employee_id)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()
@@ -51,7 +51,7 @@ def employee_edit_form(request, employee_id):
         template = "employees/employee_form.html"
         context = {
             'employee': employee,
-            'employee_attractions': employee_attractions,
+            # 'employee_attractions': employee_attractions,
             'attractions': attractions,
             'parks': parks,
             'all_roles': all_roles
@@ -83,13 +83,6 @@ def employee_edit_form(request, employee_id):
             return redirect(reverse('quantummanagementapp:employee_list'))
 
         if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
-            try:
-                employee = Employee.objects.get(pk=employee_id)
-                employee.delete()
-                return redirect(reverse('quantummanagementapp:employee_list'))
-            except Employee.DoesNotExist as ex:
-                return HttpResponseServerError({'Error: not found': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-            except Exception as ex:
-                return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+            employee = Employee.objects.get(pk=employee_id)
+            employee.delete()
             return redirect(reverse('quantummanagementapp:employee_list'))

@@ -136,8 +136,6 @@
   transform: scale(1.05);
 }
 
-
-
 /**************************\
     Demo Animation Style
   \**************************/
@@ -206,32 +204,30 @@
   will-change: transform;
 }
 
-.modal__footer{
-    display: flex;
+.modal__footer {
+  display: flex;
 }
 #modal {
   background: rgb(201, 201, 201);
-  border-radius: 2px 2px 2px 2px;
+  border-radius: 3px 3px 3px 3px;
+}
 
+form#modal.new_form {
+  box-shadow: 1px 3px 3px 2px rgb(182, 181, 181);
 }
 
 .new_form_modal {
-max-width: 720px;
-padding: 5px 20px 5px 5px;
-margin: 0 auto;
-border-radius: 8px;
+  max-width: 720px;
+  padding: 5px 20px 5px 5px;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .type_modal_label {
-    color: #0e0e0e;
+  color: #0e0e0e;
 }
 
-/* .new_form_modal_form {
-    max-width: 720px;
-    padding: 5px 20px;
-    background: rgb(216, 216, 216);
-    /* background: #212121; */
-    /* margin: 0 auto;
-    border-radius: 8px; */
-    /* font-family: Georgia, "Times New Roman", Times, serif;
-} */
+.modal_for_example {
+  font-size: 12px;
+  margin-top: 2px;
+}

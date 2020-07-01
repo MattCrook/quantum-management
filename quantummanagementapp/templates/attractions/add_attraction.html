@@ -11,6 +11,52 @@
 {% block content %}
 
 <body>
+<div id="viewport">
+
+    <div id="sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                     Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                   Analytics
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                    Employees
+                </a>
+            </li>
+           {% comment %} <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                  Contact
+                </a>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+
+
+
+
+
+
+
 
     <div class="manage_employees_container">
         <div class="manage_employees_title">Add New Attraction</div>
@@ -72,9 +118,12 @@
 
 
     <div class="signature">
-        <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a>
+        {% comment %} <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> 
+        </p> {% endcomment %}
+        <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="far fa-copyright"></i>
         </p>
     </div>
+</div>
 
   <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
@@ -85,6 +134,7 @@
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
+        <p class="modal_for_example"><em>For example: Roller Coaster, Flat Ride, Launch Tower, etc...</em></p>
 
         <main class="modal__content" id="modal-1-content">
             <form class="new_form" id="modal" action="{% url 'quantummanagementapp:attraction_type_list' park.id %}" method="POST">
@@ -100,7 +150,11 @@
           <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
         </footer>
             </form>
-        </main>
+                <div class="signature">
+                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i>
+                    </p>
+    </div>
+    </main>
 
       </div>
     </div>

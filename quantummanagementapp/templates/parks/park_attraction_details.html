@@ -1,0 +1,132 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/parks/park_attraction_details.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                     Overview
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="#">
+                   Analytics
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                   Add Attraction
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                    Employees
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="manage_parks_container_details_page_2">
+        <div class="manage_parks_title">{{park.name}}</div>
+        <div class="select_park_header">Details For All {{type.name}}s</div>
+        <div class="add_park_button">
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_park"
+                    href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
+        </div>
+    </div>
+
+    <div class="park_main_container_details_page">
+        <div class="attractions_column_list_container_details">
+        {% if type.name == 'Family Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-users"></i></div>
+
+        {% elif type.name == 'Roller Coaster' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-child"></i></div>
+
+        {% elif type.name == 'Thrill Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-skull-crossbones"></i></div>
+
+        {% elif type.name == 'Flat Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="far fa-grin-beam"></i></div>
+
+        {% elif type.name == 'Area/ Zone' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-people-arrows"></i></div>
+
+        {% elif type.name == 'Restaurant' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-utensils"></i></div>
+
+        {% elif type.name == 'Car Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-car"></i></div>
+
+        {% elif type.name == 'Swings' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-smile"></i></div>
+
+        {% elif type.name == 'Walk Through' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-walking"></i></div>
+
+        {% elif type.name == 'Concession' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-hamburger"></i></div>
+
+        {% endif %}
+
+
+
+
+
+
+
+        {% comment %} <h6 class="attraction_title_details_page">{{type.name}}s</h6> {% endcomment %}
+        <div class="attractions_column_list_details_page">
+
+            {% for park_attraction in park_attractions %}
+                {% if park_attraction.attraction.type_id == type.id %}
+                    <div class="park_attractions_container_details_page">
+                        <div class="attraction_link_btn_container_details_page"><a class="attraction_link_btn_details_page" href="{}">{{park_attraction.attraction.name}}</a></div>
+                        <div class="item_park_details_page">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
+                        {% comment %} <div class="item_park_details">Type: {{attraction_in_park.name}}</div> {% endcomment %}
+                        <div class="employee_attractions_work_on_container_details_page"><h6 class="employees_assigned_to_this_ride_details_page">Employees Assigned to this Ride:</h6>
+                            <div class="render_if_none_container">
+                                {% for employee_attraction in employee_attractions %}
+                                    {% if park_attraction.attraction_id == employee_attraction.attraction_id %}
+                                        {% if employee_attraction.employee_id and employee_attraction.employee.deleted is Null %}
+                                            <div class="employee_on_ride_list_title_details_page">
+                                                <li class="park_detail_list_item_btn"><a class="employee_name_link" href="{% url 'quantummanagementapp:employee_details' employee_attraction.employee_id %}">
+                                                    {{employee_attraction.employee.first_name}} {{employee_attraction.employee.last_name}}</a>
+                                                </li>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+</div>
+{% endif %}
+{% endblock  %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/parkDetailsCheck.js' %}"></script>
+{% endblock  %}

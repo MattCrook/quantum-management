@@ -59,13 +59,34 @@
 
 
 <div class="employees_in_park_list_outer_container">
-    {% for employee in employees %}
-        <div class="employees_in_park_list_inner_container">
-            <div class="employee_name_park_list_btn">
-                <a class="a_link_employee_detail" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{employee.first_name}} {{employee.last_name}}</a>
+    {% for role in roles %}
+        <div class="role_title_employees_park_detail">
+            {% if role == 'Entertainer'%}
+                <div class="role_header_title"><i class="far fa-grin"></i>{{role}}</div>
+            {% elif role == 'Ride Operator'%}
+                <div class="role_header_title"><i class="fas fa-users-cog"></i>{{role}}</div>
+            {% elif role == 'Consessions'%}
+                <div class="role_header_title"><i class="fas fa-utensils"></i>{{role}}</div>
+            {% elif role == 'Security'%}
+                <div class="role_header_title"><i class="fas fa-shield-alt"></i>{{role}}</div>
+            {% elif role == 'Mechanic'%}
+                <div class="role_header_title"><i class="fas fa-wrench"></i>{{role}}</div>
+            {% elif role == 'Restaurant'%}
+                <div class="role_header_title"><i class="fas fa-glass-cheers"></i>{{role}}</div>
+            {% elif role == 'Manager'%}
+                <div class="role_header_title"><i class="fas fa-user-tie"></i>{{role}}</div>
+            {% endif %}
+            <div class="employees_in_park_list_inner_container">
+                {% for employee in employees %}
+                    {% if employee.role == role %}
+                        <div class="employee_name_park_list_btn">
+                            <a class="a_link_employee_detail" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{employee.first_name}} {{employee.last_name}}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
-{% endfor %}
+    {% endfor %}
 </div>
 </div>
 {% endif %}

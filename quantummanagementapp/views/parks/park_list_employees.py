@@ -16,6 +16,12 @@ def park_list_employees(request, park_id):
             attraction_id = park_attraction.attraction_id
             all_attractions = Attraction.objects.filter(pk=attraction_id)
             attractions.append(all_attractions)
+        all_roles = []
+        for e in employees:
+            role = e.role
+            all_roles.append(role)
+        roles = set(all_roles)
+
 
 
         template = 'parks/employees_in_park_list.html'
@@ -24,6 +30,7 @@ def park_list_employees(request, park_id):
             'attractions': attractions,
             'attraction_types': attraction_types,
             'employees': employees,
-            'park': park
+            'park': park,
+            'roles': roles
         }
         return render(request, template, context)

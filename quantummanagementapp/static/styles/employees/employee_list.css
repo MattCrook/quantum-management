@@ -139,7 +139,7 @@ text-align: center;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  overflow: scroll;
+  flex-wrap: wrap;
 }
 
 /************** Card Containers *************/
@@ -150,6 +150,8 @@ text-align: center;
   border-radius: 5px 5px 5px 5px;
   background-color: #f8f8f8;
   height: fit-content;
+  /* margin-left: 12px;
+  margin-right: 12px; */
 }
 
 .roles_title_container {
@@ -161,6 +163,7 @@ text-align: center;
 .role_item {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 17px;
 }
 
 .role_item i {
@@ -630,4 +633,11 @@ input[type="radio"]:checked ~ label {
 /************** Add New Role Form **************/
 .add_new_role_header {
   padding-right: 20px;
+}
+
+.start_date_reminder {
+  font-size: 13px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  color: rgb(53, 53, 148);
 }

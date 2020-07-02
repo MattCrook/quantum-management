@@ -72,7 +72,7 @@
         {% elif attraction_in_park.name == 'Flat Ride' %}
              <h6 class="attraction_title"><i class="far fa-grin-beam"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Area/ Zone' %}
-             <h6 class="attraction_title"><i class="fas fa-people-arrows"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
+             <h6 class="attraction_title"><i class="fas fa-street-view"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Restaurant' %}
              <h6 class="attraction_title"><i class="fas fa-utensils"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Car Ride' %}
@@ -83,6 +83,8 @@
              <h6 class="attraction_title"><i class="fas fa-walking"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Concession' %}
              <h6 class="attraction_title"><i class="fas fa-hamburger"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
+        {% elif attraction_in_park.name == 'Water Ride' %}
+             <h6 class="attraction_title"><i class="fas fa-water"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% endif %}
 
         <div class="attractions_column_list">

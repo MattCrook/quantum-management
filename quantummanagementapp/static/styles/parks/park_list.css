@@ -61,16 +61,21 @@
 }
 
 .park_list_outer_container {
-  margin-left: 12px;
+  margin-left: 32%;
+  margin-right: 32%;
+  /* display: flex;
+  flex-direction: column; */
+
+
 }
 .park_list_inner_container {
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  flex-direction: column; */
+  flex-direction: column;
   box-shadow: 5px 6px 5px 0 rgba(0, 0, 0, 0.2);
   background-color: rgb(224, 222, 222);
   margin-bottom: 18px;
-  width: 21%;
+  /* width: 21%; */
   border-radius: 5px 5px 5px 0px;
 }
 
@@ -84,8 +89,9 @@
   margin-top: 5px;
 }
 .park_list_details_container {
-  border-top: 1px solid rgb(177, 177, 177);
-  padding-bottom: 8px;
+  border-top: 1px solid rgb(158, 156, 156);
+  padding-bottom: 11px;
+  background-color: rgb(238, 237, 237);
 }
 
 /*********** Park Name Button *************/

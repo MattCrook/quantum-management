@@ -39,6 +39,7 @@ def employee_edit_form(request, employee_id):
         parks = Park.objects.all()
         employees = Employee.objects.all()
         roles = Roles.objects.all()
+        park_attractions = ParkAttractions.objects.all()
 
         all_roles = []
         # filter out duplicates
@@ -54,7 +55,8 @@ def employee_edit_form(request, employee_id):
             'employee_attractions': employee_attractions,
             'attractions': attractions,
             'parks': parks,
-            'all_roles': all_roles
+            'all_roles': all_roles,
+            'park_attractions': park_attractions,
         }
         return render(request, template, context)
 
@@ -83,13 +85,6 @@ def employee_edit_form(request, employee_id):
             return redirect(reverse('quantummanagementapp:employee_list'))
 
         if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
-            try:
-                employee = Employee.objects.get(pk=employee_id)
-                employee.delete()
-                return redirect(reverse('quantummanagementapp:employee_list'))
-            except Employee.DoesNotExist as ex:
-                return HttpResponseServerError({'Error: not found': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-            except Exception as ex:
-                return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+            employee = Employee.objects.get(pk=employee_id)
+            employee.delete()
             return redirect(reverse('quantummanagementapp:employee_list'))

@@ -79,7 +79,7 @@
         method="POST">
         {% csrf_token %}
         {% else %}
-        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:park_form' %}" method="POST">
+        <form class="new_form" id="form_container" action="{% url 'quantummanagementapp:parks' %}" method="POST">
             {% csrf_token %}
             {% endif %}
 
@@ -125,7 +125,7 @@
             </div>
 
             {% if park.id is not None %}
-            <input type="hidden" name="actual_method" value="PUT">
+            <input type="hidden" name="actual_method" value="PUT"/>
             <input id="update_park" class="new_form" type="submit" value="Update" />
             {% else %}
                 <input class="new_form" id="create_park_btn" type="submit" value="Create" />

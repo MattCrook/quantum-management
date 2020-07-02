@@ -23,6 +23,7 @@ padding-top: 5px;
   z-index: 1;
   font-variant: small-caps;
   padding-left: 5px;
+
 }
 
 /******** Logo Sidebar **********/
@@ -99,6 +100,7 @@ padding-top: 5px;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  overflow: scroll;
 }
 
 /******************* Sidebar Styles *****************/
@@ -324,7 +326,9 @@ padding-top: 5px;
 .park_main_container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  flex-wrap: wrap;
+  /* margin-left: 10%; */
 
 }
 .park_attractions_container {
@@ -377,6 +381,11 @@ padding-top: 5px;
   margin-left: 6px;
 }
 
+.attractions_column_list_container {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
 .attractions_column_list_container i {
   margin-right: 5px;
 }

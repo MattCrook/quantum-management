@@ -65,14 +65,16 @@ def admin_user_edit_form(request, user_id):
         admin_user_profile = AdminUser.objects.get(user_id=user_account.id)
         employees = Employee.objects.filter(admin_user_id=user_id)
         form = ImageForm()
-
+        admin_user_image_id = admin_user_profile.image_id
+        image = Image.objects.get(pk=admin_user_image_id)
 
         template = 'admin_user/admin_user_edit_form.html'
         context = {
             'user_account': user_account,
             'admin_user_profile': admin_user_profile,
             'employees': employees,
-            'form': form
+            'form': form,
+            'image': image
         }
         return render(request, template, context)
     elif request.method == 'POST':

@@ -231,3 +231,14 @@ form#modal.new_form {
   font-size: 12px;
   margin-top: 2px;
 }
+
+
+/******************* Modal 2 ************/
+
+#modal-2:link {
+  color: #050505;
+}
+
+#modal-2:visited {
+  color: #050505;
+}

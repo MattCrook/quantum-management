@@ -61,6 +61,8 @@
     <div class="manage_employees_container">
         <div class="manage_employees_title">Add New Attraction</div>
 
+            <a href="#modal-2" data-micromodal-trigger="modal-2" class="delete_attraction_btn">Delete Attraction</a>
+
         <div class="add_employee_button">
             <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
                     href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
@@ -147,6 +149,48 @@
                 </div>
         <footer class="modal__footer">
                 <input id="modal__btn-primary" type="submit" value="Create" style="margin-right: 8px;"/>
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+            </form>
+                <div class="signature">
+                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i>
+                    </p>
+    </div>
+    </main>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-2-title">
+            Delete Attraction
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <p class="modal_for_example"><em>Deleting an an attraction will remove it from the park and all other views it is referenced...</em></p>
+
+        <main class="modal__content" id="modal-1-content">
+            <form class="new_form" id="modal" action="{}" method="POST">
+             {% csrf_token %}
+             <input type="hidden" name="actual_method" value="DELETE">
+
+             <div class="fieldset_container">
+                 <fieldset class="new_form" id="modal">
+                     <label class="new_form_modal" for="type"><div class="type_modal_label">Select an Attraction: </div></label>
+                     <select class="new_form" id="attractions" name="attractions">
+                         {% for attraction in park_attractions %}
+                         <option required class="attraction_delete_dropdown" value="{{ attraction.attraction.id }}">{{attraction.attraction.name}}</option>
+                         {% endfor %}
+                     </select>
+                    </fieldset>
+                </div>
+                <footer class="modal__footer">
+                <button id="modal__btn-primary" style="margin-right: 8px;">Delete</button>
           <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
         </footer>
             </form>

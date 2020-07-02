@@ -1,5 +1,6 @@
 {% extends 'shared/base.html' %}
 {% load static %}
+{% load l10n %}
 
 
 {% block content %}
@@ -77,13 +78,13 @@
                         <label id="pay_rate_label" class="new_form">Pay Rate: </label>
                         <ul>
                             <li class="pay_rate_item">
-                                <input {% if employee.pay_rate == 'salary' %} selected {% endif %} type="radio" id="is_salary" name="pay_rate" value="salary" required/>
+                                <input {% if employee.pay_rate == 'salary' %} checked {% endif %} type="radio" id="is_salary" name="pay_rate" value="salary" required/>
                                 <label for="is_salary">Salary</label>
 
                                 <div class="check"></div>
                             </li>
                             <li class="pay_rate_item">
-                                <input {% if employee.pay_rate == 'hourly' %} selected {% endif %} type="radio" id="is_hourly" name="pay_rate" value="hourly" />
+                                <input {% if employee.pay_rate == 'hourly' %} checked {% endif %} type="radio" id="is_hourly" name="pay_rate" value="hourly" />
                                 <label for="is_hourly">Hourly</label>
 
                                 <div class="check">
@@ -98,13 +99,11 @@
             <div class="fieldset_container">
                 <fieldset class="new_form">
                     <label class="new_form" for="start_date">Start Date: </label>
-                    {% if employee.id is not None %}
-                    <input selected class="new_form" id="start_date" type="date" name="start_date" required
-                        value="{{ employee.start_date }}">
-                    {% else %}
-                    <input class="new_form" id="start_date" type="date" name="start_date" required
-                        value="{{ employee.start_date }}">
-                    {% endif %}
+                {% if employee.id %}
+                <div class="start_date_reminder">Start date currently recorded as: {{employee.start_date}}</div>
+                {% endif %}
+                    <input {% if employee.start_date %} checked {% endif %} type='date' class="new_form" id="start_date" name="start_date" required
+                        value="{{employee.start_date}}">
                 </fieldset>
             </div>
 
@@ -113,7 +112,7 @@
                     <label class="new_form" for="parks">Park of Employment: </label>
                     <select class="new_form" id="parks" name="parks">
                         {% for park in parks %}
-                        <option  required class="park_options_dropdown" value="{{ park.id }}">{{ park.name }}</option>
+                        <option {% if employee.park_id == park.id %} selected {% endif %} required class="park_options_dropdown" value="{{ park.id }}">{{ park.name }}</option>
                         {% endfor %}
                     </select>
                 </fieldset>
@@ -124,7 +123,7 @@
                     <label class="new_form" for="employee_attraction">Position Assignment: </label>
                     <select class="new_form" id="employee_attraction" name="employee_attraction">
                     {% for attraction in attractions %}
-                        <option  required class="attraction_option_dropdown" value="{{ attraction.id }}">{{attraction.name}}</option>
+                        <option required data-park-id="{{attraction.park_id}}" class="attraction_option_dropdown" value="{{ attraction.id }}">{{attraction.name}}</div></option>
                     {% endfor %}
                     </select>
                 </fieldset>

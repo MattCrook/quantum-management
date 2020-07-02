@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'social_django',
     'quantummanagementapp',
-    'safedelete',]
+    'safedelete',
+    'datetimepicker',
+    ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

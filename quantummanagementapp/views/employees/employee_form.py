@@ -39,6 +39,7 @@ def employee_edit_form(request, employee_id):
         parks = Park.objects.all()
         employees = Employee.objects.all()
         roles = Roles.objects.all()
+        park_attractions = ParkAttractions.objects.all()
 
         all_roles = []
         # filter out duplicates
@@ -54,7 +55,8 @@ def employee_edit_form(request, employee_id):
             'employee_attractions': employee_attractions,
             'attractions': attractions,
             'parks': parks,
-            'all_roles': all_roles
+            'all_roles': all_roles,
+            'park_attractions': park_attractions,
         }
         return render(request, template, context)
 

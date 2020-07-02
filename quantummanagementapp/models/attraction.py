@@ -10,6 +10,7 @@ class Attraction(models.Model):
     type = models.ForeignKey("AttractionType", null=True, blank=True, on_delete=models.CASCADE)
     capacity = models.CharField(max_length=20, null=True, blank=True)
     current_operating_capacity = models.CharField(max_length=20, null=True, blank=True)
+    park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("attraction")

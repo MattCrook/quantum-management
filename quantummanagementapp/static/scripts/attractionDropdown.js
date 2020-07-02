@@ -22,18 +22,14 @@ window.onload = () => {
   });
 };
 
-function filterAttractionDropdown(selectHTMLElement) {
-  selectHTMLElement.addEventListener("change", (e) => {
-    const parkId = e.target.value;
-    const attractionOptions = Array.from(attractionOptionNodes);
-    const filteredAttractionOptions = attractionOptions.filter((option) => parkId === option.dataset.parkId);
-    attractionsSelect.innerHTML = "";
-    filteredAttractionOptions.forEach((option) => {
-      const optionStringHTML = option.outerHTML;
-      attractionsSelect.innerHTML += optionStringHTML;
-    });
+
+parks.addEventListener("change", (e) => {
+  const parkId = e.target.value;
+  const attractionOptions = Array.from(attractionOptionNodes);
+  const filteredAttractionOptions = attractionOptions.filter((option) => parkId === option.dataset.parkId);
+  attractionsSelect.innerHTML = "";
+  filteredAttractionOptions.forEach((option) => {
+    const optionStringHTML = option.outerHTML;
+    attractionsSelect.innerHTML += optionStringHTML;
   });
-}
-
-
-filterAttractionDropdown(attractionsSelect);
+});

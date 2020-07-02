@@ -100,7 +100,7 @@
                 <fieldset class="new_form">
                     <label class="new_form" for="start_date">Start Date: </label>
                 {% if employee.id %}
-                <div class="start_date_reminder">Start date currently recorded as: {{employee.start_date}}</div>
+                <div class="start_date_reminder">Start date currently recorded as: <strong>{{employee.start_date}}</strong></div>
                 {% endif %}
                     <input {% if employee.start_date %} checked {% endif %} type='date' class="new_form" id="start_date" name="start_date" required
                         value="{{employee.start_date}}">

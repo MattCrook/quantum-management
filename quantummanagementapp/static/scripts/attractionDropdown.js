@@ -1,62 +1,39 @@
 const parkSelect = document.getElementById("parks");
 const id = parkSelect.getAttribute("data-park-id");
-
-const park = document.getElementById("parks");
+const parks = document.getElementById("parks");
 const attractionOptionNodes = document.querySelectorAll(".attraction_option_dropdown");
+const attractionsSelect = document.getElementById("employee_attraction");
+const parkOptionNodes = document.querySelectorAll(".park_options_dropdown");
 
-park.addEventListener("change", (e) => {
+// attractionOptions = All option nodes in the dropdown in an array
+// filteredAttractionOptions = filtered out option nodes in an array, of matching attraction Id and park id.
+// attractionsSelect = grab reference to the select drop down
+// clear the innerHTMl by setting it to an empty string
+// Iterate the filtered options, grab the string template from outerHTML attribute, reset the innerHTML/ dropdown list with string templates.
+
+window.onload = () => {
+  const attractionOptions = Array.from(attractionOptionNodes);
+  const currentPark = parks.value;
+  const filteredAttractionOptions = attractionOptions.filter((option) => currentPark === option.dataset.parkId);
+  attractionsSelect.innerHTML = "";
+  filteredAttractionOptions.forEach((option) => {
+    const optionStringHTML = option.outerHTML;
+    attractionsSelect.innerHTML += optionStringHTML;
+  });
+};
+
+function filterAttractionDropdown(selectHTMLElement) {
+  selectHTMLElement.addEventListener("change", (e) => {
     const parkId = e.target.value;
-    // All option nodes in the dropdown in an array
     const attractionOptions = Array.from(attractionOptionNodes);
-    // filtered out option nodes in an array, of matching attraction Id and park id.
-    const filteredAttractionOptions = attractionOptions.filter(option => parkId === option.dataset.parkId);
-    console.log(filteredAttractionOptions)
-    // grab reference to the select drop down
-    const attractionsSelect = document.getElementById("employee_attraction");
-    attractionsSelect.innerHTML = '';
-    attractionsSelect.innerHTML += filteredAttractionOptions
-})
+    const filteredAttractionOptions = attractionOptions.filter((option) => parkId === option.dataset.parkId);
+    attractionsSelect.innerHTML = "";
+    filteredAttractionOptions.forEach((option) => {
+      const optionStringHTML = option.outerHTML;
+      attractionsSelect.innerHTML += optionStringHTML;
+    });
+  });
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function useParksDropdown() {
-//   let park = parkSelect.value;
-//   return [() => park, (filteredParks) => (park = filteredPark)];
-// }
-// const [park, setPark] = useParksDropdown();
-
-// function useAttractionsDropdown() {
-//   let attractions = attractionsSelect.value;
-//   return [
-//     () => attractions,
-//     (filteredAttractions) => (attractions = filteredAttractions),
-//   ];
-// }
-// const [attractions, setAttractions] = useAttractionsDropdown([]);
-
-// parkSelect.addEventListener("click", (e) => {
-//   const stateToChange = [...attractionsSelect];
-//   console.log("stateToChange", stateToChange);
-// console.log(e.target.value)
-// const parkValue = e.target.value;
-
-// stateToChange[e.target.id] = e.target.value;
-// const filter = stateToChange.filter(attractions => attractions.value === ))
-// console.log(filter)
-//   setAttractions(stateToChange);
+filterAttractionDropdown(attractionsSelect);

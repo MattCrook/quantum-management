@@ -27,6 +27,7 @@ urlpatterns = [
     path('employees/form/', employee_form, name='employee_form'),
     path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
     path('employees/<int:employee_id>/details', get_employee_details, name='employee_details'),
+    path('employees/create/role/', role_list, name="add_new_role"),
 
     path('parks', park_list, name='parks'),
     path('parks/<int:park_id>/details', park_details, name='park'),
@@ -35,9 +36,9 @@ urlpatterns = [
     path('park/<int:park_id>/details/employees/', park_list_employees, name='park_list_employees'),
     path('park/<int:park_id>/details/<int:type_id>/attractions/', park_category_details_list, name='park_category_details_list'),
 
-    path('employees/create/role/', role_list, name="add_new_role"),
     path('parks/<int:park_id>/details/attractions/create/', create_attraction, name='create_attraction'),
-    path('parks/<int:park_id>/details/attractions/create/type/', attraction_type_list, name='attraction_type_list')
+    path('parks/<int:park_id>/details/attractions/create/type/', attraction_type_list, name='attraction_type_list'),
+    path('parks/<int:park_id>/details/attractions/create/delete/', delete_attraction, name='delete_attraction'),
 ]
 
 

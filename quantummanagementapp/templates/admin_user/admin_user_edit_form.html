@@ -97,9 +97,8 @@
 
                <div class="fieldset_container" id="edit_account_picture_fieldset_container">
                     <fieldset class="new_form">
-
                         <label class="new_form_picture_label" for="image">Picture: </label>
-                        <input required class="new_form_picture_label" id="image" type="file" name="image"
+                        <input {% if user_account.user.image_id == image.id %} selected {% endif %} class="new_form_picture_label" id="image" type="file" name="image"
                             value="{{ user_account.user.image.url }}" />
                     </fieldset>
                 </div>

@@ -60,5 +60,3 @@ def get_employee_details(request, employee_id):
                 return HttpResponseServerError({'Error: not found': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
             except Exception as ex:
                 return HttpResponseServerError({'Oops!: Something went wrong.': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-            return redirect(reverse('quantummanagementapp:employee_list'))

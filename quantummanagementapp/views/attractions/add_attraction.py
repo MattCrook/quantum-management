@@ -43,6 +43,7 @@ def create_attraction(request, park_id):
         new_attraction.capacity = form_data["capacity"]
         # new_attraction.current_operating_capacity = form_data["current_operating_capacity"]
         new_attraction.type_id = form_data["type"]
+        new_attraction.park_id = park.id
         new_attraction.save()
 
         new_park_attraction = ParkAttractions()

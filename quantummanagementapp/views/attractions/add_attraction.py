@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from quantummanagementapp.models import AdminUser, Employee, EmployeeAttraction, Park, Attraction, AttractionType, ParkAttractions
 from django.contrib.auth.decorators import login_required
+from .delete_attraction import delete_attraction
 
 
 @login_required

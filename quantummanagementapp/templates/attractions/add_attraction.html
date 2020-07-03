@@ -119,7 +119,7 @@
 
 
 
-    <div class="signature">
+<div class="signature">
         {% comment %} <p>Made with <i class="much-heart"></i> by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> 
         </p> {% endcomment %}
         <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="far fa-copyright"></i>
@@ -127,13 +127,11 @@
     </div>
 </div>
 
-  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
         <header class="modal__header">
-          <h2 class="modal__title" id="modal-1-title">
-            Add New Attraction Type
-          </h2>
+          <h2 class="modal__title" id="modal-1-title">Add New Attraction Type</h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
         <p class="modal_for_example"><em>For example: Roller Coaster, Flat Ride, Launch Tower, etc...</em></p>
@@ -147,37 +145,32 @@
                     <input required class="new_form" id="type" type="text" name="type" value="{{ type.name }}" />
                 </fieldset>
                 </div>
-        <footer class="modal__footer">
+                <footer class="modal__footer">
                 <input id="modal__btn-primary" type="submit" value="Create" style="margin-right: 8px;"/>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
+                    <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+                </footer>
             </form>
-                <div class="signature">
-                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i>
-                    </p>
+            <div class="signature">
+                <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i></p>
+            </div>
+        </main>
+        </div>
     </div>
-    </main>
-
-      </div>
-    </div>
-  </div>
+</div>
 
 
   <div class="modal micromodal-slide" id="modal-2" aria-hidden="true">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close>
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
         <header class="modal__header">
-          <h2 class="modal__title" id="modal-2-title">
-            Delete Attraction
-          </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+          <h2 class="modal__title" id="modal-2-title">Delete Attraction</h2>
+              <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
-        <p class="modal_for_example"><em>Deleting an an attraction will remove it from the park and all other views it is referenced...</em></p>
+        <p class="modal_delete_message"><em>Deleting an an attraction will remove it from the park and all other views it is referenced...</em></p>
 
         <main class="modal__content" id="modal-1-content">
-            <form class="new_form" id="modal" action="{}" method="POST">
+            <form class="new_form" id="modal" action="{% url 'quantummanagementapp:delete_attraction' park.id %}" method="POST">
              {% csrf_token %}
-             <input type="hidden" name="actual_method" value="DELETE">
 
              <div class="fieldset_container">
                  <fieldset class="new_form" id="modal">
@@ -190,16 +183,15 @@
                     </fieldset>
                 </div>
                 <footer class="modal__footer">
-                <button id="modal__btn-primary" style="margin-right: 8px;">Delete</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-        </footer>
+                    <input type="hidden" name="actual_method" value="DELETE">
+                    <button id="modal__btn-primary" style="margin-right: 8px;">Delete</button>
+                </footer>
             </form>
                 <div class="signature">
-                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i class="fas fa-copyright"></i>
+                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a><i class="fas fa-copyright"></i>
                     </p>
-    </div>
-    </main>
-
+                </div>
+        </main>
       </div>
     </div>
   </div>

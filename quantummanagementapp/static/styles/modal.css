@@ -242,3 +242,64 @@ form#modal.new_form {
 #modal-2:visited {
   color: #050505;
 }
+
+.modal_delete_message {
+  font-size: 12px;
+  margin-top: 2px;
+  color: rgb(14, 13, 48);
+}
+
+.delete_attraction_btn {
+  padding: 5px 30px;
+  margin: 2px 10px;
+  color: rgb(54, 6, 6);
+  /* font-family: sans-serif; */
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  text-decoration: none;
+}
+
+.delete_attraction_btn {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.delete_attraction_btn::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.delete_attraction_btn:hover::before {
+  width: 100%;
+}
+
+.delete_attraction_btn::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.delete_attraction_btn:hover::after {
+  width: 100%;
+}
+.delete_attraction_btn:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}

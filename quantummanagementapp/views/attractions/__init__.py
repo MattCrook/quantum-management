@@ -1,2 +1,3 @@
 from .add_attraction import create_attraction
 from .add_attraction_type import attraction_type_list
+from .delete_attraction import delete_attraction

@@ -4,7 +4,6 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/parks/add_attraction.css' %}" />
-
 {% endblock %}
 
 
@@ -35,7 +34,7 @@
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
-                   Add Attraction
+                   Add or Delete Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
@@ -51,18 +50,11 @@
         </ul>
     </div>
 
-
-
-
-
-
-
-
     <div class="manage_employees_container">
         <div class="manage_employees_title">Add New Attraction</div>
-
-            <a href="#modal-2" data-micromodal-trigger="modal-2" class="delete_attraction_btn">Delete Attraction</a>
-
+        <div>
+            <a href="#modal-2" data-micromodal-trigger="modal-2" class="delete_attraction_btn">Delete Attraction</a><i class="far fa-trash-alt"></i>
+        </div>
         <div class="add_employee_button">
             <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
                     href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
@@ -177,14 +169,14 @@
                      <label class="new_form_modal" for="type"><div class="type_modal_label">Select an Attraction: </div></label>
                      <select class="new_form" id="attractions" name="attractions">
                          {% for attraction in park_attractions %}
-                         <option required class="attraction_delete_dropdown" value="{{ attraction.attraction.id }}">{{attraction.attraction.name}}</option>
+                         <option required class="attraction_delete_dropdown" data-attraction-name="{{attraction.attraction.name}}" value="{{ attraction.attraction.id }}">{{attraction.attraction.name}}</option>
                          {% endfor %}
                      </select>
                     </fieldset>
                 </div>
                 <footer class="modal__footer">
                     <input type="hidden" name="actual_method" value="DELETE">
-                    <button id="modal__btn-primary" style="margin-right: 8px;">Delete</button>
+                    <button id="modal__btn-primary2" style="margin-right: 8px;">Delete</button>
                 </footer>
             </form>
                 <div class="signature">

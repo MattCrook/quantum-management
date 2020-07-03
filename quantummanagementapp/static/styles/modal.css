@@ -246,17 +246,17 @@ form#modal.new_form {
 .modal_delete_message {
   font-size: 12px;
   margin-top: 2px;
-  color: rgb(14, 13, 48);
+  color: rgb(27, 25, 73);
 }
 
 .delete_attraction_btn {
-  padding: 5px 30px;
-  margin: 2px 10px;
-  color: rgb(54, 6, 6);
+  padding: 4px 25px;
+  margin: 1px 10px;
+  color: rgb(0, 0, 0);
   /* font-family: sans-serif; */
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   position: relative;
   text-decoration: none;
 }
@@ -274,8 +274,8 @@ form#modal.new_form {
   bottom: 0px;
   width: 0%;
   height: 1px;
-  background: #6098ff;
-  box-shadow: inset 0px 0px 0px #6098ff;
+  background: #b90808;
+  box-shadow: inset 0px 0px 0px #9c0505;
   display: block;
   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
@@ -292,7 +292,7 @@ form#modal.new_form {
   top: 0px;
   width: 0%;
   height: 1px;
-  background: #6098ff;
+  background: #920505;
   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
@@ -300,6 +300,50 @@ form#modal.new_form {
   width: 100%;
 }
 .delete_attraction_btn:hover {
-  border-left: 1px solid #6098ff;
-  border-right: 1px solid #6098ff;
+  border-left: 1px solid #8d0404;
+  border-right: 1px solid #8d0e05;
+}
+
+.delete_attraction_btn:link {
+  text-decoration: none;
+}
+.delete_attraction_btn:hover {
+  color: #3a0303;
+}
+
+
+#modal__btn-primary2 {
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-right: 8px;
+  width: 92px;
+  background-color: #131111;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: 0.25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform 0.25s ease-out;
+  transition: transform 0.25s ease-out;
+  transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+}
+
+#modal__btn-primary2 {
+  background-color: #660404;
+  color: #fff;
+  font-variant: small-caps;
 }

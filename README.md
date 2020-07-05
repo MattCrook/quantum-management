@@ -50,6 +50,7 @@ Once given credentials and logged in, an admin user may set up their account pro
 
 Admin user can see a full list of employees categorized by which department they work in.
   * Admin user can add (hire) a new employee.
+    * ![AddEmployeeForm](quantummanagementapp/static/images/AddEmployeeForm.png)
   * Can edit/ delete an existing employee. However, only if the current authenticated admin user originally added that employee.
   * Can see details of a specific employee. For example which attraction they are assigned to, their wage, start date ect...
   
@@ -67,10 +68,10 @@ Admin user can see a full list of parks that are currently owned/ under the orga
       * Details and specs for that specific attraction
       * ![parkDetails](quantummanagementapp/static/images/parkdetailsdashboard.png)
     * Employees
-      * Admin user can easily read list of employees that work at the current park.
+      * Admin user can easily read list of employees that work at the current park for a filtered list of employees rather then the full list of all employees as mentioned above.
       * ![employeesInPark](quantummanagementapp/static/images/employeesInPark.png)
     * Add Attraction
-      * Admin user can add a new attraction (and *attraction type*) to the current park.
+      * Admin user can add (or remove) a new attraction (and *attraction type*) to the current park.
       * ![addAttractionForm](quantummanagementapp/static/images/AddAttraction.png)
 
 ## Park analytics

@@ -25,6 +25,10 @@
   margin-bottom: 30px;
 }
 
+.attraction_title_details_page i {
+  margin-left: 10px;
+}
+
 .attractions_column_list_details_page {
   display: flex;
   flex-direction: row;

@@ -74,7 +74,7 @@ Admin user can see a full list of parks that are currently owned/ under the orga
       * Admin user can add (or remove) a new attraction (and *attraction type*) to the current park.
       * ![addAttractionForm](quantummanagementapp/static/images/AddAttraction.png)
 
-## Park analytics
+## Park Analytics
 
 Data analysis information for creating data visualizations for business operations and intelligence.
 

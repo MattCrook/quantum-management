@@ -9,7 +9,6 @@
 
 {% if request.user.is_authenticated %}
 <div id="viewport">
-    <!-- Sidebar -->
     <div id="sidebar">
         <header>
             <a class="sidebar_logo" href="#">Quantum</a>
@@ -83,18 +82,12 @@
 
         {% elif type.name == 'Concession' %}
              <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-hamburger"></i></div>
+        {% elif type.name == 'Water Ride' %}
+             <div class="attraction_title_details_page">{{type.name}}s<i class="fas fa-water"></i></div>
 
         {% endif %}
 
-
-
-
-
-
-
-        {% comment %} <h6 class="attraction_title_details_page">{{type.name}}s</h6> {% endcomment %}
         <div class="attractions_column_list_details_page">
-
             {% for park_attraction in park_attractions %}
                 {% if park_attraction.attraction.type_id == type.id %}
                     <div class="park_attractions_container_details_page">

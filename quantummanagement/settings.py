@@ -134,7 +134,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# before auth0
 LOGIN_REDIRECT_URL = 'home/'
 LOGIN_URL = 'login/'
 LOGOUT_URL = 'logout/'

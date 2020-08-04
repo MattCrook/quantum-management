@@ -1,16 +1,16 @@
 from django.db import models
 from django.urls import reverse
-
-# from quantummanagementapp.models import AttractionType
+from .attraction_type import AttractionType
+from .park import Park
 
 
 class Attraction(models.Model):
 
     name = models.CharField(max_length=100)
-    type = models.ForeignKey("AttractionType", null=True, blank=True, on_delete=models.CASCADE)
+    type = models.ForeignKey(AttractionType, null=True, blank=True, on_delete=models.CASCADE)
     capacity = models.CharField(max_length=20, null=True, blank=True)
     current_operating_capacity = models.CharField(max_length=20, null=True, blank=True)
-    park = models.ForeignKey("Park", null=True, blank=True, on_delete=models.CASCADE)
+    park = models.ForeignKey(Park, null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("attraction")

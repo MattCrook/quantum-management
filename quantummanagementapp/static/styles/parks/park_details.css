@@ -100,7 +100,7 @@ padding-top: 5px;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /******************* Sidebar Styles *****************/
@@ -108,12 +108,12 @@ padding-top: 5px;
 #sidebar {
   z-index: 1000;
   position: absolute;
-  top: 72px;
+  top: 74px;
   left: 230px;
-  width: 230px;
-  height: 100%;
+  width: 13.5%;
+  height: 110%;
   margin-left: -230px;
-  overflow-y: auto;
+  overflow: auto;
   /* background: #37474f; */
   background: rgb(17, 19, 24);
   -webkit-transition: all 0.5s ease;
@@ -122,15 +122,7 @@ padding-top: 5px;
   transition: all 0.5s ease;
 }
 
-/* #sidebar header a {
-  color: #fff;
-  display: block;
-  text-decoration: none;
-}
 
-#sidebar header a:hover {
-  color: #fff;
-} */
 
 .sidebar_list_item_container {
   margin-top: 20px;
@@ -148,9 +140,6 @@ padding-top: 5px;
   background: none;
   color: #cfd8dc;
   font-size: 13px;
-  /* padding-top: 16px; */
-  /* padding-bottom: 20px; */
-  /* padding-right: 71%; */
   padding-left: 30px;
 }
 

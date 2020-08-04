@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   box-shadow: 1px 2px 2px 1px rgb(173, 173, 173);
   margin-bottom: 20px;
   margin-top: 3px;
@@ -33,6 +34,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-left: 2%;
 }
 
 .park_attractions_container_details_page {

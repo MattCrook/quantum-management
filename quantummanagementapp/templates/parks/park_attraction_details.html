@@ -15,27 +15,27 @@
         </header>
         <ul class="nav">
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i class="fas fa-globe"></i>
                     Dashboard
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:overview' park.id %}"><i class="fas fa-chart-pie"></i>
                      Overview
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
+                <a class="dashboard_link" href="#"><i class="far fa-chart-bar"></i>
                    Analytics
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i class="fas fa-plus-circle"></i>
                    Add or Delete Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i>
                     Employees
                 </a>
             </li>

@@ -76,7 +76,6 @@
   display: flex;
   flex-direction: row;
   font-size: 14px;
-  /* margin-right: 5px; */
 }
 
 .logout_btn_account {
@@ -101,7 +100,7 @@
 .manage_account_title {
   margin-left: 20px;
   font-size: large;
-  font-variant: small-caps;
+  font: 100 1.1em helvetica neue, open sans, sans-serif;
 }
 
 /*************** Nav Button Edit Account *************/
@@ -113,8 +112,12 @@
   border-radius: 5px 5px 5px 5px;
   border: none;
   margin-bottom: 4px;
-  background-color: #b5b6b8;
-  width: 170px;
+  background-color: #b8b5b5;
+  width: 10%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 1px 1px 1px 1px rgb(168, 168, 168);
+  border: 1px solid rgb(145, 21, 21);
 }
 
 .add_account_button:hover {

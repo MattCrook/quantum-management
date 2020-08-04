@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-
 from quantummanagementapp.models import Park, Attraction
 
 class ParkAttractions(models.Model):

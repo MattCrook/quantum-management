@@ -1,5 +1,3 @@
-const remoteURL = "http://localhost:8000";
-
 const createTypeLink = document.getElementById("modal-1");
 const deleteAttractionLink = document.getElementById("modal__btn-primary2");
 

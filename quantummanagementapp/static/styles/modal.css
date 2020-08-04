@@ -253,12 +253,12 @@ form#modal.new_form {
   padding: 4px 25px;
   margin: 1px 10px;
   color: rgb(0, 0, 0);
-  /* font-family: sans-serif; */
-  /* text-transform: uppercase; */
   text-align: center;
   font-size: 14px;
   position: relative;
   text-decoration: none;
+  font: 100 1.0em helvetica neue, open sans, sans-serif;
+
 }
 
 .delete_attraction_btn {

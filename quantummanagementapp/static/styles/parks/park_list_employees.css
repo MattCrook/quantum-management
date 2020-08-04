@@ -101,3 +101,9 @@
 .role_title_employees_park_detail i {
   margin-right: 10px;
 }
+
+.employees_in_park_title {
+  margin-left: 14%;
+  font-variant: small-caps;
+  font-size: large;
+}

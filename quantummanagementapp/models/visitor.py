@@ -2,13 +2,15 @@ from django.db import models
 from django.utils import timezone
 from django.db.models import F
 from django.urls import reverse
+from . import Park
 
 
 
 class Visitor(models.Model):
 
-    check_in = models.DateTimeField(default=timezone.now)
+    check_in = models.DateTimeField(auto_now=False, default=timezone.now)
     ticket_price = models.DecimalField(max_digits=6, decimal_places=2)
+    park = models.ForeignKey(Park, null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = (F('check_in').asc(nulls_last=True),)

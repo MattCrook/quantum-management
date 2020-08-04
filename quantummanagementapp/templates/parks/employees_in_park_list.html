@@ -8,43 +8,41 @@
 {% block content %}
 {% if request.user.is_authenticated %}
 
-<div id="viewport">
     <div id="sidebar">
         <header>
             <a class="sidebar_logo" href="#">Quantum</a>
         </header>
         <ul class="nav">
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i class="fas fa-globe"></i>
                     Dashboard
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
+                <a class="dashboard_link" href="#"><i class="fas fa-chart-pie"></i>
                      Overview
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#">
+                <a class="dashboard_link" href="#"><i class="far fa-chart-bar"></i>
                    Analytics
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i class="fas fa-plus-circle"></i>
                    Add or Delete Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i>
                     Employees
                 </a>
-            </li>
             </li>
         </ul>
     </div>
 
 <div class="manage_employees_container">
-    <div class="manage_employees_title">Employees in {{park.name}}</div>
+    <div class="employees_in_park_title">Employees in {{park.name}}</div>
 
     <div class="add_employee_button">
         <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"

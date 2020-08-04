@@ -8,7 +8,7 @@
 }
 
 .manage_employees_title {
-  margin-left: 20px;
+  margin-left: 2%;
   font-size: large;
   font-variant: small-caps;
 }
@@ -16,9 +16,10 @@
 .add_employee_button {
   align-items: center;
   margin-right: 18px;
-  font-size: 12px;
-  font-weight: 50;
+  /* font-size: 12px; */
+  /* font-weight: 50; */
   border-radius: 7px;
+  font: 50 0.8em helvetica neue, open sans, sans-serif;
 }
 
 .add_employee:link {
@@ -33,6 +34,7 @@
 .add_tp_btn {
   background-color: white;
   border-radius: 5px;
+  font: 50 1.1em helvetica neue, open sans, sans-serif;
 }
 
 .add_tp_btn:hover {
@@ -63,8 +65,6 @@
   }
 }
 
-
-
 .role_title {
   display: flex;
   justify-content: center;
@@ -85,20 +85,19 @@
 
 .ul_employee_list {
   margin-bottom: 8px;
-
 }
 
 /************* Employee Link to Details **********/
 .employee_item_link {
-padding-top: 8px;
-position: relative;
-display:inline-block;
-font-size: 14px;
-text-align: center;
+  padding-top: 8px;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
 }
 
 .employee_item_link::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 8%;
   left: 0px;
@@ -113,7 +112,7 @@ text-align: center;
   -ms-transform: scale(0, 1);
   transform: scale(0, 1);
   -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
-  transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
 }
 
 .employee_item_link:hover::before {
@@ -122,7 +121,7 @@ text-align: center;
   transform-origin: left top;
   -webkit-transform: scale(1, 1);
   -ms-transform: scale(1, 1);
-  transform: scale(1, 1)
+  transform: scale(1, 1);
 }
 /************* End Blue Underline Styles ***********/
 
@@ -135,7 +134,6 @@ text-align: center;
   text-decoration: none;
   color: rgb(128, 128, 128);
 }
-
 
 /********** Main Outer Container All Cards ***************/
 .roles_card {
@@ -168,6 +166,7 @@ text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 17px;
+  font: 100 1.2em helvetica neue, open sans, sans-serif;
 }
 
 .role_item i {
@@ -224,7 +223,6 @@ text-align: center;
 
 */
 
-
 .edit_btn:link {
   text-decoration: none;
   color: black;
@@ -245,7 +243,7 @@ text-align: center;
   font-weight: 600;
   position: relative;
   text-decoration: none;
-  display:inline-block;
+  display: inline-block;
 }
 
 .edit_employee_btn {
@@ -285,7 +283,6 @@ text-align: center;
 }
 .edit_employee_btn:hover::after {
   width: 100%;
-
 }
 .edit_employee_btn:hover {
   text-decoration: none;
@@ -306,11 +303,9 @@ text-align: center;
   max-width: 720px;
   padding: 5px 20px;
   background: rgb(216, 216, 216);
-  /* background: #212121; */
 
   margin: 0 auto;
   border-radius: 8px;
-  /* font-family: Georgia, "Times New Roman", Times, serif; */
 }
 .new_form fieldset {
   border: none;
@@ -376,18 +371,20 @@ label.new_form {
 .new_form input[type="button"] {
   position: relative;
   display: block;
-  padding: 19px 39px 18px 39px;
+  padding: 10px 39px 10px 39px;
   color: black;
   margin: 0 auto;
   background: white;
   font-size: 18px;
   text-align: center;
   font-style: normal;
-  width: 100%;
-  border: 1px solid rgb(73, 70, 70);
+  width: 90%;
+  border: 1px solid rgb(85, 85, 85);
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 25px;
+  box-shadow: 1px 1px 1px 1px rgb(133, 129, 129);
+  /* border: none; */
 }
 
 #create_employee_btn:hover {
@@ -399,7 +396,20 @@ label.new_form {
     background: white;
   }
   100% {
-    background: #3e4247;
+    background: #3b3e42;
+    color: white;
+  }
+}
+
+#update_employee_btn:hover {
+  animation: fade 1s both;
+}
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: #3c3d3f;
     color: white;
   }
 }

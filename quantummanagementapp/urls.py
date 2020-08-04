@@ -39,6 +39,8 @@ urlpatterns = [
     path('parks/<int:park_id>/details/attractions/create/', create_attraction, name='create_attraction'),
     path('parks/<int:park_id>/details/attractions/create/type/', attraction_type_list, name='attraction_type_list'),
     path('parks/<int:park_id>/details/attractions/create/delete/', delete_attraction, name='delete_attraction'),
+
+    path('parks/<int:park_id>/details/overview/', overview, name='overview'),
 ]
 
 

@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db.models import F
 from quantummanagementapp.models import Attraction
 from django.urls import reverse
+from . import Park
 
 
 class AttractionWaitTimes(models.Model):
@@ -10,6 +11,7 @@ class AttractionWaitTimes(models.Model):
     attraction = models.ForeignKey(Attraction, on_delete=models.CASCADE)
     current_wait_time = models.DurationField()
     timestamp = models.DateTimeField(default=timezone.now)
+    park = models.ForeignKey(Park, null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = ("waittime")

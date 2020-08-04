@@ -1,0 +1,117 @@
+/*************** SideBar ***************/
+
+#overview_viewport {
+  padding-left: 10%;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: auto;
+}
+
+#overview_sidebar {
+  z-index: 1000;
+  position: absolute;
+  top: 74px;
+  left: 230px;
+  width: 8%;
+  height: 110%;
+  margin-left: -230px;
+  overflow: auto;
+  background: rgb(17, 19, 24);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.overview_sidebar_list_item_container {
+  margin-top: 20px;
+  border-bottom: 1px solid #4073e071;
+  padding-bottom: 30px;
+  text-decoration: none;
+}
+
+.overview_sidebar_list_item_container i {
+  text-decoration: none;
+  color: rgb(218, 218, 218);
+  margin-left: 40%;
+}
+
+.overview_nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  background: none;
+  padding-left: 1%;
+  transition: filter 300ms;
+}
+
+.overview_sidebar_list_item_container i:hover {
+  filter: brightness(1.4);
+}
+
+.overview_sidebar_logo {
+  color: #fff;
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-decoration: none;
+  font-variant: small-caps;
+  position: relative;
+}
+
+.overview_sidebar_logo {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.overview_sidebar_logo::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.overview_sidebar_logo:hover::before {
+  width: 100%;
+}
+
+.overview_sidebar_logo::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.overview_sidebar_logo:hover::after {
+  width: 100%;
+}
+.overview_sidebar_logo:hover {
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+
+#overview_sidebar header a:hover {
+  color: #fff;
+}
+
+#overview_sidebar header {
+  background-color: rgb(17, 19, 24);
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}

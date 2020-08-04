@@ -5,7 +5,6 @@ from django.http import HttpResponseServerError
 from quantummanagementapp.models import AdminUser, Employee, Image, ImageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from rest_framework import status
 from django.core.files.base import ContentFile
 
 

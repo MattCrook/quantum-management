@@ -42,25 +42,28 @@
 
     <div id="chart_div"></div>
 
-    {% comment %} {% for employee in employees %}
-    <li>{{employee.first_name}}</li>
-    {% endfor %} {% endcomment %}
-    {% comment %} {% for attraction in park_attractions %}
-    <li>{{attraction.attraction.name}}</li>
-    {% endfor %}  {% endcomment %}
-
-
-
 
 
 </div>
 
+{% endif %}
+{% endblock %}
+
+
 {% block scripts%}
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="module">
+    import {drawAttractionTypes} from "{% static 'scripts/charts.js'%}"
+  </script>
+
+
   <script type="text/javascript">
 
     google.charts.load('current', {'packages':['corechart']});
+
+    // draw all charts
     google.charts.setOnLoadCallback(drawChart);
+
 
 
     // Callback that creates and populates a data table,
@@ -92,21 +95,4 @@
         chart.draw(data, options);
     }
     </script>
-
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% endif %}
 {% endblock %}

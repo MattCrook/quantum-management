@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/overview/overview.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'styles/overview/overview.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,8 @@
         </header>
         <ul class="overview_nav">
             <li class="overview_sidebar_list_item_container">
-                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i class="fas fa-globe"></i></a>
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i
+                        class="fas fa-globe"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
                 <a class="overview_dashboard_link" href="#"><i class="fas fa-chart-pie"></i></a>
@@ -23,10 +24,12 @@
                 <a class="overview_dashboard_link" href="#"><i class="far fa-chart-bar"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
-                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i class="fas fa-plus-circle"></i></a>
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i
+                        class="fas fa-plus-circle"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
-                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i></a>
+                <a class="overview_dashboard_link"
+                    href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i></a>
             </li>
         </ul>
     </div>
@@ -40,7 +43,7 @@
     <div>Number Of Employees in {{park.name}}</div>
     <div>{{employee_count}}</div>
 
-    <div id="chart_div"></div>
+    <div id="employee_chart_div"></div>
 
 
 
@@ -51,48 +54,15 @@
 
 
 {% block scripts%}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="module">
+    import { init } from "{% static 'scripts/charts.js'%}"
 
-  <script type="module">
-    import {drawAttractionTypes} from "{% static 'scripts/charts.js'%}"
-  </script>
-
-
-  <script type="text/javascript">
-
-    google.charts.load('current', {'packages':['corechart']});
-
-    // draw all charts
-    google.charts.setOnLoadCallback(drawChart);
+    const parkId = 1;
+    google.charts.load('current', {'packages': ['corechart', 'table', 'line']}).then(() => {
+    init(parkId);
+    })
 
 
-
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function drawChart() {
-    var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Position/Role');
-        data.addColumn('number', 'Employees');
-        data.addRows([
-          ['Ride Operator', 3],
-          ['Mechanic', 1],
-          ['Security', 1],
-          ['Concessions', 1],
-          ['Restaurant', 2],
-          ['Manager', 2],
-          ['Entertainer', 2]
-        ]);
-
-        // Set chart options
-        var options = {
-            'title':'Employees By Role',
-            'width':500,
-            'height':400
-        };
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    }
-    </script>
+</script>
 {% endblock %}

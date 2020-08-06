@@ -10,7 +10,7 @@ from quantummanagementapp.models import Park, ParkAttractions
 class ParkDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Park
-        fields = ('id', 'url', 'name', 'state', 'max_capacity', 'number_of_attractions')
+        fields = ('id', 'name', 'state', 'max_capacity', 'number_of_attractions')
         depth = 1
 
 
@@ -26,7 +26,7 @@ class ParkData(ModelViewSet):
 class ParkAttractionsDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkAttractions
-        fields = ('id', 'attraction_id', 'park_id')
+        fields = ('id', 'attraction', 'park')
         depth = 2
 
 
@@ -35,4 +35,4 @@ class ParkAttractionsData(ModelViewSet):
     serializer_class = ParkAttractionsDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['park_id']

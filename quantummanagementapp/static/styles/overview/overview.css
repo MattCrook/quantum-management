@@ -115,3 +115,12 @@
   margin-top: 5px;
   margin-bottom: 20px;
 }
+
+/******************************* Charts ***************************/
+
+.charts_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}

@@ -34,7 +34,7 @@
         </ul>
     </div>
 
-    <div>{{admin_user.role}}</div>
+    <div>{{admin_user.user.first_name}}</div>
     <div>{{park.name}}</div>
 
     <div>Number Of Attractions in {{park.name}}</div>
@@ -45,6 +45,8 @@
 
     <div class="charts_container">
         <div id="employee_chart_div"></div>
+        <div id="attraction_type_chart_div"></div>
+
     </div>
 
 
@@ -60,12 +62,17 @@
 <script type="module">
     import { init } from "{% static 'scripts/charts.js'%}"
 
-    const parkId = window.location.pathname.split('/')[2];
 
-    google.charts.load('current', { 'packages': ['corechart', 'table', 'line'] }).then(() => {
-        init(parkId);
-    })
 
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    function initCharts(parkId) {
+      google.charts.load('current', { 'packages': ['corechart', 'table', 'line'] }).then((resp) => {
+       init(parkId)
+      })
+    }
+    initCharts(parkId)
 
 </script>
 {% endblock %}

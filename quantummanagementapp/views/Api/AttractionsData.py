@@ -15,13 +15,13 @@ class AttractionDataSerializer(serializers.ModelSerializer):
         #     view_name='park-detail',
         #     lookup_field='id',
         # )
-        fields = ('id', 'name', 'capacity', 'current_operating_capacity', 'type_id', 'park_id', )
-        depth = 1
+        fields = ('id', 'name', 'capacity', 'current_operating_capacity', 'type', 'park', )
+        depth = 2
 
 
 class AttractionData(ModelViewSet):
     queryset = Attraction.objects.all()
     serializer_class = AttractionDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend]
     # filterset_fields = ['id', 'type_id', 'park_id', 'name']

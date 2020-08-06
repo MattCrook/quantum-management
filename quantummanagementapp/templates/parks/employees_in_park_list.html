@@ -2,85 +2,92 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/parks/park_list_employees.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/parks/park_list_employees.css' %}" />
 {% endblock %}
 
 {% block content %}
 {% if request.user.is_authenticated %}
-
+<div id="employees_viewport">
     <div id="sidebar">
         <header>
             <a class="sidebar_logo" href="#">Quantum</a>
         </header>
         <ul class="nav">
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i class="fas fa-globe"></i>
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i
+                        class="fas fa-globe"></i>
                     Dashboard
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#"><i class="fas fa-chart-pie"></i>
-                     Overview
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:overview' park.id %}"><i
+                        class="fas fa-chart-pie"></i>
+                    Overview
                 </a>
             </li>
             <li class="sidebar_list_item_container">
                 <a class="dashboard_link" href="#"><i class="far fa-chart-bar"></i>
-                   Analytics
+                    Analytics
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i class="fas fa-plus-circle"></i>
-                   Add or Delete Attraction
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i
+                        class="fas fa-plus-circle"></i>
+                    Add or Delete Attraction
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i>
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i
+                        class="fas fa-users"></i>
                     Employees
                 </a>
             </li>
         </ul>
     </div>
 
-<div class="manage_employees_container">
-    <div class="employees_in_park_title">Employees in {{park.name}}</div>
+    <div class="manage_employees_container">
+        <div class="employees_in_park_title">Employees in {{park.name}}</div>
 
-    <div class="add_employee_button">
-        <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
-                href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
+        <div class="add_employee_button">
+            <button class="add_tp_btn"><i class="fas fa-backward"></i><a class="add_employee"
+                    href="{% url 'quantummanagementapp:park' park.id %}">Back</a></button>
+        </div>
     </div>
-</div>
 
 
-<div class="employees_in_park_list_outer_container">
-    {% for role in roles %}
+    <div class="employees_in_park_list_outer_container">
+        {% for role in roles %}
         <div class="role_title_employees_park_detail">
             {% if role == 'Entertainer'%}
-                <div class="role_header_title"><i class="far fa-grin"></i>{{role}}</div>
+            <div class="role_header_title"><i class="far fa-grin"></i>{{role}}</div>
             {% elif role == 'Ride Operator'%}
-                <div class="role_header_title"><i class="fas fa-users-cog"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-users-cog"></i>{{role}}</div>
             {% elif role == 'Consessions'%}
-                <div class="role_header_title"><i class="fas fa-utensils"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-utensils"></i>{{role}}</div>
             {% elif role == 'Security'%}
-                <div class="role_header_title"><i class="fas fa-shield-alt"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-shield-alt"></i>{{role}}</div>
             {% elif role == 'Mechanic'%}
-                <div class="role_header_title"><i class="fas fa-wrench"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-wrench"></i>{{role}}</div>
             {% elif role == 'Restaurant'%}
-                <div class="role_header_title"><i class="fas fa-glass-cheers"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-glass-cheers"></i>{{role}}</div>
             {% elif role == 'Manager'%}
-                <div class="role_header_title"><i class="fas fa-user-tie"></i>{{role}}</div>
+            <div class="role_header_title"><i class="fas fa-user-tie"></i>{{role}}</div>
             {% endif %}
             <div class="employees_in_park_list_inner_container">
                 {% for employee in employees %}
-                    {% if employee.role == role %}
-                        <div class="employee_name_park_list_btn">
-                            <a class="a_link_employee_detail" href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{employee.first_name}} {{employee.last_name}}</a>
-                        </div>
-                    {% endif %}
+                {% if employee.role == role %}
+                <div class="employee_name_park_list_btn">
+                    <a class="a_link_employee_detail"
+                        href="{% url 'quantummanagementapp:employee_details' employee.id %}">{{employee.first_name}}
+                        {{employee.last_name}}</a>
+                </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
-</div>
+
 {% endif %}
 {% endblock %}

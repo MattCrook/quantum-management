@@ -1,3 +1,14 @@
+#employees_viewport {
+  padding-left: 230px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: auto;
+}
+
+
+
 .employee_name_park_list_btn {
   margin-left: 10px;
   color: rgb(155, 151, 151);
@@ -103,7 +114,7 @@
 }
 
 .employees_in_park_title {
-  margin-left: 14%;
+  margin-left: 1%;
   font-variant: small-caps;
   font-size: large;
 }

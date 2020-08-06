@@ -43,7 +43,9 @@
     <div>Number Of Employees in {{park.name}}</div>
     <div>{{employee_count}}</div>
 
-    <div id="employee_chart_div"></div>
+    <div class="charts_container">
+        <div id="employee_chart_div"></div>
+    </div>
 
 
 
@@ -58,9 +60,10 @@
 <script type="module">
     import { init } from "{% static 'scripts/charts.js'%}"
 
-    const parkId = 1;
-    google.charts.load('current', {'packages': ['corechart', 'table', 'line']}).then(() => {
-    init(parkId);
+    const parkId = window.location.pathname.split('/')[2];
+
+    google.charts.load('current', { 'packages': ['corechart', 'table', 'line'] }).then(() => {
+        init(parkId);
     })
 
 

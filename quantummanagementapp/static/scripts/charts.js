@@ -1,10 +1,15 @@
-import { getParkList, getEmployeeList, retrieveAttraction, getParkAttractions, getAttractionType } from "./services.js";
+import {
+  getParkList,
+  getEmployeeList,
+  retrieveAttraction,
+  getParkAttractions,
+  getAttractionType,
+  getVisitorsList,
+} from "./services.js";
 
 // get all the data I need
 // drawResource Function
 // Master init function, in HTML that calls the other init functions to kick off everything at once.
-
-const drawPark = () => {};
 
 const getEmployeeData = async (parkId) => {
   const fetchEmployees = await getEmployeeList();
@@ -52,8 +57,8 @@ const drawEmployeesChart = async (parkId) => {
   // Set chart options
   const options = {
     title: "Employees By Role",
-    width: 600,
-    height: 500,
+    width: 700,
+    height: 700,
   };
 
   // Instantiate and draw our chart, passing in some options.
@@ -61,16 +66,7 @@ const drawEmployeesChart = async (parkId) => {
   employeeChart.draw(data, options);
 };
 
-// get all the attractions in a park, display the % make up of attractions by attraction type.
-
-// const setAttractions = (attractionsArray) => attractions = attractionsArray;
-// function useAttractions() {
-//   let attractions = [];
-//   return [() => attractions, (newState) => (attractions = newState)];
-// }
-
-// const [attractions, setAttractions] = useAttractions();
-
+// Get all the attractions in a park, display the % make up of attractions by attraction type.
 const buildAttractionTypeData = async (parkId) => {
   const fetchAttractions = await getParkAttractions(parkId);
   const buildAttractionObject = fetchAttractions.map((attraction) => {
@@ -93,16 +89,16 @@ const formatAttractionTypes = async (parkId) => {
     const type = attraction.type;
     types.add(type);
   });
-  const typeAdjList = new Map();
+  const typeAdjacencyList = new Map();
   types.forEach((type) => {
-    typeAdjList.set(type, []);
+    typeAdjacencyList.set(type, []);
   });
   filteredData.forEach((attractionObj) => {
     const typeName = attractionObj.type;
     const attractionName = attractionObj.name;
-    typeAdjList.get(typeName).push(attractionName);
+    typeAdjacencyList.get(typeName).push(attractionName);
   });
-  return typeAdjList;
+  return typeAdjacencyList;
 };
 
 const drawAttractionTypeChart = async (parkId) => {
@@ -121,39 +117,77 @@ const drawAttractionTypeChart = async (parkId) => {
   // Set chart options
   const options = {
     title: "Attractions by Attraction Type",
-    width: 600,
-    height: 500,
+    width: 700,
+    height: 700,
   };
 
-  // Instantiate and draw our chart, passing in some options.
   const attractionTypeChart = new google.visualization.PieChart(document.getElementById("attraction_type_chart_div"));
   attractionTypeChart.draw(typeData, options);
 };
 
+// Get Attendance by month of parks for Bar chart.
+// Get all parks, then their daily visitors and separate by month for visualization.
+// Get average of all attendance for average line.
+const buildAttendanceChart = async () => {
+  const parks = await getParkList();
+  let visitorsPromises = [];
+  parks.forEach((park) => {
+    const park_id = park.id;
+    visitorsPromises.push(getVisitorsList(park_id));
+  });
+  const attendanceAdjacencyList = new Map();
+  parks.forEach((park) => {
+    attendanceAdjacencyList.set(park.name, []);
+  });
+  const visitorData = await Promise.all(visitorsPromises);
+  // visitor data is an array of arrays of objects of visitor objects in each specific park.
+  visitorData.forEach((arrayOfVisitors) => {
+    // Don't have to loop thru again, only have to check first object in the array for the park_id, bc they are all separated out by park_id already.
+    const visitor = arrayOfVisitors[0];
+    // check if visitor is not undefined. Bc if it is it throws an error for my Map.
+    if (visitor) {
+      const visitorParkName = visitor.park.name;
+      attendanceAdjacencyList.get(visitorParkName).push(arrayOfVisitors);
+    }
+  });
+  return attendanceAdjacencyList;
+};
+
+
+// matrix
+//header
+//rows [month, attendancepark1, attendanepark2, average]
+
+
+const drawAttendanceChart = async () => {
+  const initAttractionData = await buildAttendanceChart();
+  let columnLabels = [];
+  initAttractionData.forEach(function (key, value) {
+    const columnLabel = [value];
+    columnLabels.push(columnLabel);
+  });
+  let extractedParksForHeader = columnLabels.map(label => label[0].toString());
+  let matrixHeader = ['Month', ...extractedParksForHeader, 'All Parks Average'];
+  let matrixBody = [];
+  let Matrix = [];
+  console.log(matrixHeader)
+}
+
+
+
+
+
 const drawAllCharts = (parkId) => {
   drawEmployeesChart(parkId);
-  drawAttractionTypeChart(parkId)
+  drawAttractionTypeChart(parkId);
 };
 
 const init = (parkId) => {
   google.charts.setOnLoadCallback(drawAllCharts(parkId));
 };
 
-export { init };
+export { init, buildAttendanceChart, drawAttendanceChart };
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 // const setAttractions = (attractionsArray) => attractions = attractionsArray;
 // function useAttractions() {
 //   let attractions = [];

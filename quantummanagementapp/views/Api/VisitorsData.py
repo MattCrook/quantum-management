@@ -10,7 +10,7 @@ from quantummanagementapp.models import Visitor, VisitorCheckOut
 class VisitorDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Visitor
-        fields = ('id', 'check_in', 'ticket_price', 'park_id')
+        fields = ('id', 'check_in', 'ticket_price', 'park')
         depth = 1
 
 class VisitorCheckoutDataSerializer(serializers.ModelSerializer):
@@ -26,7 +26,7 @@ class VisitortData(ModelViewSet):
     serializer_class = VisitorDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['park_id']
 
 
 class VisitorCheckoutData(ModelViewSet):
@@ -34,4 +34,4 @@ class VisitorCheckoutData(ModelViewSet):
     serializer_class = VisitorCheckoutDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['park_id']

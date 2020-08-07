@@ -6,7 +6,7 @@
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 #overview_sidebar {

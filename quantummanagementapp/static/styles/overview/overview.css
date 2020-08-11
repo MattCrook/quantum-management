@@ -1,7 +1,7 @@
 /*************** SideBar ***************/
 
 #overview_viewport {
-  padding-left: 10%;
+  padding-left: 9%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -123,4 +123,12 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
+}
+
+.attendance_chart_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+
 }

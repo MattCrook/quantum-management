@@ -48,84 +48,32 @@
         <div id="attraction_type_chart_div"></div>
 
     </div>
-
-    <div id="chart_div" style="width: 900px; height: 500px;""></div>
-
-
+    <div class="attendance_chart_container">
+        <div id="2019_attendance_comboChart" style="width: 750px; height: 500px;""></div>
+        <div id="2020_attendance_comboChart" style="width: 850px; height: 500px;""></div>
+    </div>
 
 </div>
+
+
 
 {% endif %}
 {% endblock %}
 
-
 {% block scripts%}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="module">
-    import { init, buildAttendanceChart, drawAttendanceChart} from "{% static 'scripts/charts.js'%}"
-
-
-
+    import { init } from "{% static 'scripts/charts.js'%}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
 
     function initCharts(parkId) {
-      google.charts.load('current', { 'packages': ['corechart', 'table', 'line'] }).then((resp) => {
+      google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
        init(parkId)
       })
     }
     initCharts(parkId)
-    //buildAttendanceChart().then(res => console.log(res))
-    drawAttendanceChart().then(res => console.log(res))
-
-
-    
 
 </script>
 
-
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
-
-      function drawVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([['Month', 'Cedar Point', 'Kings Island', 'All Parks Average'], ['2004/05',  165,      938,      614.6],
-          ['2005/06',  135,      1120,       682],
-          ['2006/07',  157,      1167,       623],
-          ['2007/08',  139,      1110,     609.4],
-          ['2008/09',  136,      691,      569.6]
-        ]);
-
-        var options = {
-          title : 'Monthly Attendence By Park',
-          vAxis: {title: 'Attendence'},
-          hAxis: {title: 'Month'},
-          seriesType: 'bars',
-          series: {2: {type: 'line'}}
-          };
-
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-
-/**
-* Generates a matrix (ie: 2-D Array) with: 
-* 'm' columns, 
-* 'n' rows, 
-* every cell defaulting to 'd';
-*/
-    function Matrix(m, n, d){
-    var mat = Array.apply(null, new Array(m)).map(
-        Array.prototype.valueOf,
-        Array.apply(null, new Array(n)).map(
-            function() {
-               return d;
-            }
-        )
-    );
-    return mat;
-}
-console.log(Matrix(3,3, ['parks', 'rides', 'test']))
-    </script>
 {% endblock %}

@@ -56,9 +56,10 @@ const drawEmployeesChart = async (parkId) => {
 
   // Set chart options
   const options = {
-    title: "Employees By Role",
-    width: 600,
-    height: 600,
+    // title: "Employees By Role",
+    chartArea: {left:20,top:20,width:'99%',height:'99%'},
+    width: 450,
+    height: 350,
   };
 
   // Instantiate and draw our chart, passing in some options.
@@ -116,9 +117,10 @@ const drawAttractionTypeChart = async (parkId) => {
 
   // Set chart options
   const options = {
-    title: "Attractions by Attraction Type",
-    width: 600,
-    height: 600,
+    // title: "Attractions by Attraction Type",
+    chartArea: {left:20,top:20,width:'99%',height:'99%'},
+    width: 450,
+    height: 350,
   };
 
   const attractionTypeChart = new google.visualization.PieChart(document.getElementById("attraction_type_chart_div"));

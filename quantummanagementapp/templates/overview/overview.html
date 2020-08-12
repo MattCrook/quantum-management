@@ -58,12 +58,18 @@
                 <div class="for_border_bottom">Number Of Employees</div>
                  <div class="num_of_employees_variable">{{employee_count}}</div>
             </div>
+            <div class="total_earnings_container">
+                <div class="for_border_bottom">Total Earnings 2019 - 2020</div>
+                 <div class="sum_earnings_variable">${{sum_earnings}}</div>
+            </div>
+            <div class="total_visitors_container">
+                <div class="for_border_bottom">Total Visitors 2019 - 2020</div>
+                 <div class="sum_visitors_variable">{{total_visitors}}</div>
+            </div>
         </div>
     </div>
 
-
     <div class="charts_container">
-        
         <div class="employees_chart">
             <div class="employees_by_role_title_chart"><i class="fas fa-users"></i>Employees By Role</div>
             <div id="employee_chart_div"></div>
@@ -72,9 +78,13 @@
         <div class="attraction_chart">
             <div class="attraction_by_type_title_chart"><i class="fas fa-child"></i>Attractions By Attraction Type</div>
             <div id="attraction_type_chart_div"></div>
-
         </div>
 
+        <div class="tickets_chart">
+            <div class="ticket_title_chart"><i class="fas fa-ticket-alt"></i>Percentage of Tickets Sold</div>
+            <div class="date_tickets_sold">August 2019 - August 2020</div>
+            <div id="ticket_chart_div"></div>
+        </div>
 
     </div>
     <div class="attendance_chart_container">
@@ -96,7 +106,7 @@
 {% block scripts%}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="module">
-    import { init } from "{% static 'scripts/charts.js'%}"
+    import { init, formatTicketsChart } from "{% static 'scripts/charts.js'%}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
 
@@ -104,8 +114,9 @@
       google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
        init(parkId)
       })
-    }
-    initCharts(parkId)
+    };
+
+    initCharts(parkId);
 
 </script>
 

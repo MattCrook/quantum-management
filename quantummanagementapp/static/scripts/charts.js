@@ -1,15 +1,10 @@
 import {
   getParkList,
   getEmployeeList,
-  retrieveAttraction,
   getParkAttractions,
-  getAttractionType,
   getVisitorsList,
 } from "./services.js";
 
-// get all the data I need
-// drawResource Function
-// Master init function, in HTML that calls the other init functions to kick off everything at once.
 
 const getEmployeeData = async (parkId) => {
   const fetchEmployees = await getEmployeeList();
@@ -56,7 +51,6 @@ const drawEmployeesChart = async (parkId) => {
 
   // Set chart options
   const options = {
-    // title: "Employees By Role",
     chartArea: {left:20,top:20,width:'99%',height:'99%'},
     width: 450,
     height: 350,
@@ -111,13 +105,12 @@ const drawAttractionTypeChart = async (parkId) => {
   });
 
   const typeData = new google.visualization.DataTable();
-  typeData.addColumn("string", "Position/Role");
-  typeData.addColumn("number", "Employees");
+  typeData.addColumn("string", "Type");
+  typeData.addColumn("number", "Attractions");
   typeData.addRows(rows);
 
-  // Set chart options
+
   const options = {
-    // title: "Attractions by Attraction Type",
     chartArea: {left:20,top:20,width:'99%',height:'99%'},
     width: 450,
     height: 350,
@@ -410,17 +403,77 @@ const drawAttendanceCharts = async () => {
 };
 
 
+const formatTicketsChart = async (parkId) => {
+  const visitors = await getVisitorsList(parkId);
+  const ticketPrices = visitors.map(visitor => {
+    const ticketPrice = visitor.ticket_price;
+    return parseInt(ticketPrice);
+  });
+  const getSumTickets = (acc, currVal) => acc + currVal;
+  const totalEarningsFromTickets = ticketPrices.reduce(getSumTickets)
+  const totalYearlyVisitors = ticketPrices.length;
 
+  const generalAdmission = []
+  const vip = []
+  const kidsTicket = []
+
+  for (var price of ticketPrices) {
+    if (price === 60) {
+      generalAdmission.push(price);
+    } else if (price === 100) {
+      vip.push(price);
+    } else {
+      kidsTicket.push(price)
+    }
+  }
+  const visitorObject = {
+    visitorsYOY: totalYearlyVisitors,
+    earningsYOY: totalEarningsFromTickets,
+    generalAdmission: ["General Admission", generalAdmission.length],
+    VIP: ["VIP", vip.length],
+    kidsTicket: ["Youth", kidsTicket.length]
+  };
+  return visitorObject;
+};
+
+const drawTicketChart = async (parkId) => {
+  const formattedTickets = await formatTicketsChart(parkId);
+  const genAdmission = formattedTickets.generalAdmission;
+  const VIP = formattedTickets.VIP;
+  const youth = formattedTickets.kidsTicket;
+
+  let data = [];
+  data.push(genAdmission);
+  data.push(VIP);
+  data.push(youth);
+
+  const ticketData = new google.visualization.DataTable();
+  ticketData.addColumn("string", "Ticket Type");
+  ticketData.addColumn("number", "Price");
+  ticketData.addRows(data);
+
+  const options = {
+    chartArea: {left:20, width:'99%',height:'99%'},
+    width: 440,
+    height: 340,
+    // colors:['#8B0000', '#00008B', '#FF4500']
+  };
+
+  const ticketsChart = new google.visualization.PieChart(document.getElementById("ticket_chart_div"));
+  ticketsChart.draw(ticketData, options);
+
+}
 
 
 const drawAllCharts = (parkId) => {
   drawEmployeesChart(parkId);
   drawAttractionTypeChart(parkId);
   drawAttendanceCharts();
+  drawTicketChart(parkId);
 };
 
 const init = (parkId) => {
   google.charts.setOnLoadCallback(drawAllCharts(parkId));
 };
 
-export { init };
+export { init, formatTicketsChart  };

@@ -25,6 +25,9 @@ def overview(request, park_id):
 
         num_of_attractions = count_attractions(attractions)
         employee_count = count_employees(employees)
+        earnings = total_earnings(visitors)
+        sum_earnings = sum(earnings, 0)
+        total_visitors = len(earnings)
 
         template = 'overview/overview.html'
         context = {
@@ -39,6 +42,8 @@ def overview(request, park_id):
             'attractions': attractions,
             'num_of_attractions': num_of_attractions,
             'employee_count': employee_count,
+            'sum_earnings': sum_earnings,
+            'total_visitors': total_visitors,
         }
         return render(request, template, context)
 
@@ -57,3 +62,10 @@ def count_attractions(attractions):
         attractions_arr.append(ride)
     attractions_count = len(attractions_arr)
     return attractions_count
+
+
+def total_earnings(visitors):
+    tickets = []
+    for visitor in visitors:
+        tickets.append(visitor.ticket_price)
+    return tickets

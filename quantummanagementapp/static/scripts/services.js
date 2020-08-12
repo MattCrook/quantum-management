@@ -92,3 +92,23 @@ export async function getAttractionType(typeId) {
     console.log(err);
   }
 }
+
+
+export async function getVisitorsList(parkId) {
+  try {
+    const response = await fetch(`/api/visitors?park_id=${parkId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+}

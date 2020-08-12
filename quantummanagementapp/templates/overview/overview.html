@@ -7,6 +7,18 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
+
+<div class="overview_header_bar_container">
+    <div class="overview_bar_title">{{park.name}} Overview</div>
+    <div class="overview_back_button_container">
+        <a class="overview_back_btn"  href="{% url 'quantummanagementapp:park' park.id  %}"><i class="fas fa-long-arrow-alt-left"></i>Back</a>
+    </div>
+</div>
+
+
+
+
+
 <div id="overview_viewport">
     <div id="overview_sidebar">
         <header>
@@ -34,45 +46,67 @@
         </ul>
     </div>
 
-    <div>{{admin_user.user.first_name}}</div>
-    <div>{{park.name}}</div>
 
-    <div>Number Of Attractions in {{park.name}}</div>
-    <div>Total: {{num_of_attractions}}</div>
-
-    <div>Number Of Employees in {{park.name}}</div>
-    <div>{{employee_count}}</div>
-
-    <div class="charts_container">
-        <div id="employee_chart_div"></div>
-        <div id="attraction_type_chart_div"></div>
-
+    <div class="overview_totals_container">
+        <div class="park_name_totals_title">{{park.name}} Totals</div>
+        <div class="park_numbers_row_container">
+            <div class="num_of_attractions">
+                <div class="for_border_bottom">Number of Attractions</div>
+                <div class="num_of_attractions_variable">{{num_of_attractions}}</div>
+            </div>
+            <div class="num_of_employees">
+                <div class="for_border_bottom">Number Of Employees</div>
+                 <div class="num_of_employees_variable">{{employee_count}}</div>
+            </div>
+        </div>
     </div>
 
 
+    <div class="charts_container">
+        
+        <div class="employees_chart">
+            <div class="employees_by_role_title_chart"><i class="fas fa-users"></i>Employees By Role</div>
+            <div id="employee_chart_div"></div>
+        </div>
+
+        <div class="attraction_chart">
+            <div class="attraction_by_type_title_chart"><i class="fas fa-child"></i>Attractions By Attraction Type</div>
+            <div id="attraction_type_chart_div"></div>
+
+        </div>
+
+
+    </div>
+    <div class="attendance_chart_container">
+        <div class="attendance_2019_chart">
+            <div id="2019_attendance_comboChart" style="width: 650px; height: 400px;"></div>
+        </div>
+        <div class="attendance_2020_chart">
+        <div id="2020_attendance_comboChart" style="width: 800px; height: 400px;"></div>
+        </div>
+    </div>
 
 </div>
 
+
+
 {% endif %}
 {% endblock %}
-
 
 {% block scripts%}
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="module">
     import { init } from "{% static 'scripts/charts.js'%}"
 
-
-
-
     var parkId = parseInt(window.location.pathname.split('/')[2]);
 
     function initCharts(parkId) {
-      google.charts.load('current', { 'packages': ['corechart', 'table', 'line'] }).then((resp) => {
+      google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
        init(parkId)
       })
     }
     initCharts(parkId)
 
 </script>
+
 {% endblock %}

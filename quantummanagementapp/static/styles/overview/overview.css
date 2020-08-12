@@ -1,12 +1,12 @@
 /*************** SideBar ***************/
 
 #overview_viewport {
-  padding-left: 10%;
+  padding-left: 9%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 #overview_sidebar {
@@ -17,7 +17,7 @@
   width: 8%;
   height: 110%;
   margin-left: -230px;
-  overflow: auto;
+  /* overflow: auto; */
   background: rgb(17, 19, 24);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -116,11 +116,134 @@
   margin-bottom: 20px;
 }
 
+/******************************* Header Bar ***************************/
+
+.overview_header_bar_container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-left: 8%;
+  margin-top: 3px;
+  box-shadow: 2px 2px 2px 2px rgb(204, 204, 204);
+}
+
+.overview_bar_title {
+  margin-left: 6px;
+  font-variant: small-caps;
+  /* font: 100 1.1em helvetica neue, open sans, sans-serif; */
+}
+
+.overview_back_button_container {
+  margin-right: 1.4%;
+}
+
+.overview_back_btn {
+  text-decoration: none;
+  color: rgb(33, 33, 119);
+  font-size: 14px;
+}
+
+.overview_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
+}
+
+.overview_totals_container {
+  border: 1px solid rgb(211, 210, 210);
+  margin-top: 2%;
+  margin-bottom: 3%;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+.park_name_totals_title {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+  margin-top: 7px;
+}
+
+.park_numbers_row_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.num_of_attractions {
+  margin-right: 2%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.for_border_bottom {
+  border-bottom: 1px solid black;
+}
+
+.num_of_attractions_variable {
+  display: flex;
+  justify-content: center;
+}
+
+.num_of_employees {
+  margin-right: 2%;
+  font-size: 14px;
+  font-weight: 600;
+}
+.num_of_employees_variable {
+  display: flex;
+  justify-content: center;
+}
 /******************************* Charts ***************************/
 
+/************* Pie Charts *************/
 .charts_container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
+}
+
+.attendance_chart_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.employees_chart {
+  border: 1px solid rgb(182, 179, 179);
+}
+
+.employees_by_role_title_chart {
+  margin-top: 10px;
+  margin-bottom: 7px;
+  margin-left: 9px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.employees_by_role_title_chart i {
+  margin-right: 9px;
+}
+
+.attraction_chart {
+  border: 1px solid rgb(182, 179, 179);
+}
+.attraction_by_type_title_chart {
+  margin-top: 10px;
+  margin-bottom: 7px;
+  margin-left: 9px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.attraction_by_type_title_chart i {
+  margin-right: 9px;
+}
+
+/************* Combo Charts *************/
+.attendance_2020_chart {
+  margin-left: 4px;
 }

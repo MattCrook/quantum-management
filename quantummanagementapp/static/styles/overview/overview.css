@@ -222,7 +222,7 @@
   margin-bottom: 7px;
   margin-left: 9px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
 }
 .employees_by_role_title_chart i {
   margin-right: 9px;
@@ -236,11 +236,54 @@
   margin-bottom: 7px;
   margin-left: 9px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .attraction_by_type_title_chart i {
   margin-right: 9px;
+}
+
+.tickets_chart {
+  border: 1px solid rgb(182, 179, 179);
+}
+
+.ticket_title_chart {
+  margin-top: 10px;
+  margin-left: 9px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ticket_title_chart i {
+  margin-right: 9px;
+}
+
+.date_tickets_sold {
+  font-size: 13px;
+  margin-left: 10px;
+  color: #848485;
+}
+
+.total_earnings_container {
+  margin-right: 2%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sum_earnings_variable {
+  display: flex;
+  justify-content: center;
+}
+
+.total_visitors_container {
+  margin-right: 2%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sum_visitors_variable {
+  display: flex;
+  justify-content: center;
 }
 
 /************* Combo Charts *************/

@@ -487,6 +487,7 @@ ul li label {
   height: 20px;
   z-index: 9;
   cursor: pointer;
+  transition: all;
   -webkit-transition: all 0.25s linear;
 }
 

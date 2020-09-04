@@ -34,7 +34,8 @@ def employee_form(request):
 def employee_edit_form(request, employee_id):
     if request.method == 'GET':
         employee = Employee.objects.get(pk=employee_id)
-        employee_attraction = EmployeeAttraction.objects.get(employee_id=employee_id)
+        employee_attraction = EmployeeAttraction.objects.filter(employee_id=employee_id)
+        print("EMP", employee_attraction)
         attractions = Attraction.objects.all()
         parks = Park.objects.all()
         employees = Employee.objects.all()

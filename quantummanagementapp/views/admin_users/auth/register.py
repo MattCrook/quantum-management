@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect, reverse
 from quantummanagementapp.models import SignUpForm
-from quantummanagementapp.models import AdminUser
+from quantummanagementapp.models import AdminUser, Image
 from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
@@ -19,12 +19,17 @@ def register_user(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
             token = Token.objects.create(user=user)
+            # admin_user = AdminUser.objects.get(user_id=user.id)
+            # new_image = Image()
+            # new_image.save()
+            # admin_user.image_id = new_image.id
+            # admin_user.save()
             login(request, user)
             return redirect(reverse('quantummanagementapp:home'))
         else:
             print(form.errors.as_data())
-            messages.add_message(request, messages.ERROR, 'Invalid username or password')
-            return redirect(reverse('quantummanagementapp:login'))
+            messages.add_message(request, messages.ERROR, 'Passwords not match')
+            return redirect(reverse('quantummanagementapp:register'))
 
     else:
         admin_users = AdminUser.objects.all()

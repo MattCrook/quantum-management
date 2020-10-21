@@ -11,3 +11,13 @@ class Image(models.Model):
 
     def __str__(self):
         return self.image
+
+
+# @receiver(post_save, sender=AdminUser)
+# def create_image(sender, instance, created, **kwargs):
+#     if created:
+#         Image.objects.create(image=instance)
+
+# @receiver(post_save, sender=AdminUser)
+# def save_image(sender, instance, **kwargs):
+#     instance.image.save()

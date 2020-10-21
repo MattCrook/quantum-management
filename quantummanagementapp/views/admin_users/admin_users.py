@@ -11,6 +11,7 @@ from django.core.files.base import ContentFile
 
 
 def admin_user_register(request):
+    print("ADMINUSERREGISETR", request)
     if request.method == 'GET':
         try:
             admin_users = AdminUser.objects.all()
@@ -25,6 +26,7 @@ def admin_user_register(request):
     elif request.method == 'POST':
         try:
             form_data = request.POST
+            print("FORMDATA", form_data)
             new_user = User.objects.create_user(
                 first_name=form_data['first_name'],
                 last_name=form_data['last_name'],

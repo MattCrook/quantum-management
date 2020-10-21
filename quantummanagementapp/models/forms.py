@@ -1,10 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 from quantummanagementapp.models import Image
 
 
-# From for Register
+# From for Register view
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=50)
 
@@ -13,6 +13,11 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', )
 
 
+# Form for Login view
+class LoginForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
 
 
 # Form for the image Form View

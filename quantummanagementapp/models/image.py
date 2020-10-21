@@ -1,6 +1,9 @@
 from django.db import models
 from django.forms.widgets import ClearableFileInput
 from django import forms
+from quantummanagementapp.models import AdminUser
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class Image(models.Model):

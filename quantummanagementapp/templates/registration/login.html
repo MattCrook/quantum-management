@@ -6,30 +6,40 @@
 <div class="login-container">
     <div class="login-card">
         <h2>Login</h2>
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ login_form.as_p }}
             <button class="login_btn" type="submit">Login</button>
-            <button class="register_btn"><a class="register_btn" href="{% url 'quantummanagementapp:register' %}">Register New Admin Account</a></button>
+            <button class="register_btn"><a class="register_btn"
+                    href="{% url 'quantummanagementapp:register' %}">Register New Admin Account</a></button>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li id="error_message" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
         </form>
- </div>
-     <div class="row">
-     <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-     <em><p>Social Auth Coming Soon!</p></em>
-         <button id="login_with_google" class="btn btn-primary  mb-2">
-             <a href="#">Login with Google</a>
-         </button>
-         <button class="btn btn-danger  mb-2">
-             <a href="#">Login with Instagram</a>
-         </button>
-         <button class="btn btn-primary mb-2">
-             <a href="#">Login with Facebook
-             </a>
-         </button>
-         <button class="btn btn-info mb-2">
-             <a href="#">Login with LinkedIn</a>
-         </button>
-     </div>
-  </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+            <em>
+                <p>Social Auth Coming Soon!</p>
+            </em>
+            <button id="login_with_google" class="btn btn-primary  mb-2">
+                <a href="#">Login with Google</a>
+            </button>
+            <button class="btn btn-danger  mb-2">
+                <a href="#">Login with Instagram</a>
+            </button>
+            <button class="btn btn-primary mb-2">
+                <a href="#">Login with Facebook
+                </a>
+            </button>
+            <button class="btn btn-info mb-2">
+                <a href="#">Login with LinkedIn</a>
+            </button>
+        </div>
+    </div>
 </div>
 {% endblock %}

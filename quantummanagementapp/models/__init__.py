@@ -12,4 +12,4 @@ from .visitor import Visitor
 from .modelFactory import model_factory
 from .roles import Roles
 from .image import Image
-from .forms import SignUpForm, ImageForm
+from .forms import SignUpForm, ImageForm, LoginForm

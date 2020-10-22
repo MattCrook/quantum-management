@@ -63,18 +63,23 @@ def admin_user_edit_form(request, user_id):
             employees = Employee.objects.filter(admin_user_id=user_id)
             image_id = admin_user_profile.image_id
 
-            image = ImageForm(request.POST, request.FILES)
+            if request.FILES:
+                image = ImageForm(request.POST, request.FILES)
+                img_obj = image.instance
+                img_obj.image = request.FILES["image"]
+                image.save()
+
             user.first_name = form_data["first_name"]
             user.last_name = form_data["last_name"]
             user.username = form_data["username"]
             admin_user_profile.role = form_data["role"]
-            image.save()
+            # image.save()
 
-            img_obj = image.instance
-            img_obj.image = request.FILES["image"]
-            image.save()
+            # img_obj = image.instance
+            # img_obj.image = request.FILES["image"]
+            # image.save()
 
-            admin_user_profile.image_id = img_obj.id
+            # admin_user_profile.image_id = img_obj.id
             user.save()
             admin_user_profile.save()
 

@@ -17,7 +17,8 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = env('DJANGO_DEBUG', default=False)
 
 
 ALLOWED_HOSTS = []
@@ -93,6 +94,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': env.db(),
+#     'extra': env.db('SQLITE_URL', default='sqlite:///sqlite.db')
+# }
 
 
 # Password validation

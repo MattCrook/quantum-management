@@ -1,0 +1,236 @@
+.navbar-nav-account-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.945);
+  color: white;
+  padding-top: 12px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.manage_edit_account_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgb(148, 144, 144);
+}
+
+.edit_account_body {
+  background-size: cover;
+  background-color: rgb(17, 19, 24);
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#form_container_account_edit {
+  box-shadow: 0 5px 10px 0 rgba(163, 161, 161, 0.2);
+  margin-top: 12px;
+}
+
+.profile_picture_edit_account {
+  display: flex;
+  justify-content: center;
+}
+#profile_pic_edit_account {
+  border-radius: 50%;
+  width: 300px;
+  height: 312px;
+}
+
+#edit_account_picture_fieldset_container {
+  display: flex;
+  justify-content: center;
+  margin-left: 80px;
+  margin-top: 15px;
+}
+
+.new_form_picture_label {
+  margin-right: 10px;
+}
+
+.edit_account_title {
+  font-variant: small-caps;
+}
+
+.banner_picture_on_profile_edit_form {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  background-color: #020914;
+  border: none;
+}
+
+#account_banner_image_edit_form {
+  width: 30%;
+  border: none;
+}
+
+#date_joined_profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.date_joined {
+  margin-right: 5px;
+  font-weight: 700;
+}
+#last_login_profile {
+  display: flex;
+  flex-direction: row;
+}
+.last_login {
+  margin-right: 5px;
+  font-weight: 700;
+}
+
+/******** Inputs on form **********/
+.new_form_edit_account_input {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  margin: 0;
+  outline: 0;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background-color: white;
+  color: black;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 20px;
+}
+
+/******** Update Button **********/
+.update_button_account_edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#account_edit_form_update_btn {
+  position: relative;
+  display: block;
+  color: black;
+  background: transparent;
+  font-size: 18px;
+  width: 90%;
+  margin-bottom: 12px;
+  margin-top: 18px;
+  box-shadow: none;
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 2px 8px 2px;
+}
+
+#account_edit_form_update_btn:hover {
+  animation: fade 1s both;
+}
+
+@keyframes fade {
+  0% {
+    background: white;
+  }
+  100% {
+    background: rgb(17, 19, 24);
+
+    color: #e9ebf0;
+  }
+}
+
+/**************** Body Flex Containers *************/
+/************************************************/
+.account_edit_body_flex_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.account_edit_form_flex_container {
+  width: 60%;
+}
+
+.employees_user_responsible_container {
+  background: rgb(223, 223, 223);
+  background: transparent;
+
+  width: 300px;
+  border-radius: 8px;
+}
+
+.employee_user_resp_title {
+  border-bottom: 1px solid #8a8b8d;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  color: rgb(212, 212, 212);
+}
+
+.list_employee_item {
+  margin-left: 10px;
+  color: rgb(155, 151, 151);
+}
+
+/************ List of employees Admin User is Responsible for Buttons ***********/
+
+.admin_account_link_to_employee_details {
+  text-decoration: none;
+  padding: 6px 22px;
+  margin: 8px 8px;
+  color: rgb(173, 173, 173);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.admin_account_link_to_employee_details {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.admin_account_link_to_employee_details::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.admin_account_link_to_employee_details:hover::before {
+  width: 100%;
+}
+
+.admin_account_link_to_employee_details::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.admin_account_link_to_employee_details:hover::after {
+  width: 100%;
+}
+.admin_account_link_to_employee_details:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}

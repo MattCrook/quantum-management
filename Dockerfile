@@ -14,16 +14,19 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 # ---- set work directory
 WORKDIR /app
 
+ENV PATH=$PATH:/app/.local/bin
 
 RUN pip install --upgrade pip
 COPY requirements.txt /app/
-COPY start-server.sh /app/
+COPY startup.sh /app/
 RUN pip install -r requirements.txt
-RUN chown -R www-data:www-data /opt/app
+RUN chown -R www-data:www-data /app
 
 
 # ---- copy project
 COPY . /app/
+# RUN python manage.py collectstatic
 
 EXPOSE 8000
-CMD ["/startup.sh"]
+
+CMD ["bash", "startup.sh"]

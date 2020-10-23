@@ -1,8 +1,8 @@
 import os
-from environ import Env
+# from environ import Env
 
-env = Env()
-env.read_env(env_file='quantummanagement/.env')
+# env = Env()
+# env.read_env(env_file='quantummanagement/.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,13 +12,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
+# SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = env('DJANGO_DEBUG', default=False)
+DEBUG = True
+# DEBUG = env('DJANGO_DEBUG', default=False)
 
 
 ALLOWED_HOSTS = []

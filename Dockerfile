@@ -25,6 +25,9 @@ RUN chown -R www-data:www-data /app
 
 # ---- copy project
 COPY . /app/
+
+
+# ---- Collect Static files
 # RUN python manage.py collectstatic
 
 EXPOSE 8000

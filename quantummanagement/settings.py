@@ -91,11 +91,11 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 
 
 DATABASES = {
-    'sqlite3': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'default': {
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
@@ -205,3 +205,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FIXTURE_DIRS = (
    '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
 )
+
+
+#  python manage.py dumpdata > /Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/datadump.json
+
+# python manage.py migrate --run-syncdb
+# python manage.py shell
+# from django.contrib.contenttypes.models import ContentType
+# ContentType.objects.all().delete()
+# quit()
+# python manage.py loaddata datadump.json

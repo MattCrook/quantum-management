@@ -2,16 +2,11 @@ version: "3.8"
    
 services:
   db:
-    # image: postgres
-    # environment:
-    #   - POSTGRES_DB=postgres
-    #   - POSTGRES_USER=postgres
-    #   - POSTGRES_PASSWORD=postgres
-    image: sqlite
+    image: postgres
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=quantumdb
+      - POSTGRES_USER=matthewcrook
+      - POSTGRES_PASSWORD=password
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000

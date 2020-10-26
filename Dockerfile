@@ -6,15 +6,15 @@ FROM python:3.7.3-slim
 
 
 # ----- Nginx installation commands and COPY the configuration file inside the container
-# FROM nginx:1.19.0-alpine
-# RUN rm /etc/nginx/conf.d/default.conf
-# COPY nginx.conf /etc/nginx/conf.d
+FROM nginx:1.19.0-alpine
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
 
 
-RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
-COPY nginx.defualt /etc/nginx/sites-available/default
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+# RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+# COPY nginx.defualt /etc/nginx/sites-available/default
+# RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+#     && ln -sf /dev/stderr /var/log/nginx/error.log
 
 
 

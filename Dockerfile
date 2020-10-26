@@ -1,9 +1,10 @@
-# FROM alpine:latest
-
 # ----- Base image of Python to build upon
 # FROM python:3.7-buster
 FROM python:3.7.3-slim
 
+# ---- set work directory
+# create directory for the app user
+WORKDIR /app
 
 # ----- Nginx installation commands and COPY the configuration file inside the container
 FROM nginx:1.19.0-alpine
@@ -16,17 +17,11 @@ COPY nginx.conf /etc/nginx/conf.d
 # RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 #     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-
-
-# ---- set work directory
-# create directory for the app user
-WORKDIR /app
-
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 
-ENV PATH=$PATH:/app/.local/bin
+# ENV PATH=$PATH:/app/.local/bin
 
 # RUN apk update \
 #     && apk add postgresql-dev gcc python3-dev musl-dev
@@ -46,6 +41,8 @@ ENV PATH=$PATH:/app/.local/bin
 # install psycopg2 dependencies
 # RUN apk update && apk add libpq
 
+FROM python:3.7.3-slim
+ENV PATH=$PATH:/app/.local/bin
 
 # install dependencies
 RUN pip install --upgrade pip

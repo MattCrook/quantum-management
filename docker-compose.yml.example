@@ -8,22 +8,21 @@ services:
     ports:
       - "5432:5432"
     environment:
+      - POSTGRES_DB=quantumdb
       - POSTGRES_USER=matthewcrook
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=quantumdb
-    env_file:
-      - ./.env.dev.db
   web:
     build: .
-    command: gunicorn quantummanagement.wsgi:application --bind 0.0.0.0:8000
-    expose:
-      - 8000
+    # command: gunicorn quantummanagement.wsgi --user www-data --bind 0.0.0.0:8010 
+    # command: gunicorn quantummanagement.wsgi:application --bind 0.0.0.0:8000
+      command: "startup.sh"
     volumes:
       - .:/app
       - static_volume:/app/web/quantummanagementapp/static
       - media_volume:/app/web/media/images
-    env_file:
-      - ./.env.dev
+    ports:
+      - "8000:8020"
+    # network_mode: service:nginx
     depends_on:
       - db
   nginx:

@@ -101,8 +101,7 @@ DATABASES = {
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
         'PASSWORD': 'password',
-        # 'HOST': 'db',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

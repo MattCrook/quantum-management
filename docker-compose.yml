@@ -1,33 +1,8 @@
 version: "3.8"
 
 services:
-  db:
-    image: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=matthewcrook
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=quantumdb
-    env_file:
-      - ./.env.dev.db
-  web:
-    build: .
-    command: gunicorn quantummanagement.wsgi:application --bind 0.0.0.0:8000
-    expose:
-      - 8000
-    volumes:
-      - .:/app
-      - static_volume:/app/web/quantummanagementapp/static
-      - media_volume:/app/web/media/images
-    env_file:
-      - ./.env.dev
-    depends_on:
-      - db
   nginx:
-    build: ./nginx
+    image: nginx
     volumes:
       - static_volume:/app/web/quantummanagementapp/static
       - media_volume:/app/web/media/images
@@ -35,6 +10,31 @@ services:
       - 1337:8020
     depends_on:
       - web
+  web:
+    build: .
+    command: gunicorn quantummanagement.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/web/quantummanagementapp/static
+      - media_volume:/app/web/media/images
+    environment:
+      DJANGO_SETTINGS_MODULE: quantummanagement.settings
+      POSTGRES_DB: quantumdb
+      POSTGRES_USER: matthewcrook
+      POSTGRES_PASSWORD: password
+      DB_HOST: db
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:

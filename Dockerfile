@@ -25,6 +25,8 @@ RUN chown -R www-data:www-data /app
 COPY . /app/
 # RUN python manage.py collectstatic
 
-EXPOSE 8000
+# EXPOSE 8000
 
-CMD ["bash", "startup.sh"]
+
+# CMD ["bash", "startup.sh"]
+CMD ["/docker-startup.sh"]

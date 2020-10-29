@@ -23,6 +23,8 @@ urlpatterns = [
     path('account/<int:user_id>/', get_admin_user_profile, name='account'),
     path('account/<int:user_id>/form', admin_user_edit_form, name="admin_user_edit_form"),
 
+    path('departments/', employee_landing_page, name='employee_landing_page'),
+    path('departments/<str:role>/', employee_list_specific_role, name='employee_role_list'),
     path('employees/', employee_list, name='employee_list'),
     path('employees/form/', employee_form, name='employee_form'),
     path('employees/form/<int:employee_id>/', employee_edit_form, name='employee_edit_form'),
@@ -41,6 +43,8 @@ urlpatterns = [
     path('parks/<int:park_id>/details/attractions/create/delete/', delete_attraction, name='delete_attraction'),
 
     path('parks/<int:park_id>/details/overview/', overview, name='overview'),
+    path('parks/<int:park_id>/analytics/', analytics, name='analytics'),
+
 ]
 
 

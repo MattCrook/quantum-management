@@ -41,7 +41,7 @@
             {% comment %} Check for user INFO on first sign in. Making sure ADMINUSER cannot navigate throughout the app UNLESS filled out their ACOUNT {% endcomment %}
             {% if user.first_name and user.last_name %}
             <li id="btn4" class="nav-item">
-                <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
+                <a class="nav-link" href="{% url 'quantummanagementapp:employee_landing_page' %}">Manage Employees</a>
             </li>
             <li id="btn4" class="nav-item">
                 <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>

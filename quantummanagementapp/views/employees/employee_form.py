@@ -42,9 +42,8 @@ def employee_edit_form(request, employee_id):
         park_attractions = ParkAttractions.objects.all()
 
         all_roles = []
+
         # filter out duplicates
-        # could also convert to set to get rid of duplicates
-        # all_roles = set(roles)
         for e in employees:
             if e.role not in all_roles:
                 all_roles.append(e.role)
@@ -82,9 +81,9 @@ def employee_edit_form(request, employee_id):
 
             employee.save()
             employee_attraction.save()
-            return redirect(reverse('quantummanagementapp:employee_list'))
+            return redirect(reverse('quantummanagementapp:employee_landing_page'))
 
         if ("actual_method" in form_data and form_data["actual_method"] == "DELETE"):
             employee = Employee.objects.get(pk=employee_id)
             employee.delete()
-            return redirect(reverse('quantummanagementapp:employee_list'))
+            return redirect(reverse('quantummanagementapp:employee_landing_page'))

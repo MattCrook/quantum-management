@@ -1,0 +1,81 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/overview/overview.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<div class="overview_header_bar_container">
+    <div class="overview_bar_title">{{park.name}} Park Analytics</div>
+    <div class="overview_back_button_container">
+        <a class="overview_back_btn" href="{% url 'quantummanagementapp:park' park.id  %}"><i
+                class="fas fa-long-arrow-alt-left"></i>Back</a>
+    </div>
+</div>
+
+
+
+
+
+<div id="overview_viewport">
+    <div id="overview_sidebar">
+        <header>
+            <a class="overview_sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="overview_nav">
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i
+                        class="fas fa-globe"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="#"><i class="fas fa-chart-pie"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="#"><i class="far fa-chart-bar"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i
+                        class="fas fa-plus-circle"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link"
+                    href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="main_analytics_container">
+        <div id="attraction_visitors_chart_container">
+            <div id="attraction_visitors_chart_div" style="width: 90%; height: 34rem;"></div>
+        </div>
+
+        <div id="wait_time_chart_div" style="width: 900px; height: 500px;"></div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}
+
+
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'scripts/analytics/eventHandlers.js' %}"></script>
+<script type="module">
+    import { initAnalytics } from "{% static 'scripts/analytics/analyticsCharts.js' %}"
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+    var mainDiv = document.getElementById("main_analytics_container");
+
+    function initAnalyticsCharts(parkId) {
+        google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
+            initAnalytics(parkId)
+        })
+    };
+
+    initAnalyticsCharts(parkId);
+</script>
+
+{% endblock %}

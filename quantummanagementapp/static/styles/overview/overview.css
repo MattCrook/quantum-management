@@ -290,3 +290,11 @@
 .attendance_2020_chart {
   margin-left: 4px;
 }
+
+/****************************************************************************/
+
+#attraction_visitors_chart_container {
+  display: flex;
+  margin-top: 2%;
+  
+}

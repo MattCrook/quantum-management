@@ -19,7 +19,7 @@ class ParkData(ModelViewSet):
     serializer_class = ParkDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['name']
 
 
 

@@ -11,18 +11,17 @@ const renderEntry = (htmlTemplate) => {
   renderContainer.innerHTML += htmlTemplate;
 };
 
-const analyticsBtn = document.getElementById("analytics");
+// const analyticsBtn = document.getElementById("analytics");
+// function analyticsListener(element) {
+//   element.addEventListener("click", (e) => {
+//     const origin = window.location.origin;
+//     const path = window.location.pathname;
+//     const parkId = path.split("/")[2];
+//     window.location.href = origin + `/parks/${parkId}/analytics`;
+//   });
+// };
 
-function analyticsListener(element) {
-  element.addEventListener("click", (e) => {
-    const origin = window.location.origin;
-    const path = window.location.pathname;
-    const parkId = path.split("/")[2];
-    window.location.href = origin + `/parks/${parkId}/analytics`;
-  });
-};
-
-analyticsListener(analyticsBtn);
+// analyticsListener(analyticsBtn);
 
 // const checkForList = () => {
 //     let parkAttractionsListContainer = document.querySelectorAll(".park_attractions_container");

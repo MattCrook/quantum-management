@@ -428,3 +428,18 @@ padding-top: 5px;
   background: none;
   color: #eceff1;
 }
+
+.park_details_back_btn_container {
+  margin-right: 1.4%;
+}
+
+.park_details_back_btn {
+  text-decoration: none;
+  color: rgb(13, 13, 14);
+  font-size: 14px;
+}
+
+.park_details_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
+}

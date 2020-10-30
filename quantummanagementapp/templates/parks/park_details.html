@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a id="analytics" class="dashboard_link" href="#"><i class="far fa-chart-bar"></i>
+                <a id="analytics" class="dashboard_link" href="{% url 'quantummanagementapp:analytics' park.id %}"><i class="far fa-chart-bar"></i>
                    Analytics
                 </a>
             </li>
@@ -48,9 +48,9 @@
     <div class="manage_parks_container_details_page">
         <div class="manage_parks_title">{{park.name}}</div>
         <div class="select_park_header">Park Details Dashboard</div>
-        <div class="add_park_button">
-            <button class="add_tp_btn"><i class="fas fa-long-arrow-alt-left"></i><a class="add_park"
-                    href="{% url 'quantummanagementapp:parks' %}">Back</a></button>
+        <div class="park_details_back_btn_container">
+            <a class="park_details_back_btn" href="{% url 'quantummanagementapp:parks' %}"><i
+                    class="fas fa-long-arrow-alt-left"></i>Back</a>
         </div>
     </div>
     {% comment %} <div> Select Category to view more details...</div> {% endcomment %}

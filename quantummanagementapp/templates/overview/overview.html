@@ -30,10 +30,10 @@
                         class="fas fa-globe"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
-                <a class="overview_dashboard_link" href="#"><i class="fas fa-chart-pie"></i></a>
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:overview' park.id %}"><i class="fas fa-chart-pie"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
-                <a class="overview_dashboard_link" href="#"><i class="far fa-chart-bar"></i></a>
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:analytics' park.id %}"><i class="far fa-chart-bar"></i></a>
             </li>
             <li class="overview_sidebar_list_item_container">
                 <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i
@@ -72,27 +72,37 @@
     <div class="charts_container">
         <div class="employees_chart">
             <div class="employees_by_role_title_chart"><i class="fas fa-users"></i>Employees By Role</div>
-            <div id="employee_chart_div"></div>
+            <div id="employee_chart_div">
+                <div id="employee_chart_overview_spinner"></div>
+            </div>
         </div>
 
         <div class="attraction_chart">
             <div class="attraction_by_type_title_chart"><i class="fas fa-child"></i>Attractions By Attraction Type</div>
-            <div id="attraction_type_chart_div"></div>
+            <div id="attraction_type_chart_div">
+                <div id="attraction_chart_overview_spinner"></div>
+            </div>
         </div>
 
         <div class="tickets_chart">
             <div class="ticket_title_chart"><i class="fas fa-ticket-alt"></i>Percentage of Tickets Sold</div>
             <div class="date_tickets_sold">August 2019 - August 2020</div>
-            <div id="ticket_chart_div"></div>
+            <div id="ticket_chart_div">
+                <div id="tickets_chart_overview_spinner"></div>
+            </div>
         </div>
 
     </div>
     <div class="attendance_chart_container">
         <div class="attendance_2019_chart">
-            <div id="2019_attendance_comboChart" style="width: 650px; height: 400px;"></div>
+            <div id="2019_attendance_comboChart" style="width: 650px; height: 400px;">
+                <div id="attendance_2019_chart_spinner"></div>
+            </div>
         </div>
         <div class="attendance_2020_chart">
-        <div id="2020_attendance_comboChart" style="width: 800px; height: 400px;"></div>
+        <div id="2020_attendance_comboChart" style="width: 800px; height: 400px;">
+            <div id="attendance_2020_chart_spinner"></div>
+        </div>
         </div>
     </div>
 

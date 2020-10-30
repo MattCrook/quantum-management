@@ -139,7 +139,7 @@
 
 .overview_back_btn {
   text-decoration: none;
-  color: rgb(33, 33, 119);
+  color: rgb(5, 5, 5);
   font-size: 14px;
 }
 
@@ -291,10 +291,129 @@
   margin-left: 4px;
 }
 
-/****************************************************************************/
+/*********Pie Charts*********/
+
+#employee_chart_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/******************************** Analytics Styles ********************************************/
 
 #attraction_visitors_chart_container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 2%;
-  
+}
+
+#attraction_visitors_spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14%;
+}
+
+
+
+/******************************** Spinner ********************************************/
+
+
+
+
+#employee_chart_overview_spinner {
+  width:32px;
+  height:32px;
+  border-radius:32px;
+  box-sizing:border-box;
+  border:2px groove white;
+  position:absolute;
+  left: 27%;
+  top: 60%;
+  margin:-16px 0px 0px -16px;
+  border-top-color:rgb(27, 27, 27);
+  border-left-color:rgba(54, 53, 53, 0.9);
+  border-bottom-color:rgba(70, 67, 67, 0.8);
+  border-right-color:rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform:translateZ(0px);
+}
+
+#attraction_chart_overview_spinner {
+  width:32px;
+  height:32px;
+  border-radius:32px;
+  box-sizing:border-box;
+  border:2px groove white;
+  position:absolute;
+  left: 54%;
+  top: 60%;
+  margin:-16px 0px 0px -16px;
+  border-top-color:rgb(27, 27, 27);
+  border-left-color:rgba(54, 53, 53, 0.9);
+  border-bottom-color:rgba(70, 67, 67, 0.8);
+  border-right-color:rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform:translateZ(0px);
+}
+
+#tickets_chart_overview_spinner {
+  width:32px;
+  height:32px;
+  border-radius:32px;
+  box-sizing:border-box;
+  border:2px groove white;
+  position:absolute;
+  left: 80%;
+  top: 60%;
+  margin:-16px 0px 0px -16px;
+  border-top-color:rgb(27, 27, 27);
+  border-left-color:rgba(54, 53, 53, 0.9);
+  border-bottom-color:rgba(70, 67, 67, 0.8);
+  border-right-color:rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform:translateZ(0px);
+}
+
+#attendance_2019_chart_spinner {
+  margin-top: 12%;
+  width:32px;
+  height:32px;
+  border-radius:32px;
+  box-sizing:border-box;
+  border:2px groove white;
+  position:absolute;
+  left: 32%;
+  top: 80%;
+  border-top-color:rgb(27, 27, 27);
+  border-left-color:rgba(54, 53, 53, 0.9);
+  border-bottom-color:rgba(70, 67, 67, 0.8);
+  border-right-color:rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform:translateZ(0px);
+}
+
+#attendance_2020_chart_spinner {
+  margin-top: 12%;
+  width:32px;
+  height:32px;
+  border-radius:32px;
+  box-sizing:border-box;
+  border:2px groove white;
+  position:absolute;
+  left: 73%;
+  top: 80%;
+  border-top-color:rgb(27, 27, 27);
+  border-left-color:rgba(54, 53, 53, 0.9);
+  border-bottom-color:rgba(70, 67, 67, 0.8);
+  border-right-color:rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform:translateZ(0px);
+}
+
+@keyframes rotate {  
+  0% {transform:rotate(0deg);}
+  100% {transform:rotate(360deg);} 
 }

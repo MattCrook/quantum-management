@@ -1,12 +1,11 @@
 /*************** SideBar ***************/
 
 #overview_viewport {
-  padding-left: 9%;
+  padding-left: 5%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  /* overflow: auto; */
 }
 
 #overview_sidebar {
@@ -17,7 +16,6 @@
   width: 8%;
   height: 120%;
   margin-left: -230px;
-  /* overflow: auto; */
   background: rgb(17, 19, 24);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -307,6 +305,12 @@
   justify-content: center;
   align-items: center;
   margin-top: 2%;
+  margin-left: 3%;
+}
+
+#attraction_visitors_chart_div {
+  box-shadow: 6px 6px 6px 6px rgb(194, 192, 192);
+
 }
 
 #attraction_visitors_spinner {
@@ -318,10 +322,7 @@
 
 
 
-/******************************** Spinner ********************************************/
-
-
-
+/******************************** Spinners ********************************************/
 
 #employee_chart_overview_spinner {
   width:32px;

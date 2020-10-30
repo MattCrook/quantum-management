@@ -18,6 +18,21 @@
   font: 100 1.2em helvetica neue, open sans, sans-serif;
 }
 
+.add_employee_btn_container {
+  margin-right: 1.4%;
+}
+
+.add_employee_button {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+}
+
+.add_employee_button:hover {
+  text-decoration: none;
+  color: rgb(165, 165, 165);
+}
+
 .add_employee_button {
   align-items: center;
   margin-right: 18px;
@@ -33,7 +48,6 @@
   text-decoration: none;
   color: black;
 }
-
 
 .add_tp_btn {
   background-color: white;
@@ -72,7 +86,6 @@
 .employee_add_btn {
   align-items: center;
   margin-right: 2%;
-
 }
 /********** Add employee Link Button on employee_list **********/
 
@@ -130,8 +143,6 @@
 
 /***************************************/
 
-
-
 .role_title {
   display: flex;
   justify-content: center;
@@ -151,8 +162,6 @@
   margin-right: 500px;
   font: 150 1.4em helvetica neue, open sans, sans-serif;
 }
-
-
 
 /****** List Card Container *********/
 /***********************************/
@@ -210,14 +219,12 @@
   transform: scale(1, 1);
 }
 
-
 .employee_role_list_item_link {
   padding-top: 8px;
   position: relative;
   display: inline-block;
   font-size: 14px;
   text-align: center;
-
 }
 
 .employee_role_list_item_link::before {
@@ -295,7 +302,6 @@
   justify-content: center;
   flex-direction: column;
   margin-left: 32%;
-
 }
 
 /************** Card Containers *************/
@@ -363,7 +369,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 17px;
-  font: 100 1.2em helvetica neue, open sans, sans-serif;;
+  font: 100 1.2em helvetica neue, open sans, sans-serif;
 }
 
 .role_list_item:link {
@@ -800,12 +806,10 @@ input[type="radio"]:checked ~ label {
   font-weight: bold;
 }
 
-
 .create_new_position_btn_container {
   margin-left: 65%;
   margin-top: 2%;
   margin-bottom: 1%;
-
 }
 /********** Btn 6 ************/
 .btn6 {
@@ -819,7 +823,6 @@ input[type="radio"]:checked ~ label {
   position: relative;
   text-decoration: none;
   display: inline-block;
-
 }
 
 .btn6 {

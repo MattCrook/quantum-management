@@ -4,9 +4,8 @@
 {% if request.user.is_authenticated %}
 <div class="manage_employees_container">
     <div class="manage_employees_title">Manage Employees</div>
-    <div class="add_employee_button">
-        <button class="add_tp_btn"><a class="add_employee" href="{% url 'quantummanagementapp:employee_form' %}"><i
-                    class="fas fa-user-plus"></i>Add Employee</a></button>
+    <div class="add_employee_btn_container">
+        <a class="add_employee_button" href="{% url 'quantummanagementapp:employee_form' %}"><i class="fas fa-user-plus"></i>Add Employee</a>
     </div>
     <div class="role_list_back_button_container">
         <a class="role_list_back_btn" href="{% url 'quantummanagementapp:employee_landing_page' %}"><i

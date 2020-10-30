@@ -42,9 +42,11 @@ urlpatterns = [
     path('parks/<int:park_id>/details/attractions/create/type/', attraction_type_list, name='attraction_type_list'),
     path('parks/<int:park_id>/details/attractions/create/delete/', delete_attraction, name='delete_attraction'),
 
+
     path('parks/<int:park_id>/details/overview/', overview, name='overview'),
     path('parks/<int:park_id>/analytics/', analytics, name='analytics'),
 
+    path('parks/<int:park_id>/attractions/add_visitor/', add_attraction_visitor, name='add_attraction_visitor'),
 ]
 
 

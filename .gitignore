@@ -130,7 +130,9 @@ db.sqlite3
 
 # dotenv
 .env
-.env.dev/
+.env.dev
+
+
 
 # virtualenv
 QuantumManagementEnv/
@@ -152,6 +154,7 @@ media/*
 *.pyc
 *.db
 *.pid
+*.env.dev
 
 # django migrations
 migrations/

@@ -59,7 +59,6 @@
   justify-content: center;
   /* font-size: 16px; */
   font: 100 1.1em helvetica neue, open sans, sans-serif;
-
 }
 
 .park_list_outer_container {
@@ -67,8 +66,6 @@
   margin-right: 32%;
   /* display: flex;
   flex-direction: column; */
-
-
 }
 .park_list_inner_container {
   display: flex;
@@ -198,10 +195,27 @@
   -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
   transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
+
 .park_list_name:hover::after {
   width: 100%;
 }
+
 .park_list_name:hover {
   border-left: 1px solid #6098ff;
   border-right: 1px solid #6098ff;
+}
+
+.park_details_back_btn_container {
+  margin-right: 1.4%;
+}
+
+.add_park_btn {
+  text-decoration: none;
+  color: rgb(33, 33, 119);
+  font-size: 14px;
+}
+
+.add_park_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
 }

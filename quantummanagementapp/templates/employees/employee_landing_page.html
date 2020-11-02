@@ -1,0 +1,68 @@
+{% extends 'shared/base.html' %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+
+<!-- Sidebar -->
+<div id="viewport">
+    <div id="employee_sidebar">
+        <header>
+            <a class="sidebar_logo" href="#">Quantum</a>
+        </header>
+        <ul class="nav">
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:add_new_role' %}"><i class="far fa-building"></i>
+                    Add Department
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:employee_form' %}"><i class="fas fa-user-plus"></i>
+                        Add Employee
+                </a>
+            </li>
+            <li class="sidebar_list_item_container">
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:employee_list' %}"><i class="fas fa-globe"></i>
+                    All Employees/ All Departments
+                </a>
+            </li>
+        </ul>
+    </div>
+
+<div class="manage_employees_container">
+    <div class="manage_employees_employee_landing_title">Manage Employees</div>
+    <div class="role_list_back_button_container">
+        <a class="role_list_back_btn" href="{% url 'quantummanagementapp:home' %}"><i
+                class="fas fa-long-arrow-alt-left"></i>Back</a>
+    </div>
+</div>
+{% endif %}
+
+    {% if request.user.is_authenticated %}
+    <h4 class="role_title">Departments</h4>
+    <div class="employee_roles_card">
+        {% for role in roles %}
+        <div class="employee_role_container">
+            <div class="roles_title_container">
+                {% if role == 'Entertainer'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="far fa-grin"></i>{{role}}</a>
+                {% elif role == 'Ride Operator'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-users-cog"></i>{{role}}</a>
+                {% elif role == 'Consessions'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-utensils"></i>{{role}}</a>
+                {% elif role == 'Security'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-shield-alt"></i>{{role}}</a>
+                {% elif role == 'Mechanic'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-wrench"></i>{{role}}</a>
+                {% elif role == 'Restaurant'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-glass-cheers"></i>{{role}}</a>
+                {% elif role == 'Manager'%}
+                <a class="role_list_item" href="{% url 'quantummanagementapp:employee_role_list' role %}"><i class="fas fa-user-tie"></i>{{role}}</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -48,3 +48,32 @@ def employee_list(request):
 
         employee_attraction.save()
         return redirect(reverse('quantummanagementapp:employee_list'))
+
+@login_required
+def employee_landing_page(request):
+    if request.method == 'GET':
+        employees = Employee.objects.all()
+        all_roles = []
+        for employee in employees:
+            role = employee.role
+            all_roles.append(role)
+
+        roles = set(all_roles)
+        template = 'employees/employee_landing_page.html'
+        context = {
+            'employees': employees,
+            'roles': roles
+        }
+        return render(request, template, context)
+
+
+@login_required
+def employee_list_specific_role(request, role):
+    if request.method == 'GET':
+        employees = Employee.objects.filter(role=role)
+        template = 'employees/employee_role_list.html'
+        context = {
+            'employees': employees,
+            'role': role
+        }
+        return render(request, template, context)

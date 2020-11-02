@@ -19,7 +19,7 @@ class EmployeeData(ModelViewSet):
     serializer_class = EmployeeDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['park_id']
 
 
 
@@ -30,9 +30,9 @@ class EmployeeAttractionDataSerializer(serializers.ModelSerializer):
         depth = 1
 
 
-class EmployeeAttractionData(ViewSet):
+class EmployeeAttractionData(ModelViewSet):
     queryset = EmployeeAttraction.objects.all()
     serializer_class = EmployeeAttractionDataSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filterset_fields = ['attraction_id', 'employee_id']

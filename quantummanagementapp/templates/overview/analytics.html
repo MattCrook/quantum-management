@@ -59,7 +59,8 @@
         </div>
 
         <div id="wait_time_chart_div" style="width: 900px; height: 500px;"></div>
-        <div id="wait_time_container">
+    
+        <div id="wait_time_table_container">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -70,9 +71,9 @@
                     <tbody>
                         {% for wait_time in wait_times %}
                         <tr>
-                            <td scope=" col">{{wait_time.attraction.name}}</td>
-                        <td scope="col">{{wait_time.current_wait_time}}</td>
-                    </tr>
+                            <td>{{wait_time.attraction.name}}</td>
+                            <td>{{wait_time.current_wait_time}}</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
             </table>

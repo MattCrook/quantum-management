@@ -7,6 +7,8 @@ __pycache__/
 local_settings.py
 db.sqlite3-journal
 media
+**/__pycache__
+
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -112,7 +114,6 @@ dmypy.json
 .pytype/
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
 *.py[cod]
 *$py.class
 
@@ -130,6 +131,9 @@ db.sqlite3
 
 # dotenv
 .env
+.env.dev
+
+
 
 # virtualenv
 QuantumManagementEnv/
@@ -151,6 +155,7 @@ media/*
 *.pyc
 *.db
 *.pid
+*.env.dev
 
 # django migrations
 migrations/

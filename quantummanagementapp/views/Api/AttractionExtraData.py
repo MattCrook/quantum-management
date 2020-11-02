@@ -35,21 +35,21 @@ class AttractionWaitTimesData(ModelViewSet):
     queryset = AttractionWaitTimes.objects.all()
     serializer_class = AttractionWaitTimeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['park_id']
 
 
 class AttractionVisitorData(ModelViewSet):
     queryset = AttractionVisitors.objects.all()
     serializer_class = AttractionVisitorSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['attraction_id', 'visit_timestamp']
 
 
 class AttractionTypeData(ModelViewSet):
     queryset = AttractionType.objects.all()
     serializer_class = AttractionTypeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name', 'manufacturer']

@@ -23,12 +23,12 @@
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#"><i class="fas fa-chart-pie"></i>
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:overview' park.id %}"><i class="fas fa-chart-pie"></i>
                      Overview
                 </a>
             </li>
             <li class="sidebar_list_item_container">
-                <a class="dashboard_link" href="#"><i class="far fa-chart-bar"></i>
+                <a class="dashboard_link" href="{% url 'quantummanagementapp:analytics' park.id %}"><i class="far fa-chart-bar"></i>
                    Analytics
                 </a>
             </li>

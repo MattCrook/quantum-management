@@ -1,4 +1,8 @@
 import os
+# from environ import Env
+
+# env = Env()
+# env.read_env(env_file='quantummanagement/.env')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -9,12 +13,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = int(os.environ.get("DEBUG", default=0))
+
 
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -81,12 +89,35 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'quantumdb',
+        'USER': 'matthewcrook',
+        'PASSWORD': 'password',
+        'HOST': '',
+        'PORT': '',
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+#         "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+#         "USER": os.environ.get("SQL_USER", "user"),
+#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+#         "HOST": os.environ.get("SQL_HOST", "localhost"),
+#         "PORT": os.environ.get("SQL_PORT", "5432"),
+#     }
+# }
+
 
 
 # Password validation
@@ -133,6 +164,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 LOGIN_REDIRECT_URL = 'home/'
 LOGIN_URL = 'login/'
@@ -177,6 +209,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
-FIXTURE_DIRS = (
-   '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
-)
+# FIXTURE_DIRS = (
+#    '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
+# )
+FIXTURE_DIRS = os.path.join(BASE_DIR, "quantummanagementapp/fixtures/")

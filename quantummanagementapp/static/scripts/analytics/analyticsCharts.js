@@ -249,7 +249,6 @@ function totalMonthlyAverage(row) {
 
 function extractCountToSort(arr) {
   const arrayFromHook = arr[0];
-  console.log('arrayFromHook', arrayFromHook)
   const sortCount = arrayFromHook.sort((a, b) => {
     const attractionA = a.count;
     const attractionB = b.count;

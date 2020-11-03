@@ -22,14 +22,6 @@ def analytics(request, park_id):
             attraction_id = attraction.id
             attraction_visit = AttractionVisitors.objects.filter(attraction_id=attraction_id)
             attraction_visitors.append(attraction_visit)
-        
-
-
-        # num_of_attractions = count_attractions(attractions)
-        # employee_count = count_employees(employees)
-        # earnings = total_earnings(visitors)
-        # sum_earnings = sum(earnings, 0)
-        # total_visitors = len(earnings)
 
         template = 'overview/analytics.html'
         context = {
@@ -42,9 +34,5 @@ def analytics(request, park_id):
             'visitor_checkouts': visitor_checkouts,
             'attraction_visitors': attraction_visitors,
             'attractions': attractions,
-            # 'num_of_attractions': num_of_attractions,
-            # 'employee_count': employee_count,
-            # 'sum_earnings': sum_earnings,
-            # 'total_visitors': total_visitors,
         }
         return render(request, template, context)

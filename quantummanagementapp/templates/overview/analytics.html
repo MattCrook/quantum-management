@@ -68,15 +68,13 @@
                         <th scope="col"">Current Wait Time</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for wait_time in wait_times %}
-                        <tr>
-                            <td>{{wait_time.attraction.name}}</td>
-                            <td>{{wait_time.current_wait_time}}</td>
-                        </tr>
-                    {% endfor %}
+                    <tbody id="wait_times">
+                        <tr></tr>
                     </tbody>
             </table>
+            <!-- {% for wait_time in wait_times %}
+            <p>{{wait_time.attraction.name}}</p>
+            {%endfor%} -->
 
         </div>
     </div>
@@ -103,7 +101,7 @@
                         <label for="attraction">Attraction</label>
                         <select type="password" class="form-control" id="attraction" name="attraction_id">
                             {% for attraction in attractions %}
-                            <option value="{{attraction.id}}"">{{attraction.name}}</option>
+                            <option value="{{attraction.id}}">{{attraction.name}}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -127,7 +125,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="{% static 'scripts/analytics/eventHandlers.js' %}"></script>
 <script src="{% static 'scripts/analytics/modal.js' %}"></script>
 <script type="module">
     import { initAnalytics } from "{% static 'scripts/analytics/analyticsCharts.js' %}"
@@ -141,6 +138,13 @@
     };
 
     initAnalyticsCharts(parkId);
+</script>
+<script type="module">
+    import {populateWaitTimeDataTable} from "{% static 'scripts/analytics/eventHandlers.js' %}"
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+    populateWaitTimeDataTable(parkId);
+
 </script>
 
 {% endblock %}

@@ -11,16 +11,9 @@ from quantummanagementapp.models import Attraction
 class AttractionDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attraction
-        fields = ('id', 'name', 'capacity', 'current_operating_capacity', 'type', 'park')
+        fields = ('id', 'name', 'capacity',
+                  'current_operating_capacity', 'type', 'park')
         depth = 2
-
-
-# class AttractionData(ModelViewSet):
-#     queryset = Attraction.objects.all()
-#     serializer_class = AttractionDataSerializer
-#     permission_classes = [IsAuthenticatedOrReadOnly]
-#     filter_backends = [DjangoFilterBackend]
-#     filterset_fields = ['type_id', 'park_id', 'name', 'id']
 
 
 class AttractionData(ViewSet):
@@ -40,7 +33,8 @@ class AttractionData(ViewSet):
             if type_id is not None:
                 attraction = attraction.filter(type_id=type_id)
 
-            serializer = AttractionDataSerializer(attraction, context={'request': request})
+            serializer = AttractionDataSerializer(
+                attraction, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -59,5 +53,6 @@ class AttractionData(ViewSet):
         if type_id is not None:
             attractions = attractions.filter(type_id=type_id)
 
-        serializer = AttractionDataSerializer(attractions, many=True, context={'request': request})
+        serializer = AttractionDataSerializer(
+            attractions, many=True, context={'request': request})
         return Response(serializer.data)

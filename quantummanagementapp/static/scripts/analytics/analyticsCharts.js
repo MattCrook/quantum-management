@@ -60,24 +60,6 @@ const formatAttractionVisitorsChart = async (parkId) => {
   // Start building the Data Structure to format the data into the format google charts takes.
   const attractionsHeader = topTenAttractions.map((attraction) => attraction.attractionName.toString());
   let matrixHeader = ["Month", ...attractionsHeader, "Total Monthly Average"];
-
-  // Array of  array of visitors for each attraction
-  // const visitorsArray = topTenAttractions.map((attraction) => {
-  //   const vis = attraction.visitors;
-  //   return vis;
-  // });
-
-  // Array of array of months the visitors visited each attraction. In Same order as top 10.
-  // const topAttrWithMonthsOfVisitors = visitorsArray.map((visitorArr) => {
-  //   let monthsOfTimeStamps = [];
-  //   visitorArr.forEach((visitor) => {
-  //     const timestamp = visitor.visit_timestamp.split("T")[0];
-  //     const month = new Date(timestamp);
-  //     monthsOfTimeStamps.push(month.getMonth());
-  //   });
-  //   return monthsOfTimeStamps;
-  // });
-
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   const buildMatrixBodyData = buildVisitorsPerMonthArray(topTenAttractions, months);
@@ -96,7 +78,19 @@ const formatAttractionVisitorsChart = async (parkId) => {
   const december = buildMatrixRows("December", buildMatrixBodyData[11], totalMonthlyAverage);
 
   const Matrix = [
-    [matrixHeader, january, february, march, april, may, june, july, august, september, october, november, december],
+    [matrixHeader,
+      january,
+      february,
+      march,
+      april,
+      may,
+      june,
+      july,
+      august,
+      september,
+      october,
+      november,
+      december]
   ];
   return Matrix;
 };
@@ -290,12 +284,6 @@ function findMatchingPark(array, keyToFind, valueToFind) {
 
 
 
-const buildWaitTimeData = (parkId) => {
-  const [attractions, setAttractions] = useAttractions();
-  const [waitTimes, setWaitTimes] = useWaitTimes();
-
-
-};
 
 const drawAllCharts = (parkId) => {
   drawAttractionVisitorsChart(parkId);

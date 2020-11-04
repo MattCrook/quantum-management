@@ -124,6 +124,24 @@ const getVisitorsList = async (parkId) => {
   }
 };
 
+const getVisitorCheckoutList = async (parkId) => {
+  try {
+    const response = await fetch(`/api/visitor_checkouts?park_id=${parkId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const getAttractionWaitTimes = async (parkId) => {
   try {
     const response = await fetch(`/api/attraction_wait_times?park_id=${parkId}`, {
@@ -170,4 +188,5 @@ export {
   getVisitorsList,
   getAttractionWaitTimes,
   getAttractionVisitors,
+  getVisitorCheckoutList,
 };

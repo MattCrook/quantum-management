@@ -58,23 +58,26 @@
             </div>
         </div>
 
-        <div id="wait_time_chart_div" style="width: 900px; height: 500px;"></div>
-    
-        <div id="wait_time_table_container">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Attractions</th>
-                        <th scope="col"">Current Wait Time</th>
+        <!-- <div id="wait_time_chart_div" style="width: 900px; height: 500px;"></div> -->
+        <div class="container_2_charts">
+
+            <div id="curve_chart" style="width: 55%; height: 24rem">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+
+            <div id="wait_time_table_container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr id="wait_time_header_container">
+                            <th class="wait_time_header" scope="col">Attractions</th>
+                            <th class="wait_time_header" scope="col"">Current Wait Time</th>
                         </tr>
                     </thead>
                     <tbody id="wait_times">
-                        <tr></tr>
+                        <!-- <tr></tr> -->
                     </tbody>
-            </table>
-            <!-- {% for wait_time in wait_times %}
-            <p>{{wait_time.attraction.name}}</p>
-            {%endfor%} -->
+                </table>
+            </div>
 
         </div>
     </div>
@@ -140,11 +143,23 @@
     initAnalyticsCharts(parkId);
 </script>
 <script type="module">
-    import {populateWaitTimeDataTable} from "{% static 'scripts/analytics/eventHandlers.js' %}"
+    import {populateWaitTimeDataTable} from "{% static 'scripts/analytics/attractionWaitTimeTable.js' %}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
     populateWaitTimeDataTable(parkId);
+</script>
+<script type="module">
+    import {initBusiestTimeChart} from "{% static 'scripts/analytics/busiestTimeOfDayChart.js' %}"
 
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    function initAttendanceChart(parkId) {
+        google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
+            initBusiestTimeChart(parkId)
+        })
+    };
+
+    initAttendanceChart(parkId);
 </script>
 
 {% endblock %}

@@ -51,14 +51,19 @@
         </ul>
     </div>
 
-    <div id="main_analytics_container">
-        <div id="attraction_visitors_chart_container">
+    <!-- <div id="main_analytics_container">
+        <div id="analytics_nav_container">
+            <div id="attr_btn" class="analytics_nav_button">Attractions</div>
+            <div id="park_attendance_btn" class="analytics_nav_button">Park Attendance</div>
+            <div id="ride_wait_time_btn" class="analytics_nav_button">Ride Wait Times</div>
+
+        </div>
+        <div id="attraction_visitors_chart_container" style="display: block;">
             <div id="attraction_visitors_chart_div" style="width: 97%; height: 30rem;">
                 <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
             </div>
         </div>
 
-        <!-- <div id="wait_time_chart_div" style="width: 900px; height: 500px;"></div> -->
         <div class="container_2_charts">
 
             <div id="curve_chart" style="width: 55%; height: 24rem">
@@ -74,11 +79,65 @@
                         </tr>
                     </thead>
                     <tbody id="wait_times">
-                        <!-- <tr></tr> -->
                     </tbody>
                 </table>
             </div>
 
+        </div>
+    </div> -->
+
+
+    <div id="main_analytics_container">
+        <div id="analytics_nav_container">
+            <div id="attr_btn" class="analytics_nav_button">Attractions</div>
+            <div id="park_attendance_btn" class="analytics_nav_button">Park Attendance</div>
+            <div id="ride_wait_time_btn" class="analytics_nav_button">Ride Wait Times</div>
+        </div>
+
+        <div id="attraction_visitors_chart_container">
+            <div id="chart_header">
+                <div class="select_year_container">
+                    <div class="year_select_label">Select Year<i id="i" class="fas fa-angle-down"></i></div>
+                    <div class="select_year_options" style="display: none;">
+                        <div class="year_option">All</div>
+                        <div class="year_option">2020</div>
+                        <div class="year_option">2019</div>
+                        <div class="year_option">2018</div>
+
+                    </div> 
+                </div>
+
+
+                <div class="chart_titles_container">
+                    <div class="chart_title">Monthly Attraction Popularity</div>
+                    <div class="chart_sub_title_1">Top Ten Attractions</div>
+                    <div class="chart_sub_title_2">Total Park Aggregate Over Park Lifespan</div>
+                </div>
+            </div>
+
+            <div id="attraction_visitors_chart_div" style="width: 97%; height: 30rem;">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+            <div id="curve_chart" style="width: 65%; height: 26rem;">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+            <div id="wait_time_table_container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr id="wait_time_header_container">
+                            <th class="wait_time_header" scope="col">Attractions</th>
+                            <th class="wait_time_header" scope="col"">Current Wait Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wait_times">
+                        <tr>
+                            <td>
+                                <div id="wait_time_chart_spinner"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -146,12 +205,32 @@
     import {populateWaitTimeDataTable} from "{% static 'scripts/analytics/attractionWaitTimeTable.js' %}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
-    populateWaitTimeDataTable(parkId);
+
+    function toggleWaitTimes() {
+        const waitTimesButton = document.getElementById("ride_wait_time_btn");
+        waitTimesButton.addEventListener("click", () => {
+            attractionVisitorsChartContainer.style.display = 'none';
+            parkAttendanceContainer.style.display = "none";
+            waitTimesContainer.style.display = "block";
+            populateWaitTimeDataTable(parkId);
+        })
+    }
+
+    function init() {
+        toggleWaitTimes();
+    };
+
+    init();
+
 </script>
 <script type="module">
     import {initBusiestTimeChart} from "{% static 'scripts/analytics/busiestTimeOfDayChart.js' %}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    const attractionVisitorsChartContainer = document.getElementById("attraction_visitors_chart_div");
+    const parkAttendanceContainer = document.getElementById("curve_chart");
+    const waitTimesContainer = document.getElementById("wait_time_table_container");
 
     function initAttendanceChart(parkId) {
         google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
@@ -159,7 +238,38 @@
         })
     };
 
-    initAttendanceChart(parkId);
+    function toggleAttractionsByMonth() {
+        const attractionsButton = document.getElementById("attr_btn");
+        attractionsButton.addEventListener("click", () => {
+            attractionVisitorsChartContainer.style.display = 'block';
+            parkAttendanceContainer.style.display = "none";
+            waitTimesContainer.style.display = "none";
+        })
+    }
+
+    function toggleParkAttendance() {
+        const parkAttendanceButton = document.getElementById("park_attendance_btn");
+        parkAttendanceButton.addEventListener("click", () => {
+            parkAttendanceContainer.style.display = "block";
+            attractionVisitorsChartContainer.style.display = "none";
+            waitTimesContainer.style.display = "none";
+            initAttendanceChart(parkId);
+        })
+    }
+
+    function initToggleEvents() {
+        toggleAttractionsByMonth()
+        toggleParkAttendance()
+    };
+
+    function init(parkId) {
+        initToggleEvents();
+    }
+
+    init(parkId);
+
 </script>
+<script type="text/javascript" src="{% static 'scripts/analytics/eventHandlers.js' %}"></script>
+
 
 {% endblock %}

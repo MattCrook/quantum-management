@@ -1,4 +1,3 @@
-import { useAttractions, useWaitTimes } from "../hooks.js";
 import { getVisitorsList, getVisitorCheckoutList } from "../services.js";
 
 const buildBusiestTimeChart = async (parkId) => {
@@ -56,10 +55,37 @@ const drawBusiestTimeChart = async (parkId) => {
     const chartData = google.visualization.arrayToDataTable(visitorMonthsData[0])
 
     const options = {
-        title: 'Monthly Average Park Attendance',
+      title: 'Monthly Average Park Attendance',
         // curveType: 'function',
         legend: { position: 'bottom' },
-        chartArea:{width:'85%',height:'70%'},
+        chartArea: { width: '85%', height: '65%' },
+        lineWidth: 2,
+        series: {
+            0: {
+                color: "#16426e",
+            },
+        },
+        hAxis: {
+            textStyle: {
+                color: "rgb(161, 160, 160)",
+                fontSize: 11,
+                fontName: "helvetica neue",
+            },
+      },
+      vAxis: {
+        textStyle: {
+            color: "rgb(161, 160, 160)",
+            fontSize: 11,
+            fontName: "helvetica neue",
+        },
+    },
+        titleTextStyle: {
+            color: "rgb(0, 0, 0)",
+            fontName: "helvetica neue",
+            fontSize: 15,
+            bold: true,
+            italic: false,
+        },
     };
     const monthlyParkVisitorsChart = new google.visualization.LineChart(document.getElementById("curve_chart"));
     monthlyParkVisitorsChart.draw(chartData, options);
@@ -69,6 +95,9 @@ const drawBusiestTimeChart = async (parkId) => {
 const initBusiestTimeChart = (parkId) => {
   drawBusiestTimeChart(parkId);
 };
+
+
+
 
 function mapVisitorCheckInToMonth(monthsArray, month) {
   const matchingMonth = monthsArray.filter((m) => m === month);

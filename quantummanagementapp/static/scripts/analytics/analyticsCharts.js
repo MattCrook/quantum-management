@@ -100,16 +100,17 @@ const drawAttractionVisitorsChart = async (parkId) => {
   const chartData = google.visualization.arrayToDataTable(formattedAttractionVisData[0]);
 
   const options = {
-    title: "Monthly Attraction Popularity (Top Ten Attractions)",
+    // title: "Monthly Attraction Popularity (Top Ten Attractions)",
+    chartArea: { width: '75%', height: '70%', top: 20},
     vAxis: {
       title: "Attendance",
       textStyle: {
-        color: "rgb(0, 0, 0)",
+        color: "#848485",
         fontSize: 14
       },
       baselineColor: "rgb(0, 0, 0)",
       titleTextStyle: {
-        color: "rgb(0, 0, 0)",
+        color: "#848485",
         fontName: "helvetica neue",
         fontSize: 15,
         bold: true,
@@ -119,11 +120,11 @@ const drawAttractionVisitorsChart = async (parkId) => {
     hAxis: {
       title: "Month",
       textStyle: {
-        color: "rgb(0, 0, 0)",
+        color: "#848485",
         fontSize: 12,
       },
       titleTextStyle: {
-        color: "rgb(0, 0, 0)",
+        color: "#848485",
         fontName: "helvetica neue",
         fontSize: 15,
         bold: true,

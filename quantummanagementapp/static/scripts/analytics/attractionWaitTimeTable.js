@@ -19,7 +19,7 @@ const populateWaitTimeDataTable = async (parkId) => {
   const matchingWaitTimes = waitTimesFromHook.filter((waitTime) => attractionIds.includes(waitTime.attraction.id));
   const mostRecentWaitTimes = useLatestTimestamp(matchingWaitTimes);
   const waitTimeTableRows = formatDataTable(mostRecentWaitTimes);
-  const topTenWaitTimes = [...waitTimeTableRows].splice(0, 10);
+  const topTenWaitTimes = [...waitTimeTableRows].splice(0, 20);
 
   attractionWaitTimeDataTable.innerHTML = "";
   topTenWaitTimes.forEach((row) => {

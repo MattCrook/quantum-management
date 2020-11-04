@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from quantummanagementapp.models import AttractionVisitors, AttractionWaitTimes, Visitor, VisitorCheckOut, ParkAttractions, Employee, Attraction, AdminUser, Park, ParkAttractions
 from django.http import HttpResponseServerError
 from django.contrib.auth.decorators import login_required
-
+import datetime
 
 @login_required
 def analytics(request, park_id):

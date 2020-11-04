@@ -258,7 +258,7 @@
 
 .date_tickets_sold {
   font-size: 13px;
-  margin-left: 10px;
+  margin-left: 12px;
   color: #848485;
 }
 
@@ -304,11 +304,16 @@
   justify-content: center;
   align-items: center;
   margin-top: 2%;
-  margin-left: 3%;
+  margin-left: 6%;
+  margin-right: 3%;
+  flex-direction: column;
+  border: 1px solid rgb(189, 189, 189);
+
 }
 
 #attraction_visitors_chart_div {
-  box-shadow: 4px 4px 4px 4px rgb(194, 192, 192);
+  /* box-shadow: 4px 4px 4px 4px rgb(194, 192, 192); */
+  /* border: 1px solid rgb(189, 189, 189); */
 }
 
 #attraction_visitors_spinner {
@@ -318,14 +323,6 @@
   margin-top: 14%;
 }
 
-/* #wait_time_table_container {
-  display: flex;
-  justify-content: space-between;
-  width: 26%;
-  margin-left: 73%;
-  margin-top: 3%;
-  border: 1px solid black;
-} */
 
 #wait_times {
   display: flex;
@@ -336,9 +333,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-right: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+
 }
-
-
 
 #wait_time_name {
   font: 150 0.9em helvetica neue, open sans, sans-serif;
@@ -348,13 +347,17 @@
   font: 150 0.9em helvetica neue, open sans, sans-serif;
 }
 
+#wait_time_table_container {
+  width: 40%;
+  margin-right: 2%;
+}
 #wait_time_header_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background: #212529;
   color: rgb(241, 241, 241);
-  border: 1px solid #4073e071;
+  margin-top: 2%;
 }
 
 
@@ -364,14 +367,178 @@
 
 .container_2_charts {
   display: flex;
+  justify-content: space-between;
   margin-top: 3%;
   margin-left: 5%;
 }
 
 #curve_chart {
-  border: 1px solid rgb(165, 165, 165);
-  margin-right: 20%;
+  border: 1px solid rgb(189, 189, 189);
+  border: 1px solid rgb(161, 160, 160);
 }
+
+
+.table td, .table th {
+  border-top: none;
+}
+
+.table thead th  {
+  border-bottom: none;
+}
+
+
+#analytics_nav_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.analytics_nav_button {
+  border: 1px solid black;
+}
+#chart_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 100%;
+  margin-left: 3%;
+}
+.chart_titles_container {
+  justify-content: left;
+  flex-direction: row;
+  /* margin-right: 58%; */
+  margin-bottom: 2%;
+}
+
+.chart_title {
+  margin-top: 8%;
+  font-weight: 600;
+  font-size: 15;
+}
+
+.chart_sub_title_1 {
+  font-size: 13px;
+  color: #848485;
+  margin-top: 3px;
+}
+
+.chart_sub_title_2 {
+  font-size: 13px;
+  color: #848485;
+}
+
+.select_year_container {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  margin-top: 1.2%;
+  margin-right: 6%;
+  width: 8%;
+
+}
+
+.year_select_label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3%;
+  font-size: 13px;
+  padding-left: 0.7rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1px solid rgb(197, 195, 195);
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+}
+
+#i {
+  margin-right: 4%;
+}
+
+.select_year_options {
+  margin-top: 8%;
+  border: 1px solid rgb(201, 198, 198);
+
+}
+
+.year_option {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  color: #848485;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.year_option:hover {
+  background-color: rgb(241, 241, 241);
+}
+/************* Nav Buttons **************/
+
+
+
+.analytics_nav_button {
+  text-decoration: none;
+  padding: 6px 22px;
+  margin: 8px 8px;
+  color: rgb(173, 173, 173);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.analytics_nav_button {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.analytics_nav_button::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.analytics_nav_button:hover::before {
+  width: 100%;
+}
+
+.analytics_nav_button::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.analytics_nav_button:hover::after {
+  width: 100%;
+}
+.analytics_nav_button:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+/***************************************/
 
 
 /******************************** Spinners ********************************************/
@@ -473,4 +640,22 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+#wait_time_chart_spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 53%;
+  top: 55%;
+  margin: -16px 0px 0px -16px;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
 }

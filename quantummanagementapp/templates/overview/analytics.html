@@ -96,23 +96,36 @@
 
         <div id="attraction_visitors_chart_container">
             <div id="chart_header">
-                <div class="select_year_container">
+                <div class="select_year_container" style="display: block;">
                     <div class="year_select_label">Select Year<i id="i" class="fas fa-angle-down"></i></div>
                     <div class="select_year_options" style="display: none;">
                         <div class="year_option">All</div>
                         <div class="year_option">2020</div>
                         <div class="year_option">2019</div>
                         <div class="year_option">2018</div>
-
                     </div> 
                 </div>
 
 
-                <div class="chart_titles_container">
+                <div class="chart_titles_container" style="display: block;">
                     <div class="chart_title">Monthly Attraction Popularity</div>
                     <div class="chart_sub_title_1">Top Ten Attractions</div>
-                    <div class="chart_sub_title_2">Total Park Aggregate Over Park Lifespan</div>
+                    <div id="attraction_year" class="chart_sub_title_2">Total Park Aggregate Over Park Lifespan</div>
                 </div>
+
+                <div class="chart_titles_attendance_container" style="display: none;">
+                    <div class="chart_title">Monthly Park Attendance</div>
+                    <div class="chart_sub_title_1">Aggregate Average Attendance Per Month</div>
+                    <div id="attendance_year" class="chart_sub_title_2">Total Park Aggregate Over Park Lifespan</div>
+                </div>
+
+                <div class="chart_titles_waittimes_container" style="display: none;">
+                    <div class="wait_time_chart_title">Live Wait Times for Attractions in {{park.name}}</div>
+                    <div class="chart_sub_title_1">Wait Times Categorized From Longest To Shortest</div>
+                    <div id="waittime_time" class="chart_sub_title_2">Current Time: 
+                        <div id="current_time">{{current_time}}</div>
+                </div>
+            </div>
             </div>
 
             <div id="attraction_visitors_chart_div" style="width: 97%; height: 30rem;">

@@ -55,10 +55,10 @@ const drawBusiestTimeChart = async (parkId) => {
     const chartData = google.visualization.arrayToDataTable(visitorMonthsData[0])
 
     const options = {
-      title: 'Monthly Average Park Attendance',
+      // title: 'Monthly Average Park Attendance',
         // curveType: 'function',
         legend: { position: 'bottom' },
-        chartArea: { width: '85%', height: '65%' },
+        chartArea: { width: '95%', height: '70%' },
         lineWidth: 2,
         series: {
             0: {

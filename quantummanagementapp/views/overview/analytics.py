@@ -22,6 +22,9 @@ def analytics(request, park_id):
             attraction_id = attraction.id
             attraction_visit = AttractionVisitors.objects.filter(attraction_id=attraction_id)
             attraction_visitors.append(attraction_visit)
+        
+        current_time = datetime.datetime.now()
+
 
         template = 'overview/analytics.html'
         context = {
@@ -34,5 +37,6 @@ def analytics(request, park_id):
             'visitor_checkouts': visitor_checkouts,
             'attraction_visitors': attraction_visitors,
             'attractions': attractions,
+            'current_time': current_time,
         }
         return render(request, template, context)

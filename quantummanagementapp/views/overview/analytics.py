@@ -22,8 +22,10 @@ def analytics(request, park_id):
             attraction_id = attraction.id
             attraction_visit = AttractionVisitors.objects.filter(attraction_id=attraction_id)
             attraction_visitors.append(attraction_visit)
-        
+
         current_time = datetime.datetime.now()
+        count = count_attraction_visitors(attraction_visitors)
+        attractions_count = count_attractions(attractions)
 
 
         template = 'overview/analytics.html'
@@ -38,5 +40,23 @@ def analytics(request, park_id):
             'attraction_visitors': attraction_visitors,
             'attractions': attractions,
             'current_time': current_time,
+            'count': count,
+            'attractions_count': attractions_count,
         }
         return render(request, template, context)
+
+
+def count_attraction_visitors(attr_vis):
+    attr_vis_arr = []
+    for v_array in attr_vis:
+        for v in v_array:
+            attr_vis_arr.append(v)
+    count = len(attr_vis_arr)
+    return count
+
+def count_attractions(attr):
+    attr_arr = []
+    for a in attr:
+        attr_arr.append(a)
+    count = len(attr_arr)
+    return count

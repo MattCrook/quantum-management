@@ -6,26 +6,30 @@ const attractionWaitTimeDataTable = document.getElementById("wait_times");
 
 
 const populateWaitTimeDataTable = async (parkId) => {
-  const [waitTimes, setWaitTimes] = useWaitTimes();
-  const [attractions, setAttractions] = useAttractions();
-  const getAllWaitTimes = await getAttractionWaitTimes(parkId);
-  const allAttractions = await getAttractions(parkId);
-  setWaitTimes(getAllWaitTimes);
-  setAttractions(allAttractions);
+  try {
+    const [waitTimes, setWaitTimes] = useWaitTimes();
+    const [attractions, setAttractions] = useAttractions();
+    const getAllWaitTimes = await getAttractionWaitTimes(parkId);
+    const allAttractions = await getAttractions(parkId);
+    setWaitTimes(getAllWaitTimes);
+    setAttractions(allAttractions);
 
-  const waitTimesFromHook = waitTimes();
-  const attractionsFromHook = attractions();
-  const attractionIds = attractionsFromHook.map((attraction) => attraction.id);
-  const matchingWaitTimes = waitTimesFromHook.filter((waitTime) => attractionIds.includes(waitTime.attraction.id));
-  const mostRecentWaitTimes = useLatestTimestamp(matchingWaitTimes);
-  const waitTimeTableRows = formatDataTable(mostRecentWaitTimes);
-  const topTenWaitTimes = [...waitTimeTableRows].splice(0, 20);
+    const waitTimesFromHook = waitTimes();
+    const attractionsFromHook = attractions();
+    const attractionIds = attractionsFromHook.map((attraction) => attraction.id);
+    const matchingWaitTimes = waitTimesFromHook.filter((waitTime) => attractionIds.includes(waitTime.attraction.id));
+    const mostRecentWaitTimes = useLatestTimestamp(matchingWaitTimes);
+    const waitTimeTableRows = formatDataTable(mostRecentWaitTimes);
+    const topTenWaitTimes = [...waitTimeTableRows].splice(0, 20);
 
-  attractionWaitTimeDataTable.innerHTML = "";
-  topTenWaitTimes.forEach((row) => {
-    attractionWaitTimeDataTable.innerHTML += row;
-  });
-};
+    attractionWaitTimeDataTable.innerHTML = "";
+    topTenWaitTimes.forEach((row) => {
+      attractionWaitTimeDataTable.innerHTML += row;
+    });
+  } catch (err) {
+    console.log({ err })
+  }
+}
 
 
 

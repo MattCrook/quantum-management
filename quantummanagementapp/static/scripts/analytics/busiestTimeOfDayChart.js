@@ -2,7 +2,7 @@ import { getVisitorsList, getVisitorCheckoutList } from "../services.js";
 
 const buildBusiestTimeChart = async (parkId) => {
   const visitors = await getVisitorsList(parkId);
-  const visitorCheckout = await getVisitorCheckoutList(parkId);
+  // const visitorCheckout = await getVisitorCheckoutList(parkId);
   const visitorCheckInMonths = visitors.map((visitor) => {
     const timeString = new Date(visitor.check_in);
     const month = timeString.getMonth();

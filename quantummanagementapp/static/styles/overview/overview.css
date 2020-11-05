@@ -14,7 +14,7 @@
   top: 74px;
   left: 230px;
   width: 8%;
-  height: 120%;
+  height: 140%;
   margin-left: -230px;
   background: rgb(17, 19, 24);
   -webkit-transition: all 0.5s ease;
@@ -308,7 +308,6 @@
   margin-right: 3%;
   flex-direction: column;
   border: 1px solid rgb(189, 189, 189);
-
 }
 
 #attraction_visitors_chart_div {
@@ -324,20 +323,18 @@
   margin-top: 14%;
 }
 
-
 #wait_times {
   display: flex;
   flex-direction: column;
 }
 
-#wait_time_row{
+#wait_time_row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-right: 1px solid #dee2e6;
   border-left: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
-
 }
 
 #wait_time_name {
@@ -361,7 +358,6 @@
   margin-top: 2%;
 }
 
-
 .wait_time_header {
   font: 150 1.1em helvetica neue, open sans, sans-serif;
 }
@@ -378,22 +374,20 @@
   border: 1px solid rgb(161, 160, 160);
 } */
 
-
-.table td, .table th {
+.table td,
+.table th {
   border-top: none;
 }
 
-.table thead th  {
+.table thead th {
   border-bottom: none;
 }
-
 
 #analytics_nav_container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 .analytics_nav_button {
@@ -457,7 +451,6 @@
   margin-right: 4%;
   width: 8%;
   z-index: 100;
-
 }
 
 .year_select_label {
@@ -475,6 +468,11 @@
   cursor: pointer;
 }
 
+.year_select_label:hover {
+  background-color: #e2e2e2;
+  border: 1px solid #6098ff;
+}
+
 #i {
   margin-right: 4%;
 }
@@ -482,10 +480,9 @@
 .select_year_options {
   /* margin-top: 8%; */
   position: absolute;
-  top: 14.8rem;
+  top: 14.1rem;
   width: 7%;
   border: 1px solid rgb(201, 198, 198);
-
 }
 
 .year_option {
@@ -506,8 +503,6 @@
   margin-left: 4%;
 }
 /************* Nav Buttons **************/
-
-
 
 .analytics_nav_button {
   text-decoration: none;
@@ -567,7 +562,6 @@
   border-right: 1px solid #6098ff;
 }
 /***************************************/
-
 
 /******************************** Spinners ********************************************/
 
@@ -678,7 +672,7 @@
   border: 2px groove white;
   position: absolute;
   left: 53%;
-  top: 55%;
+  top: 65%;
   margin: -16px 0px 0px -16px;
   border-top-color: rgb(27, 27, 27);
   border-left-color: rgba(54, 53, 53, 0.9);

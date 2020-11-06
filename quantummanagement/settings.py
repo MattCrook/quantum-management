@@ -36,11 +36,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'quantummanagementapp',
-    'social_django',
     'safedelete',
     'datetimepicker',
     'django_filters',
+    'social_django',
+    'quantummanagementapp',
     ]
 
 MIDDLEWARE = [
@@ -78,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -146,32 +148,6 @@ CORS_ORIGIN_WHITELIST = (
 
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
-LOGIN_REDIRECT_URL = 'home/'
-LOGIN_URL = 'login/'
-LOGOUT_URL = 'logout/'
-LOGOUT_REDIRECT_URL = ''
-
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
@@ -192,10 +168,81 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
     'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
 }
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+LOGIN_REDIRECT_URL = '/login/home'
+LOGIN_URL = 'login/'
+LOGOUT_URL = 'logout/'
+LOGOUT_REDIRECT_URL = ''
+
+
+# Social Auth
+# SOCIAL_AUTH_GOOGLE_LOGIN_URL =
+# SOCIAL_AUTH_LINKEDIN_LOGIN_URL =
+# SOCIAL_AUTH_FACEBOOK_LOGIN_URL = 
+# SOCIAL_AUTH_LOGIN_URL = 
+
+# Google OAuth
+SOCIAL_AUTH_GOOGLE_KEY = 'foobar'
+SOCIAL_AUTH_GOOGLE_SECRET = 'bazqux'
+
+# LinkedIn OAuth
+SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
+SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+
+# FaceBook OAuth
+SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+
+SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+)
+
+
 
 # Added for registration form email field
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

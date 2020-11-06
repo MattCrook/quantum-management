@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
@@ -16,7 +17,7 @@
             <ul class="messages">
                 {% for message in messages %}
                 <li id="error_message" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                    {% endfor %}
+                {% endfor %}
             </ul>
             {% endif %}
         </form>
@@ -29,17 +30,25 @@
             <button id="login_with_google" class="btn btn-primary  mb-2">
                 <a href="#">Login with Google</a>
             </button>
-            <button class="btn btn-danger  mb-2">
-                <a href="#">Login with Instagram</a>
-            </button>
-            <button class="btn btn-primary mb-2">
-                <a href="#">Login with Facebook
+            <!-- <button class="btn btn-primary mb-2" onclick="loginfb()"> -->
+                <button class="btn btn-primary mb-2" onclick="checkLoginState();">
+                <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook
                 </a>
             </button>
             <button class="btn btn-info mb-2">
                 <a href="#">Login with LinkedIn</a>
             </button>
+<!-- 
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+            </fb:login-button> -->
+
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{% static 'scripts/socialAuth.js' %}"></script>
 {% endblock %}

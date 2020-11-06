@@ -6,6 +6,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.files.storage import FileSystemStorage
 from django.db import models
+from rest_framework.authtoken.models import Token
+
 
 
 # fs = FileSystemStorage(location='../media/photos')
@@ -31,6 +33,7 @@ class AdminUser(models.Model):
 def create_admin_user(sender, instance, created, **kwargs):
     if created:
         AdminUser.objects.create(user=instance)
+        Token.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_admin_user(sender, instance, **kwargs):

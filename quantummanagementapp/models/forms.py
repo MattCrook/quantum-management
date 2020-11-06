@@ -15,6 +15,8 @@ class SignUpForm(UserCreationForm):
 
 # Form for Login view
 class LoginForm(AuthenticationForm):
+    username = forms.CharField()
+    password = forms.PasswordInput()
     class Meta:
         model = User
         fields = ('username', 'password')

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django_filters',
     'social_django',
     'quantummanagementapp',
+    'django.contrib.sessions.middleware',
+    'oauth2client.contrib.django_util',
     ]
 
 MIDDLEWARE = [
@@ -103,8 +105,8 @@ DATABASES = {
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
         'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -203,21 +205,36 @@ LOGOUT_URL = 'logout/'
 LOGOUT_REDIRECT_URL = ''
 
 
-# Social Auth
+###### Social Auth
 # SOCIAL_AUTH_GOOGLE_LOGIN_URL =
 # SOCIAL_AUTH_LINKEDIN_LOGIN_URL =
 # SOCIAL_AUTH_FACEBOOK_LOGIN_URL = 
 # SOCIAL_AUTH_LOGIN_URL = 
 
-# Google OAuth
-SOCIAL_AUTH_GOOGLE_KEY = 'foobar'
-SOCIAL_AUTH_GOOGLE_SECRET = 'bazqux'
+###### Google OAuth
+GOOGLE_OAUTH2_STORAGE_MODEL = {
+    'model': 'quantummanagementapp.models.CredentialsModel',
+    'user_property': 'user_id',
+    'credentials_property': 'credential'
+}
+# qm ID = quantum-management-295116
+# client ID = 567594519343-tuomls4f1umfnbeqpoiq2mmm773rll3n.apps.googleusercontent.com
 
-# LinkedIn OAuth
-SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
-SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+# project number = 567594519343
 
-# FaceBook OAuth
+SOCIAL_AUTH_GOOGLE_KEY = '567594519343'
+# SOCIAL_AUTH_GOOGLE_SECRET = 'AIzaSyCzAvRAfnwxZae-7pS-dKdnPXw4LKvZy1I'
+# SOCIAL_AUTH_GOOGLE_KEY = '567594519343-tuomls4f1umfnbeqpoiq2mmm773rll3n.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_SECRET = 'eLG3jjcDEdyut6P_wn87IaiG'
+# client secret key = eLG3jjcDEdyut6P_wn87IaiG
+
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
+
+###### LinkedIn OAuth
+# SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
+# SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+
+###### FaceBook OAuth
 SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']

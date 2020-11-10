@@ -7,6 +7,8 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from quantummanagementapp.views.Api import *
 from rest_framework.authtoken.views import obtain_auth_token
+from quantummanagementapp.views import gmail_authenticate, auth_return
+
 
 
 
@@ -33,6 +35,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include('quantummanagementapp.urls')),
     path('social-auth/', include('social_django.urls', namespace="social")),
+    path('gmailAuthenticate', gmail_authenticate, name ='gmail_authenticate'),
+    path('oauth2callback', auth_return),
 
 ]
 

@@ -24,20 +24,32 @@
     </div>
     <div class="row">
         <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-            <em>
-                <p>Social Auth Coming Soon!</p>
-            </em>
+
+            {% if not status %}
             <button id="login_with_google" class="btn btn-primary  mb-2">
-                <a href="#">Login with Google</a>
+                <a href="/gmailAuthenticate" onclick="gmailAuthenticate()" title="Google">Login with Google</a>
             </button>
+            {% endif %}
+
             <!-- <button class="btn btn-primary mb-2" onclick="loginfb()"> -->
                 <button class="btn btn-primary mb-2" onclick="checkLoginState();">
-                <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ next }}">Login with Facebook
                 </a>
             </button>
             <button class="btn btn-info mb-2">
                 <a href="#">Login with LinkedIn</a>
             </button>
+
+
+
+
+            <!-- <div> 
+                {% if not status %} 
+                    <a href="/gmailAuthenticate" onclick="gmailAuthenticate()" title="Google">Google</a> 
+                {% else %} 
+                    <p>Your are verified</p> 
+                {% endif %} 
+            </div>  -->
 <!-- 
             <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
             </fb:login-button> -->
@@ -49,6 +61,6 @@
 {% endblock %}
 
 
-{% block scripts %}
-<script src="{% static 'scripts/socialAuth.js' %}"></script>
-{% endblock %}
+<!-- {% block scripts %} -->
+<!-- <script src="{% static 'scripts/socialAuth.js' %}"></script> -->
+<!-- {% endblock %} -->

@@ -18,7 +18,7 @@ def register_user(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
-            token = Token.objects.create(user=user)
+            # token = Token.objects.create(user=user)
             # admin_user = AdminUser.objects.get(user_id=user.id)
             # new_image = Image()
             # new_image.save()

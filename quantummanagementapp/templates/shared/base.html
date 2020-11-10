@@ -39,7 +39,6 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
             </li>
 
-            {% comment %} Check for user INFO on first sign in. Making sure ADMINUSER cannot navigate throughout the app UNLESS filled out their ACOUNT {% endcomment %}
             {% if user.first_name and user.last_name %}
             <li id="btn4" class="nav-item">
                 <a class="nav-link" href="{% url 'quantummanagementapp:employee_landing_page' %}">Manage Employees</a>
@@ -105,8 +104,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 
-
-    <!-- <script src="{% static 'scripts/socialAuth.js' %}"></script> -->
+    <script src="{% static 'scripts/socialAuth.js' %}"></script>
 
 
     <script>

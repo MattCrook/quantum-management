@@ -4,6 +4,7 @@ from django import forms
 from quantummanagementapp.models import Image
 
 
+
 # From for Register view
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=50)

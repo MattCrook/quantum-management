@@ -3,6 +3,12 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from quantummanagementapp.models import AdminUser
+from oauth2client.contrib.django_util.storage import DjangoORMStorage
+from django.http import HttpResponseRedirect
+from quantummanagementapp.models import CredentialsModel
+from httplib2 import Http
+
+
 
 
 
@@ -21,11 +27,27 @@ def home(request):
         user_data = User.objects.get(username=user)
         user_id = user_data.id
         admin_user = AdminUser.objects.get(user_id=user_id)
+        status = True
+
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect('login')
+
+        storage = DjangoORMStorage(CredentialsModel, 'id', request.user, 'credential')
+        credential = storage.get()
+        try:
+            access_token = credential.access_token
+            resp, cont = Http().request("https://www.googleapis.com/auth/gmail.readonly",
+                                        headers={'Host': 'www.googleapis.com',
+                                                'Authorization': access_token})
+        except:
+            status = False
+            print('Not Found')
 
         template = 'home/home.html'
         context = {
             'user': user_data,
-            'admin_user': admin_user
+            'admin_user': admin_user,
+            'status': status
         }
 
         return render(request, template, context)

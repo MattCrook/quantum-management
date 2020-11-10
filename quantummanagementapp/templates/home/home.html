@@ -3,17 +3,24 @@
 
 {% block title %} Home {% endblock %}
 {% block content %}
+<!-- <div class="welcome_banner_container"> -->
 {% if user.first_name %}
 <div class="welcome_banner">
-    <div class="col-sm-12 mb-3">
+    <div id="col_sm" class="col-sm-12 mb-3">
+      <div class="user_welcome_first_name">
         <h4 id="welcome_user" class="text-center"> Welcome {{ user.first_name }} </h4>
+      </div>
+
         {% for ass in backends.associated %}
       {% if ass.provider == 'facebook' %}
-      <p> Signed in via:  {{ ass.provider }} </p>
-      <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
+      <div class="welcome_social_login">
+        <p class="signed_in_p"> Signed in via:  <strong>{{ ass.provider }} </strong></p>
+        <p class="provider_link"> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
+      </div>
+      {% endif %}
+      {% endfor %}
+
     </div>
-    {% endif %}
-    {% endfor %}
     {% else %}
     <div class="welcome_banner">
     <div class="col-sm-12 mb-3">
@@ -22,7 +29,9 @@
         <a class="btn11" href="{% url 'quantummanagementapp:account' user.id %}">Complete Account</a>
         </div>
     </div>
+    </div>
     {% endif %}
+  <!-- </div> -->
 
       <!-- {% for ass in backends.associated %}
       {% if ass.provider == 'facebook' %}

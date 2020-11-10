@@ -1,8 +1,7 @@
 from quantummanagementapp.views.home import landing_page, home
 from django.urls import path
 from django.conf.urls import include, url
-from quantummanagementapp import views
-from .views import *
+from quantummanagementapp.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 

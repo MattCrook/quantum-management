@@ -9,15 +9,12 @@ from django.db import models
 from rest_framework.authtoken.models import Token
 
 
-
-# fs = FileSystemStorage(location='../media/photos')
-# picture = models.ImageField(storage=fs, blank=True, null=True)
-
 class AdminUser(models.Model):
 
     user = models.OneToOneField(User, related_name="user", on_delete=models.CASCADE)
     image = models.ForeignKey("Image", blank=True, null=True, on_delete=models.CASCADE)
     role = models.CharField(max_length=50, blank=True, null=True)
+    picture = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = ("adminUser")

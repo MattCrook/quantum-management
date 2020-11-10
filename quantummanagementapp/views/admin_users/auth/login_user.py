@@ -36,7 +36,7 @@ def login_user(request):
         else:
             data = json.dumps({"valid": False})
             # return HttpResponse(data, content_type='application/json')
-            print(login_form.errors.as_data())
+            print("LOGINDATA", login_form.errors.as_data())
             messages.add_message(request, messages.ERROR, 'Invalid username or password')
             return redirect(reverse('quantummanagementapp:login'))
 

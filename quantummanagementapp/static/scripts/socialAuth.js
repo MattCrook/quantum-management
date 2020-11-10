@@ -3,6 +3,20 @@ const useAppState = () => {
   return [() => appState.slice(), (newAppState) => (appState = newAppState.splice(0))];
 };
 
+
+// For Google Oauth
+function gmailAuthenticate(){
+  $.ajax({
+      type: "GET",
+      url: "ajax/gmailAuthenticate",
+      // data: '',
+      success: function (data) {
+          console.log('Done')
+      }
+  });
+};
+
+
 // function statusChangeCallback(response) {
 //   // Called with the results from FB.getLoginStatus().
 //   console.log("statusChangeCallback");

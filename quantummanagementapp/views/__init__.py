@@ -5,4 +5,5 @@ from .parks import park_list, park_details, park_form, park_edit_form, park_list
 from .roles import role_list
 from .attractions import create_attraction, attraction_type_list, delete_attraction, add_attraction_visitor
 from .overview import overview, analytics
+from .auth0 import Auth0
 # from .admin_users import admin_user_register

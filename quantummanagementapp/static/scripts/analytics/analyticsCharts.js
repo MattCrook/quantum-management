@@ -237,9 +237,13 @@ function buildMatrixRows(month, matrixBodyData, totalMonthlyAverage) {
 
 // Average attendance of tall the rides, for the month.
 function totalMonthlyAverage(row) {
-  const sum = row.reduce((a, b) => a + b);
-  const average = sum / 10;
-  return average;
+  if (row.length > 0) {
+    const sum = row.reduce((a, b) => a + b);
+    const average = sum / 10;
+    return average;
+  } else {
+    return 0;
+  }
 }
 
 function extractCountToSort(arr) {

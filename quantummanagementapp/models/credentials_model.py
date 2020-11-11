@@ -5,7 +5,7 @@ from oauth2client.contrib.django_util.models import CredentialsField
 
 
 class CredentialsModel(models.Model):
-    id = models.ForeignKey(User, primary_key=True, default='', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, primary_key=True, default='', on_delete=models.CASCADE)
     credential = CredentialsField()
     task = models.CharField(max_length=80, blank=True, null=True)
     updated_time = models.CharField(max_length=80, blank=True, null=True)

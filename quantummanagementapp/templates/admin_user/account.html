@@ -62,7 +62,7 @@
 {% if request.user.is_authenticated %}
 <div class="manage_account_container">
     <div class="manage_account_title">Account</div>
-        <button class="add_account_button" ><a class="add_account" href="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}">Edit Account Information</a></button>
+        <a class="add_edit_account" href="{% url 'quantummanagementapp:admin_user_edit_form' user_account.id %}"> <i class="fas fa-user-edit"></i> Edit Account Information</a>
 </div>
     <div class="banner_picture_on_profile">
         <img id="account_banner_image" src="https://qtxasset.com/styles/breakpoint_sm_default_480px_w/s3/fiercebiotech/1571150992/GettyImages-1040557296.jpg/GettyImages-1040557296.jpg?brIYNQgPUhdjjexc6bejSfPN2gtq7gc5&itok=oCqgi_Vn"/>

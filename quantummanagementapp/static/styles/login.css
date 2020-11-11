@@ -184,8 +184,8 @@
   background-color: rgb(14, 14, 14);
   color: #eeeff0;
   border-color: #070707;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 
 .row {
@@ -203,5 +203,17 @@
 #error_message {
   font-size: 12px;
   color: rgb(172, 42, 42);
+}
 
+#login_with_auth0.btn.btn-primary.mb-2 {
+  background-color: rgb(182, 72, 8);
+  color: #eeeff0;
+  border-color: #070707;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+#login_with_auth0 img {
+  border: none;
+  margin-right: 1px;
 }

@@ -14,3 +14,4 @@ from .roles import Roles
 from .image import Image
 from .forms import SignUpForm, ImageForm, LoginForm
 from .credentials_model import CredentialsModel, CredentialsAdmin
+# from .social_user import CustomDjangoStorage, CustomUserSocialAuth

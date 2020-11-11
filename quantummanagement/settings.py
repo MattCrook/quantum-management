@@ -1,18 +1,21 @@
 import os
-from environ import Env
-env = Env()
-env.read_env(env_file='quantummanagement/.env.dev')
+# from environ import Env
+
+
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# env = Env()
+# env.read_env(env_file=os.path.join(BASE_DIR, '.env.dev'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.get_value('SECRET_KEY')
-
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = int(os.environ.get("DEBUG", default=0))
@@ -84,11 +87,11 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 
 
 DATABASES = {
-    'sqlite3': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'default': {
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
@@ -203,19 +206,23 @@ GOOGLE_OAUTH2_STORAGE_MODEL = {
 }
 
 
-SOCIAL_AUTH_GOOGLE_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_KEY")
-SOCIAL_AUTH_GOOGLE_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_SECRET")
+SOCIAL_AUTH_GOOGLE_KEY = '567594519343'
+SOCIAL_AUTH_GOOGLE_SECRET = 'eLG3jjcDEdyut6P_wn87IaiG'
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
 SOCIAL_AUTH_GOOGLE_SCOPE = [
     'openid',
     'profile',
     'email'
 ]
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
 
 ###### FaceBook OAuth
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
+SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email, picture.type(large), link'
@@ -229,24 +236,43 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 ]
 
 
-
 ##### Auth0
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get("SOCIAL_AUTH_AUTH0_DOMAIN")
-SOCIAL_AUTH_AUTH0_KEY = os.environ.get("SOCIAL_AUTH_AUTH0_KEY")
-SOCIAL_AUTH_AUTH0_SECRET = os.environ.get("SOCIAL_AUTH_AUTH0_SECRET")
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
+SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
     'profile',
     'email'
 ]
 
+# SOCIAL_AUTH_GOOGLE_KEY=567594519343
+# SOCIAL_AUTH_GOOGLE_SECRET=eLG3jjcDEdyut6P_wn87IaiG
+# SOCIAL_AUTH_FACEBOOK_KEY=373817170537484
+# SOCIAL_AUTH_FACEBOOK_SECRET=c964d38aeebe4728fa8c0b3346608462
+# SOCIAL_AUTH_AUTH0_DOMAIN=dev-405n1e6w.auth0.com
+# SOCIAL_AUTH_AUTH0_KEY=7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa
+# SOCIAL_AUTH_AUTH0_SECRET=yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS
 
 ###### LinkedIn OAuth
 # SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
 # SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
 
 
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.user.get_username',
+#     'social_core.pipeline.social_auth.associate_by_email',
+#     'social_core.pipeline.user.create_user',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+# )
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
 
 # SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
 #     'social_core.backends.open_id.OpenIdAuth',

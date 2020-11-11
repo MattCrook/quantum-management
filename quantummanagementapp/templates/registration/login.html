@@ -27,18 +27,22 @@
         <div class="col-md-8 mx-auto social-container my-2 order-md-1">
 
             <button id="login_with_auth0" class="btn btn-primary mb-2">
-                    <img id="auth0_img" src="../../static/images/iconfinder_auth0_4691528.svg" style="width: 26px;">
+                <img id="auth0_img" src="../../static/images/iconfinder_auth0_4691528.svg" style="width: 26px;">
                 <a href="{% url 'social:begin' 'auth0' %}" title="Auth0">Login with Auth0</a>
             </button>
 
             {% if not status %}
             <button id="login_with_google" class="btn btn-primary mb-2">
-                <a href="/gmailAuthenticate" onclick="gmailAuthenticate()" title="Google"> <i class="fab fa-google"></i> Login with Google</a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" onclick="gmailAuthenticate()" title="Google"> <i
+                        class="fab fa-google"></i> Login with Google</a>
             </button>
             {% endif %}
 
-                <button class="btn btn-primary mb-2" onclick="checkLoginState();">
-                <a href="{% url 'social:begin' 'facebook' %}"> <i class="fab fa-facebook-square"></i> Login with Facebook
+            <button class="btn btn-primary mb-2" onclick="checkLoginState();">
+                <a href="{% url 'social:begin' 'facebook' %}"> <i
+                        class="fab fa-facebook-square"></i> Login with Facebook
+
+                    <!-- <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> <i class="fab fa-facebook-square"></i> Login with Facebook -->
                 </a>
             </button>
             <button class="btn btn-info mb-2">

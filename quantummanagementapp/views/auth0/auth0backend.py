@@ -11,7 +11,7 @@ class Auth0(BaseOAuth2):
     REDIRECT_STATE = False
     EXTRA_DATA = [
         ('picture', 'picture'),
-        ('email', 'email')
+        ('email', 'email'),
     ]
 
     def authorization_url(self):
@@ -30,10 +30,15 @@ class Auth0(BaseOAuth2):
         jwks = request.urlopen('https://' + self.setting('DOMAIN') + '/.well-known/jwks.json')
         issuer = 'https://' + self.setting('DOMAIN') + '/'
         audience = self.setting('KEY')  # CLIENT_ID
-        payload = jwt.decode(id_token, jwks.read(), algorithms=['RS256'], audience=audience, issuer=issuer)
+        payload = jwt.decode(id_token, jwks.read(), algorithms=[
+                             'RS256'], audience=audience, issuer=issuer)
 
-        return {'username': payload['nickname'],
+        return {'first_name': payload['nickname'],
                 'name': payload['name'],
                 'picture': payload['picture'],
                 'user_id': payload['sub'],
-                'email': payload['email']}
+                'email': payload['email'],
+                'audience': payload['aud'],
+                'email_verified': payload['email_verified'],
+                'iat': payload['iat']
+                }

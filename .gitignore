@@ -156,7 +156,7 @@ media/*
 *.pyc
 *.db
 *.pid
-*.env.dev
+
 
 # django migrations
 migrations/

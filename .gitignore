@@ -165,3 +165,6 @@ connection.py
 
 #node modules
 node_modules/
+
+#DB
+logfile

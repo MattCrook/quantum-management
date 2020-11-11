@@ -1,10 +1,9 @@
 import os
 # from environ import Env
-
 # env = Env()
-# env.read_env(env_file='quantummanagement/.env')
+# env.read_env(env_file='quantummanagement/.env.dev')
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -12,8 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,11 +34,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'quantummanagementapp',
-    'social_django',
     'safedelete',
     'datetimepicker',
     'django_filters',
+    'social_django',
+    'quantummanagementapp',
+    'django.contrib.sessions.middleware',
+    'oauth2client.contrib.django_util',
     ]
 
 MIDDLEWARE = [
@@ -54,16 +54,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Auth0 middleware
-# MIDDLEWARE = [
-#     'django.middleware.security.SecurityMiddleware',
-#     'django.contrib.sessions.middleware.SessionMiddleware',
-#     'django.middleware.common.CommonMiddleware',
-#     'django.middleware.csrf.CsrfViewMiddleware',
-#     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#     'django.contrib.messages.middleware.MessageMiddleware',
-#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-# ]
 
 ROOT_URLCONF = 'quantummanagement.urls'
 
@@ -78,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -101,8 +93,8 @@ DATABASES = {
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
         'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -146,32 +138,6 @@ CORS_ORIGIN_WHITELIST = (
 
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
-LOGIN_REDIRECT_URL = 'home/'
-LOGIN_URL = 'login/'
-LOGOUT_URL = 'logout/'
-LOGOUT_REDIRECT_URL = ''
-
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
@@ -192,10 +158,105 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
     'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
+    'quantummanagementapp.views.auth0.auth0backend.Auth0',
 }
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+LOGIN_URL = 'login/'
+LOGIN_REDIRECT_URL = '/login/home'
+LOGOUT_URL = 'logout/'
+LOGOUT_REDIRECT_URL = ''
+
+
+
+###### Google OAuth
+GOOGLE_OAUTH2_STORAGE_MODEL = {
+    'model': 'quantummanagementapp.models.CredentialsModel',
+    'user_property': 'user_id',
+    'credentials_property': 'credential'
+}
+
+
+SOCIAL_AUTH_GOOGLE_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_KEY")
+SOCIAL_AUTH_GOOGLE_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_SECRET")
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
+SOCIAL_AUTH_GOOGLE_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+###### FaceBook OAuth
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+
+
+##### Auth0
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get("SOCIAL_AUTH_AUTH0_DOMAIN")
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get("SOCIAL_AUTH_AUTH0_KEY")
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get("SOCIAL_AUTH_AUTH0_SECRET")
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+###### LinkedIn OAuth
+# SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
+# SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+
+
+
+# SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.open_id.OpenIdAuth',
+#     'social_core.backends.google.GoogleOpenId',
+#     'social_core.backends.google.GoogleOAuth2',
+#     'social_core.backends.google.GoogleOAuth',
+#     'social_core.backends.linkedin.LinkedinOAuth2',
+#     'social_core.backends.facebook.FacebookOAuth2',
+# )
+
 
 # Added for registration form email field
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -211,5 +272,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 # FIXTURE_DIRS = (
 #    '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
-# )
+# # )
 FIXTURE_DIRS = os.path.join(BASE_DIR, "quantummanagementapp/fixtures/")

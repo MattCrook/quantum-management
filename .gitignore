@@ -133,7 +133,8 @@ db.sqlite3
 .env
 .env.dev
 
-
+# secrets
+client_secrets.json
 
 # virtualenv
 QuantumManagementEnv/
@@ -165,3 +166,6 @@ connection.py
 
 #node modules
 node_modules/
+
+#DB
+logfile

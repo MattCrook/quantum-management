@@ -110,6 +110,41 @@ img {
   background-color: white;
   font-variant: small-caps;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+}
+
+.user_welcome_first_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome_social_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signed_in_p {
+  margin-right: 5%;
+  margin-bottom: 0;
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+.provider_link {
+  margin-bottom: 0;
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+#col_sm {
+  margin-bottom: 0 !important;
+}
+
+.signed_in_as_provider_title {
+  font-weight: 600;
 }
 
 .logo_banner {

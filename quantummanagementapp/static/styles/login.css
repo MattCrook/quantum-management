@@ -13,7 +13,7 @@
 }
 
 .login-card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 15px;
 }
 
@@ -53,7 +53,7 @@
   border: 1px solid rgba(0, 0, 0, 0.753);
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -184,8 +184,8 @@
   background-color: rgb(14, 14, 14);
   color: #eeeff0;
   border-color: #070707;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 
 .row {
@@ -203,5 +203,23 @@
 #error_message {
   font-size: 12px;
   color: rgb(172, 42, 42);
+}
 
+#login_with_auth0.btn.btn-primary.mb-2 {
+  background-color: rgb(182, 72, 8);
+  color: #eeeff0;
+  border-color: #070707;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+#login_with_auth0 img {
+  border: none;
+  margin-right: 1px;
+}
+
+.login_sub_header {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 12px;
 }

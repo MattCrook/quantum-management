@@ -1,5 +1,5 @@
 from django.contrib import admin
-from quantummanagementapp.models import AdminUser, Attraction, AttractionType, AttractionWaitTimes, AttractionVisitors, Employee, EmployeeAttraction, Visitor, VisitorCheckOut, Park, ParkAttractions, Roles
+from quantummanagementapp.models import AdminUser, Attraction, AttractionType, AttractionWaitTimes, AttractionVisitors, Employee, EmployeeAttraction, Visitor, VisitorCheckOut, Park, ParkAttractions, Roles, CredentialsModel, CredentialsAdmin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
@@ -16,3 +16,5 @@ admin.site.register(VisitorCheckOut)
 admin.site.register(Park)
 admin.site.register(ParkAttractions)
 admin.site.register(Roles)
+admin.site.register(CredentialsModel)
+# admin.site.register(CredentialsAdmin)

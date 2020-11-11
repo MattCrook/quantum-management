@@ -4,6 +4,7 @@ from django import forms
 from quantummanagementapp.models import Image
 
 
+
 # From for Register view
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=50)
@@ -15,6 +16,8 @@ class SignUpForm(UserCreationForm):
 
 # Form for Login view
 class LoginForm(AuthenticationForm):
+    username = forms.CharField()
+    password = forms.PasswordInput()
     class Meta:
         model = User
         fields = ('username', 'password')

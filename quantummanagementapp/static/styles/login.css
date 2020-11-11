@@ -13,7 +13,7 @@
 }
 
 .login-card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 15px;
 }
 
@@ -53,7 +53,7 @@
   border: 1px solid rgba(0, 0, 0, 0.753);
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -216,4 +216,10 @@
 #login_with_auth0 img {
   border: none;
   margin-right: 1px;
+}
+
+.login_sub_header {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 12px;
 }

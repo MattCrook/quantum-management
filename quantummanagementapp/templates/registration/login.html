@@ -7,12 +7,13 @@
 <div class="login-container">
     <div class="login-card">
         <h2>Login</h2>
+        <div class="login_sub_header">Superuser or SysAdmin Accounts</div>
         <form method="POST">
             {% csrf_token %}
             {{ login_form.as_p }}
             <button class="login_btn" type="submit">Login</button>
             <button class="register_btn"><a class="register_btn"
-                    href="{% url 'quantummanagementapp:register' %}">Register New Admin Account</a></button>
+                    href="{% url 'quantummanagementapp:register' %}">Register New SysAdmin Account</a></button>
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -26,7 +27,6 @@
         <div class="col-md-8 mx-auto social-container my-2 order-md-1">
 
             <button id="login_with_auth0" class="btn btn-primary mb-2">
-                    <!-- <img src="https://i.cloudup.com/StzWWrY34s.png" /> -->
                     <img id="auth0_img" src="../../static/images/iconfinder_auth0_4691528.svg" style="width: 26px;">
                 <a href="{% url 'social:begin' 'auth0' %}" title="Auth0">Login with Auth0</a>
             </button>
@@ -37,36 +37,16 @@
             </button>
             {% endif %}
 
-            <!-- <button class="btn btn-primary mb-2" onclick="loginfb()"> -->
                 <button class="btn btn-primary mb-2" onclick="checkLoginState();">
-                <a href="{% url 'social:begin' 'facebook' %}?next={{ next }}"> <i class="fab fa-facebook-square"></i> Login with Facebook
+                <a href="{% url 'social:begin' 'facebook' %}"> <i class="fab fa-facebook-square"></i> Login with Facebook
                 </a>
             </button>
             <button class="btn btn-info mb-2">
                 <a href="#"> <i class="fab fa-linkedin"></i> Login with LinkedIn</a>
             </button>
 
-
-
-
-            <!-- <div> 
-                {% if not status %} 
-                    <a href="/gmailAuthenticate" onclick="gmailAuthenticate()" title="Google">Google</a> 
-                {% else %} 
-                    <p>Your are verified</p> 
-                {% endif %} 
-            </div>  -->
-<!-- 
-            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-            </fb:login-button> -->
-
         </div>
     </div>
 </div>
 
 {% endblock %}
-
-
-<!-- {% block scripts %} -->
-<!-- <script src="{% static 'scripts/socialAuth.js' %}"></script> -->
-<!-- {% endblock %} -->

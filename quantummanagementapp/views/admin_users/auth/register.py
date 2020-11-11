@@ -18,17 +18,12 @@ def register_user(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
-            # token = Token.objects.create(user=user)
-            # admin_user = AdminUser.objects.get(user_id=user.id)
-            # new_image = Image()
-            # new_image.save()
-            # admin_user.image_id = new_image.id
-            # admin_user.save()
             login(request, user)
             return redirect(reverse('quantummanagementapp:home'))
         else:
-            print(form.errors.as_data())
-            messages.add_message(request, messages.ERROR, 'Passwords not match')
+            print("Register Errors", form.errors.as_data())
+            error_messages = form.errors
+            messages.add_message(request, messages.ERROR, error_messages)
             return redirect(reverse('quantummanagementapp:register'))
 
     else:

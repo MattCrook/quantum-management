@@ -33,7 +33,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-token-auth/', obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('social-auth/', include('social_django.urls', namespace="social")),
+    path('', include('social_django.urls', namespace="social")),
     path('gmailAuthenticate', gmail_authenticate, name ='gmail_authenticate'),
     path('oauth2callback', auth_return),
     path('', include('quantummanagementapp.urls')),

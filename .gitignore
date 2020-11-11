@@ -133,7 +133,8 @@ db.sqlite3
 .env
 .env.dev
 
-
+# secrets
+client_secrets.json
 
 # virtualenv
 QuantumManagementEnv/

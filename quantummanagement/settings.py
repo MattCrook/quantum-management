@@ -1,10 +1,9 @@
 import os
 # from environ import Env
-
 # env = Env()
-# env.read_env(env_file='quantummanagement/.env')
+# env.read_env(env_file='quantummanagement/.env.dev')
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -12,8 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
-# SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -196,13 +194,6 @@ LOGOUT_URL = 'logout/'
 LOGOUT_REDIRECT_URL = ''
 
 
-###### Social Auth
-# SOCIAL_AUTH_GOOGLE_LOGIN_URL
-# SOCIAL_AUTH_LINKEDIN_LOGIN_URL
-# SOCIAL_AUTH_FACEBOOK_LOGIN_URL
-# SOCIAL_AUTH_LOGIN_URL
-
-
 
 ###### Google OAuth
 GOOGLE_OAUTH2_STORAGE_MODEL = {
@@ -210,30 +201,21 @@ GOOGLE_OAUTH2_STORAGE_MODEL = {
     'user_property': 'user_id',
     'credentials_property': 'credential'
 }
-# quantummanagement ID = quantum-management-295116
-# client ID = 567594519343-tuomls4f1umfnbeqpoiq2mmm773rll3n.apps.googleusercontent.com
-# project number = 567594519343
 
-SOCIAL_AUTH_GOOGLE_KEY = '567594519343'
-SOCIAL_AUTH_GOOGLE_SECRET = 'eLG3jjcDEdyut6P_wn87IaiG'
+
+SOCIAL_AUTH_GOOGLE_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_KEY")
+SOCIAL_AUTH_GOOGLE_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_SECRET")
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
 SOCIAL_AUTH_GOOGLE_SCOPE = [
     'openid',
     'profile',
     'email'
 ]
-# SOCIAL_AUTH_GOOGLE_SECRET = 'AIzaSyCzAvRAfnwxZae-7pS-dKdnPXw4LKvZy1I'
-# SOCIAL_AUTH_GOOGLE_KEY = '567594519343-tuomls4f1umfnbeqpoiq2mmm773rll3n.apps.googleusercontent.com'
-# client secret key = eLG3jjcDEdyut6P_wn87IaiG
 
-
-###### LinkedIn OAuth
-# SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
-# SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
 
 ###### FaceBook OAuth
-SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email, picture.type(large), link'
@@ -247,6 +229,25 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 ]
 
 
+
+##### Auth0
+SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get("SOCIAL_AUTH_AUTH0_DOMAIN")
+SOCIAL_AUTH_AUTH0_KEY = os.environ.get("SOCIAL_AUTH_AUTH0_KEY")
+SOCIAL_AUTH_AUTH0_SECRET = os.environ.get("SOCIAL_AUTH_AUTH0_SECRET")
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile',
+    'email'
+]
+
+
+###### LinkedIn OAuth
+# SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
+# SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+
+
+
 # SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
 #     'social_core.backends.open_id.OpenIdAuth',
 #     'social_core.backends.google.GoogleOpenId',
@@ -255,21 +256,6 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 #     'social_core.backends.linkedin.LinkedinOAuth2',
 #     'social_core.backends.facebook.FacebookOAuth2',
 # )
-
-
-##### Auth0
-SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
-SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
-
-SOCIAL_AUTH_AUTH0_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
-
-
 
 
 # Added for registration form email field

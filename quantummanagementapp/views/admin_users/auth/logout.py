@@ -10,28 +10,26 @@ from urllib.parse import urlencode
 def logout_user(request):
     user = request.user
     if user and hasattr(user, 'social_auth'):
-        is_social_auth = user.social_auth.filter(user_id=user.id).first()
-        print(is_social_auth)
-        if is_social_auth is not None:
-            social_user = user.social_auth.filter(user_id=user.id).first()
-            print(social_user)
-            if social_user is not None:
-                social_user = user.social_auth.get(user_id=user.id)
-                provider = social_user.provider
-                if provider == 'auth0':
-                    auth0_logout(request)
+        social_user = user.social_auth.get(user_id=user.id)
+        if social_user is not None:
+            provider = social_user.provider
+            if provider == 'auth0':
+                auth0_logout(request)
 
-                elif provider == 'facebook':
-                    auth_views.auth_logout(request)
+            elif provider == 'facebook':
+                auth_views.auth_logout(request)
 
-                elif provider == 'google':
-                    auth_views.auth_logout(request)
-                else:
-                    logout(request)
+            elif provider == 'google-oauth2':
+                auth_views.auth_logout(request)
+            else:
+                logout(request)
+
         else:
             logout(request)
+
     else:
         logout(request)
+
 
     return redirect(reverse('quantummanagementapp:landing_page'))
 

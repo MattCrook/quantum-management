@@ -7,6 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.messages import error, success, INFO
 from rest_framework.authtoken.models import Token
+from quantummanagementapp.models import CredentialsModel
+from social_django.models import UserSocialAuth, DjangoStorage
+import json
+
 
 
 @csrf_exempt
@@ -18,6 +22,23 @@ def register_user(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
+
+            social_user = UserSocialAuth.create_social_auth(user, user.id, 'quantummanagement')
+            creds = {
+                'username': user.username,
+                'password': user.password,
+            }
+            credentials = CredentialsModel(user=user, credentials=creds)
+            django_token = Token.objects.get(user=user)
+
+            extra_data = {
+                "token": django_token.key,
+                # "credentials": credentials,
+            }
+            social_user.extra_data = extra_data
+            social_user.save()
+            credentials.save()
+
             login(request, user)
             return redirect(reverse('quantummanagementapp:home'))
         else:

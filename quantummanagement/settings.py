@@ -161,10 +161,8 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'quantummanagementapp.views.auth0.auth0backend.Auth0',
@@ -191,34 +189,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
+
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/login/home'
 LOGOUT_URL = 'logout/'
-LOGOUT_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = '/'
 
 
 
-###### Google OAuth
-GOOGLE_OAUTH2_STORAGE_MODEL = {
-    'model': 'quantummanagementapp.models.CredentialsModel',
-    'user_property': 'user_id',
-    'credentials_property': 'credential'
-}
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-
-SOCIAL_AUTH_GOOGLE_KEY = '567594519343'
-SOCIAL_AUTH_GOOGLE_SECRET = 'eLG3jjcDEdyut6P_wn87IaiG'
+###### Google OAuth2
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '567594519343-1relp58adg0suplc4naq8n9ribamoca4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'o28VhmDO9gyz1YhQi-phQj-l'
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
-SOCIAL_AUTH_GOOGLE_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
-# SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-#     'https://www.googleapis.com/auth/userinfo.email',
-#     'https://www.googleapis.com/auth/userinfo.profile'
-# ]
+
 
 ###### FaceBook OAuth
 SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
@@ -247,42 +232,13 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
     'email'
 ]
 
-# SOCIAL_AUTH_GOOGLE_KEY=567594519343
-# SOCIAL_AUTH_GOOGLE_SECRET=eLG3jjcDEdyut6P_wn87IaiG
-# SOCIAL_AUTH_FACEBOOK_KEY=373817170537484
-# SOCIAL_AUTH_FACEBOOK_SECRET=c964d38aeebe4728fa8c0b3346608462
-# SOCIAL_AUTH_AUTH0_DOMAIN=dev-405n1e6w.auth0.com
-# SOCIAL_AUTH_AUTH0_KEY=7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa
-# SOCIAL_AUTH_AUTH0_SECRET=yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS
 
 ###### LinkedIn OAuth
 # SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
 # SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
 
 
-# SOCIAL_AUTH_PIPELINE = (
-#     'social_core.pipeline.social_auth.social_details',
-#     'social_core.pipeline.social_auth.social_uid',
-#     'social_core.pipeline.social_auth.social_user',
-#     'social_core.pipeline.user.get_username',
-#     'social_core.pipeline.social_auth.associate_by_email',
-#     'social_core.pipeline.user.create_user',
-#     'social_core.pipeline.social_auth.associate_user',
-#     'social_core.pipeline.social_auth.load_extra_data',
-#     'social_core.pipeline.user.user_details',
-# )
-
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
-
-# SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
-#     'social_core.backends.open_id.OpenIdAuth',
-#     'social_core.backends.google.GoogleOpenId',
-#     'social_core.backends.google.GoogleOAuth2',
-#     'social_core.backends.google.GoogleOAuth',
-#     'social_core.backends.linkedin.LinkedinOAuth2',
-#     'social_core.backends.facebook.FacebookOAuth2',
-# )
-
 
 # Added for registration form email field
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

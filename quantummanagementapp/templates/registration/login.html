@@ -33,7 +33,7 @@
 
             {% if not status %}
             <button id="login_with_google" class="btn btn-primary mb-2">
-                <a href="{% url 'social:begin' 'google' %}" onclick="gmailAuthenticate()" title="Google"> <i
+                <a href="{% url 'social:begin' 'google-oauth2' %}" onclick="gmailAuthenticate()" title="Google"> <i
                         class="fab fa-google"></i> Login with Google</a>
             </button>
             {% endif %}

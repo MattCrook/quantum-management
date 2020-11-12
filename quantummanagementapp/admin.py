@@ -19,5 +19,4 @@ admin.site.register(Roles)
 admin.site.register(CredentialsModel)
 # admin.site.register(CustomUserSocialAuth)
 # admin.site.register(CustomDjangoStorage)
-
 # admin.site.register(CredentialsAdmin)

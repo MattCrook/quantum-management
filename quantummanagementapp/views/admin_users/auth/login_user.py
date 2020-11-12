@@ -22,11 +22,6 @@ def admin_user(request):
 def login_user(request):
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
-        # print(login_form)
-        # if login_form.is_valid():
-        #     login_form.save()
-            # username = login_form.cleaned_data.get('username')
-            # password = login_form.cleaned_data.get('password')
         username = request.POST['username']
         password = request.POST['password']
         authenticated_user = authenticate(request, username=username, password=password)

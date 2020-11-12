@@ -11,8 +11,10 @@ def logout_user(request):
     user = request.user
     if user and hasattr(user, 'social_auth'):
         is_social_auth = user.social_auth.filter(user_id=user.id).first()
+        print(is_social_auth)
         if is_social_auth is not None:
             social_user = user.social_auth.filter(user_id=user.id).first()
+            print(social_user)
             if social_user is not None:
                 social_user = user.social_auth.get(user_id=user.id)
                 provider = social_user.provider
@@ -32,7 +34,6 @@ def logout_user(request):
         logout(request)
 
     return redirect(reverse('quantummanagementapp:landing_page'))
-
 
 # uses the django_logout function provided by Django to log out from your application.
 # Then, it redirects your user to the logout URL provided by Auth0 to log out from the identity provider

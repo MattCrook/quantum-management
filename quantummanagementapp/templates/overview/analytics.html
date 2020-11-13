@@ -3,7 +3,7 @@
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'styles/overview/overview.css' %}" type="text/css" />
-<link rel="stylesheet" href="{% static 'styles/overview/analyticsModal.css' %}" />
+<link rel="stylesheet" href="{% static 'styles/overview/analyticsModal.css' %}" type="text/css" />
 
 {% endblock %}
 
@@ -21,7 +21,7 @@
 <div id="overview_viewport">
     <div id="overview_sidebar">
         <header>
-            <a class="overview_sidebar_logo" href="#">Quantum</a>
+            <a class="overview_sidebar_logo" href="{% url 'quantummanagementapp:home' %}">Quantum</a>
         </header>
         <ul class="overview_nav">
             <li class="overview_sidebar_list_item_container">
@@ -201,7 +201,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'scripts/analytics/modal.js' %}"></script>
+<script type="text/javascript" src="{% static 'scripts/analytics/modal.js' %}"></script>
 <script type="module">
     import { initAnalytics } from "{% static 'scripts/analytics/analyticsCharts.js' %}"
 
@@ -244,10 +244,6 @@
     import {initBusiestTimeChart} from "{% static 'scripts/analytics/busiestTimeOfDayChart.js' %}"
 
     var parkId = parseInt(window.location.pathname.split('/')[2]);
-
-    //const attractionVisitorsChartContainer = document.getElementById("attraction_visitors_chart_div");
-    //const parkAttendanceContainer = document.getElementById("curve_chart");
-    //const waitTimesContainer = document.getElementById("wait_time_table_container");
 
     function init(parkId) {
         callAllToggleEvents();

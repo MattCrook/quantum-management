@@ -24,11 +24,11 @@ def register_user(request):
             user = authenticate(request, username=username, password=raw_password)
 
             social_user = UserSocialAuth.create_social_auth(user, user.id, 'quantummanagement')
-            creds = {
+            credential = {
                 'username': user.username,
                 'password': user.password,
             }
-            credentials = CredentialsModel(user=user, credentials=creds)
+            credentials = CredentialsModel(user=user, credentials=credential)
             django_token = Token.objects.get(user=user)
 
             extra_data = {

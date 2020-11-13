@@ -6,7 +6,7 @@
   color: white;
   padding-top: 12px;
   padding-bottom: 12px;
-  }
+}
 
 .nav-link:link {
   text-decoration: none;
@@ -41,6 +41,16 @@ body {
   display: flex;
   align-items: center;
   font-variant: small-caps;
+}
+
+.logo_btn {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo_btn:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
 .navList {

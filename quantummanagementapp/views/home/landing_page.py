@@ -158,30 +158,3 @@ def home(request):
             template = 'landing_page.html'
             context = {}
             return render(request, template, context)
-
-
-
-
-# def landing_page(request):
-#     if request.method == 'GET':
-#         template = 'landing_page.html'
-#         context = {}
-
-#         return render(request, template, context)
-
-
-# @login_required
-# def home(request):
-#     user = request.user
-#     auth0user = user.social_auth.get(provider='auth0')
-#     userdata = {
-#         'user_id': auth0user.uid,
-#         'name': user.first_name,
-#         'picture': auth0user.extra_data['picture'],
-#         'email': auth0user.extra_data['email'],
-#     }
-
-#     return render(request, 'home/home.html', {
-#         'auth0User': auth0user,
-#         'userdata': json.dumps(userdata, indent=4)
-#     })

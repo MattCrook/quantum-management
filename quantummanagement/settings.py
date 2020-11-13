@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 
 
 DATABASES = {
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'postgres': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
@@ -251,8 +251,4 @@ SAFE_DELETE_INTERPRET_UNDELETED_OBJECTS_AS_CREATED = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-
-# FIXTURE_DIRS = (
-#    '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
-# # )
 FIXTURE_DIRS = os.path.join(BASE_DIR, "quantummanagementapp/fixtures/")

@@ -12,40 +12,36 @@ from django.shortcuts import render
 from httplib2 import Http
 
 
-# def home(request):
-#     status = True
-
-#     if not request.user.is_authenticated:
-#         return HttpResponseRedirect('login')
-
-#     storage = DjangoORMStorage(CredentialsModel, 'id', request.user, 'credential')
-#     credential = storage.get()
-#     try:
-#         access_token = credential.access_token
-#         resp, cont = Http().request("https://www.googleapis.com/auth/gmail.readonly",
-#                                     headers={'Host': 'www.googleapis.com',
-#                                             'Authorization': access_token})
-#     except:
-#         status = False
-#         print('Not Found')
-
-#     return render(request, 'home/home.html', {'status': status})
+# Create a state token to prevent request forgery.
+# Store it in the session for later validation.
+# state = hashlib.sha256(os.urandom(1024)).hexdigest()
+# session['state'] = state
+# Set the client ID, token state, and application name in the HTML while
+# serving it.
+# response = make_response(
+#     render_template('index.html',
+#                     CLIENT_ID=CLIENT_ID,
+#                     STATE=state,
+#                     APPLICATION_NAME=APPLICATION_NAME))
 
 
-################################
-#   GMAIL API IMPLEMENTATION   #
-################################
+# Ensure that the request is not a forgery and that the user sending
+# this connect request is the expected user.
+# if request.args.get('state', '') != session['state']:
+#   response = make_response(json.dumps('Invalid state parameter.'), 401)
+#   response.headers['Content-Type'] = 'application/json'
+#   return response
 
-# CLIENT_SECRETS, name of a file containing the OAuth 2.0 information for this
-# application, including client_id and client_secret, which are found
-# on the API Access tab on the Google APIs
-# Console <http://code.google.com/apis/console>
+
+
+
 
 
 FLOW = flow_from_clientsecrets(
     settings.GOOGLE_OAUTH2_CLIENT_SECRETS_JSON,
     scope='https://www.googleapis.com/auth/gmail.readonly',
-    redirect_uri='http://127.0.0.1:8000/oauth2callback',
+    # redirect_uri='http://127.0.0.1:8000/oauth2callback',
+    redirect_uri='http://127.0.0.1:8000/complete/google-oath2/',
     prompt='consent')
 
 

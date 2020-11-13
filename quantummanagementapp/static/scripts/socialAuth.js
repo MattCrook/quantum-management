@@ -1,20 +1,20 @@
-const useAppState = () => {
-  let appState = [];
-  return [() => appState.slice(), (newAppState) => (appState = newAppState.splice(0))];
-};
+// const useAppState = () => {
+//   let appState = [];
+//   return [() => appState.slice(), (newAppState) => (appState = newAppState.splice(0))];
+// };
 
 
-// For Google Oauth
-function gmailAuthenticate(){
-  $.ajax({
-      type: "GET",
-      url: "ajax/gmailAuthenticate",
-      // data: '',
-      success: function (data) {
-          console.log('Done')
-      }
-  });
-};
+// // For Google Oauth
+// function gmailAuthenticate(){
+//   $.ajax({
+//       type: "GET",
+//       url: "ajax/gmailAuthenticate",
+//       // data: '',
+//       success: function (data) {
+//           console.log('Done')
+//       }
+//   });
+// };
 
 
 // function statusChangeCallback(response) {

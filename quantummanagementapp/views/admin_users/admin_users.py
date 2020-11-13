@@ -73,13 +73,7 @@ def admin_user_edit_form(request, user_id):
             user.last_name = form_data["last_name"]
             user.username = form_data["username"]
             admin_user_profile.role = form_data["role"]
-            # image.save()
 
-            # img_obj = image.instance
-            # img_obj.image = request.FILES["image"]
-            # image.save()
-
-            # admin_user_profile.image_id = img_obj.id
             user.save()
             admin_user_profile.save()
 

@@ -131,7 +131,7 @@ db.sqlite3
 
 # dotenv
 .env
-.env.dev
+
 
 # secrets
 client_secrets.json
@@ -156,7 +156,7 @@ media/*
 *.pyc
 *.db
 *.pid
-*.env.dev
+
 
 # django migrations
 migrations/

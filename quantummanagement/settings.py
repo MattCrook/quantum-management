@@ -1,18 +1,21 @@
 import os
 # from environ import Env
-# env = Env()
-# env.read_env(env_file='quantummanagement/.env.dev')
+
+
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# env = Env()
+# env.read_env(env_file=os.path.join(BASE_DIR, '.env.dev'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = int(os.environ.get("DEBUG", default=0))
@@ -158,10 +161,8 @@ REST_FRAMEWORK = {
 
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'quantummanagementapp.views.auth0.auth0backend.Auth0',
@@ -188,34 +189,25 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
+
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/login/home'
 LOGOUT_URL = 'logout/'
-LOGOUT_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = '/'
 
 
 
-###### Google OAuth
-GOOGLE_OAUTH2_STORAGE_MODEL = {
-    'model': 'quantummanagementapp.models.CredentialsModel',
-    'user_property': 'user_id',
-    'credentials_property': 'credential'
-}
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-
-SOCIAL_AUTH_GOOGLE_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_KEY")
-SOCIAL_AUTH_GOOGLE_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_SECRET")
+###### Google OAuth2
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '567594519343-1relp58adg0suplc4naq8n9ribamoca4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'o28VhmDO9gyz1YhQi-phQj-l'
 GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
-SOCIAL_AUTH_GOOGLE_SCOPE = [
-    'openid',
-    'profile',
-    'email'
-]
 
 
 ###### FaceBook OAuth
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
+SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email, picture.type(large), link'
@@ -229,12 +221,11 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 ]
 
 
-
 ##### Auth0
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = os.environ.get("SOCIAL_AUTH_AUTH0_DOMAIN")
-SOCIAL_AUTH_AUTH0_KEY = os.environ.get("SOCIAL_AUTH_AUTH0_KEY")
-SOCIAL_AUTH_AUTH0_SECRET = os.environ.get("SOCIAL_AUTH_AUTH0_SECRET")
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
+SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
     'profile',
@@ -247,16 +238,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 # SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
 
 
-
-# SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
-#     'social_core.backends.open_id.OpenIdAuth',
-#     'social_core.backends.google.GoogleOpenId',
-#     'social_core.backends.google.GoogleOAuth2',
-#     'social_core.backends.google.GoogleOAuth',
-#     'social_core.backends.linkedin.LinkedinOAuth2',
-#     'social_core.backends.facebook.FacebookOAuth2',
-# )
-
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
 
 # Added for registration form email field
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -269,8 +251,4 @@ SAFE_DELETE_INTERPRET_UNDELETED_OBJECTS_AS_CREATED = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-
-# FIXTURE_DIRS = (
-#    '/Users/matthewcrook/code/nss/backEnd/capstone/quantummanagement/quantummanagementapp/fixtures/',
-# # )
 FIXTURE_DIRS = os.path.join(BASE_DIR, "quantummanagementapp/fixtures/")

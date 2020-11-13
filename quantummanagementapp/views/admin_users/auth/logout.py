@@ -9,21 +9,29 @@ from urllib.parse import urlencode
 
 def logout_user(request):
     user = request.user
-    if hasattr(user, 'social_auth'):
+    if user and hasattr(user, 'social_auth'):
         social_user = user.social_auth.get(user_id=user.id)
-        provider = social_user.provider
-        if provider == 'auth0':
-            auth0_logout(request)
+        if social_user is not None:
+            provider = social_user.provider
+            if provider == 'auth0':
+                auth0_logout(request)
 
-        elif provider == 'facebook':
-            auth_views.auth_logout()
+            elif provider == 'facebook':
+                auth_views.auth_logout(request)
 
-        elif provider == 'google':
-            auth_views.logout()
+            elif provider == 'google-oauth2':
+                auth_views.auth_logout(request)
+            else:
+                logout(request)
+
+        else:
+            logout(request)
+
     else:
         logout(request)
-    return redirect(reverse('quantummanagementapp:landing_page'))
 
+
+    return redirect(reverse('quantummanagementapp:landing_page'))
 
 # uses the django_logout function provided by Django to log out from your application.
 # Then, it redirects your user to the logout URL provided by Auth0 to log out from the identity provider

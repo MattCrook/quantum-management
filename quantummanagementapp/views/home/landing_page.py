@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ import json
 def landing_page(request):
     user = request.user
     if user.is_authenticated:
-        return redirect(home)
+        return redirect(reverse('quantummanagementapp:home'))
     else:
         return render(request, 'landing_page.html')
 

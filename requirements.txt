@@ -16,7 +16,7 @@ django-environ==0.4.5
 django-filter==2.3.0
 django-money==1.1
 django-safedelete==0.5.5
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djangorestframework-queryfields==1.0.0
 djangorestframework-simplejwt==4.4.0
 drf-jwt==1.15.1

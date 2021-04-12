@@ -3,29 +3,62 @@
 
 {% block title %} Home {% endblock %}
 {% block content %}
-{% if user.first_name %}
+<!-- <div class="welcome_banner_container"> -->
+{% if user.first_name and user.last_name %}
 <div class="welcome_banner">
-    <div class="col-sm-12 mb-3">
-        <h4 id="welcome_user" class="text-center"> Welcome {{ user.first_name }} </h4>
+  <div id="col_sm" class="col-sm-12 mb-3">
+    <div class="user_welcome_first_name">
+      <h4 id="welcome_user" class="text-center"> Welcome {{ user.first_name }} </h4>
     </div>
-    {% else %}
-    <div class="welcome_banner">
-    <div class="col-sm-12 mb-3">
-        <h4 id="complete_account_banner" class="text-center"> Please complete your account before proceeding. </h4>
-        <div class="complete_account_btn_container">
-        <a class="btn11" href="{% url 'quantummanagementapp:account' user.id %}">Complete Account</a>
-        </div>
+
+    {% for ass in backends.associated %}
+    {% if ass.provider %}
+    <div class="welcome_social_login">
+      <p class="signed_in_p"> Signed in via: <strong>{{ ass.provider }} </strong></p>
+      <p class="provider_link"> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
     </div>
     {% endif %}
+    {% endfor %}
 
+  </div>
+  {% else %}
+  <div class="welcome_banner">
+    <div class="col-sm-12 mb-3">
+      <h4 id="complete_account_banner" class="text-center"> Please complete your account before proceeding. </h4>
+      <div class="complete_account_btn_container">
+        <a class="btn11" href="{% url 'quantummanagementapp:account' user.id %}">Complete Account</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- </div> -->
+
+  <!-- {% for ass in backends.associated %}
+      {% if ass.provider == 'facebook' %}
+        <div class="col-md-6 text-center">
+            <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+        </div>
+        <div class="col-md-6 social-container my-2">
+          <p> Signed in via:  {{ ass.provider }} </p>
+            <p> Name:  {{ ass.extra_data.name }} </p>
+            <p> Provider url: <a href="{{ass.extra_data.profile_url}}">link</a></p>
+        </div>
+      {% endif %}
+    {% endfor %}
+    <div class="col-sm-12 mt-2 text-center">
+      <button class="btn btn-danger">
+        <a href="{% url 'quantummanagementapp:logout' %}">Logout</a>
+      </button>
+    </div> -->
 
   <div class="home_page_container">
-      <img class="home_image" src="https://www.akamai.com/us/en/multimedia/images/intro/2018/big-data-connector-intro.jpg?imwidth=1366">
-      <div class="logo_banner">
-        <h1 class="add-shadow">Quantum Management</h1>
+    <img class="home_image"
+      src="https://www.akamai.com/us/en/multimedia/images/intro/2018/big-data-connector-intro.jpg?imwidth=1366">
+    <div class="logo_banner">
+      <h1 class="add-shadow">Quantum Management</h1>
       <div class="logo_container">
         <p class="add-shadow">A Quantum LLC systems management application</p>
-        </div>
-</div>
+      </div>
     </div>
-{% endblock %}
+  </div>
+  {% endblock %}

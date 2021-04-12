@@ -1,4 +1,4 @@
-export async function getParkList() {
+const getParkList = async () => {
   try {
     const response = await fetch(`/api/parks`, {
       method: "GET",
@@ -8,16 +8,15 @@ export async function getParkList() {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export async function getEmployeeList() {
+const getEmployeeList = async () => {
   try {
     const response = await fetch(`/api/employees`, {
       method: "GET",
@@ -27,16 +26,15 @@ export async function getEmployeeList() {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export async function retrieveAttraction(id) {
+const retrieveAttraction = async (id) => {
   try {
     const response = await fetch(`/api/attractions/${id}`, {
       method: "GET",
@@ -46,16 +44,15 @@ export async function retrieveAttraction(id) {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export async function getParkAttractions(parkId) {
+const getParkAttractions = async (parkId) => {
   try {
     const response = await fetch(`/api/park_attractions?park_id=${parkId}`, {
       method: "GET",
@@ -65,16 +62,33 @@ export async function getParkAttractions(parkId) {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-export async function getAttractionType(typeId) {
+const getAttractions = async (parkId) => {
+  try {
+    const response = await fetch(`/api/attractions?park_id=${parkId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getAttractionType = async (typeId) => {
   try {
     const response = await fetch(`/api/attraction_types/${typeId}`, {
       method: "GET",
@@ -84,17 +98,15 @@ export async function getAttractionType(typeId) {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
 
-
-export async function getVisitorsList(parkId) {
+const getVisitorsList = async (parkId) => {
   try {
     const response = await fetch(`/api/visitors?park_id=${parkId}`, {
       method: "GET",
@@ -104,11 +116,77 @@ export async function getVisitorsList(parkId) {
       },
     });
     if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
+      return await response.json();
     }
     throw new Error("Request Failed");
   } catch (err) {
     console.log(err);
   }
-}
+};
+
+const getVisitorCheckoutList = async (parkId) => {
+  try {
+    const response = await fetch(`/api/visitor_checkouts?park_id=${parkId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getAttractionWaitTimes = async (parkId) => {
+  try {
+    const response = await fetch(`/api/attraction_wait_times?park_id=${parkId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getAttractionVisitors = async (attractionId) => {
+  try {
+    const response = await fetch(`/api/attraction_visitors?attraction_id=${attractionId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error("Request Failed");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export {
+  getParkList,
+  getEmployeeList,
+  retrieveAttraction,
+  getParkAttractions,
+  getAttractions,
+  getAttractionType,
+  getVisitorsList,
+  getAttractionWaitTimes,
+  getAttractionVisitors,
+  getVisitorCheckoutList,
+};

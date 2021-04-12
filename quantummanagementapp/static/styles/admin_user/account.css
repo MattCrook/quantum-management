@@ -104,68 +104,61 @@
 }
 
 /*************** Nav Button Edit Account *************/
-.add_account_button {
-  align-items: center;
-  margin-right: 16px;
-  font-size: 12px;
-  font-weight: 50;
-  border-radius: 5px 5px 5px 5px;
-  border: none;
-  margin-bottom: 4px;
-  background-color: #b8b5b5;
-  width: 10%;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  box-shadow: 1px 1px 1px 1px rgb(168, 168, 168);
-  border: 1px solid rgb(145, 21, 21);
-}
 
-.add_account_button:hover {
-  animation: fade 1s both;
-}
 
-@keyframes fade {
-  0% {
-    background: white;
-  }
-  100% {
-    background: #3e4247;
-    color: white;
-  }
-}
-
-.add_account:link {
+.add_edit_account {
+  padding: 5px 25px;
+  margin: 0 10px;
+  display: inline-block;
   text-decoration: none;
-  color: black;
-}
-.add_account:visited {
-  text-decoration: none;
-  color: black;
+  font-size: 13px;
+  position: relative;
+  color: #070707;
 }
 
-@keyframes fade {
-  0% {
-    background: white;
-  }
-  100% {
-    background: #3e4247;
-    color: white;
-  }
+.add_edit_account {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
 
-.add_account:hover {
-  animation: fade 1s both;
+.add_edit_account::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #530202;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
 }
 
-@keyframes fade {
-  0% {
-    background: white;
-  }
-  100% {
-    background: #3e4247;
-    color: white;
-  }
+.add_edit_account:hover::before {
+  width: 100%;
 }
+
+.add_edit_account::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #530202;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.add_edit_account:hover::after {
+  width: 100%;
+}
+.add_edit_account:hover {
+  border-left: 1px solid #530202;
+  border-right: 1px solid #530202;
+  color: rgb(77, 5, 5);
+}
+
 
 /*************** Banner Graphic Picture ************/
 .banner_picture_on_profile {

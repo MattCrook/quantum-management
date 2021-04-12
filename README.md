@@ -4,6 +4,8 @@ Quantum Management is a theme park management and business analysis management a
 ## Project Set Up
 If you wish to clone this repository to run it locally, follow these steps:
 
+#### Run Locally Just Using Django and CLI:
+
 * `git clone git@github.com:MattCrook/quantum-management.git`
 * `cd` into the directory it creates
 * `python -m venv QuantumManagementEnv`
@@ -12,19 +14,30 @@ If you wish to clone this repository to run it locally, follow these steps:
 * `python manage.py migrate`
 * `python manage.py runserver`
 
+#### Run With Docker
+*Download Docker if not done so already*
+* `docker build -t application:latest .`
+* `docker run -it -d -p 8000:8000 application`
+
 
 ## Technology Used
 1. Django
 2. Python
-3. SQLite
-4. Fixtures
-5. ORM & SQL queries
-6. Models
-7. Name spacing using Django router
-8. Function based views to have more control over abstraction 
-9. Testing with unittest
-10. User authentication and authorization
-11. url routing
+3. *SQLite*
+4. Now Migrated to a **PostgreSQL** Database
+5. Fixtures
+6. Django ORM & SQL queries
+7. Models
+9. Name spacing using Django router
+10. Function based views to have more control over abstraction. 
+11. Class based views for API in which client side utilizes mainly for data visualizations.
+12. Testing with unittest and PyTest.
+13. User authentication and authorization
+14. URL routing using Name Spacing
+15. Docker
+16. Docker Compose
+17. Ngnix
+18. JWT Token Based Authentication
 
 # What Does Quantum Management Offer?
 Quantum Management is a management and data analytics application that allows a logged in admin user to do the following:
@@ -36,7 +49,15 @@ Quantum Management is a management and data analytics application that allows a 
 
 ## Login/ Register
 
-![login](quantummanagementapp/static/images/Login.png)  ![register](quantummanagementapp/static/images/Register.png)
+![login](quantummanagementapp/static/images/Login.png)
+
+* A user has mmany options for a secure authentication process/ login. This project is meant to simulate users having differnt permissions for the application.
+  * **Superuser** - If given superuser permissions, user will have thier credentials already securely stored, so the user can simply use the login form and will have access to the Django Admin dashboard as well. 
+  * **SysAdmin** - As a sysadmin user, the user may register their sysadmin account and log in through the login form as well. A SysAdmin has full access to the application with the exemption of the Django Admin dashboard.
+  * **Admin User** - Regular user with basic permissions in the application. To access their account and log into the application, admin users will authenticate via one of the social login options, using their email.
+
+
+![register](quantummanagementapp/static/images/Register.png)
 
 ## Account
 
@@ -47,14 +68,31 @@ Once given credentials and logged in, an admin user may set up their account pro
 
 ## Manage Employees
 
+Navigating to Manage Employees, Admin User can select which department they would like to see a full list of employees for which the employees work in.
 
-Admin user can see a full list of employees categorized by which department they work in.
-  * Admin user can add (hire) a new employee.
-    * ![AddEmployeeForm](quantummanagementapp/static/images/AddEmployeeForm.png)
+![EmployeeLandingPage](quantummanagementapp/static/images/EmployeeLandingPage.png)
+
+* On the left dashboard, the Admin user also has options to quickly navigate to other options, including:
+  * Adding a new department
+  * Adding a new employee
+  * Seeing a comprehensive list/ view of all departments with all employees that work in those respective departments.
+
+**Full List**
+
+  ![manageemployees](quantummanagementapp/static/images/FullEmployeeList.png)
+
+**Add (hire) a new employee.**
+
+![AddEmployeeForm](quantummanagementapp/static/images/AddEmployeeForm.png)
   * Can edit/ delete an existing employee. However, only if the current authenticated admin user originally added that employee.
   * Can see details of a specific employee. For example which attraction they are assigned to, their wage, start date ect...
-  
-  ![manageemployees](quantummanagementapp/static/images/manageEmployees.png)
+
+**Add New Department**
+
+![AddNewDepartment](quantummanagementapp/static/images/AddDepartment.png)
+
+
+
 
 ## Manage Park
 
@@ -74,19 +112,30 @@ Admin user can see a full list of parks that are currently owned/ under the orga
       * Admin user can add (or remove) a new attraction (and *attraction type*) to the current park.
       * ![addAttractionForm](quantummanagementapp/static/images/AddAttraction.png)
 
-## Park Analytics
-
-Data analysis information for creating data visualizations for business operations and intelligence.
-
-**Coming Soon!**
-
 ### Analytics Overview
 Dashboard of broad business operations information broken down and formatted into easy to consume visualizations for high level representation of analytics for the park.
 
 ![Overview](quantummanagementapp/static/images/Overview.png)
 
 
+## Park Analytics
 
+Data analysis information for creating data visualizations for business operations and intelligence, as well as accurate data for business forecasting and income tracking analytics. (**Currently Work In Progress**)
+
+* This section is a collection of dashboards and organized data about the park consisting of customizable and *toggle-able* visualizations for visualizations of the abundance of data about the park, its attractions, the employees, and the park's attendance.
+
+![VisitorAttractions](quantummanagementapp/static/images/AnalyticsVisToAttr.png)
+
+
+## Ending Notes
+
+If Admin User is also given permissions of SysAdmin (superuser), they may access the Django Admin Dashboard.
+
+![DjangoAdmin](quantummanagementapp/static/images/DjangoAdmin.png)
+
+
+
+<!-- 
 ## Entity Relationship Diagram (ERD)
 ![QuantumManagementERD](quantummanagementapp/static/images/QuantumManagementERD.png)
 
@@ -94,4 +143,4 @@ Dashboard of broad business operations information broken down and formatted int
 ## Wireframe 
 * Basic stucture/ layout of the application's pages and dataflow.
 
-![QuantumManagementWireframe](quantummanagementapp/static/images/QuantumManagementWireframe.png)
+![QuantumManagementWireframe](quantummanagementapp/static/images/QuantumManagementWireframe.png) -->

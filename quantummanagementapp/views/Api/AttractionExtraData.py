@@ -11,8 +11,8 @@ from quantummanagementapp.models import AttractionType, AttractionVisitors, Attr
 class AttractionWaitTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttractionWaitTimes
-        fields = ('id', 'current_wait_time', 'timestamp', 'attraction_id', 'park_id')
-        depth = 1
+        fields = ('id', 'current_wait_time', 'timestamp', 'attraction_id', 'park_id', 'attraction')
+        depth = 2
 
 
 class AttractionVisitorSerializer(serializers.ModelSerializer):
@@ -29,27 +29,42 @@ class AttractionTypeSerializer(serializers.ModelSerializer):
         depth = 1
 
 
+class AttractionWaitTimesData(ViewSet):
+    def retrieve(self, request, pk=None):
+        try:
+            attraction_wait_time = AttractionWaitTimes.objects.get(pk=pk)
+            serializer = AttractionWaitTimeSerializer(
+                attraction_wait_time, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
+    def list(self, request):
+        attraction_wait_times = AttractionWaitTimes.objects.all()
 
-class AttractionWaitTimesData(ModelViewSet):
-    queryset = AttractionWaitTimes.objects.all()
-    serializer_class = AttractionWaitTimeSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+        park_id = self.request.query_params.get('park_id', None)
+        if park_id is not None:
+            attraction_wait_times = attraction_wait_times.filter(park_id=park_id)
+
+        attraction_id = self.request.query_params.get('attraction_id', None)
+        if attraction_id is not None:
+            attraction_wait_times = attraction_wait_times.filter(attraction_id=attraction_id)
+
+        serializer = AttractionWaitTimeSerializer(attraction_wait_times, many=True, context={'request': request})
+        return Response(serializer.data)
 
 
 class AttractionVisitorData(ModelViewSet):
     queryset = AttractionVisitors.objects.all()
     serializer_class = AttractionVisitorSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['attraction_id', 'visit_timestamp']
 
 
 class AttractionTypeData(ModelViewSet):
     queryset = AttractionType.objects.all()
     serializer_class = AttractionTypeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_fields = ['email']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name', 'manufacturer']

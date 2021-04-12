@@ -1,0 +1,300 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/overview/overview.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'styles/overview/analyticsModal.css' %}" type="text/css" />
+
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<div class="overview_header_bar_container">
+    <div class="overview_bar_title">{{park.name}} Park Analytics</div>
+    <div class="overview_back_button_container">
+        <a class="overview_back_btn" href="{% url 'quantummanagementapp:park' park.id  %}"><i
+                class="fas fa-long-arrow-alt-left"></i>Back</a>
+    </div>
+</div>
+
+<div id="overview_viewport">
+    <div id="overview_sidebar">
+        <header>
+            <a class="overview_sidebar_logo" href="{% url 'quantummanagementapp:home' %}">Quantum</a>
+        </header>
+        <ul class="overview_nav">
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:park' park.id %}"><i
+                        class="fas fa-globe"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:overview' park.id %}"><i
+                        class="fas fa-chart-pie"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:analytics' park.id %}"><i
+                        class="far fa-chart-bar"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link" href="{% url 'quantummanagementapp:create_attraction' park.id %}"><i
+                        class="fas fa-plus-circle"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a class="overview_dashboard_link"
+                    href="{% url 'quantummanagementapp:park_list_employees' park.id %}"><i class="fas fa-users"></i></a>
+            </li>
+            <li class="overview_sidebar_list_item_container">
+                <a href="#modal-1" data-micromodal-trigger="modal-1" class="overview_dashboard_link"><i
+                        class="fas fa-user-plus"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- <div id="main_analytics_container">
+        <div id="analytics_nav_container">
+            <div id="attr_btn" class="analytics_nav_button">Attractions</div>
+            <div id="park_attendance_btn" class="analytics_nav_button">Park Attendance</div>
+            <div id="ride_wait_time_btn" class="analytics_nav_button">Ride Wait Times</div>
+
+        </div>
+        <div id="attraction_visitors_chart_container" style="display: block;">
+            <div id="attraction_visitors_chart_div" style="width: 97%; height: 30rem;">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+        </div>
+
+        <div class="container_2_charts">
+
+            <div id="curve_chart" style="width: 55%; height: 24rem">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+
+            <div id="wait_time_table_container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr id="wait_time_header_container">
+                            <th class="wait_time_header" scope="col">Attractions</th>
+                            <th class="wait_time_header" scope="col"">Current Wait Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wait_times">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div> -->
+
+
+    <div id="main_analytics_container">
+        <div id="analytics_nav_container">
+            <div id="attr_btn" class="analytics_nav_button">Attraction Visitors</div>
+            <div id="park_attendance_btn" class="analytics_nav_button">Park Attendance</div>
+            <div id="ride_wait_time_btn" class="analytics_nav_button">Ride Wait Times</div>
+        </div>
+
+        <div id="attraction_visitors_chart_container">
+            <div id="chart_header">
+                <div class="select_year_container" style="display: block;">
+                    <div class="year_select_label">Select Year<i id="i" class="fas fa-angle-down"></i></div>
+                    <div class="select_year_options" style="display: none;">
+                        <div class="year_option">All</div>
+                        <div id="dynamic_years_with_data"></div>
+                    </div> 
+                </div>
+
+
+                <div class="chart_titles_container" style="display: block;">
+                    <div class="chart_title">Monthly Attraction Visitors</div>
+                    <div class="chart_sub_title_1">Top Ten Attractions</div>
+                    <div id="attraction_year" class="chart_sub_title_2">Currently Viewing: Total Aggregate Over Park Lifespan</div>
+                    <div id="attraction_year" class="chart_sub_title_2">Total Attractions: {{attractions_count}}</div>
+                    <div id="attraction_year" class="chart_sub_title_2">Total YOY Visitors to Attractions: {{count}}</div>
+
+                </div>
+
+                <div class="chart_titles_attendance_container" style="display: none;">
+                    <div class="chart_title">Monthly Park Attendance</div>
+                    <div class="chart_sub_title_1">Aggregate Average Attendance Per Month</div>
+                    <div id="attendance_year" class="chart_sub_title_2">Currently Viewing: Total Aggregate Over Park Lifespan</div>
+                </div>
+
+                <div class="chart_titles_waittimes_container" style="display: none;">
+                    <div class="wait_time_chart_title">Live Wait Times for Attractions in {{park.name}}</div>
+                    <div class="chart_sub_title_1">Wait Times Categorized From Longest To Shortest</div>
+                    <div id="waittime_time" class="chart_sub_title_2">Current Time: 
+                        <div id="current_time">{{current_time}}</div>
+                </div>
+                    <div class="chart_sub_title_1">Last Updated: </div>
+            </div>
+            </div>
+
+            <div id="attraction_visitors_chart_div" style="width: 97%; height: 30rem;">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+            <div id="curve_chart" style="width: 65%; height: 26rem;">
+                <div id="attraction_visitors_spinner" class="spinner icon-spinner-2"></div>
+            </div>
+            <div id="wait_time_table_container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr id="wait_time_header_container">
+                            <th class="wait_time_header" scope="col">Attractions</th>
+                            <th class="wait_time_header" scope="col"">Current Wait Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="wait_times">
+                        <tr>
+                            <td>
+                                <div id="wait_time_chart_spinner"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-1-title">Add New Attraction Visitor</h2>
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <p class="modal_for_example"><em>Select The Day/Month and the Attraction in {{park.name}}</em></p>
+
+            <main class="modal__content" id="modal-1-content">
+                <form id="modal" action="{% url 'quantummanagementapp:add_attraction_visitor' park.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="visit_timestamp">TimeStamp</label>
+                        <input type="date" class="form-control" id="visit_timestamp" name="visit_timestamp">
+                    </div>
+                    <div class="form-group">
+                        <label for="attraction">Attraction</label>
+                        <select type="password" class="form-control" id="attraction" name="attraction_id">
+                            {% for attraction in attractions %}
+                            <option value="{{attraction.id}}">{{attraction.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <footer class=" modal__footer">
+                                <input id="modal__btn-primary" type="submit" value="Create"
+                                    style="margin-right: 8px;" />
+                                <button class="modal__btn" data-micromodal-close
+                                    aria-label="Close this dialog window">Close</button>
+                                </footer>
+                </form>
+                <div class="signature">
+                    <p>Made by <a href="https://matt-crook-io.now.sh/">Quantum Management</a> <i
+                            class="fas fa-copyright"></i></p>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'scripts/analytics/modal.js' %}"></script>
+<script type="module">
+    import { initAnalytics } from "{% static 'scripts/analytics/analyticsCharts.js' %}"
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    function initAnalyticsCharts(parkId) {
+        google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
+            initAnalytics(parkId)
+        })
+    };
+
+    initAnalyticsCharts(parkId);
+</script>
+<script type="module">
+    import {populateWaitTimeDataTable} from "{% static 'scripts/analytics/attractionWaitTimeTable.js' %}"
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    function init() {
+        toggleWaitTimesChart();
+    };
+
+    init();
+
+    function toggleWaitTimesChart() {
+        const waitTimesButton = document.getElementById("ride_wait_time_btn");
+        const attractionVisitorsChartContainer = document.getElementById("attraction_visitors_chart_div");
+        const parkAttendanceContainer = document.getElementById("curve_chart");
+        const waitTimesContainer = document.getElementById("wait_time_table_container");
+
+        waitTimesButton.addEventListener("click", () => {
+            attractionVisitorsChartContainer.style.display = 'none';
+            parkAttendanceContainer.style.display = "none";
+            waitTimesContainer.style.display = "block";
+            populateWaitTimeDataTable(parkId);
+        });
+    };
+</script>
+<script type="module">
+    import {initBusiestTimeChart} from "{% static 'scripts/analytics/busiestTimeOfDayChart.js' %}"
+
+    var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+    function init(parkId) {
+        callAllToggleEvents();
+    };
+
+    init(parkId);
+
+    function callAllToggleEvents() {
+        toggleAttractionsByMonthChart()
+        toggleParkAttendanceChart()
+    };
+
+    function initAttendanceChart(parkId) {
+        google.charts.load('current', { 'packages': ['corechart'] }).then(() => {
+            initBusiestTimeChart(parkId)
+        })
+    };
+
+    function toggleAttractionsByMonthChart() {
+        const attractionsButton = document.getElementById("attr_btn");
+        const attractionVisitorsChartContainer = document.getElementById("attraction_visitors_chart_div");
+        const parkAttendanceContainer = document.getElementById("curve_chart");
+        const waitTimesContainer = document.getElementById("wait_time_table_container");
+
+        attractionsButton.addEventListener("click", () => {
+            attractionVisitorsChartContainer.style.display = 'block';
+            parkAttendanceContainer.style.display = "none";
+            waitTimesContainer.style.display = "none";
+        });
+    };
+
+    function toggleParkAttendanceChart() {
+        const parkAttendanceButton = document.getElementById("park_attendance_btn");
+        const attractionVisitorsChartContainer = document.getElementById("attraction_visitors_chart_div");
+        const parkAttendanceContainer = document.getElementById("curve_chart");
+        const waitTimesContainer = document.getElementById("wait_time_table_container");
+
+        parkAttendanceButton.addEventListener("click", () => {
+            parkAttendanceContainer.style.display = "block";
+            attractionVisitorsChartContainer.style.display = "none";
+            waitTimesContainer.style.display = "none";
+            initAttendanceChart(parkId);
+        });
+    };
+</script>
+<script type="module">
+    import {populateYearsDropdown} from "{% static 'scripts/analytics/eventHandlers.js'%}"
+        var parkId = parseInt(window.location.pathname.split('/')[2]);
+
+        populateYearsDropdown(parkId);
+
+</script>
+
+{% endblock %}

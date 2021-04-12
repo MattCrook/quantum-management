@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 40px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 4%;
   margin-top: 5px;
 }
 
@@ -13,11 +13,29 @@
   font-variant: small-caps;
 }
 
+.manage_employees_employee_landing_title {
+  margin-left: 2%;
+  font: 100 1.2em helvetica neue, open sans, sans-serif;
+}
+
+.add_employee_btn_container {
+  margin-right: 1.4%;
+}
+
+.add_employee_button {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+}
+
+.add_employee_button:hover {
+  text-decoration: none;
+  color: rgb(165, 165, 165);
+}
+
 .add_employee_button {
   align-items: center;
   margin-right: 18px;
-  /* font-size: 12px; */
-  /* font-weight: 50; */
   border-radius: 7px;
   font: 50 0.8em helvetica neue, open sans, sans-serif;
 }
@@ -65,6 +83,66 @@
   }
 }
 
+.employee_add_btn {
+  align-items: center;
+  margin-right: 2%;
+}
+/********** Add employee Link Button on employee_list **********/
+
+.add_employee_link_btn:link {
+  text-decoration: none;
+  color: black;
+}
+.add_employee_link_btn:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.add_employee_link_btn {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  font: 50 0.8em helvetica neue, open sans, sans-serif;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 4px;
+}
+
+.add_employee_link_btn::before {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #2251a8;
+  display: block;
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+.add_employee_link_btn:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.add_employee_link_btn:hover {
+  color: rgb(146, 145, 145);
+}
+
+/***************************************/
+
 .role_title {
   display: flex;
   justify-content: center;
@@ -72,12 +150,29 @@
   border-bottom: 1px solid rgb(173, 173, 173);
   margin-left: 500px;
   margin-right: 500px;
+  font-variant: small-caps;
+}
+
+.employee_role_list_title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgb(173, 173, 173);
+  margin-left: 500px;
+  margin-right: 500px;
+  font: 150 1.4em helvetica neue, open sans, sans-serif;
 }
 
 /****** List Card Container *********/
 /***********************************/
 
 .employee_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.role_list_employee_item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -123,6 +218,57 @@
   -ms-transform: scale(1, 1);
   transform: scale(1, 1);
 }
+
+.employee_role_list_item_link {
+  padding-top: 8px;
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+}
+
+.employee_role_list_item_link::before {
+  content: "";
+  position: absolute;
+  bottom: 8%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #2251a8;
+  /* display: block; */
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+.employee_role_list_item_link:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.role_list_back_button_container {
+  margin-right: 1.4%;
+}
+
+.role_list_back_btn {
+  text-decoration: none;
+  color: rgb(33, 33, 119);
+  font-size: 14px;
+}
+
+.role_list_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
+}
 /************* End Blue Underline Styles ***********/
 
 /************* Employee to Details Button ***********/
@@ -135,12 +281,27 @@
   color: rgb(128, 128, 128);
 }
 
+.employee_role_list_item_link:link {
+  text-decoration: none;
+  color: black;
+}
+.employee_role_list_item_link:visited {
+  text-decoration: none;
+  color: rgb(128, 128, 128);
+}
+
 /********** Main Outer Container All Cards ***************/
 .roles_card {
   display: flex;
-  /* justify-content: space-evenly; */
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.employee_roles_card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 32%;
 }
 
 /************** Card Containers *************/
@@ -154,6 +315,37 @@
   margin-left: 14px;
   margin-right: 12px;
   margin-top: 3%;
+}
+
+.employee_role_container {
+  flex-direction: column;
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #f8f8f8;
+  height: fit-content;
+  margin-left: 14px;
+  margin-right: 12px;
+  margin-top: 3%;
+}
+
+.employee_role_list_container {
+  flex-direction: column;
+  box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  border-radius: 5px 5px 5px 5px;
+  background-color: #f8f8f8;
+  height: fit-content;
+  margin-left: 30%;
+  margin-top: 3%;
+}
+
+.employee_role_list_ul {
+  margin-top: 4%;
+}
+
+.employees_role_list_container {
+  padding-right: 1.5em;
 }
 
 .roles_title_container {
@@ -170,6 +362,32 @@
 }
 
 .role_item i {
+  margin-right: 8px;
+}
+
+.role_list_item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font: 100 1.2em helvetica neue, open sans, sans-serif;
+}
+
+.role_list_item:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.role_list_item:visited {
+  text-decoration: none;
+  color: #000000;
+}
+
+.role_list_item:hover {
+  text-decoration: none;
+  color: #777575;
+}
+
+.role_list_item i {
   margin-right: 8px;
 }
 /*
@@ -588,10 +806,15 @@ input[type="radio"]:checked ~ label {
   font-weight: bold;
 }
 
+.create_new_position_btn_container {
+  margin-left: 65%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
 /********** Btn 6 ************/
 .btn6 {
   padding: 11px 42px;
-  margin: 10px 450px;
+  /* margin: 10px 450px; */
   color: #fff;
   font-family: sans-serif;
   text-transform: uppercase;
@@ -599,7 +822,7 @@ input[type="radio"]:checked ~ label {
   font-size: 12px;
   position: relative;
   text-decoration: none;
-  /* display:inline-block; */
+  display: inline-block;
 }
 
 .btn6 {

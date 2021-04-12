@@ -1,13 +1,11 @@
-import json
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+# import json
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.decorators import login_required
 # from django.contrib.auth import logout as log_out
-from django.conf import settings
-from django.http import HttpResponseRedirect
-from urllib.parse import urlencode
-from django.contrib.auth import logout as django_logout
-
-
+# from django.conf import settings
+# from django.http import HttpResponseRedirect
+# from urllib.parse import urlencode
+# from django.contrib.auth import logout as django_logout
 
 
 
@@ -22,19 +20,19 @@ def dashboard(request):
         'email': auth0user.extra_data['email'],
     }
 
-    return render(request, 'dashboard.html', {
-        'auth0User': auth0user,
-        'userdata': json.dumps(userdata, indent=4)
-    })
+#     return render(request, 'dashboard.html', {
+#         'auth0User': auth0user,
+#         'userdata': json.dumps(userdata, indent=4)
+#     })
 
 # handler for the "index" view in your views.py to render the index.html if the user needs to log in.
 # If the user is already logged in, the "dashboard" view will be shown instead.
-def index(request):
-    user = request.user
-    if user.is_authenticated:
-        return redirect(dashboard)
-    else:
-        return render(request, 'index.html')
+# def index(request):
+#     user = request.user
+#     if user.is_authenticated:
+#         return redirect(dashboard)
+#     else:
+#         return render(request, 'index.html')
 
 
 # logout method to clear the session and redirect the user to the Auth0 logout endpoint.
@@ -48,9 +46,9 @@ def index(request):
 
 # uses the django_logout function provided by Django to log out from your application.
 # Then, it redirects your user to the logout URL provided by Auth0 to log out from the identity provider
-def logout(request):
-    django_logout(request)
-    domain = '<YOUR-AUTH0-DOMAIN>'
-    client_id = '<YOUR-AUTH0-CLIENT-ID>'
-    return_to = 'http://localhost:8000'
-    return HttpResponseRedirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')
+# def logout(request):
+#     django_logout(request)
+#     domain = '<YOUR-AUTH0-DOMAIN>'
+#     client_id = '<YOUR-AUTH0-CLIENT-ID>'
+#     return_to = 'http://localhost:8000'
+#     return HttpResponseRedirect(f'https://{domain}/v2/logout?client_id={client_id}&returnTo={return_to}')

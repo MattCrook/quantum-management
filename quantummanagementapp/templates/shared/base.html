@@ -7,9 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" /> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" type="text/css" />
@@ -22,7 +23,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'public/favicon-16x16.png'%}"/>
     <link rel="icon" type="image/png" href="{% static 'public/favicon.ico'%}"/>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 
 
     {% block css %}
@@ -38,10 +38,9 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
             </li>
 
-            {% comment %} Check for user INFO on first sign in. Making sure ADMINUSER cannot navigate throughout the app UNLESS filled out their ACOUNT {% endcomment %}
             {% if user.first_name and user.last_name %}
             <li id="btn4" class="nav-item">
-                <a class="nav-link" href="{% url 'quantummanagementapp:employee_list' %}">Manage Employees</a>
+                <a class="nav-link" href="{% url 'quantummanagementapp:employee_landing_page' %}">Manage Employees</a>
             </li>
             <li id="btn4" class="nav-item">
                 <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
@@ -79,7 +78,8 @@
         </div>
 
         {% else %}
-        <div class="nav-item" id="logo_nav_landing_page">Quantum</div>
+        <div class="nav-item" id="logo_nav_landing_page">
+            <a class="logo_btn" href="{% url 'quantummanagementapp:landing_page' %}">Quantum</a></div>
 
         <li id="login_link" class="nav-item">
             <div id="btn4">
@@ -88,6 +88,8 @@
         </li>
         {% endif %}
     </ul>
+    <div id="status">
+    </div>
 
     <main class="main-content">
         {% block content %}
@@ -101,6 +103,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '373817170537484',
+            xfbml      : true,
+            version    : 'v8.0'
+          });
+          FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
 
 
     {% block scripts %}

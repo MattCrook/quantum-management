@@ -111,7 +111,7 @@ padding-top: 5px;
   top: 74px;
   left: 230px;
   width: 13.5%;
-  height: 130%;
+  height: 120%;
   margin-left: -230px;
   overflow: auto;
   /* background: #37474f; */
@@ -377,4 +377,69 @@ padding-top: 5px;
 }
 .attractions_column_list_container i {
   margin-right: 5px;
+}
+
+
+/*************** Manage Employee Landing Page Sidebar***************/
+/******************************************************************/
+
+#employee_sidebar {
+  z-index: 1000;
+  position: absolute;
+  top: 74px;
+  left: 230px;
+  width: 14%;
+  height: 130%;
+  margin-left: -230px;
+  overflow: auto;
+  /* background: #37474f; */
+  background: rgb(17, 19, 24);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+
+#employee_sidebar header a:hover {
+  color: #fff;
+}
+
+#employee_sidebar header {
+  background-color: rgb(17, 19, 24);
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+#employee_sidebar .nav {
+  display: flex;
+  flex-direction: column;
+}
+
+#employee_sidebar .nav a {
+  background: none;
+  color: #cfd8dc;
+  font-size: 13px;
+  padding-left: 28px;
+}
+
+#employee_sidebar .nav a:hover {
+  background: none;
+  color: #eceff1;
+}
+
+.park_details_back_btn_container {
+  margin-right: 1.4%;
+}
+
+.park_details_back_btn {
+  text-decoration: none;
+  color: rgb(13, 13, 14);
+  font-size: 14px;
+}
+
+.park_details_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
 }

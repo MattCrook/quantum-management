@@ -10,6 +10,11 @@
       {% csrf_token %}
       {{ form.as_p }}
       <button class="register_submit_btn" type="submit">Register</button>
+      <ul class="messages">
+        {% for message in messages %}
+        <li id="error_message" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
     </form>
   </div>
 </div>

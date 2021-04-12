@@ -14,9 +14,9 @@
         {% else %}
         <div id="form_header">Add New Employee</div>
         {% endif %}
-        <div class="add_employee_button">
-            <button class="add_tp_btn"><i class="fas fa-long-arrow-alt-left"></i><a class="add_employee"
-                    href="{% url 'quantummanagementapp:employee_list' %}">Back</a></button>
+        <div class="role_list_back_button_container">
+            <a class="role_list_back_btn" href="{% url 'quantummanagementapp:employee_landing_page' %}"><i
+                    class="fas fa-long-arrow-alt-left"></i>Back</a>
         </div>
     </div>
 
@@ -59,7 +59,9 @@
                         {% endif %}
                         {% endfor %}
                     </select>
-                    <a href="{% url 'quantummanagementapp:add_new_role' %}" class="btn6">Create new Position</a>
+                    <div class="create_new_position_btn_container">
+                        <a href="{% url 'quantummanagementapp:add_new_role' %}" class="btn6">Create new Position</a>
+                    </div>
                 </fieldset>
             </div>
 

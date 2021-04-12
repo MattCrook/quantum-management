@@ -110,6 +110,41 @@ img {
   background-color: white;
   font-variant: small-caps;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+}
+
+.user_welcome_first_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome_social_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signed_in_p {
+  margin-right: 5%;
+  margin-bottom: 0;
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+.provider_link {
+  margin-bottom: 0;
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+#col_sm {
+  margin-bottom: 0 !important;
+}
+
+.signed_in_as_provider_title {
+  font-weight: 600;
 }
 
 .logo_banner {
@@ -159,12 +194,11 @@ img {
 }
 
 #welcome_user {
-font-variant: normal;
-font-size: 20px;
-padding-top: 3px;
-padding-bottom: 3px;
-font: 100 1.1em helvetica neue, open sans, sans-serif;
-
+  font-variant: normal;
+  font-size: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font: 100 1.1em helvetica neue, open sans, sans-serif;
 }
 
 #complete_account_banner {
@@ -172,6 +206,7 @@ font: 100 1.1em helvetica neue, open sans, sans-serif;
   font-variant: normal;
   padding-bottom: 6px;
   letter-spacing: 1px;
+  font: 150 1.1em helvetica neue, open sans, sans-serif;
 }
 
 .complete_account_btn_container {
@@ -238,3 +273,71 @@ font: 100 1.1em helvetica neue, open sans, sans-serif;
   border-left: 1px solid #0553e2;
   border-right: 1px solid #064ed3;
 }
+
+/**************************** Spinner *******************/
+@font-face {
+  font-family: "icomoon";
+  src: url("https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.eot?#iefix-9haulc") format("embedded-opentype"),
+    url("https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.ttf?-9haulc") format("truetype"),
+    url("https://s3.amazonaws.com/icomoon.io/4/Loading/icomoon.svg?-9haulc#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icomoon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-spinner-2:before {
+  content: "\e001";
+}
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 4em;
+  height: 1em;
+  line-height: 1;
+  margin: 0.5em;
+  animation: anim-rotate 2s infinite linear;
+  color: rgb(14, 13, 13);
+  text-shadow: 0 0 0.25em rgba(255, 255, 255, 0.3);
+}
+
+.spinner--steps {
+  animation: anim-rotate 1s infinite steps(8);
+}
+.spinner--steps2 {
+  animation: anim-rotate 1s infinite steps(12);
+}
+
+/* .spinner {
+  display: inline-block;
+  font-size: 4em;
+  height: 1em;
+  line-height: 1;
+  margin: .5em;
+  animation: anim-rotate 2s infinite linear;
+  color: rgb(70, 67, 67);
+  text-shadow: 0 0 .50em rgba(255,255,255, .3);
+} */

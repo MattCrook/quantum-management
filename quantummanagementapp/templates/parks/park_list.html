@@ -3,17 +3,17 @@
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
+{% if user.is_authenticated %}
 <div class="manage_parks_container">
     <div class="manage_parks_title">Manage Parks</div>
     <div class="select_park_header">Select a Park To View Details</div>
-    <div class="add_park_button">
-        <button class="add_tp_btn"><i class="fas fa-plus"></i><a class="add_park" href="{% url 'quantummanagementapp:park_form' %}">Add Park</a></button>
+    <div class="park_details_back_btn_container">
+        <i class="fas fa-plus"></i><a class="add_park_btn" href="{% url 'quantummanagementapp:park_form' %}">Add Park</a>
     </div>
 </div>
-{% endif %}
+<!-- {% endif %} -->
 
-{% if request.user.is_authenticated %}
+<!-- {% if request.user.is_authenticated %} -->
 <div class="park_list_outer_container">
     {% for park in parks %}
     <div class="park_list_inner_container">
@@ -39,6 +39,20 @@
          </div>
     </div>
      {% endfor %}
+</div>
+
+
+{% else %}
+<div class="login-container">
+<div class="login-container">
+    <div class="login-card">
+        <h2>Login</h2>
+        <div>
+            <button class="login_btn"><a href="{% url 'quantummanagementapp:login' %}">Please Log Into Your Account</a></button>
+            <button class="register_btn"><a class="register_btn"
+                    href="{% url 'quantummanagementapp:register' %}">Register New Admin Account</a></button>
+        </div>
+    </div>
 </div>
 {% endif %}
 

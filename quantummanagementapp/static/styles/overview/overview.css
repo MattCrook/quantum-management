@@ -1,12 +1,11 @@
 /*************** SideBar ***************/
 
 #overview_viewport {
-  padding-left: 9%;
+  padding-left: 5%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  /* overflow: auto; */
 }
 
 #overview_sidebar {
@@ -15,9 +14,8 @@
   top: 74px;
   left: 230px;
   width: 8%;
-  height: 120%;
+  height: 140%;
   margin-left: -230px;
-  /* overflow: auto; */
   background: rgb(17, 19, 24);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -139,7 +137,7 @@
 
 .overview_back_btn {
   text-decoration: none;
-  color: rgb(33, 33, 119);
+  color: rgb(5, 5, 5);
   font-size: 14px;
 }
 
@@ -260,7 +258,7 @@
 
 .date_tickets_sold {
   font-size: 13px;
-  margin-left: 10px;
+  margin-left: 12px;
   color: #848485;
 }
 
@@ -289,4 +287,397 @@
 /************* Combo Charts *************/
 .attendance_2020_chart {
   margin-left: 4px;
+}
+
+/*********Pie Charts*********/
+
+#employee_chart_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/******************************** Analytics Styles ********************************************/
+
+#attraction_visitors_chart_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+  margin-left: 6%;
+  margin-right: 3%;
+  flex-direction: column;
+  border: 1px solid rgb(189, 189, 189);
+}
+
+#attraction_visitors_chart_div {
+  /* box-shadow: 4px 4px 4px 4px rgb(194, 192, 192); */
+  /* border: 1px solid rgb(189, 189, 189); */
+  z-index: -10;
+}
+
+#attraction_visitors_spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14%;
+}
+
+#wait_times {
+  display: flex;
+  flex-direction: column;
+}
+
+#wait_time_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-right: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+#wait_time_name {
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+#wait_time_time {
+  font: 150 0.9em helvetica neue, open sans, sans-serif;
+}
+
+#wait_time_table_container {
+  width: 40%;
+  margin-right: 2%;
+}
+#wait_time_header_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #212529;
+  color: rgb(241, 241, 241);
+  margin-top: 2%;
+}
+
+.wait_time_header {
+  font: 150 1.1em helvetica neue, open sans, sans-serif;
+}
+
+.container_2_charts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3%;
+  margin-left: 5%;
+}
+
+/* #curve_chart {
+  border: 1px solid rgb(189, 189, 189);
+  border: 1px solid rgb(161, 160, 160);
+} */
+
+.table td,
+.table th {
+  border-top: none;
+}
+
+.table thead th {
+  border-bottom: none;
+}
+
+#analytics_nav_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.analytics_nav_button {
+  border: 1px solid black;
+}
+#chart_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 100%;
+  margin-left: 3%;
+}
+.chart_titles_container {
+  justify-content: left;
+  flex-direction: row;
+  /* margin-right: 58%; */
+  margin-bottom: 2%;
+}
+
+.chart_titles_waittimes_container {
+  margin-right: 4%;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  margin-bottom: 2%;
+}
+
+.chart_title {
+  margin-top: 8%;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.wait_time_chart_title {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+#waittime_time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#current_time {
+  margin-left: 2%;
+  font-weight: 600;
+}
+
+.chart_sub_title_1 {
+  font-size: 13px;
+  color: #848485;
+  margin-top: 3px;
+}
+
+.chart_sub_title_2 {
+  font-size: 13px;
+  color: #848485;
+}
+
+.select_year_container {
+  margin-top: 0.8%;
+  margin-right: 4%;
+  width: 8%;
+  z-index: 100;
+}
+
+.year_select_label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1%;
+  font-size: 13px;
+  padding-left: 0.7rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1px solid rgb(197, 195, 195);
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+}
+
+.year_select_label:hover {
+  background-color: #e2e2e2;
+  border: 1px solid #6098ff;
+}
+
+#i {
+  margin-right: 4%;
+}
+
+.select_year_options {
+  /* margin-top: 8%; */
+  position: absolute;
+  top: 14.1rem;
+  width: 7%;
+  border: 1px solid rgb(201, 198, 198);
+}
+
+.year_option {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  color: #848485;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.year_option:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.chart_titles_attendance_container {
+  margin-left: 4%;
+}
+/************* Nav Buttons **************/
+
+.analytics_nav_button {
+  text-decoration: none;
+  padding: 6px 22px;
+  margin: 8px 8px;
+  color: rgb(173, 173, 173);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.analytics_nav_button {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.analytics_nav_button::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.analytics_nav_button:hover::before {
+  width: 100%;
+}
+
+.analytics_nav_button::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.analytics_nav_button:hover::after {
+  width: 100%;
+}
+.analytics_nav_button:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+/***************************************/
+
+/******************************** Spinners ********************************************/
+
+#employee_chart_overview_spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 27%;
+  top: 60%;
+  margin: -16px 0px 0px -16px;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
+}
+
+#attraction_chart_overview_spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 54%;
+  top: 60%;
+  margin: -16px 0px 0px -16px;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
+}
+
+#tickets_chart_overview_spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 80%;
+  top: 60%;
+  margin: -16px 0px 0px -16px;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
+}
+
+#attendance_2019_chart_spinner {
+  margin-top: 12%;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 32%;
+  top: 80%;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
+}
+
+#attendance_2020_chart_spinner {
+  margin-top: 12%;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 73%;
+  top: 80%;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#wait_time_chart_spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  box-sizing: border-box;
+  border: 2px groove white;
+  position: absolute;
+  left: 53%;
+  top: 65%;
+  margin: -16px 0px 0px -16px;
+  border-top-color: rgb(27, 27, 27);
+  border-left-color: rgba(54, 53, 53, 0.9);
+  border-bottom-color: rgba(70, 67, 67, 0.8);
+  border-right-color: rgba(56, 54, 54, 0.7);
+  animation: rotate 1000ms infinite linear;
+  transform: translateZ(0px);
 }

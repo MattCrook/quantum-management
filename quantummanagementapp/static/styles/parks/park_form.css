@@ -44,37 +44,46 @@
 #create_park_btn:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   -webkit-transform: translateY(-0.25em);
-          transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
 }
 
 #create_park_btn {
-    --color: #08068a83;
-    --hover: #02103b;
-  }
-
+  --color: #08068a83;
+  --hover: #02103b;
+}
 
 #update_park {
   background: rgb(180, 180, 180);
-  /* font: inherit; */
   line-height: 1;
   padding: 1em 2em;
-  /* border: none; */
   width: 65%;
   border-radius: 3px 3px 3px 3px;
-  /* text-transform: uppercase; */
   font-size: 14px;
-  /* border: 1px solid black; */
 }
-
 
 #update_park:hover,
 #update_park:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   -webkit-transform: translateY(-0.25em);
-          transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
 }
 
 #update_park {
-    --color: #08068a83;
-    --hover: #02103b;
-  }
+  --color: #08068a83;
+  --hover: #02103b;
+}
+
+.park_add_back_button_container {
+  margin-right: 1.4%;
+}
+
+.park_add_back_btn {
+  text-decoration: none;
+  color: rgb(2, 2, 2);
+  font-size: 14px;
+}
+
+.park_add_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
+}

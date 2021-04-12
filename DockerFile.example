@@ -1,0 +1,197 @@
+# FROM alpine:latest
+
+# ----- Base image of Python to build upon
+FROM python:3.7-buster
+
+# ----- Nginx installation commands and COPY the configuration file inside the container
+RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+COPY nginx.default /etc/nginx/sites-available/default
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
+# ---- set work directory
+# RUN mkdir /app
+WORKDIR /app
+# COPY . /app
+
+COPY requirements.txt /app/
+COPY start-server.sh /app/
+RUN pip install -r requirements.txt
+
+# ---- Install Node
+FROM node:lts-alpine
+# ENV NODE_ENV=production
+# WORKDIR /tmp
+
+
+# ---- Install node dependencies
+COPY ./package.json /app/
+COPY ./package-lock.json /app/
+# COPY src/js /tmp/js
+# COPY src/static-files /tmp/static-files
+# RUN npm run build
+RUN npm install
+# COPY . /app/
+
+# ---- Webpack Dependencies
+# COPY src/webpack.config.js /tmp/webpack.config.js
+# COPY src/js /tmp/js
+# COPY src/static-files /tmp/static-files
+# RUN npm run build && npm run replace-links
+
+
+
+
+# ---- pull official base image &&
+# ---- Install python dependencies
+FROM python:3.7.3-slim
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt /quantummanagement/requirements.txt
+RUN pip install -r /quantummanagement/requirements.txt
+# COPY . /app/
+
+
+# ---- Set up Virtual Environment && Python run Image
+ENV DJANGO_SETTINGS_MODULE=/app/settings.py
+ENV STATIC_ROOT=/app/static/
+ENV PYTHONPATH=/app/.local
+ENV PATH=$PATH:/app/.local/bin
+
+
+
+# ---- set environment variables
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
+
+
+# ---- copy project
+COPY . /app/
+
+EXPOSE 8000
+
+
+# ---- Listen to all interfaces with "0.0.0.0"
+ENTRYPOINT [ "python" ]
+CMD [ "manage.py", "runserver", "--host", "0.0.0.0" ]
+
+
+
+###############################################################################################################
+
+# ----- Base image of Python to build upon
+# FROM python:3.7-buster
+FROM python:3.7.3-slim
+
+# ---- set work directory
+# create directory for the app user
+WORKDIR /app
+
+# ----- Nginx installation commands and COPY the configuration file inside the container
+FROM nginx:1.19.0-alpine
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+
+
+# RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+# COPY nginx.defualt /etc/nginx/sites-available/default
+# RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+#     && ln -sf /dev/stderr /var/log/nginx/error.log
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+
+# ENV PATH=$PATH:/app/.local/bin
+
+# RUN apk update \
+#     && apk add postgresql-dev gcc python3-dev musl-dev
+
+# create the app user
+# RUN addgroup -S app && adduser -S app -G app
+
+# create the appropriate directories
+# ENV HOME=/app
+# ENV APP_HOME=/app/web
+# RUN mkdir $APP_HOME
+# RUN mkdir $APP_HOME/static
+# WORKDIR $APP_HOME
+
+
+
+# install psycopg2 dependencies
+# RUN apk update && apk add libpq
+
+FROM python:3.7.3-slim
+ENV PATH=$PATH:/app/.local/bin
+
+# install dependencies
+RUN pip install --upgrade pip
+COPY requirements.txt /app/
+COPY startup.sh /app/
+RUN pip install -r requirements.txt
+
+
+# Set up Virtual Env
+ENV DJANGO_SETTINGS_MODULE=quantummanagement.settings
+ENV PYTHONPATH=/app/.local
+ENV PATH=$PATH:/app/.local/bin
+
+# copy entrypoint-prod.sh
+# COPY ./entrypoint.sh $APP_HOME
+
+
+# ---- copy project
+COPY . /app/
+
+# chown all the files to the app user
+RUN chown -R www-data:www-data /app
+# RUN chown -R app:app /app
+
+# change to the app user
+# USER app
+
+
+
+
+# ---- Collect Static files
+# RUN python manage.py collectstatic
+
+EXPOSE 8000
+
+# ENTRYPOINT ["entrypoint.sh"]
+
+CMD ["bash", "startup.sh"]
+
+
+
+
+
+# set -e
+# Check for migrations
+# while ! MIGRATIONS=$(/app/manage.py showmigrations --plan 2>&1); do
+#   sleep 5
+# done
+# #set +e # grep returns an exit code if nothing is found
+# PENDING_MIGRATIONS=$(echo $MIGRATIONS | grep '\[ \]')
+# # set -e
+# if [ ! -z "$PENDING_MIGRATIONS" ]
+# then
+#   while ! manage.py makemigrations 2>&1; do
+#       sleep 5
+#   done
+#   while ! manage.py migrate 2>&1; do
+#       sleep 5
+#   done
+#   while ! manage.py loaddata datadump.json 2>&1; do
+#       sleep 5
+#   done
+# fi
+# # /app/manage.py collectstatic -v 3 --noinput
+# # cd /app
+# # /app/.local/bin/gunicorn -b 0:8000 -w 3 --reload c3.wsgi
+# fi
+# (gunicorn quantummanagement.wsgi --user www-data --bind 0.0.0.0:8010 --workers 3) &
+# nginx -g "daemon off;"

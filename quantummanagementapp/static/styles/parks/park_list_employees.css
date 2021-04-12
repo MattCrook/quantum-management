@@ -7,8 +7,6 @@
   overflow: auto;
 }
 
-
-
 .employee_name_park_list_btn {
   margin-left: 10px;
   color: rgb(155, 151, 151);
@@ -75,7 +73,6 @@
 .employees_in_park_list_inner_container {
   display: flex;
   flex-direction: column;
-  /* margin-left: 15px; */
 }
 
 .a_link_employee_detail {
@@ -117,4 +114,19 @@
   margin-left: 1%;
   font-variant: small-caps;
   font-size: large;
+}
+
+.employee_in_park_back_btn_container {
+  margin-right: 1.4%;
+}
+
+.employee_in_park_back_btn {
+  text-decoration: none;
+  color: rgb(5, 5, 5);
+  font-size: 14px;
+}
+
+.employee_in_park_back_btn:hover {
+  text-decoration: none;
+  color: rgb(109, 107, 107);
 }

@@ -133,6 +133,7 @@ db.sqlite3
 
 # virtualenv
 QuantumManagementEnv/
+quantumenv/
 .vscode
 
 # Environments

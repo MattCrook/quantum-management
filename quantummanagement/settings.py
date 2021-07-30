@@ -22,7 +22,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1']
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'social_django',
     'quantummanagementapp',
     'django.contrib.sessions.middleware',
-    'oauth2client.contrib.django_util',
     ]
 
 MIDDLEWARE = [
@@ -87,11 +86,11 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 
 
 DATABASES = {
-    'sqlite3': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'default': {
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'quantumdb',
         'USER': 'matthewcrook',
@@ -135,8 +134,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:8000',
     'http://localhost:8000',
+    'http://127.0.0.1:8000',
 )
 
 

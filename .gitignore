@@ -131,6 +131,7 @@ db.sqlite3
 
 # dotenv
 .env
+.env.dev
 
 
 # secrets
@@ -160,7 +161,7 @@ media/*
 
 
 # django migrations
-migrations/
+# migrations/
 
 #db connection
 connection.py

@@ -1,32 +1,49 @@
-# ----- Base image of Python to build upon
-FROM python:3.7-buster
+FROM python:3.8-buster AS builder
+
+# Hacky - but for now copying the .env file inside the container, which Terraform will read
+# and run Docker run with --env-file .env to pick up the env vars
+COPY .env.dev .env
+
+# Setup the virtualenv
+RUN python -m venv /venv
+
+# don't write pyc file
 ENV PYTHONDONTWRITEBYTECODE 1
+
+# don't buffer log message submission
 ENV PYTHONUNBUFFERED 1
 
-# ----- Nginx installation commands and COPY the configuration file inside the container
-# RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
-# COPY nginx.default /etc/nginx/sites-available/default
-# RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-#     && ln -sf /dev/stderr /var/log/nginx/error.log
+# don't check for pip updates
+# ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
-# ---- set work directory
-WORKDIR /app
-
-ENV PATH=$PATH:/app/.local/bin
+# Create virtual env for docker container to run python in
+ENV PATH "/venv/bin:$PATH"
 
 RUN pip install --upgrade pip
-COPY requirements.txt /app/
-# COPY startup.sh /app/
+
+# Old - with just requirements.txt file no Pipfile
+COPY requirements.txt .
 RUN pip install -r requirements.txt
-# RUN chown -R www-data:www-data /app
 
+#######################################
+# App stage #
+# Smaller official Debian-based Python image
+FROM python:3.8-slim-buster AS app
 
-# ---- copy project
-COPY . /app/
-# RUN python manage.py collectstatic
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+ENV PATH "/venv/bin:$PATH"
+
+WORKDIR /usr/src/app
+
+# copy in Python environment
+COPY --from=builder /venv /venv
+
+COPY . .
+
+ENV DJANGO_SETTINGS_MODULE=quantummanagement.settings
 
 EXPOSE 8000
 
-
-CMD ["bash", "startup.sh"]
-# CMD ["/docker-startup.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

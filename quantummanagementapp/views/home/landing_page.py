@@ -3,7 +3,7 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from quantummanagementapp.models import AdminUser
-from oauth2client.contrib.django_util.storage import DjangoORMStorage
+# from oauth2client.contrib.django_util.storage import DjangoORMStorage
 from django.http import HttpResponseRedirect
 from rest_framework.response import Response
 from quantummanagementapp.models import CredentialsModel
@@ -89,15 +89,15 @@ def home(request):
                     session = request.session.session_key
                     django_token = Token.objects.get(user=user)
                     # credentials = CredentialsModel.objects.get(user_id=user.id)
-                    storage = DjangoORMStorage(CredentialsModel, 'user_id', request.user, 'credential')
-                    print(storage)
-                    key = storage.key_name
-                    val = storage.key_value
-                    prop = storage.property_name
+                    # storage = DjangoORMStorage(CredentialsModel, 'user_id', request.user, 'credential')
+                    # print(storage)
+                    # key = storage.key_name
+                    # val = storage.key_value
+                    # prop = storage.property_name
 
-                    print(key)
-                    print(val)
-                    print(prop)
+                    # print(key)
+                    # print(val)
+                    # print(prop)
                     # credentials = storage.get()
                     # print("CREDENTIALS", credentials)
 

@@ -1,0 +1,29 @@
+#create_attraction_btn {
+  background: rgb(175, 175, 175);
+  font: inherit;
+  line-height: 1;
+  padding: 1em 2em;
+  border: none;
+  width: 75%;
+  border-radius: 3px 3px 3px 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  border: 1px solid black;
+}
+
+#create_attraction_btn:hover,
+#create_attraction_btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
+}
+
+#create_attraction_btn {
+  --color: #08068a83;
+  --hover: #02103b;
+}
+
+
+.add_attractiion_title {
+margin-left: 1%;
+}

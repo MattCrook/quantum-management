@@ -1,0 +1,297 @@
+
+/******* Body ******************/
+.account_view_body {
+  background-size: cover;
+  /* background-color: rgb(17, 19, 24); */
+  background-color: #252525fd;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/************* NavBar *****************/
+.navbar-nav-account {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.945);
+  color: white;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#logo_nav_account {
+  display: flex;
+  align-items: center;
+  font-variant: small-caps;
+  margin-right: 50px;
+}
+
+#nav_btn {
+  padding: 5px 10px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+#nav_btn::before {
+  content: "";
+  position: absolute;
+  bottom: 0%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background: #6098ff;
+  display: block;
+  -webkit-transform-origin: right top;
+  -ms-transform-origin: right top;
+  transform-origin: right top;
+  -webkit-transform: scale(0, 1);
+  -ms-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1);
+}
+
+#nav_btn:hover::before {
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.container_1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.container_2 {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+}
+
+.logout_btn_account {
+  margin-right: 10px;
+}
+
+.django_admin_btn_account {
+  margin-left: 6px;
+}
+
+.manage_account_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+  background-color: #fff;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.manage_account_title {
+  margin-left: 20px;
+  font-size: large;
+  font: 100 1.1em helvetica neue, open sans, sans-serif;
+}
+
+/*************** Nav Button Edit Account *************/
+
+
+.add_edit_account {
+  padding: 5px 25px;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  position: relative;
+  color: #070707;
+}
+
+.add_edit_account {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.add_edit_account::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #530202;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.add_edit_account:hover::before {
+  width: 100%;
+}
+
+.add_edit_account::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #530202;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.add_edit_account:hover::after {
+  width: 100%;
+}
+.add_edit_account:hover {
+  border-left: 1px solid #530202;
+  border-right: 1px solid #530202;
+  color: rgb(77, 5, 5);
+}
+
+
+/*************** Banner Graphic Picture ************/
+.banner_picture_on_profile {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  background-color: #020914;
+}
+
+#account_banner_image {
+  /* width: 40%; */
+  border: none;
+}
+
+/**************** User Profile Picture *************/
+.profile_picture_account_view {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.image_on_account_view {
+  border-radius: 50%;
+}
+
+/************** Main Container Flex Box for Body Info *************/
+.account_view_outer_container {
+  display: flex;
+}
+
+.account_view_inner_info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-top: 15px;
+  width: 25%;
+}
+
+.account_info_title {
+  color: rgb(212, 212, 212);
+  font-variant: small-caps;
+  border-bottom: 1px solid rgb(114, 113, 113);
+  width: 80%;
+  margin-bottom: 10px;
+}
+.user_profile_info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(212, 212, 212);
+}
+
+.employees_user_responsible_container_account_view {
+  margin-left: 18%;
+  background: transparent;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.employee_user_responsible_title_account_view {
+  border-bottom: 1px solid #8a8b8d;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  color: rgb(212, 212, 212);
+}
+
+/***************List of EMployees Admin User Responsible For Link Buttons **************/
+/**************************************************************************************/
+
+.list_employee_item_account_view {
+  margin-left: 10px;
+  color: rgb(155, 151, 151);
+}
+
+.link_to_employee_details_account_view {
+  text-decoration: none;
+  padding: 6px 22px;
+  margin: 8px 8px;
+  color: rgb(173, 173, 173);
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.link_to_employee_details_account_view {
+  border: 1px solid transparent;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.link_to_employee_details_account_view::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  box-shadow: inset 0px 0px 0px #6098ff;
+  display: block;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+
+.link_to_employee_details_account_view:hover::before {
+  width: 100%;
+}
+
+.link_to_employee_details_account_view::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0%;
+  height: 1px;
+  background: #6098ff;
+  -webkit-transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+  transition: all 0.4s cubic-bezier(0.5, 0.24, 0, 1);
+}
+.link_to_employee_details_account_view:hover::after {
+  width: 100%;
+}
+.link_to_employee_details_account_view:hover {
+  text-decoration: none;
+  border-left: 1px solid #6098ff;
+  border-right: 1px solid #6098ff;
+}
+
+.no_employees_assigned {
+  color: rgb(139, 139, 139);
+  font-size: 15px;
+  margin-left: 5px;
+
+}

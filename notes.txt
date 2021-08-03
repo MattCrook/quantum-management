@@ -1,0 +1,4 @@
+docker build -t quantummanagement .
+docker run -it -d --env-file .env.dev -p 8000:8000 quantummanagement
+or
+docker compose up --build

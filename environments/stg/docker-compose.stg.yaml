@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=quantumdb
+      - POSTGRES_USER=matthewcrook
+      - POSTGRES_PASSWORD=password
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/web/quantummanagementapp/static
+      - media_volume:/app/web/media/images
+    environment:
+      DJANGO_SETTINGS_MODULE: quantummanagement.settings
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

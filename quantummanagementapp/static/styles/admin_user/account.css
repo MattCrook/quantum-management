@@ -90,17 +90,21 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-align: center;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 5px;
+  margin-bottom: 0.5%;
   background-color: #fff;
-  margin-top: 5px;
-  padding-top: 5px;
+  margin-top: 0.5%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
 
 .manage_account_title {
-  margin-left: 20px;
+  margin-left: 2%;
   font-size: large;
-  font: 100 1.1em helvetica neue, open sans, sans-serif;
+  /* font: 400 1.1em helvetica neue, open sans, sans-serif; */
+  font: "proxima-nova", sans-serif;
+  font-size: 400;
 }
 
 /*************** Nav Button Edit Account *************/

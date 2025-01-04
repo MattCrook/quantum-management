@@ -1,15 +1,19 @@
 from django.shortcuts import render, redirect, reverse
 from rest_framework.authtoken.models import Token
+from rest_framework import status
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from quantummanagementapp.models import AdminUser
-# from oauth2client.contrib.django_util.storage import DjangoORMStorage
-from django.http import HttpResponseRedirect
 from rest_framework.response import Response
 from quantummanagementapp.models import CredentialsModel
-from httplib2 import Http
-from social_django.models import UserSocialAuth, DjangoStorage
+# from oauth2client.contrib.django_util.storage import DjangoORMStorage
+# from django.core.files.storage import storages
+# https://docs.djangoproject.com/en/5.1/ref/files/storage/
+# from django.http import HttpResponseRedirect
+# from httplib2 import Http
+# from social_django.models import UserSocialAuth, DjangoStorage
 import json
+import os
 
 
 
@@ -31,7 +35,10 @@ def home(request):
             if is_social_auth is not None:
                 social_user = is_social_auth
                 provider = social_user.provider
-                print('provider', provider)
+
+                if os.environ.get("ENVIRONMENT") == "development":
+                    print('provider', provider)
+
                 if provider == 'auth0':
                     auth0user = user.social_auth.get(provider='auth0')
                     userdata = {
@@ -41,7 +48,10 @@ def home(request):
                         'email': auth0user.extra_data['email'],
                         'token': auth0user.extra_data['access_token']
                     }
-                    print("USERDATA", userdata)
+
+                    if os.environ.get("ENVIRONMENT") == "development":
+                        print("USERDATA", userdata)
+
                     user_id = auth0user.user_id
                     quantum_user = User.objects.get(pk=user_id)
                     admin_user = AdminUser.objects.get(user_id=user_id)
@@ -53,34 +63,35 @@ def home(request):
                         'admin_user': admin_user,
                     })
 
-                elif provider == 'google-oauth2':
-                    user_data = User.objects.get(username=user)
-                    user_id = user_data.id
-                    admin_user = AdminUser.objects.get(user_id=user_id)
-                    status = True
+                # elif provider == 'google-oauth2':
+                #     user_data = User.objects.get(username=user)
+                #     user_id = user_data.id
+                #     admin_user = AdminUser.objects.get(user_id=user_id)
+                #     status = True
 
-                    if not request.user.is_authenticated:
-                        return HttpResponseRedirect('login')
+                #     if not request.user.is_authenticated:
+                #         return HttpResponseRedirect('login')
 
-                    storage = DjangoORMStorage(CredentialsModel, 'user_id', request.user, 'credential')
-                    credential = storage.get()
-                    try:
-                        access_token = credential.access_token
-                        resp, cont = Http().request("https://www.googleapis.com/auth/gmail.readonly",
-                                                    headers={'Host': 'www.googleapis.com',
-                                                            'Authorization': access_token})
-                    except:
-                        status = False
-                        print('Not Found')
+                #     storage = DjangoORMStorage(CredentialsModel, 'user_id', request.user, 'credential')
+                #     credential = storage.get()
+                #     try:
+                #         access_token = credential.access_token
+                #         resp, cont = Http().request("https://www.googleapis.com/auth/gmail.readonly",
+                #                                     headers={'Host': 'www.googleapis.com',
+                #                                             'Authorization': access_token})
+                #     except:
+                #         status = False
+                #         print('Not Found')
 
-                    template = 'home/home.html'
-                    context = {
-                        'user': user_data,
-                        'admin_user': admin_user,
-                        'status': status,
-                        'credential': credential
-                    }
-                    return render(request, template, context)
+                #     template = 'home/home.html'
+                #     context = {
+                #         'user': user_data,
+                #         'admin_user': admin_user,
+                #         'status': status,
+                #         'credential': credential
+                #     }
+
+                #     return render(request, template, context)
 
                 elif provider == 'quantummanagement':
                     user = User.objects.get(pk=user.id)
@@ -88,24 +99,29 @@ def home(request):
                     social_user = user.social_auth.get(provider='quantummanagement')
                     session = request.session.session_key
                     django_token = Token.objects.get(user=user)
-                    # credentials = CredentialsModel.objects.get(user_id=user.id)
+
+                    credentials = CredentialsModel.objects.get(user_id=user.id)
                     # storage = DjangoORMStorage(CredentialsModel, 'user_id', request.user, 'credential')
-                    # print(storage)
+                    if os.environ.get("ENVIRONMENT") == "development":
+                        # print("storage: ", storage)
+                        print("credentials: ", credentials)
+
                     # key = storage.key_name
                     # val = storage.key_value
                     # prop = storage.property_name
 
-                    # print(key)
-                    # print(val)
-                    # print(prop)
-                    # credentials = storage.get()
-                    # print("CREDENTIALS", credentials)
+                    # if os.environ.get("ENVIRONMENT") == "development":
+                        # print(key)
+                        # print(val)
+                        # print(prop)
+                        # credentials = storage.get()
+                        # print("CREDENTIALS", credentials)
 
                     extra_data = {
                         "session": session,
                         "token": django_token.key,
-                        # "credentials": credentials,
                         # "credential": credentials.credential,
+                        # "credentials": credentials,
                     }
 
                     template = 'home/home.html'
@@ -151,6 +167,10 @@ def home(request):
                     'admin_user': admin_user,
                     'status': status
                 }
+
+                if os.environ.get("ENVIRONMENT") == 'development':
+                    print("Full Context - Home View: ", context)
+
             return render(request, template, context)
 
         else:

@@ -1,16 +1,19 @@
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, admin
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 from quantummanagementapp.models import LoginForm
 from django.contrib.auth import authenticate
 from django.contrib import messages
-from django.contrib.messages import error, success, INFO
+# from django.contrib.messages import error, success, INFO
 from rest_framework.authtoken.models import Token
-from django.http import HttpResponse, HttpResponseBadRequest
-from social_core.backends.oauth import BaseOAuth1, BaseOAuth2
-from social_django.utils import psa
+# from django.http import HttpResponse, HttpResponseBadRequest
+# from social_core.backends.oauth import BaseOAuth1, BaseOAuth2
+# from social_django.utils import psa
 import json
+#import os
+from quantummanagement import settings
+
 
 
 
@@ -28,12 +31,18 @@ def login_user(request):
         if authenticated_user is not None:
             token = Token.objects.get(user=authenticated_user)
             data = json.dumps({"valid": True, "token": token.key})
+
+            if settings.ENVIRONMENT == 'development':
+                print("LOGIN FORM: Login token data: ", data)
+
             login(request, authenticated_user)
             return redirect(reverse('quantummanagementapp:home'))
         else:
-            data = json.dumps({"valid": False})
+            # data = json.dumps({"valid": False})
             # return HttpResponse(data, content_type='application/json')
-            print("LOGINDATA", login_form.errors.as_data())
+            if settings.ENVIRONMENT == 'development':
+                print("LOGIN ERROR DATA: Login Form: ", login_form.errors.as_data())
+
             error_message = login_form.errors.as_data()
             messages.add_message(request, messages.ERROR, error_message)
             return redirect(reverse('quantummanagementapp:login'))

@@ -1,0 +1,19 @@
+upstream quantummanagement {
+    server web:8000;
+}
+
+server {
+    listen 8020;
+
+    location / {
+        proxy_pass http://127.0.0.1:8010;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+    location /static {
+        root /app/quantummanagementapp;
+    }
+    location /media {
+        root /app/images/media;
+    }
+}

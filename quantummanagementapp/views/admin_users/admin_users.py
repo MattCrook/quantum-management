@@ -1,11 +1,11 @@
 import json
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse
-from django.http import HttpResponseServerError
+# from django.http import HttpResponse
+# from django.http import HttpResponseServerError
 from quantummanagementapp.models import AdminUser, Employee, Image, ImageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.core.files.base import ContentFile
+# from django.core.files.base import ContentFile
 
 
 

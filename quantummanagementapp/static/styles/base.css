@@ -204,9 +204,18 @@ img {
 #complete_account_banner {
   font-size: 17px;
   font-variant: normal;
-  padding-bottom: 6px;
+  padding-bottom: 0.5%;
   letter-spacing: 1px;
-  font: 150 1.1em helvetica neue, open sans, sans-serif;
+  font: 200 1.1em helvetica neue, open sans, sans-serif;
+  padding-top: 0.5%;
+}
+
+#complete_account_banner_account_page {
+  font-size: 17px;
+  font-variant: normal;
+  /* padding-bottom: 0.4%; */
+  letter-spacing: 1px;
+  font: 200 1.1em helvetica neue, open sans, sans-serif;
 }
 
 .complete_account_btn_container {

@@ -1,4 +1,69 @@
+# LOCALLY
+# https://pip.pypa.io/en/stable/user_guide/
+export PYTHONUSERBASE=/myappenv
+python -m pip install --user SomePackage
+
+python -m venv QuantumManagementEnv
+source ./QuantumManagementEnv/bin/activate
+pip install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+python manage.py createsuperuser
+python manage.py loaddata quantummanagement/fixtures
+
+
+python -m pip list
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+
+-----WORKS--------
+python -m venv venv
+pip3 install virtualenv
+source ./venv/bin/activate
+pip3 install -r requirements.txt --no-cache-dir
+python -m pip install Pillow
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py loaddata */fixtures/*.json
+python3 manage.py createsuperuser
+python3 manage.py runserver
+-----------------------------
+
+-----------------------------
+Pipenv
+# https://pipenv.pypa.io/en/latest/
+(homebrew installation)
+$ brew install pipenv
+To upgrade pipenv at any time:
+$ brew upgrade pipenv
+(pip install --user --upgrade pipenv)
+
+pipenv sync --dev
+pipenv sync
+
+pip install pipenv --user
+pipenv install
+
+pip install --user --upgrade pipenv
+
+python3 manage.py collectstatic
+pipenv run python3 manage.py makemigrations
+pipenv run python3 manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+pipenv lock
+
+# pipenv run export DJANGO_ENV=local
+pipenv run python3 manage.py runserver --settings=quantumapp.dev_settings
+-----------------------------
+
+-----------------------------
+# DOCKER
 docker build -t quantummanagement .
 docker run -it -d --env-file .env.dev -p 8000:8000 quantummanagement
 or
 docker compose up --build
+-----------------------------

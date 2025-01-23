@@ -80,7 +80,7 @@
              <h6 class="attraction_title"><i class="fas fa-smile"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Walk Through' %}
              <h6 class="attraction_title"><i class="fas fa-walking"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
-        {% elif attraction_in_park.name == 'Concession' %}
+        {% elif attraction_in_park.name == 'Consessions' %}
              <h6 class="attraction_title"><i class="fas fa-hamburger"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
         {% elif attraction_in_park.name == 'Water Ride' %}
              <h6 class="attraction_title"><i class="fas fa-water"></i><a class="attraction_category_title_link" href="{% url 'quantummanagementapp:park_category_details_list' park.id attraction_in_park.id %}">{{attraction_in_park.name}}</a></h6>
@@ -90,7 +90,7 @@
             {% for park_attraction in park_attractions %}
                 {% if park_attraction.attraction.type.id == attraction_in_park.id %}
                     <div class="park_attractions_container">
-                    <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="{}">{{park_attraction.attraction.name}}</a></div>
+                    <div class="attraction_link_btn_container"><a class="attraction_link_btn" href="#">{{park_attraction.attraction.name}}</a></div>
 
                 </div>
                 {% endif %}

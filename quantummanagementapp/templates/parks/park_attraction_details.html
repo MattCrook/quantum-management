@@ -91,7 +91,7 @@
             {% for park_attraction in park_attractions %}
                 {% if park_attraction.attraction.type_id == type.id %}
                     <div class="park_attractions_container_details_page">
-                        <div class="attraction_link_btn_container_details_page"><a class="attraction_link_btn_details_page" href="{}">{{park_attraction.attraction.name}}</a></div>
+                        <div class="attraction_link_btn_container_details_page"><a class="attraction_link_btn_details_page" href="#">{{park_attraction.attraction.name}}</a></div>
                         <div class="item_park_details_page">Capacity: {{ park_attraction.attraction.capacity}} /hr</div>
                         {% comment %} <div class="item_park_details">Type: {{attraction_in_park.name}}</div> {% endcomment %}
                         <div class="employee_attractions_work_on_container_details_page"><h6 class="employees_assigned_to_this_ride_details_page">Employees Assigned to this Ride:</h6>

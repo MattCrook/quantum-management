@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import F
 from quantummanagementapp.models import AdminUser
-from datetimepicker.widgets import DateTimePicker
+# from datetimepicker.widgets import DateTimePicker
 # from safedelete.models import SafeDeleteModel
 # from safedelete.models import SOFT_DELETE
 # from djmoney.models.fields import MoneyField

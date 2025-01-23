@@ -1,6 +1,5 @@
 import httplib2
-
-from googleapiclient.discovery import build
+#from googleapiclient.discovery import build
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from quantummanagementapp.models import CredentialsModel
@@ -9,7 +8,8 @@ from oauth2client.contrib import xsrfutil
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.contrib.django_util.storage import DjangoORMStorage
 from django.shortcuts import render
-from httplib2 import Http
+# from httplib2 import Http
+import os
 
 
 # Create a state token to prevent request forgery.
@@ -63,7 +63,8 @@ def gmail_authenticate(request):
         else:
             http = httplib2.Http()
             http = credential.authorize(http)
-            service = build('gmail', 'v1', http=http)
+            #service = build('gmail', 'v1', http=http)
+            if os.environ.get("")
             print('access_token = ', credential.access_token)
             status = True
             template = 'home/home.html'

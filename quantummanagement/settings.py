@@ -1,25 +1,23 @@
 import os
-# from environ import Env
-
-
-
+from environ import Env
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# env = Env()
-# env.read_env(env_file=os.path.join(BASE_DIR, '.env.dev'))
 
+env = Env()
+env.read_env(env_file=os.path.join(BASE_DIR, '.env.dev'))
+
+ENVIRONMENT = env.get_value("ENVIRONMENT")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = '5utjtqz%(md_zyoyiewi7t@@vk7tg$o@u-ao(69k_l5itd50z!'
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = int(os.environ.get("DEBUG", default=0))
+SECRET_KEY = env.get_value("SECRET_KEY")
 
+# SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+DEBUG = env.get_value("DEBUG")
 
 
 ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1']
@@ -92,26 +90,13 @@ DATABASES = {
     },
     'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'quantumdb',
-        'USER': 'matthewcrook',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env.get_value("PG_SQL_DATABASE"),
+        'USER': env.get_value("PG_SQL_USER"),
+        'PASSWORD': env.get_value("PG_SQL_PASSWORD"),
+        'HOST': env.get_value("PG_SQL_HOST"),
+        'PORT': env.get_value("PG_SQL_PORT"),
     }
 }
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-#         "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
-#         "USER": os.environ.get("SQL_USER", "user"),
-#         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
-#         "HOST": os.environ.get("SQL_HOST", "localhost"),
-#         "PORT": os.environ.get("SQL_PORT", "5432"),
-#     }
-# }
-
 
 
 # Password validation
@@ -156,8 +141,6 @@ REST_FRAMEWORK = {
 }
 
 
-
-
 AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',
@@ -188,25 +171,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/login/home'
 LOGOUT_URL = 'logout/'
 LOGOUT_REDIRECT_URL = '/'
 
-
-
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 ###### Google OAuth2
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '567594519343-1relp58adg0suplc4naq8n9ribamoca4.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'o28VhmDO9gyz1YhQi-phQj-l'
-GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = 'client_secrets.json'
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env.get_value("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env.get_value("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+GOOGLE_OAUTH2_CLIENT_SECRETS_JSON = env.get_value("GOOGLE_OAUTH2_CLIENT_SECRETS_JSON")
 
 ###### FaceBook OAuth
-SOCIAL_AUTH_FACEBOOK_KEY = '373817170537484'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c964d38aeebe4728fa8c0b3346608462'
+SOCIAL_AUTH_FACEBOOK_KEY = env.get_value("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = env.get_value("SOCIAL_AUTH_FACEBOOK_SECRET")
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email, picture.type(large), link'
@@ -222,9 +201,9 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 
 ##### Auth0
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-405n1e6w.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = '7ECrruuGVEjBOGcGyTqbRPvg4hQFXqRa'
-SOCIAL_AUTH_AUTH0_SECRET = 'yJj0SzZCHm5s9WeAOCPOyjMjW9Rg9x7wtb6qqTMeqq7mcOpuN91vnbZ1lqKJ-fJS'
+SOCIAL_AUTH_AUTH0_DOMAIN = env.get_value("SOCIAL_AUTH_AUTH0_DOMAIN")
+SOCIAL_AUTH_AUTH0_KEY = env.get_value("SOCIAL_AUTH_AUTH0_KEY")
+SOCIAL_AUTH_AUTH0_SECRET = env.get_value("SOCIAL_AUTH_AUTH0_SECRET")
 SOCIAL_AUTH_AUTH0_SCOPE = [
     'openid',
     'profile',
@@ -233,17 +212,14 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 
 
 ###### LinkedIn OAuth
-# SOCIAL_AUTH_LINKEDIN_KEY = 'foobar'
-# SOCIAL_AUTH_LINKEDIN_SECRET = 'bazqux'
+SOCIAL_AUTH_LINKEDIN_KEY = env.get_value("SOCIAL_AUTH_LINKEDIN_KEY")
+SOCIAL_AUTH_LINKEDIN_SECRET = env.get_value("SOCIAL_AUTH_LINKEDIN_SECRET")
 
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
 
 # Added for registration form email field
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-
 
 SAFE_DELETE_INTERPRET_UNDELETED_OBJECTS_AS_CREATED = True
 

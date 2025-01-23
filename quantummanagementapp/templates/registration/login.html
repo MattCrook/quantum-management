@@ -4,7 +4,7 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="login-container">
+<div id="login_page_container" class="login-container">
     <div class="login-card">
         <h2>Login</h2>
         <div class="login_sub_header">Superuser or SysAdmin Accounts</div>
@@ -23,7 +23,7 @@
             {% endif %}
         </form>
     </div>
-    <div class="row">
+    <div id="login_page_row" class="row">
         <div class="col-md-8 mx-auto social-container my-2 order-md-1">
 
             <button id="login_with_auth0" class="btn btn-primary mb-2">
@@ -31,13 +31,17 @@
                 <a href="{% url 'social:begin' 'auth0' %}" title="Auth0">Login with Auth0</a>
             </button>
 
+
+            {% comment %}
             {% if not status %}
             <button id="login_with_google" class="btn btn-primary mb-2">
                 <a href="{% url 'social:begin' 'google-oauth2' %}" onclick="gmailAuthenticate()" title="Google"> <i
                         class="fab fa-google"></i> Login with Google</a>
             </button>
             {% endif %}
+            {% endcomment %}
 
+            {% comment %}
             <button class="btn btn-primary mb-2" onclick="checkLoginState();">
                 <a href="{% url 'social:begin' 'facebook' %}"> <i
                         class="fab fa-facebook-square"></i> Login with Facebook
@@ -45,8 +49,31 @@
                     <!-- <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"> <i class="fab fa-facebook-square"></i> Login with Facebook -->
                 </a>
             </button>
-            <button class="btn btn-info mb-2">
-                <a href="#"> <i class="fab fa-linkedin"></i> Login with LinkedIn</a>
+            {% endcomment %}
+
+
+            {% comment %} #----------------------------------------# {% endcomment %}
+
+            {% comment %}
+            Adding popup to indicate Social Auth Disabled (for now).
+            Don't want people to use thier real email as this is app is for demonstration purposes only.
+            {% endcomment %}
+            <div class="popup">
+                <span class="popuptext" id="popup">Social Auth Disabled (For Presentation Purposes)</span>
+            </div>
+
+            <button id="login_with_google" class="btn btn-primary mb-2" onclick="googleOnClick();">
+                 <i class="fab fa-google"></i> Login with Google</a>
+            </button>
+            <button id="facebook_btn" class="btn btn-primary mb-2" onclick="facebookOnClick();">
+                <i class="fab fa-facebook-square"></i> Login with Facebook
+            </button>
+
+            <div class="popup">
+                <span class="popuptext" id="popup_linkedin">LinkedIn Social Auth Disabled (For Presentation Purposes)</span>
+            </div>
+            <button id="linkedin_btn" class="btn btn-info mb-2" onclick="linkedInOnClick();">
+              <i class="fab fa-linkedin"></i> Login with LinkedIn
             </button>
 
         </div>
@@ -68,6 +95,43 @@ function gmailAuthenticate(){
         }
     });
   };
+
+function facebookOnClick() {
+    const facebookBtn = document.getElementById("facebook_btn");
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("show");
+}
+
+function linkedInOnClick() {
+    const facebookBtn = document.getElementById("linkedin_btn");
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("show");
+}
+
+function googleOnClick() {
+    const facebookBtn = document.getElementById("login_with_google");
+    const popup = document.getElementById("popup");
+    popup.classList.toggle("show");
+}
+
+function closeSocialAuthPopUp() {
+  window.onclick = function(e) {
+      const popup = document.getElementById("popup");
+      const row = document.getElementById("login_page_row");
+      const container = document.getElementById("login_page_container");
+      const popUpIsOpen = popup.classList.contains("show");
+
+      if (popUpIsOpen && e.target == row) {
+          popup.classList.toggle("show");
+      }
+
+      if (popUpIsOpen && e.target == container) {
+        popup.classList.toggle("show");
+    }
+  }
+}
+
+closeSocialAuthPopUp()
 
 </script>
 {% endblock %}

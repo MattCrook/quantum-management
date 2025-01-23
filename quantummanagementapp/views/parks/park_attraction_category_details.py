@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect, reverse
-from quantummanagementapp.models import AdminUser, Employee, EmployeeAttraction, Attraction, Park, ParkAttractions, AttractionType
+from django.shortcuts import render
+from quantummanagementapp.models import Employee, EmployeeAttraction, Attraction, Park, ParkAttractions, AttractionType
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseServerError, HttpResponse
+# from django.http import HttpResponseServerError, HttpResponse
 from rest_framework import status
 
 

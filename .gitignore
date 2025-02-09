@@ -169,3 +169,19 @@ node_modules/
 
 #DB
 logfile
+
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+secret.auto.tfvars
+.terraform
+terraform.tfvars
+coverage.txt
+.local.tfvars
+.terraform.tfstate.lock.info
+terraform.tfstate

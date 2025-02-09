@@ -3,7 +3,7 @@ from environ import Env
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#QUANTUMMANAGEMENT_BASE_HOSTNAME = ''
+QUANTUMMANAGEMENT_BASE_HOSTNAME = ''
 
 env = Env()
 
@@ -112,39 +112,32 @@ WSGI_APPLICATION = 'quantummanagement.wsgi.application'
 #     DATABASES["default"]["HOST"] = "127.0.0.1"
 #     DATABASES["default"]["PORT"] = 5432
 
-if ENVIRONMENT == 'development':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            # 'TEST': {
-            #     'NAME': os.path.join(BASE_DIR, 'db_test.sqlite3')
-            # }
-        },
-        'postgres': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': env.get_value("PG_SQL_DATABASE"),
-            'USER': env.get_value("PG_SQL_USER"),
-            'PASSWORD': env.get_value("PG_SQL_PASSWORD"),
-            'HOST': env.get_value("PG_SQL_HOST"),
-            'PORT': env.get_value("PG_SQL_PORT"),
-        },
-       'cloudsql' : {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': env.get_value('CLOUD_SQL_DATABASE_NAME'),
-           'USER': env.get_value('CLOUD_SQL_USERNAME'),
-           'PASSWORD': env.get_value('CLOUD_SQL_PASSWORD'),
-           'HOST': env.get_value('CLOUD_SQL_HOST'),
-           # 'PORT': 5432,
-           }
-    }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'TEST': {
+        #     'NAME': os.path.join(BASE_DIR, 'db_test.sqlite3')
+        # }
+    },
+    'postgres': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env.get_value("PG_SQL_DATABASE"),
+        'USER': env.get_value("PG_SQL_USER"),
+        'PASSWORD': env.get_value("PG_SQL_PASSWORD"),
+        'HOST': env.get_value("PG_SQL_HOST"),
+        'PORT': env.get_value("PG_SQL_PORT"),
+    },
+   'cloudsql' : {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': env.get_value('CLOUD_SQL_DATABASE_NAME'),
+       'USER': env.get_value('CLOUD_SQL_USERNAME'),
+       'PASSWORD': env.get_value('CLOUD_SQL_PASSWORD'),
+       'HOST': env.get_value('CLOUD_SQL_HOST'),
+       # 'PORT': 5432,
+       }
+}
 
 
 # Password validation
@@ -249,7 +242,8 @@ if ENVIRONMENT == "production":
     SESSION_COOKIE_SECURE = True
 else:
     SESSION_COOKIE_SECURE = False
-    SESSION_COOKIE_SECURE = True
+    #SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = False
     # If this is set to True, the cookie will be marked as “secure”, which means browsers may ensure that the cookie is only sent with an HTTPS connection
     # CSRF_COOKIE_HTTPONLY = False
     # Use with Ngnix configuration

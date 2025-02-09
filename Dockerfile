@@ -6,7 +6,7 @@ FROM python:3.8-buster AS builder
 
 # Hacky - but for now copying the .env file inside the container, which Terraform will read
 # and run Docker run with --env-file .env to pick up the env vars
-COPY .env.dev .env
+COPY .env .env
 
 # don't write pyc file
 ENV PYTHONDONTWRITEBYTECODE=1

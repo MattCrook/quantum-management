@@ -40,11 +40,17 @@ def login_user(request):
         else:
             # data = json.dumps({"valid": False})
             # return HttpResponse(data, content_type='application/json')
+
             if settings.ENVIRONMENT == 'development':
                 print("LOGIN ERROR DATA: Login Form: ", login_form.errors.as_data())
+                print("LOGIN ERROR MESSAGE: ", login_form.error_messages)
+                print("get_invalid_login_error ", login_form.get_invalid_login_error())
+                #print(login_form.has_error())
+                print("non_field_errors ", login_form.non_field_errors())
 
-            error_message = login_form.errors.as_data()
-            messages.add_message(request, messages.ERROR, error_message)
+            # error_message = login_form.errors.as_data()
+            error_message = login_form.get_invalid_login_error()
+            messages.add_message(request, messages.ERROR, error_message.message)
             return redirect(reverse('quantummanagementapp:login'))
 
     else:

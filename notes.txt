@@ -57,7 +57,7 @@ python3 manage.py migrate
 pipenv lock
 
 # pipenv run export DJANGO_ENV=local
-pipenv run python3 manage.py runserver --settings=quantumapp.dev_settings
+pipenv run python3 manage.py runserver --settings=quantummanagement.dev_settings
 -----------------------------
 
 -----------------------------
@@ -67,3 +67,9 @@ docker run -it -d --env-file .env.dev -p 8000:8000 quantummanagement
 or
 docker compose up --build
 -----------------------------
+
+DockerHub:
+Ex)
+- docker build -t quantummanagement .
+- docker tag quantummanagement:latest mgcrook11/quantum-management:2.0
+- docker push mgcrook11/quantum-management:2.0

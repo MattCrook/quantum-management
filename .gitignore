@@ -185,3 +185,5 @@ coverage.txt
 .local.tfvars
 .terraform.tfstate.lock.info
 terraform.tfstate
+
+google_sa_account.json

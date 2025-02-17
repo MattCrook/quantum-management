@@ -22,8 +22,11 @@ SECRET_KEY = env.get_value("SECRET_KEY")
 DEBUG = env.get_value("DEBUG")
 
 
-ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1']
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1', 'https://dev-405n1e6w.auth0.com', 'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}']
+
 
 
 # Application definition
@@ -124,7 +127,8 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 )
-
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
 
 
 REST_FRAMEWORK = {

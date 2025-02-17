@@ -2,7 +2,33 @@
 {% load static %}
 
 {% block content %}
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+
+
+<div id="landing_page">
+
+  {% comment %} <img id="image_landing_page_1" class="d-block " src="{% static 'images/slideone.jpg'%}" alt="First slide"> {% endcomment %}
+  {% comment %} <img id="image_landing_page_1" class="d-block " src="{% static 'images/img-data-analytics.webp'%}" alt="First slide"> {% endcomment %}
+  <div class="carousel-inner">
+      <img id="image_landing_page_1" class="d-block " src="{% static 'images/landingpage-background.jpg'%}" alt="First slide">
+      <div class="carousel_item_active">
+        <div class="carousel_caption">
+          <h1 class="add-shadow">Quantum Management</h1>
+          <p class="add-shadow">A Quantum LLC systems management application</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock content %}
+
+
+
+
+{% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -39,5 +65,4 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
-{% endblock content %}
+</div> {% endcomment %}

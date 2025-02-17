@@ -66,6 +66,8 @@ docker build -t quantummanagement .
 docker run -it -d --env-file .env.dev -p 8000:8000 quantummanagement
 or
 docker compose up --build
+
+sudo docker run -it -d --name quantummanagement -e ENVIRONMENT='development' -p 80:8000 mgcrook11/quantum-management-public:1.4
 -----------------------------
 
 DockerHub:

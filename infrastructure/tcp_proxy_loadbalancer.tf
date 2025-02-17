@@ -1,3 +1,4 @@
+/*
 resource "google_compute_global_forwarding_rule" "tcp_proxy" {
   provider              = google-beta
   project               = var.project_id
@@ -25,7 +26,7 @@ resource "google_compute_backend_service" "tcp_proxy" {
   connection_draining_timeout_sec = 10
   load_balancing_scheme           = "EXTERNAL"
   session_affinity                = "CLIENT_IP"
-  health_checks                   = [google_compute_health_check.tcp_8060.id]
+  health_checks                   = [google_compute_health_check.tcp_proxy_lb.id]
   # security_policy                 = google_compute_security_policy.cloudarmor_tcp_proxy_backends.id
   backend {
     balancing_mode        = "RATE"
@@ -54,9 +55,9 @@ resource "google_compute_network_endpoint" "quantummanagement" {
   project                = var.project_id
   zone                   = google_compute_network_endpoint_group.quantummanagement.zone
   network_endpoint_group = google_compute_network_endpoint_group.quantummanagement.name
-  instance               = data.google_compute_instance.quantummanagement.name
+  instance               = google_compute_instance.quantum_management.name
   port                   = google_compute_network_endpoint_group.quantummanagement.default_port
-  ip_address             = data.google_compute_instance.quantummanagement.network_interface.0.network_ip
+  ip_address             = google_compute_instance.quantum_management.network_interface.0.network_ip
 }
 
 
@@ -73,3 +74,4 @@ resource "google_compute_health_check" "tcp_proxy_lb" {
     port = "80"
   }
 }
+*/

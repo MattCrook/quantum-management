@@ -1,31 +1,30 @@
-# resource "google_compute_firewall" "ingress_allow_quantum_management_80" {
-#   project   = var.project_id
-#   network   = "default"
-#   name      = "ingress-allow-quantum-management-default-port-80"
-#   direction = "INGRESS"
-#   priority  = 900
+resource "google_compute_firewall" "ingress_allow_quantum_management_default_ports" {
+  project   = var.project_id
+  network   = "default"
+  name      = "ingress-allow-quantum-management-default-ports"
+  direction = "INGRESS"
+  priority  = 100
 
-#   allow {
-#     protocol = "tcp"
-#     ports    = ["8080", "80",]
-#   }
+  allow {
+    protocol = "tcp"
+    ports    = ["8080", "80", "443"]
+  }
 
-#   allow {
-#     protocol = "udp"
-#   }
+  allow {
+    protocol = "udp"
+  }
 
-#   allow {
-#     protocol = "icmp"
-#   }
+  allow {
+    protocol = "icmp"
+  }
 
-#   source_ranges = []
+  source_ranges = ["34.85.150.7/32", "68.84.85.238/32"]
+  target_tags   = ["quantum-management"]
 
-#   target_tags = ["quantum-management"]
-
-#   log_config {
-#     metadata = "EXCLUDE_ALL_METADATA"
-#   }
-# }
+  log_config {
+    metadata = "EXCLUDE_ALL_METADATA"
+  }
+}
 
 # resource "google_compute_firewall" "ingress_deny_all_quantum_management" {
 #   project   = var.project_id
@@ -59,7 +58,7 @@ resource "google_compute_firewall" "ingress_allow_quantum_management_healthcheck
   network   = "default"
   name      = "ingress-allow-quantum-management-hc-and-iap-ranges"
   direction = "INGRESS"
-  priority  = 900
+  priority  = 1000
 
   allow {
     protocol = "tcp"
@@ -72,4 +71,40 @@ resource "google_compute_firewall" "ingress_allow_quantum_management_healthcheck
   log_config {
     metadata = "EXCLUDE_ALL_METADATA"
   }
+}
+
+resource "google_compute_firewall" "ingress_allow_ssh_quantum_management" {
+  name      = "ingress-allow-ssh-quantum-management"
+  project   = var.project_id
+  network   = "default"
+  direction = "INGRESS"
+  priority  = 1000
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["66.84.85.238/32", "34.85.150.7/32"]
+  target_tags   = ["allow-quantum-ssh"]
+
+
+  log_config {
+    metadata = "EXCLUDE_ALL_METADATA"
+  }
+}
+
+resource "google_compute_firewall" "egress_allow_all" {
+  name      = "egress-allow-all"
+  project   = var.project_id
+  network   = "default"
+  direction = "EGRESS"
+
+  allow {
+    protocol = "all"
+  }
+
+  destination_ranges = ["0.0.0.0/0"]
+  target_tags        = ["quantum-management"]
+
 }

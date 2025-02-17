@@ -1,3 +1,4 @@
+/*
 resource "google_compute_security_policy" "cloudarmor_tcp_proxy_backends" {
   project = var.project_id
   name    = "cloudarmor-tcp-proxy-security-policy"
@@ -31,3 +32,4 @@ resource "google_compute_security_policy" "cloudarmor_tcp_proxy_backends" {
     description = "default rule"
   }
 }
+*/

@@ -31,8 +31,8 @@
 </head>
 
 <body>
+    {% if user.is_authenticated %}
     <ul class="navbar-nav mr-auto">
-        {% if user.is_authenticated %}
         <div class="home_nav_container_1">
             <li id="btn4" class="nav-item">
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Home</a>
@@ -46,7 +46,7 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:parks' %}">Manage Park</a>
             </li>
         </div>
-        {% else %}
+             {% else %}
             <li id="btn4" class="nav-item">
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Manage Employees</a>
             </li>
@@ -54,7 +54,7 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:home' %}">Manage Park</a>
             </li>
         </div>
-        {% endif %}
+            {% endif %}
 
         <div class="home_nav_container_2">
             <li id="btn4" class="nav-item">
@@ -76,8 +76,12 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:logout' %}">Logout</a>
             </li>
         </div>
+    </ul>
+    {% endif %}
 
-        {% else %}
+
+    {% if not user.is_authenticated %}
+    <ul class="navbar-nav mr-auto">
         <div class="nav-item" id="logo_nav_landing_page">
             <a class="logo_btn" href="{% url 'quantummanagementapp:landing_page' %}">Quantum</a></div>
 
@@ -86,15 +90,16 @@
                 <a class="nav-link" href="{% url 'quantummanagementapp:login' %}">Login</a>
             </div>
         </li>
-        {% endif %}
     </ul>
+    {% endif %}
+
     <div id="status">
     </div>
 
-    <main class="main-content">
+    <div class="main-content">
         {% block content %}
         {% endblock content %}
-    </main>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

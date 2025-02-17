@@ -12,6 +12,8 @@ services:
       - media_volume:/app/web/media/images
     environment:
       DJANGO_SETTINGS_MODULE: quantummanagement.settings
+      DEBUG: True
+      ENVIRONMENT: "development"
     env_file:
       - ./.env
 

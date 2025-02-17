@@ -60,6 +60,10 @@ COPY --from=builder /venv /venv
 
 COPY . .
 
+# ENV DEBUG=True
+
+# ENV ENVIRONMENT=development
+
 ENV DJANGO_SETTINGS_MODULE=quantummanagement.settings
 
 EXPOSE 8000

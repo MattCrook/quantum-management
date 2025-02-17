@@ -44,6 +44,7 @@ elif ENVIRONMENT == "production":
         'https://dev-405n1e6w.auth0.com/api/v2/',
         'https://dev-405n1e6w.auth0.com',
         'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}',
+        # WILL NEED TO ADD IP ADDRESS OR HOSTNAME OF LOADBALANCER
     ]
 else:
   ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1', 'https://dev-405n1e6w.auth0.com', 'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}']

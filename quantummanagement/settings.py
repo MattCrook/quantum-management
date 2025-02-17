@@ -13,14 +13,26 @@ env = Env()
 # - Within docker container: copying from the /environments directory to root directory.
 env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
-ENVIRONMENT = env.get_value("ENVIRONMENT")
 
+# ENVIRONMENT = env.get_value("ENVIRONMENT")
+
+
+#----- for dev -----#
+ENVIRONMENT='development'
+ALLOWED_HOSTS = ['*']
+DEBUG = True
+#--------------#
+
+
+#-------------------#
 # if ENVIRONMENT == "staging":
 #   env.read_env(env_file=os.path.join(BASE_DIR, '/environments/stg/.env'))
 # elif ENVIRONMENT == "production":
 #   env.read_env(env_file=os.path.join(BASE_DIR, '/environments/prod/.env'))
 # else:
 #   env.read_env(env_file=os.path.join(BASE_DIR, '/environments/dev/.env'))
+#-------------------#
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,22 +43,26 @@ SECRET_KEY = env.get_value("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = env.get_value("DEBUG")
 
-if ENVIRONMENT == "staging":
-    ALLOWED_HOSTS = ['*']
-elif ENVIRONMENT == "production":
-    ALLOWED_HOSTS = [
-        'http://127.0.0.1:8000/complete/auth0',
-        'http://localhost:8000/complete/auth0',
-        'http://localhost:8000/social-auth/complete/auth0',
-        'https://api.quantumcoasters.com',
-        'https://dev-405n1e6w.auth0.com/api/v2/',
-        'https://dev-405n1e6w.auth0.com',
-        'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}',
-    ]
-else:
-  ALLOWED_HOSTS = ['localhost', '8000', '127.0.0.1', 'https://dev-405n1e6w.auth0.com', 'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}']
+# DEBUG = env.get_value("DEBUG")
+
+
+# ------ ALLOWED_HOSTS coming from Dockerfile -------_#
+# if ENVIRONMENT == "staging":
+#     ALLOWED_HOSTS = ['*']
+# elif ENVIRONMENT == "production":
+#     ALLOWED_HOSTS = [
+#         'http://127.0.0.1:8000/complete/auth0',
+#         'http://localhost:8000/complete/auth0',
+#         'http://localhost:8000/social-auth/complete/auth0',
+#         'https://api.quantumcoasters.com',
+#         'https://dev-405n1e6w.auth0.com/api/v2/',
+#         'https://dev-405n1e6w.auth0.com',
+#         'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}',
+#     ]
+# else:
+#     ALLOWED_HOSTS = ['*']
+
 
 
 
@@ -181,14 +197,9 @@ elif ENVIRONMENT == "production":
         'https://{QUANTUMMANAGEMENT_BASE_HOSTNAME}',
     )
 else:
-    CORS_ORIGIN_ALLOW_ALL = False
-    CORS_ORIGIN_WHITELIST = (
-        'http://localhost:8000',
-        'http://127.0.0.1:8000',
-    )
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ORIGIN_ALLOW_ALL = True
-# CORS_ALLOW_CREDENTIALS = True
 
 
 REST_FRAMEWORK = {
@@ -249,9 +260,8 @@ if ENVIRONMENT == "production":
     SESSION_COOKIE_SECURE = True
 else:
     SESSION_COOKIE_SECURE = False
-    SESSION_COOKIE_SECURE = True
     # If this is set to True, the cookie will be marked as “secure”, which means browsers may ensure that the cookie is only sent with an HTTPS connection
-    # CSRF_COOKIE_HTTPONLY = False
+    CSRF_COOKIE_HTTPONLY = False
     # Use with Ngnix configuration
     # SOCIAL_AUTH_REDIRECT_IS_HTTPS = False
     # https://docs.djangoproject.com/en/3.2/ref/settings/#session-cookie-domain
